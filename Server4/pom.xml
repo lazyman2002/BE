@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.app</groupId>
+    <artifactId>Server4</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!--
+        ###########################################################################
+        JAVA
+        ###########################################################################
+        -->
+        <!-- https://mvnrepository.com/artifact/com.sparkjava/spark-core -->
+        <dependency>
+            <groupId>com.sparkjava</groupId>
+            <artifactId>spark-core</artifactId>
+            <version>2.9.4</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-multipart -->
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-multipart</artifactId>
+            <version>3.1.9</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>33.3.1-jre</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+        <!--
+        ###########################################################################
+        SQL
+        ###########################################################################
+        -->
+        <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>9.1.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>5.0.1</version>
+        </dependency>
+        <!--
+        ###########################################################################
+        SPARK
+        ###########################################################################
+        -->
+        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core -->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.spark</groupId>-->
+        <!--            <artifactId>spark-core_2.12</artifactId>-->
+        <!--            <version>3.1.2</version>-->
+        <!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-sql -->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.spark</groupId>-->
+        <!--            <artifactId>spark-sql_2.12</artifactId>-->
+        <!--            <version>3.1.2</version>-->
+        <!--            <scope>provided</scope>-->
+        <!--        </dependency>-->
+        <!--
+        ###########################################################################
+
+        ###########################################################################
+        -->
+    </dependencies>
+</project>
