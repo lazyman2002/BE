@@ -1,9 +1,6 @@
-package org.app;
-
-import org.eclipse.jetty.util.ConcurrentHashSet;
+package org.model;
 
 import java.sql.Date;
-import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -15,19 +12,32 @@ public class Candidates extends Users {
 
 	private static int currentID = 1;
 
-	public Candidates(String username,
+	public Candidates(){};
+
+	public Candidates(Users user) {
+		super(user.getUserID(),
+				user.getUsername(),
+				user.getPassword_hashed(),
+				user.getFirstName(),
+				user.getLastName(),
+				user.getEmail(),
+				user.isCandidate());
+	}
+
+	public Candidates(int userID,
+					  String username,
 					  String password_hashed,
 					  String firstName,
 					  String lastName,
 					  String email,
+					  Boolean isCandidate,
+					  int candidateID,
 					  Date birthDate,
 					  Gender gender) {
-		super(username, password_hashed, firstName, lastName, email);
-		this.candidateID = currentID;
+		super(userID, username, password_hashed, firstName, lastName, email, isCandidate);
+		this.candidateID = candidateID;
 		this.birthDate = birthDate;
 		this.gender = gender;
-		this.currentCVs = new ConcurrentHashMap<>();
-		currentID+=1;
 	}
 
 	public int getCandidateID() {

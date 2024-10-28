@@ -1,4 +1,4 @@
-package org.app;
+package org.model;
 
 import java.util.Objects;
 
@@ -11,22 +11,14 @@ public class Recruiters extends Users {
 
 	private static int currentID = 1;
 
-	public Recruiters(String username,
-					  String password_hashed,
-					  String firstName,
-					  String lastName,
-					  String email,
-					  int companiesID,
-					  int roleID,
-					  int roleName,
-					  String departmentName) {
-		super(username, password_hashed, firstName, lastName, email);
-		this.companiesID = companiesID;
-		this.roleID = roleID;
-		this.roleName = roleName;
-		this.departmentName = departmentName;
-		this.recruiterID = currentID;
-		currentID+=1;
+	public Recruiters(Users users) {
+		super(users.getUserID(),
+				users.getUsername(),
+				users.getPassword_hashed(),
+				users.getFirstName(),
+				users.getLastName(),
+				users.getEmail(),
+				users.isCandidate());
 	}
 
 	public int getRecruiterID() {

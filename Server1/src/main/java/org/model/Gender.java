@@ -1,4 +1,4 @@
-package org.app;
+package org.model;
 
 public enum Gender {
 	MALE("Male"),
