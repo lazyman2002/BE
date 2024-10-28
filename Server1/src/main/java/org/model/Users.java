@@ -117,13 +117,9 @@ public class Users {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof Users users)) return false;
-        return userID == users.userID &&
-				Objects.equals(username, users.username) &&
-				Objects.equals(password_hashed, users.password_hashed) &&
-				Objects.equals(firstName, users.firstName) &&
-				Objects.equals(lastName, users.lastName) &&
-				Objects.equals(email, users.email);
+		if (o == null || getClass() != o.getClass()) return false;
+		Users users = (Users) o;
+		return userID == users.userID && Objects.equals(username, users.username) && Objects.equals(password_hashed, users.password_hashed) && Objects.equals(firstName, users.firstName) && Objects.equals(lastName, users.lastName) && Objects.equals(email, users.email);
 	}
 
 	@Override
