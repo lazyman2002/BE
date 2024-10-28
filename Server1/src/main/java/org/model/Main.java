@@ -22,7 +22,7 @@ public class Main {
         get("/hello", (req, res)->"Hello, world");
 
         // Đăng ký
-        post("/register", (req, res) -> {
+        post("/user/register", (req, res) -> {
             UsersDAO usersDAO = new UsersDAO();
             Connection connection = null;
             try {
@@ -78,7 +78,7 @@ public class Main {
             }
         });
 
-        post("/login", (req, res) -> {
+        post("/user/login", (req, res) -> {
             UsersDAO usersDAO = new UsersDAO();
             String username = req.queryParams("username");
             String password =  req.queryParams("password");
@@ -109,5 +109,9 @@ public class Main {
             }
             return 0;
         });
+
+//        post("/company/register", (req, res) -> {
+//
+//        });
     }
 }
