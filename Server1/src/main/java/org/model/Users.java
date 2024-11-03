@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.Objects;
 
 public class Users {
-	private int userID;
+	private Integer userID;
 	private String username;
 	private String password_hashed;
 	private String firstName;
@@ -18,7 +18,7 @@ public class Users {
 	private boolean isCandidate;
 
 	public Users(){};
-	public Users(int userID,
+	public Users(Integer userID,
 				String username,
 				String password_hashed,
 				String firstName,
@@ -46,7 +46,7 @@ public class Users {
 		this.email = email;
 	}
 
-	public int getUserID() {
+	public Integer getUserID() {
 		return userID;
 	}
 	public String getUsername() {
@@ -80,7 +80,7 @@ public class Users {
 		return isCandidate;
 	}
 
-	public void setUserID(int userID) {
+	public void setUserID(Integer userID) {
 		this.userID = userID;
 	}
 	public void setUsername(String username) {
@@ -198,7 +198,7 @@ public class Users {
 
 			// Xử lý kết quả ở đây
 			if (resultSet.next()) { // Kiểm tra xem có kết quả không
-				int userID = resultSet.getInt("userID"); // Lấy userID
+				Integer userID = resultSet.getInt("userID"); // Lấy userID
 				String userName = resultSet.getString("username"); // Lấy username
 				String passWord = resultSet.getString("password_hashed"); // Lấy username
 				String firstName = resultSet.getString("firstName"); // Lấy firstName

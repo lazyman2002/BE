@@ -3,13 +3,13 @@ package org.model;
 import java.util.Objects;
 
 public class Recruiters extends Users {
-	private int recruiterID;
-	private int companiesID;
-	private int roleID;
-	private int roleName;
+	private Integer recruiterID;
+	private Integer companiesID;
+	private Integer roleID;
+	private Integer roleName;
 	private String departmentName;
 
-	private static int currentID = 1;
+	private static Integer currentID = 1;
 
 	public Recruiters(Users users) {
 		super(users.getUserID(),
@@ -21,41 +21,41 @@ public class Recruiters extends Users {
 				users.isCandidate());
 	}
 
-	public int getRecruiterID() {
+	public Integer getRecruiterID() {
 		return recruiterID;
 	}
-	public int getCompaniesID() {
+	public Integer getCompaniesID() {
 		return companiesID;
 	}
-	public int getRoleID() {
+	public Integer getRoleID() {
 		return roleID;
 	}
-	public int getRoleName() {
+	public Integer getRoleName() {
 		return roleName;
 	}
 	public String getDepartmentName() {
 		return departmentName;
 	}
-	public static int getCurrentID() {
+	public static Integer getCurrentID() {
 		return currentID;
 	}
 
-	public void setRecruiterID(int recruiterID) {
+	public void setRecruiterID(Integer recruiterID) {
 		this.recruiterID = recruiterID;
 	}
-	public void setCompaniesID(int companiesID) {
+	public void setCompaniesID(Integer companiesID) {
 		this.companiesID = companiesID;
 	}
-	public void setRoleID(int roleID) {
+	public void setRoleID(Integer roleID) {
 		this.roleID = roleID;
 	}
-	public void setRoleName(int roleName) {
+	public void setRoleName(Integer roleName) {
 		this.roleName = roleName;
 	}
 	public void setDepartmentName(String departmentName) {
 		this.departmentName = departmentName;
 	}
-	public static void setCurrentID(int currentID) {
+	public static void setCurrentID(Integer currentID) {
 		Recruiters.currentID = currentID;
 	}
 

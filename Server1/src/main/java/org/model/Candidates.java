@@ -5,12 +5,12 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Candidates extends Users {
-	private int candidateID;
+	private Integer  candidateID;
 	private Date birthDate;
 	private Gender gender;
 	private ConcurrentHashMap<Integer, Boolean> currentCVs;
 
-	private static int currentID = 1;
+	private static Integer  currentID = 1;
 
 	public Candidates(){};
 
@@ -24,14 +24,14 @@ public class Candidates extends Users {
 				user.isCandidate());
 	}
 
-	public Candidates(int userID,
+	public Candidates(Integer  userID,
 					  String username,
 					  String password_hashed,
 					  String firstName,
 					  String lastName,
 					  String email,
 					  Boolean isCandidate,
-					  int candidateID,
+					  Integer  candidateID,
 					  Date birthDate,
 					  Gender gender) {
 		super(userID, username, password_hashed, firstName, lastName, email, isCandidate);
@@ -40,7 +40,7 @@ public class Candidates extends Users {
 		this.gender = gender;
 	}
 
-	public int getCandidateID() {
+	public Integer  getCandidateID() {
 		return candidateID;
 	}
 	public Date getBirthDate() {
@@ -53,7 +53,7 @@ public class Candidates extends Users {
 		return currentCVs;
 	}
 
-	public void setCandidateID(int candidateID) {
+	public void setCandidateID(Integer  candidateID) {
 		this.candidateID = candidateID;
 	}
 	public void setBirthDate(Date birthDate) {
@@ -76,7 +76,7 @@ public class Candidates extends Users {
 	}
 
 	@Override
-	public int hashCode() {
+	public int  hashCode() {
 		return Objects.hash(super.hashCode(), candidateID, birthDate, gender);
 	}
 

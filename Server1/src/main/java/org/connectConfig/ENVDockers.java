@@ -1,6 +1,9 @@
 package org.connectConfig;
 
 public class ENVDockers {
+    // Open port
+    public static final int gRPC_port = 50051;
+
     // Hadoop nodes
     public static final String hadoop_master1_name = "hadoop-master1";
     public static final String hadoop_master1_ip = "172.18.0.2";
@@ -19,7 +22,7 @@ public class ENVDockers {
     public static final String spark_master1_ip = "172.18.0.6";
 
     public static final String spark_worker1_name = "spark-worker1";
-    public static final String spark_worker1_ip = "172.18.0.7";
+    public static final String spark_worker1_ip = "localhost";
 
     public static final String spark_worker2_name = "spark-worker2";
     public static final String spark_worker2_ip = "172.18.0.8";
@@ -44,5 +47,4 @@ public class ENVDockers {
 
     public static final String kafka_node3_name = "kafka-node3";
     public static final String kafka_node3_ip = "172.18.0.14";
-
 }
