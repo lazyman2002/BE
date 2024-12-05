@@ -1,9 +1,21 @@
 package org.app;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
+import impl.*;
+import io.grpc.Server;
+import io.grpc.ServerBuilder;
+import org.connectConfig.ENVDockers;
 
+import java.io.IOException;
+
+import io.grpc.protobuf.services.ProtoReflectionService;
+
+public class Main {
+    public static void main(String[] args) throws IOException, InterruptedException {
+        System.out.println("start Server");
+        Server server = ServerBuilder.forPort(ENVDockers.gRPC_port)
+                .addService(ProtoReflectionService.newInstance())
+                .build();
+        server.start();
+        server.awaitTermination();
     }
 }
