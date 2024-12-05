@@ -1,6 +1,8 @@
 package org.model;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Companies {
@@ -9,8 +11,25 @@ public class Companies {
 	private String companyAvatarURL;
 	private String website;
 	private String email;
-	private ConcurrentHashMap<Integer, Boolean> activeRecruiters;
-	private ConcurrentHashMap<Integer, Boolean> activeLocations;
+
+//	Ngoài CSDL
+	private HashSet<Integer> activeRecruiters;
+	private HashSet<Integer> activeLocations;
+
+	public Companies(Integer companiesID, String companyName, String companyAvatarURL, String website, String email) {
+		this.companiesID = companiesID;
+		this.companyName = companyName;
+		this.companyAvatarURL = companyAvatarURL;
+		this.website = website;
+		this.email = email;
+	}
+
+	public Companies() {}
+
+	public Companies(HashSet<Integer> activeRecruiters, HashSet<Integer> activeLocations) {
+		this.activeRecruiters = activeRecruiters;
+		this.activeLocations = activeLocations;
+	}
 
 	public Companies(String companyName,
 					 String companyAvatarURL,
@@ -20,8 +39,8 @@ public class Companies {
 		this.companyAvatarURL = companyAvatarURL;
 		this.website = website;
 		this.email = email;
-		this.activeRecruiters = new ConcurrentHashMap<>();
-		this.activeLocations = new ConcurrentHashMap<>();
+		this.activeRecruiters = new HashSet<>();
+		this.activeLocations = new HashSet<>();
 	}
 
 	public Integer  getCompaniesID() {
@@ -39,10 +58,10 @@ public class Companies {
 	public String getEmail() {
 		return email;
 	}
-	public ConcurrentHashMap<Integer, Boolean> getActiveRecruiters() {
+	public Set<Integer> getActiveRecruiters() {
 		return activeRecruiters;
 	}
-	public ConcurrentHashMap<Integer, Boolean> getActiveLocations() {
+	public Set<Integer> getActiveLocations() {
 		return activeLocations;
 	}
 
@@ -61,10 +80,10 @@ public class Companies {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public void setActiveRecruiters(ConcurrentHashMap<Integer, Boolean> activeRecruiters) {
+	public void setActiveRecruiters(HashSet<Integer> activeRecruiters) {
 		this.activeRecruiters = activeRecruiters;
 	}
-	public void setActiveLocations(ConcurrentHashMap<Integer, Boolean> activeLocations) {
+	public void setActiveLocations(HashSet<Integer> activeLocations) {
 		this.activeLocations = activeLocations;
 	}
 

@@ -1,18 +1,34 @@
 package org.model;
 
+import proto.ServerClient;
+
 public enum Gender {
-	MALE("Male"),
-	FEMALE("Female");
+	MALE("MALE"),
+	FEMALE("FEMALE");
 
 	private final String displayName;
 
-	// Constructor to assign the display name
 	Gender(String displayName) {
 		this.displayName = displayName;
 	}
 
-	// Getter to access the display name
 	public String getDisplayName() {
 		return displayName;
+	}
+
+	public static Gender fromProto(ServerClient.Gender protoGender) {
+        return switch (protoGender) {
+            case MALE -> Gender.MALE;
+            case FEMALE -> Gender.FEMALE;
+            default -> throw new IllegalArgumentException("Unknown Gender: " + protoGender);
+        };
+	}
+
+	public ServerClient.Gender toProto() {
+        return switch (this) {
+            case MALE -> ServerClient.Gender.MALE;
+            case FEMALE -> ServerClient.Gender.FEMALE;
+            default -> throw new IllegalArgumentException("Unknown Gender: " + this);
+        };
 	}
 }

@@ -1,7 +1,5 @@
 package org.model;
 
-import org.connectConfig.HikariDataSource;
-
 import java.sql.*;
 import java.util.Objects;
 
@@ -13,11 +11,14 @@ public class Users {
 	private String lastName;
 	private String email;
 	private String GoogleToken;
-	private Date GoogleTokenExpiration;
-
+	private Timestamp GoogleTokenExpiration;
+	private Timestamp createdAt;
+	private Timestamp updatedAt;
+//  ngoài CSDL
 	private boolean isCandidate;
+//	private String password;
 
-	public Users(){};
+	public Users(){}
 	public Users(Integer userID,
 				String username,
 				String password_hashed,
@@ -32,18 +33,6 @@ public class Users {
 		this.lastName = lastName;
 		this.email = email;
 		this.isCandidate = isCandidate;
-//		this.GoogleToken = null;
-//		this.GoogleTokenExpiration = Date.valueOf("1010-10-10");
-//		this.createdAt = Timestamp.valueOf(LocalDateTime.now());
-//		this.updatedAt = this.createdAt;
-//		currentID +=1;
-	}
-
-	public Users(String username, String password_hashed, Boolean isCandidate, String email) {
-		this.username = username;
-		this.password_hashed = password_hashed;
-		this.isCandidate = isCandidate;
-		this.email = email;
 	}
 
 	public Integer getUserID() {
@@ -67,15 +56,15 @@ public class Users {
 	public String getGoogleToken() {
 		return GoogleToken;
 	}
-	public Date getGoogleTokenExpiration() {
+	public Timestamp getGoogleTokenExpiration() {
 		return GoogleTokenExpiration;
 	}
-//	public Timestamp getCreatedAt() {
-//		return createdAt;
-//	}
-//	public Timestamp getUpdatedAt() {
-//		return updatedAt;
-//	}
+	public Timestamp getCreatedAt() {
+		return createdAt;
+	}
+	public Timestamp getUpdatedAt() {
+		return updatedAt;
+	}
 	public boolean isCandidate() {
 		return isCandidate;
 	}
@@ -101,15 +90,15 @@ public class Users {
 	public void setGoogleToken(String googleToken) {
 		GoogleToken = googleToken;
 	}
-//	public void setGoogleTokenExpiration(Date googleTokenExpiration) {
-//		GoogleTokenExpiration = googleTokenExpiration;
-//	}
-//	public void setCreatedAt(Timestamp createdAt) {
-//		this.createdAt = createdAt;
-//	}
-//	public void setUpdatedAt(Timestamp updatedAt) {
-//		this.updatedAt = updatedAt;
-//	}
+	public void setGoogleTokenExpiration(Timestamp googleTokenExpiration) {
+		GoogleTokenExpiration = googleTokenExpiration;
+	}
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
+	}
+	public void setUpdatedAt(Timestamp updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 	public void setCandidate(boolean candidate) {
 		isCandidate = candidate;
 	}
@@ -119,12 +108,12 @@ public class Users {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Users users = (Users) o;
-		return userID == users.userID && Objects.equals(username, users.username) && Objects.equals(password_hashed, users.password_hashed) && Objects.equals(firstName, users.firstName) && Objects.equals(lastName, users.lastName) && Objects.equals(email, users.email);
+		return Objects.equals(userID, users.userID) && Objects.equals(username, users.username) && Objects.equals(password_hashed, users.password_hashed) && Objects.equals(firstName, users.firstName) && Objects.equals(lastName, users.lastName) && Objects.equals(email, users.email) && Objects.equals(GoogleToken, users.GoogleToken) && Objects.equals(GoogleTokenExpiration, users.GoogleTokenExpiration) && Objects.equals(createdAt, users.createdAt) && Objects.equals(updatedAt, users.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(userID, username, password_hashed, firstName, lastName, email);
+		return Objects.hash(userID, username, password_hashed, firstName, lastName, email, GoogleToken, GoogleTokenExpiration, createdAt, updatedAt);
 	}
 
 	@Override
@@ -138,101 +127,10 @@ public class Users {
 		sb.append(", email='").append(email).append('\'');
 		sb.append(", GoogleToken='").append(GoogleToken).append('\'');
 		sb.append(", GoogleTokenExpiration=").append(GoogleTokenExpiration);
+		sb.append(", createdAt=").append(createdAt);
+		sb.append(", updatedAt=").append(updatedAt);
+		sb.append(", isCandidate=").append(isCandidate);
 		sb.append('}');
 		return sb.toString();
 	}
-
-	public String signup(String username, String password_hashed){
-		String checkExist = "SELECT * FROM `Users` WHERE `Users`.`username` = ?";
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-
-		try{
-			connection = HikariDataSource.getConnection();
-			preparedStatement = connection.prepareStatement(checkExist);
-			preparedStatement.setString(1, username);
-			resultSet = preparedStatement.executeQuery();
-
-			// Xử lý kết quả ở đây
-			if (resultSet.next()) {
-				return "tồn tại";
-			} else {
-				String newUsers = "SELECT * FROM `Users` WHERE `Users`.`username` = ?";
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		finally {
-			try {
-				if (resultSet != null) resultSet.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-			try {
-				if (preparedStatement != null) preparedStatement.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-			try {
-				if (connection != null) connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return "?";
-	}
-	public Users login(String username, String password_hashed){
-		String getLogin = "SELECT * FROM `Users` WHERE `Users`.`username` = ? AND `Users`.`password_hashed` = ?;";
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-		try{
-			connection = HikariDataSource.getConnection();
-			preparedStatement = connection.prepareStatement(getLogin);
-			preparedStatement.setString(1, username);
-			preparedStatement.setString(2, password_hashed);
-			resultSet = preparedStatement.executeQuery();
-
-			// Xử lý kết quả ở đây
-			if (resultSet.next()) { // Kiểm tra xem có kết quả không
-				Integer userID = resultSet.getInt("userID"); // Lấy userID
-				String userName = resultSet.getString("username"); // Lấy username
-				String passWord = resultSet.getString("password_hashed"); // Lấy username
-				String firstName = resultSet.getString("firstName"); // Lấy firstName
-				String lastName = resultSet.getString("lastName"); // Lấy lastName
-				String email = resultSet.getString("email"); // Lấy email
-				Boolean isCandidate = resultSet.getBoolean("isCandidate"); // Lấy isCandidate
-
-				return new Users(userID, userName, passWord, firstName, lastName, email, isCandidate);
-			} else {
-				return null;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		finally {
-			try {
-				if (resultSet != null) resultSet.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-			try {
-				if (preparedStatement != null) preparedStatement.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-			try {
-				if (connection != null) connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
-
 }

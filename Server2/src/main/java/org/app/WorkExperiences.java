@@ -4,18 +4,15 @@ import java.sql.Date;
 import java.util.Objects;
 
 public class WorkExperiences {
+	private Integer CVID;
 	private String jobTitle;
 	private Date startDate;
 	private Date endDate;
 	private String jobDescription;
 
-	public WorkExperiences(String jobTitle, Date startDate, Date endDate, String jobDescription) {
-		this.jobTitle = jobTitle;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.jobDescription = jobDescription;
+	public Integer getCVID() {
+		return CVID;
 	}
-
 	public String getJobTitle() {
 		return jobTitle;
 	}
@@ -29,6 +26,9 @@ public class WorkExperiences {
 		return jobDescription;
 	}
 
+	public void setCVID(Integer CVID) {
+		this.CVID = CVID;
+	}
 	public void setJobTitle(String jobTitle) {
 		this.jobTitle = jobTitle;
 	}
@@ -45,20 +45,20 @@ public class WorkExperiences {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		WorkExperiences that = (WorkExperiences) o;
-		return Objects.equals(jobTitle, that.jobTitle) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate) && Objects.equals(jobDescription, that.jobDescription);
+		if (!(o instanceof WorkExperiences that)) return false;
+        return Objects.equals(CVID, that.CVID) && Objects.equals(jobTitle, that.jobTitle) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate) && Objects.equals(jobDescription, that.jobDescription);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(jobTitle, startDate, endDate, jobDescription);
+		return Objects.hash(CVID, jobTitle, startDate, endDate, jobDescription);
 	}
 
 	@Override
 	public String toString() {
 		final StringBuffer sb = new StringBuffer("WorkExperiences{");
-		sb.append("jobTitle='").append(jobTitle).append('\'');
+		sb.append("CVID=").append(CVID);
+		sb.append(", jobTitle='").append(jobTitle).append('\'');
 		sb.append(", startDate=").append(startDate);
 		sb.append(", endDate=").append(endDate);
 		sb.append(", jobDescription='").append(jobDescription).append('\'');

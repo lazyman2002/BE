@@ -2,25 +2,52 @@ package org.model;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.Objects;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Set;
 
 public class JobRequests {
 	private Integer  jobID;
 	private JobType jobType;
 	private Integer  salaryLeast;
 	private Integer  salaryGreatest;
-	private char currency;
+	private String currency;
 	private String jobTitle;
 	private JobLevel jobLevel;
 	private String jobDescription;
 	private Date deadlineDate;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
-	private ConcurrentHashMap<Integer, Boolean> currentCVs;
+	private Integer locationID;
 
-	private static Integer  currentID = 1;
+//	Không có trong CSDL
+	private HashSet<Integer> currentCVs;
 
+	public JobRequests(Integer jobID,
+					   JobType jobType,
+					   Integer salaryLeast,
+					   Integer salaryGreatest,
+					   String currency,
+					   String jobTitle,
+					   JobLevel jobLevel,
+					   String jobDescription,
+					   Date deadlineDate,
+					   Integer locationID) {
+		this.jobID = jobID;
+		this.jobType = jobType;
+		this.salaryLeast = salaryLeast;
+		this.salaryGreatest = salaryGreatest;
+		this.currency = currency;
+		this.jobTitle = jobTitle;
+		this.jobLevel = jobLevel;
+		this.jobDescription = jobDescription;
+		this.deadlineDate = deadlineDate;
+		this.locationID = locationID;
+	}
+
+	public Integer getLocationID() {
+		return locationID;
+	}
 	public Integer  getJobID() {
 		return jobID;
 	}
@@ -33,7 +60,7 @@ public class JobRequests {
 	public Integer  getSalaryGreatest() {
 		return salaryGreatest;
 	}
-	public char getCurrency() {
+	public String getCurrency() {
 		return currency;
 	}
 	public String getJobTitle() {
@@ -54,13 +81,16 @@ public class JobRequests {
 	public Timestamp getUpdatedAt() {
 		return updatedAt;
 	}
-	public ConcurrentHashMap<Integer, Boolean> getCurrentCVs() {
+	public HashSet<Integer> getCurrentCVs() {
 		return currentCVs;
 	}
-	public static Integer  getCurrentID() {
-		return currentID;
-	}
 
+	public void setJobID(Integer jobID) {
+		this.jobID = jobID;
+	}
+	public void setLocationID(Integer locationID) {
+		this.locationID = locationID;
+	}
 	public void setJobType(JobType jobType) {
 		this.jobType = jobType;
 	}
@@ -70,7 +100,7 @@ public class JobRequests {
 	public void setSalaryGreatest(Integer  salaryGreatest) {
 		this.salaryGreatest = salaryGreatest;
 	}
-	public void setCurrency(char currency) {
+	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
 	public void setJobTitle(String jobTitle) {
@@ -91,7 +121,7 @@ public class JobRequests {
 	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	public void setCurrentCVs(ConcurrentHashMap<Integer, Boolean> currentCVs) {
+	public void setCurrentCVs(HashSet<Integer> currentCVs) {
 		this.currentCVs = currentCVs;
 	}
 
