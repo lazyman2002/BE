@@ -1,0 +1,117 @@
+services:
+    master:
+        image: kafka-image-1:latest
+        container_name: master
+        networks:
+            hadoop_net:
+                ipv4_address: 172.18.0.7
+        ports:
+            # hadoop
+            - "8088:8088"
+            - "9870:9870"
+            # spark
+            - "8081:8080"
+            - "8082:8081"
+            - "8083:8082"
+            - "8084:8083"
+            - "8085:8084"
+            - "4040:4040"
+            - "4041:4041"
+            - "4042:4042"
+            # zoo
+            - "2181:2181"
+            # hbase
+            - "16010:16010"
+            - "8042:8042"
+        environment:
+            KAFKA_NODE_ID: 1
+        depends_on:
+            - worker1
+            - worker2
+            - worker3
+        command: [
+                "bash",
+                "-c",
+                "su - WBAC -c '/home/WBAC/hadoop/sbin/start-dfs.sh && /home/WBAC/hadoop/sbin/start-yarn.sh && sleep 15 && /home/WBAC/hbase/bin/start-hbase.sh && sleep 15 && /home/WBAC/spark/sbin/start-master.sh && tail -f /dev/null'"
+            ]
+
+    worker1:
+        image: kafka-image-1:latest
+        container_name: worker1
+        networks:
+            hadoop_net:
+                ipv4_address: 172.18.0.2
+        command: [
+                "bash",
+                "-c",
+                "su - WBAC -c '/home/WBAC/kafka/bin/kafka-storage.sh format -t 3YCW6Fn7RIOFcoKaSFNkgw -c /home/WBAC/kafka/config/server1.properties &&
+                 /home/WBAC/kafka/bin/kafka-server-start.sh /home/WBAC/kafka/config/server1.properties && 
+                sleep 15 && 
+                /home/WBAC/hbase/bin/hbase-daemon.sh start regionserver && 
+                sleep 30 && 
+                /home/WBAC/spark/sbin/start-worker.sh spark://master1:7077 && 
+                tail -f /dev/null'"
+            ]
+
+    worker2:
+        image: kafka-image-1:latest
+        container_name: worker2
+        networks:
+            hadoop_net:
+                ipv4_address: 172.18.0.3
+        command: [
+                "bash",
+                "-c",
+                "su - WBAC -c '/home/WBAC/kafka/bin/kafka-storage.sh format -t 3YCW6Fn7RIOFcoKaSFNkgw -c /home/WBAC/kafka/config/server2.properties &&
+                 /home/WBAC/kafka/bin/kafka-server-start.sh /home/WBAC/kafka/config/server2.properties && 
+                sleep 15 && 
+                /home/WBAC/hbase/bin/hbase-daemon.sh start regionserver && 
+                sleep 30 && 
+                /home/WBAC/spark/sbin/start-worker.sh spark://master1:7077 && 
+                tail -f /dev/null'"
+            ]
+
+    worker3:
+        image: kafka-image-1:latest
+        container_name: worker3
+        networks:
+            hadoop_net:
+                ipv4_address: 172.18.0.4
+        command: [
+                "bash",
+                "-c",
+                "su - WBAC -c '/home/WBAC/kafka/bin/kafka-storage.sh format -t 3YCW6Fn7RIOFcoKaSFNkgw -c /home/WBAC/kafka/config/server3.properties &&
+                 /home/WBAC/kafka/bin/kafka-server-start.sh /home/WBAC/kafka/config/server3.properties && 
+                sleep 15 && 
+                /home/WBAC/hbase/bin/hbase-daemon.sh start regionserver && 
+                sleep 30 && 
+                /home/WBAC/spark/sbin/start-worker.sh spark://master1:7077 && 
+                tail -f /dev/null'"
+            ]
+
+    chatSV:
+        image: kafka-image-1:latest
+        container_name: chatSV
+        ports:
+            # NodeJS
+            - "3000:3000"
+            - "3001:3001"
+        networks:
+            hadoop_net:
+                ipv4_address: 172.18.0.5
+        command: ["bash", "-c", "su - WBAC -c 'tail -f /dev/null'"]
+
+    clientSV:
+        image: kafka-image-1:latest
+        container_name: clientSV
+        networks:
+            hadoop_net:
+                ipv4_address: 172.18.0.6
+        command: ["bash", "-c", "su - WBAC -c 'tail -f /dev/null'"]
+
+networks:
+    hadoop_net:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.18.0.0/16
