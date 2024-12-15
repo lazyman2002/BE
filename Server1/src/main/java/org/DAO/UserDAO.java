@@ -208,7 +208,6 @@ public class UserDAO {
         sb.append("SELECT * FROM `Users` WHERE 1 = 1");
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        Users users = new Users();
         List<Object> parameters = new ArrayList<>();
 
         if(request.getUserID() != 0){
@@ -220,7 +219,7 @@ public class UserDAO {
             parameters.add(request.getUsername());
         }
         if(!request.getPassword().isBlank() && !request.getPassword().isEmpty()){
-            sb.append(" AND `Users`.`password` = ?");
+            sb.append(" AND `Users`.`password_hashed` = ?");
             parameters.add(request.getPassword());
         }
         try {

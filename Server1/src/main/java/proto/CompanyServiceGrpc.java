@@ -143,28 +143,28 @@ public final class CompanyServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<proto.ServerClient.CompanyMetaInfo,
-      proto.ServerClient.Answer> getCompanyDeleteMethod;
+      com.google.protobuf.BoolValue> getCompanyDeleteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "CompanyDelete",
       requestType = proto.ServerClient.CompanyMetaInfo.class,
-      responseType = proto.ServerClient.Answer.class,
+      responseType = com.google.protobuf.BoolValue.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<proto.ServerClient.CompanyMetaInfo,
-      proto.ServerClient.Answer> getCompanyDeleteMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.CompanyMetaInfo, proto.ServerClient.Answer> getCompanyDeleteMethod;
+      com.google.protobuf.BoolValue> getCompanyDeleteMethod() {
+    io.grpc.MethodDescriptor<proto.ServerClient.CompanyMetaInfo, com.google.protobuf.BoolValue> getCompanyDeleteMethod;
     if ((getCompanyDeleteMethod = CompanyServiceGrpc.getCompanyDeleteMethod) == null) {
       synchronized (CompanyServiceGrpc.class) {
         if ((getCompanyDeleteMethod = CompanyServiceGrpc.getCompanyDeleteMethod) == null) {
           CompanyServiceGrpc.getCompanyDeleteMethod = getCompanyDeleteMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.CompanyMetaInfo, proto.ServerClient.Answer>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.CompanyMetaInfo, com.google.protobuf.BoolValue>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CompanyDelete"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.CompanyMetaInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.Answer.getDefaultInstance()))
+                  com.google.protobuf.BoolValue.getDefaultInstance()))
               .setSchemaDescriptor(new CompanyServiceMethodDescriptorSupplier("CompanyDelete"))
               .build();
         }
@@ -255,7 +255,7 @@ public final class CompanyServiceGrpc {
     /**
      */
     public void companyDelete(proto.ServerClient.CompanyMetaInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCompanyDeleteMethod(), responseObserver);
     }
 
@@ -294,7 +294,7 @@ public final class CompanyServiceGrpc {
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 proto.ServerClient.CompanyMetaInfo,
-                proto.ServerClient.Answer>(
+                com.google.protobuf.BoolValue>(
                   this, METHODID_COMPANY_DELETE)))
           .build();
     }
@@ -352,7 +352,7 @@ public final class CompanyServiceGrpc {
     /**
      */
     public void companyDelete(proto.ServerClient.CompanyMetaInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCompanyDeleteMethod(), getCallOptions()), request, responseObserver);
     }
@@ -406,7 +406,7 @@ public final class CompanyServiceGrpc {
 
     /**
      */
-    public proto.ServerClient.Answer companyDelete(proto.ServerClient.CompanyMetaInfo request) {
+    public com.google.protobuf.BoolValue companyDelete(proto.ServerClient.CompanyMetaInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCompanyDeleteMethod(), getCallOptions(), request);
     }
@@ -455,7 +455,7 @@ public final class CompanyServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<proto.ServerClient.Answer> companyDelete(
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> companyDelete(
         proto.ServerClient.CompanyMetaInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCompanyDeleteMethod(), getCallOptions()), request);
@@ -503,7 +503,7 @@ public final class CompanyServiceGrpc {
           break;
         case METHODID_COMPANY_DELETE:
           serviceImpl.companyDelete((proto.ServerClient.CompanyMetaInfo) request,
-              (io.grpc.stub.StreamObserver<proto.ServerClient.Answer>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         default:
           throw new AssertionError();

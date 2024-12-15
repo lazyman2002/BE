@@ -140,28 +140,28 @@ public final class SkillServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<proto.ServerClient.SkillFullInfo,
-      proto.ServerClient.Answer> getSkillDeleteMethod;
+      com.google.protobuf.BoolValue> getSkillDeleteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "SkillDelete",
       requestType = proto.ServerClient.SkillFullInfo.class,
-      responseType = proto.ServerClient.Answer.class,
+      responseType = com.google.protobuf.BoolValue.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<proto.ServerClient.SkillFullInfo,
-      proto.ServerClient.Answer> getSkillDeleteMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.SkillFullInfo, proto.ServerClient.Answer> getSkillDeleteMethod;
+      com.google.protobuf.BoolValue> getSkillDeleteMethod() {
+    io.grpc.MethodDescriptor<proto.ServerClient.SkillFullInfo, com.google.protobuf.BoolValue> getSkillDeleteMethod;
     if ((getSkillDeleteMethod = SkillServiceGrpc.getSkillDeleteMethod) == null) {
       synchronized (SkillServiceGrpc.class) {
         if ((getSkillDeleteMethod = SkillServiceGrpc.getSkillDeleteMethod) == null) {
           SkillServiceGrpc.getSkillDeleteMethod = getSkillDeleteMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.SkillFullInfo, proto.ServerClient.Answer>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.SkillFullInfo, com.google.protobuf.BoolValue>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SkillDelete"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.SkillFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.Answer.getDefaultInstance()))
+                  com.google.protobuf.BoolValue.getDefaultInstance()))
               .setSchemaDescriptor(new SkillServiceMethodDescriptorSupplier("SkillDelete"))
               .build();
         }
@@ -249,7 +249,7 @@ public final class SkillServiceGrpc {
     /**
      */
     public void skillDelete(proto.ServerClient.SkillFullInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSkillDeleteMethod(), responseObserver);
     }
 
@@ -288,7 +288,7 @@ public final class SkillServiceGrpc {
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 proto.ServerClient.SkillFullInfo,
-                proto.ServerClient.Answer>(
+                com.google.protobuf.BoolValue>(
                   this, METHODID_SKILL_DELETE)))
           .build();
     }
@@ -343,7 +343,7 @@ public final class SkillServiceGrpc {
     /**
      */
     public void skillDelete(proto.ServerClient.SkillFullInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getSkillDeleteMethod(), getCallOptions()), request, responseObserver);
     }
@@ -394,7 +394,7 @@ public final class SkillServiceGrpc {
 
     /**
      */
-    public proto.ServerClient.Answer skillDelete(proto.ServerClient.SkillFullInfo request) {
+    public com.google.protobuf.BoolValue skillDelete(proto.ServerClient.SkillFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getSkillDeleteMethod(), getCallOptions(), request);
     }
@@ -440,7 +440,7 @@ public final class SkillServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<proto.ServerClient.Answer> skillDelete(
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> skillDelete(
         proto.ServerClient.SkillFullInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getSkillDeleteMethod(), getCallOptions()), request);
@@ -488,7 +488,7 @@ public final class SkillServiceGrpc {
           break;
         case METHODID_SKILL_DELETE:
           serviceImpl.skillDelete((proto.ServerClient.SkillFullInfo) request,
-              (io.grpc.stub.StreamObserver<proto.ServerClient.Answer>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         default:
           throw new AssertionError();

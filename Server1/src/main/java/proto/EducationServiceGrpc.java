@@ -140,28 +140,28 @@ public final class EducationServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<proto.ServerClient.EducationFullInfo,
-      proto.ServerClient.Answer> getEducationDeleteMethod;
+      com.google.protobuf.BoolValue> getEducationDeleteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "EducationDelete",
       requestType = proto.ServerClient.EducationFullInfo.class,
-      responseType = proto.ServerClient.Answer.class,
+      responseType = com.google.protobuf.BoolValue.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<proto.ServerClient.EducationFullInfo,
-      proto.ServerClient.Answer> getEducationDeleteMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.EducationFullInfo, proto.ServerClient.Answer> getEducationDeleteMethod;
+      com.google.protobuf.BoolValue> getEducationDeleteMethod() {
+    io.grpc.MethodDescriptor<proto.ServerClient.EducationFullInfo, com.google.protobuf.BoolValue> getEducationDeleteMethod;
     if ((getEducationDeleteMethod = EducationServiceGrpc.getEducationDeleteMethod) == null) {
       synchronized (EducationServiceGrpc.class) {
         if ((getEducationDeleteMethod = EducationServiceGrpc.getEducationDeleteMethod) == null) {
           EducationServiceGrpc.getEducationDeleteMethod = getEducationDeleteMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.EducationFullInfo, proto.ServerClient.Answer>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.EducationFullInfo, com.google.protobuf.BoolValue>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "EducationDelete"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.EducationFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.Answer.getDefaultInstance()))
+                  com.google.protobuf.BoolValue.getDefaultInstance()))
               .setSchemaDescriptor(new EducationServiceMethodDescriptorSupplier("EducationDelete"))
               .build();
         }
@@ -249,7 +249,7 @@ public final class EducationServiceGrpc {
     /**
      */
     public void educationDelete(proto.ServerClient.EducationFullInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getEducationDeleteMethod(), responseObserver);
     }
 
@@ -288,7 +288,7 @@ public final class EducationServiceGrpc {
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 proto.ServerClient.EducationFullInfo,
-                proto.ServerClient.Answer>(
+                com.google.protobuf.BoolValue>(
                   this, METHODID_EDUCATION_DELETE)))
           .build();
     }
@@ -343,7 +343,7 @@ public final class EducationServiceGrpc {
     /**
      */
     public void educationDelete(proto.ServerClient.EducationFullInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getEducationDeleteMethod(), getCallOptions()), request, responseObserver);
     }
@@ -394,7 +394,7 @@ public final class EducationServiceGrpc {
 
     /**
      */
-    public proto.ServerClient.Answer educationDelete(proto.ServerClient.EducationFullInfo request) {
+    public com.google.protobuf.BoolValue educationDelete(proto.ServerClient.EducationFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getEducationDeleteMethod(), getCallOptions(), request);
     }
@@ -440,7 +440,7 @@ public final class EducationServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<proto.ServerClient.Answer> educationDelete(
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> educationDelete(
         proto.ServerClient.EducationFullInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getEducationDeleteMethod(), getCallOptions()), request);
@@ -488,7 +488,7 @@ public final class EducationServiceGrpc {
           break;
         case METHODID_EDUCATION_DELETE:
           serviceImpl.educationDelete((proto.ServerClient.EducationFullInfo) request,
-              (io.grpc.stub.StreamObserver<proto.ServerClient.Answer>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         default:
           throw new AssertionError();

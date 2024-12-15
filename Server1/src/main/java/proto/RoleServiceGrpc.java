@@ -143,28 +143,28 @@ public final class RoleServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<proto.ServerClient.RoleFullInfo,
-      proto.ServerClient.Answer> getRoleDeleteInfoMethod;
+      com.google.protobuf.BoolValue> getRoleDeleteInfoMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "RoleDeleteInfo",
       requestType = proto.ServerClient.RoleFullInfo.class,
-      responseType = proto.ServerClient.Answer.class,
+      responseType = com.google.protobuf.BoolValue.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<proto.ServerClient.RoleFullInfo,
-      proto.ServerClient.Answer> getRoleDeleteInfoMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.RoleFullInfo, proto.ServerClient.Answer> getRoleDeleteInfoMethod;
+      com.google.protobuf.BoolValue> getRoleDeleteInfoMethod() {
+    io.grpc.MethodDescriptor<proto.ServerClient.RoleFullInfo, com.google.protobuf.BoolValue> getRoleDeleteInfoMethod;
     if ((getRoleDeleteInfoMethod = RoleServiceGrpc.getRoleDeleteInfoMethod) == null) {
       synchronized (RoleServiceGrpc.class) {
         if ((getRoleDeleteInfoMethod = RoleServiceGrpc.getRoleDeleteInfoMethod) == null) {
           RoleServiceGrpc.getRoleDeleteInfoMethod = getRoleDeleteInfoMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.RoleFullInfo, proto.ServerClient.Answer>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.RoleFullInfo, com.google.protobuf.BoolValue>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "RoleDeleteInfo"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.RoleFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.Answer.getDefaultInstance()))
+                  com.google.protobuf.BoolValue.getDefaultInstance()))
               .setSchemaDescriptor(new RoleServiceMethodDescriptorSupplier("RoleDeleteInfo"))
               .build();
         }
@@ -255,7 +255,7 @@ public final class RoleServiceGrpc {
     /**
      */
     public void roleDeleteInfo(proto.ServerClient.RoleFullInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRoleDeleteInfoMethod(), responseObserver);
     }
 
@@ -294,7 +294,7 @@ public final class RoleServiceGrpc {
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 proto.ServerClient.RoleFullInfo,
-                proto.ServerClient.Answer>(
+                com.google.protobuf.BoolValue>(
                   this, METHODID_ROLE_DELETE_INFO)))
           .build();
     }
@@ -352,7 +352,7 @@ public final class RoleServiceGrpc {
     /**
      */
     public void roleDeleteInfo(proto.ServerClient.RoleFullInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getRoleDeleteInfoMethod(), getCallOptions()), request, responseObserver);
     }
@@ -406,7 +406,7 @@ public final class RoleServiceGrpc {
 
     /**
      */
-    public proto.ServerClient.Answer roleDeleteInfo(proto.ServerClient.RoleFullInfo request) {
+    public com.google.protobuf.BoolValue roleDeleteInfo(proto.ServerClient.RoleFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getRoleDeleteInfoMethod(), getCallOptions(), request);
     }
@@ -455,7 +455,7 @@ public final class RoleServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<proto.ServerClient.Answer> roleDeleteInfo(
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> roleDeleteInfo(
         proto.ServerClient.RoleFullInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getRoleDeleteInfoMethod(), getCallOptions()), request);
@@ -503,7 +503,7 @@ public final class RoleServiceGrpc {
           break;
         case METHODID_ROLE_DELETE_INFO:
           serviceImpl.roleDeleteInfo((proto.ServerClient.RoleFullInfo) request,
-              (io.grpc.stub.StreamObserver<proto.ServerClient.Answer>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         default:
           throw new AssertionError();

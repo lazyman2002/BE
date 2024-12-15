@@ -5247,852 +5247,6 @@ public final class ServerClient {
 
   }
 
-  public interface AnswerOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:proto.Answer)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>int32 ansInt = 1;</code>
-     * @return The ansInt.
-     */
-    int getAnsInt();
-
-    /**
-     * <code>int64 ansLong = 2;</code>
-     * @return The ansLong.
-     */
-    long getAnsLong();
-
-    /**
-     * <code>string ansString = 3;</code>
-     * @return The ansString.
-     */
-    java.lang.String getAnsString();
-    /**
-     * <code>string ansString = 3;</code>
-     * @return The bytes for ansString.
-     */
-    com.google.protobuf.ByteString
-        getAnsStringBytes();
-
-    /**
-     * <code>bool ansBool = 4;</code>
-     * @return The ansBool.
-     */
-    boolean getAnsBool();
-
-    /**
-     * <code>bytes ansBytes = 5;</code>
-     * @return The ansBytes.
-     */
-    com.google.protobuf.ByteString getAnsBytes();
-  }
-  /**
-   * Protobuf type {@code proto.Answer}
-   */
-  public static final class Answer extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:proto.Answer)
-      AnswerOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use Answer.newBuilder() to construct.
-    private Answer(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private Answer() {
-      ansString_ = "";
-      ansBytes_ = com.google.protobuf.ByteString.EMPTY;
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new Answer();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return proto.ServerClient.internal_static_proto_Answer_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return proto.ServerClient.internal_static_proto_Answer_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              proto.ServerClient.Answer.class, proto.ServerClient.Answer.Builder.class);
-    }
-
-    public static final int ANSINT_FIELD_NUMBER = 1;
-    private int ansInt_ = 0;
-    /**
-     * <code>int32 ansInt = 1;</code>
-     * @return The ansInt.
-     */
-    @java.lang.Override
-    public int getAnsInt() {
-      return ansInt_;
-    }
-
-    public static final int ANSLONG_FIELD_NUMBER = 2;
-    private long ansLong_ = 0L;
-    /**
-     * <code>int64 ansLong = 2;</code>
-     * @return The ansLong.
-     */
-    @java.lang.Override
-    public long getAnsLong() {
-      return ansLong_;
-    }
-
-    public static final int ANSSTRING_FIELD_NUMBER = 3;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object ansString_ = "";
-    /**
-     * <code>string ansString = 3;</code>
-     * @return The ansString.
-     */
-    @java.lang.Override
-    public java.lang.String getAnsString() {
-      java.lang.Object ref = ansString_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        ansString_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string ansString = 3;</code>
-     * @return The bytes for ansString.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getAnsStringBytes() {
-      java.lang.Object ref = ansString_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        ansString_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int ANSBOOL_FIELD_NUMBER = 4;
-    private boolean ansBool_ = false;
-    /**
-     * <code>bool ansBool = 4;</code>
-     * @return The ansBool.
-     */
-    @java.lang.Override
-    public boolean getAnsBool() {
-      return ansBool_;
-    }
-
-    public static final int ANSBYTES_FIELD_NUMBER = 5;
-    private com.google.protobuf.ByteString ansBytes_ = com.google.protobuf.ByteString.EMPTY;
-    /**
-     * <code>bytes ansBytes = 5;</code>
-     * @return The ansBytes.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getAnsBytes() {
-      return ansBytes_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (ansInt_ != 0) {
-        output.writeInt32(1, ansInt_);
-      }
-      if (ansLong_ != 0L) {
-        output.writeInt64(2, ansLong_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ansString_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, ansString_);
-      }
-      if (ansBool_ != false) {
-        output.writeBool(4, ansBool_);
-      }
-      if (!ansBytes_.isEmpty()) {
-        output.writeBytes(5, ansBytes_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (ansInt_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, ansInt_);
-      }
-      if (ansLong_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(2, ansLong_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ansString_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, ansString_);
-      }
-      if (ansBool_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(4, ansBool_);
-      }
-      if (!ansBytes_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, ansBytes_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof proto.ServerClient.Answer)) {
-        return super.equals(obj);
-      }
-      proto.ServerClient.Answer other = (proto.ServerClient.Answer) obj;
-
-      if (getAnsInt()
-          != other.getAnsInt()) return false;
-      if (getAnsLong()
-          != other.getAnsLong()) return false;
-      if (!getAnsString()
-          .equals(other.getAnsString())) return false;
-      if (getAnsBool()
-          != other.getAnsBool()) return false;
-      if (!getAnsBytes()
-          .equals(other.getAnsBytes())) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ANSINT_FIELD_NUMBER;
-      hash = (53 * hash) + getAnsInt();
-      hash = (37 * hash) + ANSLONG_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getAnsLong());
-      hash = (37 * hash) + ANSSTRING_FIELD_NUMBER;
-      hash = (53 * hash) + getAnsString().hashCode();
-      hash = (37 * hash) + ANSBOOL_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getAnsBool());
-      hash = (37 * hash) + ANSBYTES_FIELD_NUMBER;
-      hash = (53 * hash) + getAnsBytes().hashCode();
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static proto.ServerClient.Answer parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static proto.ServerClient.Answer parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static proto.ServerClient.Answer parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static proto.ServerClient.Answer parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static proto.ServerClient.Answer parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static proto.ServerClient.Answer parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static proto.ServerClient.Answer parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static proto.ServerClient.Answer parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static proto.ServerClient.Answer parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static proto.ServerClient.Answer parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static proto.ServerClient.Answer parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static proto.ServerClient.Answer parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(proto.ServerClient.Answer prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code proto.Answer}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:proto.Answer)
-        proto.ServerClient.AnswerOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return proto.ServerClient.internal_static_proto_Answer_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return proto.ServerClient.internal_static_proto_Answer_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                proto.ServerClient.Answer.class, proto.ServerClient.Answer.Builder.class);
-      }
-
-      // Construct using proto.ServerClient.Answer.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        ansInt_ = 0;
-        ansLong_ = 0L;
-        ansString_ = "";
-        ansBool_ = false;
-        ansBytes_ = com.google.protobuf.ByteString.EMPTY;
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return proto.ServerClient.internal_static_proto_Answer_descriptor;
-      }
-
-      @java.lang.Override
-      public proto.ServerClient.Answer getDefaultInstanceForType() {
-        return proto.ServerClient.Answer.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public proto.ServerClient.Answer build() {
-        proto.ServerClient.Answer result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public proto.ServerClient.Answer buildPartial() {
-        proto.ServerClient.Answer result = new proto.ServerClient.Answer(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartial0(proto.ServerClient.Answer result) {
-        int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.ansInt_ = ansInt_;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.ansLong_ = ansLong_;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.ansString_ = ansString_;
-        }
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.ansBool_ = ansBool_;
-        }
-        if (((from_bitField0_ & 0x00000010) != 0)) {
-          result.ansBytes_ = ansBytes_;
-        }
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof proto.ServerClient.Answer) {
-          return mergeFrom((proto.ServerClient.Answer)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(proto.ServerClient.Answer other) {
-        if (other == proto.ServerClient.Answer.getDefaultInstance()) return this;
-        if (other.getAnsInt() != 0) {
-          setAnsInt(other.getAnsInt());
-        }
-        if (other.getAnsLong() != 0L) {
-          setAnsLong(other.getAnsLong());
-        }
-        if (!other.getAnsString().isEmpty()) {
-          ansString_ = other.ansString_;
-          bitField0_ |= 0x00000004;
-          onChanged();
-        }
-        if (other.getAnsBool() != false) {
-          setAnsBool(other.getAnsBool());
-        }
-        if (other.getAnsBytes() != com.google.protobuf.ByteString.EMPTY) {
-          setAnsBytes(other.getAnsBytes());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 8: {
-                ansInt_ = input.readInt32();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 8
-              case 16: {
-                ansLong_ = input.readInt64();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 16
-              case 26: {
-                ansString_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 26
-              case 32: {
-                ansBool_ = input.readBool();
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 32
-              case 42: {
-                ansBytes_ = input.readBytes();
-                bitField0_ |= 0x00000010;
-                break;
-              } // case 42
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
-
-      private int ansInt_ ;
-      /**
-       * <code>int32 ansInt = 1;</code>
-       * @return The ansInt.
-       */
-      @java.lang.Override
-      public int getAnsInt() {
-        return ansInt_;
-      }
-      /**
-       * <code>int32 ansInt = 1;</code>
-       * @param value The ansInt to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAnsInt(int value) {
-        
-        ansInt_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 ansInt = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAnsInt() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        ansInt_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private long ansLong_ ;
-      /**
-       * <code>int64 ansLong = 2;</code>
-       * @return The ansLong.
-       */
-      @java.lang.Override
-      public long getAnsLong() {
-        return ansLong_;
-      }
-      /**
-       * <code>int64 ansLong = 2;</code>
-       * @param value The ansLong to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAnsLong(long value) {
-        
-        ansLong_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int64 ansLong = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAnsLong() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        ansLong_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object ansString_ = "";
-      /**
-       * <code>string ansString = 3;</code>
-       * @return The ansString.
-       */
-      public java.lang.String getAnsString() {
-        java.lang.Object ref = ansString_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          ansString_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string ansString = 3;</code>
-       * @return The bytes for ansString.
-       */
-      public com.google.protobuf.ByteString
-          getAnsStringBytes() {
-        java.lang.Object ref = ansString_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          ansString_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string ansString = 3;</code>
-       * @param value The ansString to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAnsString(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ansString_ = value;
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string ansString = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAnsString() {
-        ansString_ = getDefaultInstance().getAnsString();
-        bitField0_ = (bitField0_ & ~0x00000004);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string ansString = 3;</code>
-       * @param value The bytes for ansString to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAnsStringBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        ansString_ = value;
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-
-      private boolean ansBool_ ;
-      /**
-       * <code>bool ansBool = 4;</code>
-       * @return The ansBool.
-       */
-      @java.lang.Override
-      public boolean getAnsBool() {
-        return ansBool_;
-      }
-      /**
-       * <code>bool ansBool = 4;</code>
-       * @param value The ansBool to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAnsBool(boolean value) {
-        
-        ansBool_ = value;
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool ansBool = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAnsBool() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        ansBool_ = false;
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.ByteString ansBytes_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>bytes ansBytes = 5;</code>
-       * @return The ansBytes.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getAnsBytes() {
-        return ansBytes_;
-      }
-      /**
-       * <code>bytes ansBytes = 5;</code>
-       * @param value The ansBytes to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAnsBytes(com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        ansBytes_ = value;
-        bitField0_ |= 0x00000010;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bytes ansBytes = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAnsBytes() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        ansBytes_ = getDefaultInstance().getAnsBytes();
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:proto.Answer)
-    }
-
-    // @@protoc_insertion_point(class_scope:proto.Answer)
-    private static final proto.ServerClient.Answer DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new proto.ServerClient.Answer();
-    }
-
-    public static proto.ServerClient.Answer getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Answer>
-        PARSER = new com.google.protobuf.AbstractParser<Answer>() {
-      @java.lang.Override
-      public Answer parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<Answer> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Answer> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public proto.ServerClient.Answer getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface JobRequestFullInfoOrBuilder extends
       // @@protoc_insertion_point(interface_extends:proto.JobRequestFullInfo)
       com.google.protobuf.MessageOrBuilder {
@@ -22174,6 +21328,1063 @@ public final class ServerClient {
 
   }
 
+  public interface WishListFullInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:proto.WishListFullInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 candidateID = 1;</code>
+     * @return The candidateID.
+     */
+    int getCandidateID();
+
+    /**
+     * <code>int32 salaryMinimum = 2;</code>
+     * @return The salaryMinimum.
+     */
+    int getSalaryMinimum();
+
+    /**
+     * <code>string location = 3;</code>
+     * @return The location.
+     */
+    java.lang.String getLocation();
+    /**
+     * <code>string location = 3;</code>
+     * @return The bytes for location.
+     */
+    com.google.protobuf.ByteString
+        getLocationBytes();
+
+    /**
+     * <code>.proto.JobType jobType = 4;</code>
+     * @return The enum numeric value on the wire for jobType.
+     */
+    int getJobTypeValue();
+    /**
+     * <code>.proto.JobType jobType = 4;</code>
+     * @return The jobType.
+     */
+    proto.ServerClient.JobType getJobType();
+
+    /**
+     * <code>.proto.JobLevel jobLevel = 5;</code>
+     * @return The enum numeric value on the wire for jobLevel.
+     */
+    int getJobLevelValue();
+    /**
+     * <code>.proto.JobLevel jobLevel = 5;</code>
+     * @return The jobLevel.
+     */
+    proto.ServerClient.JobLevel getJobLevel();
+
+    /**
+     * <code>string insurance = 6;</code>
+     * @return The insurance.
+     */
+    java.lang.String getInsurance();
+    /**
+     * <code>string insurance = 6;</code>
+     * @return The bytes for insurance.
+     */
+    com.google.protobuf.ByteString
+        getInsuranceBytes();
+  }
+  /**
+   * Protobuf type {@code proto.WishListFullInfo}
+   */
+  public static final class WishListFullInfo extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:proto.WishListFullInfo)
+      WishListFullInfoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use WishListFullInfo.newBuilder() to construct.
+    private WishListFullInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private WishListFullInfo() {
+      location_ = "";
+      jobType_ = 0;
+      jobLevel_ = 0;
+      insurance_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new WishListFullInfo();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto.ServerClient.internal_static_proto_WishListFullInfo_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto.ServerClient.internal_static_proto_WishListFullInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto.ServerClient.WishListFullInfo.class, proto.ServerClient.WishListFullInfo.Builder.class);
+    }
+
+    public static final int CANDIDATEID_FIELD_NUMBER = 1;
+    private int candidateID_ = 0;
+    /**
+     * <code>int32 candidateID = 1;</code>
+     * @return The candidateID.
+     */
+    @java.lang.Override
+    public int getCandidateID() {
+      return candidateID_;
+    }
+
+    public static final int SALARYMINIMUM_FIELD_NUMBER = 2;
+    private int salaryMinimum_ = 0;
+    /**
+     * <code>int32 salaryMinimum = 2;</code>
+     * @return The salaryMinimum.
+     */
+    @java.lang.Override
+    public int getSalaryMinimum() {
+      return salaryMinimum_;
+    }
+
+    public static final int LOCATION_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object location_ = "";
+    /**
+     * <code>string location = 3;</code>
+     * @return The location.
+     */
+    @java.lang.Override
+    public java.lang.String getLocation() {
+      java.lang.Object ref = location_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        location_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string location = 3;</code>
+     * @return The bytes for location.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getLocationBytes() {
+      java.lang.Object ref = location_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        location_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int JOBTYPE_FIELD_NUMBER = 4;
+    private int jobType_ = 0;
+    /**
+     * <code>.proto.JobType jobType = 4;</code>
+     * @return The enum numeric value on the wire for jobType.
+     */
+    @java.lang.Override public int getJobTypeValue() {
+      return jobType_;
+    }
+    /**
+     * <code>.proto.JobType jobType = 4;</code>
+     * @return The jobType.
+     */
+    @java.lang.Override public proto.ServerClient.JobType getJobType() {
+      proto.ServerClient.JobType result = proto.ServerClient.JobType.forNumber(jobType_);
+      return result == null ? proto.ServerClient.JobType.UNRECOGNIZED : result;
+    }
+
+    public static final int JOBLEVEL_FIELD_NUMBER = 5;
+    private int jobLevel_ = 0;
+    /**
+     * <code>.proto.JobLevel jobLevel = 5;</code>
+     * @return The enum numeric value on the wire for jobLevel.
+     */
+    @java.lang.Override public int getJobLevelValue() {
+      return jobLevel_;
+    }
+    /**
+     * <code>.proto.JobLevel jobLevel = 5;</code>
+     * @return The jobLevel.
+     */
+    @java.lang.Override public proto.ServerClient.JobLevel getJobLevel() {
+      proto.ServerClient.JobLevel result = proto.ServerClient.JobLevel.forNumber(jobLevel_);
+      return result == null ? proto.ServerClient.JobLevel.UNRECOGNIZED : result;
+    }
+
+    public static final int INSURANCE_FIELD_NUMBER = 6;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object insurance_ = "";
+    /**
+     * <code>string insurance = 6;</code>
+     * @return The insurance.
+     */
+    @java.lang.Override
+    public java.lang.String getInsurance() {
+      java.lang.Object ref = insurance_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        insurance_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string insurance = 6;</code>
+     * @return The bytes for insurance.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getInsuranceBytes() {
+      java.lang.Object ref = insurance_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        insurance_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (candidateID_ != 0) {
+        output.writeInt32(1, candidateID_);
+      }
+      if (salaryMinimum_ != 0) {
+        output.writeInt32(2, salaryMinimum_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(location_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, location_);
+      }
+      if (jobType_ != proto.ServerClient.JobType.FULLTIME.getNumber()) {
+        output.writeEnum(4, jobType_);
+      }
+      if (jobLevel_ != proto.ServerClient.JobLevel.ENTRY_LEVEL.getNumber()) {
+        output.writeEnum(5, jobLevel_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(insurance_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, insurance_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (candidateID_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, candidateID_);
+      }
+      if (salaryMinimum_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, salaryMinimum_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(location_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, location_);
+      }
+      if (jobType_ != proto.ServerClient.JobType.FULLTIME.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(4, jobType_);
+      }
+      if (jobLevel_ != proto.ServerClient.JobLevel.ENTRY_LEVEL.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(5, jobLevel_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(insurance_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, insurance_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto.ServerClient.WishListFullInfo)) {
+        return super.equals(obj);
+      }
+      proto.ServerClient.WishListFullInfo other = (proto.ServerClient.WishListFullInfo) obj;
+
+      if (getCandidateID()
+          != other.getCandidateID()) return false;
+      if (getSalaryMinimum()
+          != other.getSalaryMinimum()) return false;
+      if (!getLocation()
+          .equals(other.getLocation())) return false;
+      if (jobType_ != other.jobType_) return false;
+      if (jobLevel_ != other.jobLevel_) return false;
+      if (!getInsurance()
+          .equals(other.getInsurance())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + CANDIDATEID_FIELD_NUMBER;
+      hash = (53 * hash) + getCandidateID();
+      hash = (37 * hash) + SALARYMINIMUM_FIELD_NUMBER;
+      hash = (53 * hash) + getSalaryMinimum();
+      hash = (37 * hash) + LOCATION_FIELD_NUMBER;
+      hash = (53 * hash) + getLocation().hashCode();
+      hash = (37 * hash) + JOBTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + jobType_;
+      hash = (37 * hash) + JOBLEVEL_FIELD_NUMBER;
+      hash = (53 * hash) + jobLevel_;
+      hash = (37 * hash) + INSURANCE_FIELD_NUMBER;
+      hash = (53 * hash) + getInsurance().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto.ServerClient.WishListFullInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.ServerClient.WishListFullInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.ServerClient.WishListFullInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.ServerClient.WishListFullInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.ServerClient.WishListFullInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.ServerClient.WishListFullInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.ServerClient.WishListFullInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.ServerClient.WishListFullInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.ServerClient.WishListFullInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto.ServerClient.WishListFullInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.ServerClient.WishListFullInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.ServerClient.WishListFullInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto.ServerClient.WishListFullInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code proto.WishListFullInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:proto.WishListFullInfo)
+        proto.ServerClient.WishListFullInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto.ServerClient.internal_static_proto_WishListFullInfo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto.ServerClient.internal_static_proto_WishListFullInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto.ServerClient.WishListFullInfo.class, proto.ServerClient.WishListFullInfo.Builder.class);
+      }
+
+      // Construct using proto.ServerClient.WishListFullInfo.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        candidateID_ = 0;
+        salaryMinimum_ = 0;
+        location_ = "";
+        jobType_ = 0;
+        jobLevel_ = 0;
+        insurance_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto.ServerClient.internal_static_proto_WishListFullInfo_descriptor;
+      }
+
+      @java.lang.Override
+      public proto.ServerClient.WishListFullInfo getDefaultInstanceForType() {
+        return proto.ServerClient.WishListFullInfo.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto.ServerClient.WishListFullInfo build() {
+        proto.ServerClient.WishListFullInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto.ServerClient.WishListFullInfo buildPartial() {
+        proto.ServerClient.WishListFullInfo result = new proto.ServerClient.WishListFullInfo(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(proto.ServerClient.WishListFullInfo result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.candidateID_ = candidateID_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.salaryMinimum_ = salaryMinimum_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.location_ = location_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.jobType_ = jobType_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.jobLevel_ = jobLevel_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.insurance_ = insurance_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto.ServerClient.WishListFullInfo) {
+          return mergeFrom((proto.ServerClient.WishListFullInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto.ServerClient.WishListFullInfo other) {
+        if (other == proto.ServerClient.WishListFullInfo.getDefaultInstance()) return this;
+        if (other.getCandidateID() != 0) {
+          setCandidateID(other.getCandidateID());
+        }
+        if (other.getSalaryMinimum() != 0) {
+          setSalaryMinimum(other.getSalaryMinimum());
+        }
+        if (!other.getLocation().isEmpty()) {
+          location_ = other.location_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        if (other.jobType_ != 0) {
+          setJobTypeValue(other.getJobTypeValue());
+        }
+        if (other.jobLevel_ != 0) {
+          setJobLevelValue(other.getJobLevelValue());
+        }
+        if (!other.getInsurance().isEmpty()) {
+          insurance_ = other.insurance_;
+          bitField0_ |= 0x00000020;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                candidateID_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                salaryMinimum_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                location_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 32: {
+                jobType_ = input.readEnum();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              case 40: {
+                jobLevel_ = input.readEnum();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 40
+              case 50: {
+                insurance_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private int candidateID_ ;
+      /**
+       * <code>int32 candidateID = 1;</code>
+       * @return The candidateID.
+       */
+      @java.lang.Override
+      public int getCandidateID() {
+        return candidateID_;
+      }
+      /**
+       * <code>int32 candidateID = 1;</code>
+       * @param value The candidateID to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCandidateID(int value) {
+        
+        candidateID_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 candidateID = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCandidateID() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        candidateID_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int salaryMinimum_ ;
+      /**
+       * <code>int32 salaryMinimum = 2;</code>
+       * @return The salaryMinimum.
+       */
+      @java.lang.Override
+      public int getSalaryMinimum() {
+        return salaryMinimum_;
+      }
+      /**
+       * <code>int32 salaryMinimum = 2;</code>
+       * @param value The salaryMinimum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSalaryMinimum(int value) {
+        
+        salaryMinimum_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 salaryMinimum = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSalaryMinimum() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        salaryMinimum_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object location_ = "";
+      /**
+       * <code>string location = 3;</code>
+       * @return The location.
+       */
+      public java.lang.String getLocation() {
+        java.lang.Object ref = location_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          location_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string location = 3;</code>
+       * @return The bytes for location.
+       */
+      public com.google.protobuf.ByteString
+          getLocationBytes() {
+        java.lang.Object ref = location_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          location_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string location = 3;</code>
+       * @param value The location to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLocation(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        location_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string location = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLocation() {
+        location_ = getDefaultInstance().getLocation();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string location = 3;</code>
+       * @param value The bytes for location to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLocationBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        location_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+
+      private int jobType_ = 0;
+      /**
+       * <code>.proto.JobType jobType = 4;</code>
+       * @return The enum numeric value on the wire for jobType.
+       */
+      @java.lang.Override public int getJobTypeValue() {
+        return jobType_;
+      }
+      /**
+       * <code>.proto.JobType jobType = 4;</code>
+       * @param value The enum numeric value on the wire for jobType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobTypeValue(int value) {
+        jobType_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.proto.JobType jobType = 4;</code>
+       * @return The jobType.
+       */
+      @java.lang.Override
+      public proto.ServerClient.JobType getJobType() {
+        proto.ServerClient.JobType result = proto.ServerClient.JobType.forNumber(jobType_);
+        return result == null ? proto.ServerClient.JobType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.proto.JobType jobType = 4;</code>
+       * @param value The jobType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobType(proto.ServerClient.JobType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000008;
+        jobType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.proto.JobType jobType = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearJobType() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        jobType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int jobLevel_ = 0;
+      /**
+       * <code>.proto.JobLevel jobLevel = 5;</code>
+       * @return The enum numeric value on the wire for jobLevel.
+       */
+      @java.lang.Override public int getJobLevelValue() {
+        return jobLevel_;
+      }
+      /**
+       * <code>.proto.JobLevel jobLevel = 5;</code>
+       * @param value The enum numeric value on the wire for jobLevel to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobLevelValue(int value) {
+        jobLevel_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.proto.JobLevel jobLevel = 5;</code>
+       * @return The jobLevel.
+       */
+      @java.lang.Override
+      public proto.ServerClient.JobLevel getJobLevel() {
+        proto.ServerClient.JobLevel result = proto.ServerClient.JobLevel.forNumber(jobLevel_);
+        return result == null ? proto.ServerClient.JobLevel.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.proto.JobLevel jobLevel = 5;</code>
+       * @param value The jobLevel to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobLevel(proto.ServerClient.JobLevel value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000010;
+        jobLevel_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.proto.JobLevel jobLevel = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearJobLevel() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        jobLevel_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object insurance_ = "";
+      /**
+       * <code>string insurance = 6;</code>
+       * @return The insurance.
+       */
+      public java.lang.String getInsurance() {
+        java.lang.Object ref = insurance_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          insurance_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string insurance = 6;</code>
+       * @return The bytes for insurance.
+       */
+      public com.google.protobuf.ByteString
+          getInsuranceBytes() {
+        java.lang.Object ref = insurance_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          insurance_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string insurance = 6;</code>
+       * @param value The insurance to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInsurance(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        insurance_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string insurance = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearInsurance() {
+        insurance_ = getDefaultInstance().getInsurance();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string insurance = 6;</code>
+       * @param value The bytes for insurance to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInsuranceBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        insurance_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:proto.WishListFullInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:proto.WishListFullInfo)
+    private static final proto.ServerClient.WishListFullInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto.ServerClient.WishListFullInfo();
+    }
+
+    public static proto.ServerClient.WishListFullInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<WishListFullInfo>
+        PARSER = new com.google.protobuf.AbstractParser<WishListFullInfo>() {
+      @java.lang.Override
+      public WishListFullInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<WishListFullInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<WishListFullInfo> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto.ServerClient.WishListFullInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_UserFullInfo_descriptor;
   private static final 
@@ -22199,11 +22410,6 @@ public final class ServerClient {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_RecruiterFullInfo_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_Answer_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_Answer_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_JobRequestFullInfo_descriptor;
   private static final 
@@ -22314,6 +22520,11 @@ public final class ServerClient {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_CVMetaInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_proto_WishListFullInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_proto_WishListFullInfo_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -22325,229 +22536,248 @@ public final class ServerClient {
     java.lang.String[] descriptorData = {
       "\n\022ServerClient.proto\022\005proto\032\037google/prot" +
       "obuf/timestamp.proto\032\033google/protobuf/em" +
-      "pty.proto\"\333\001\n\014UserFullInfo\022\016\n\006userID\030\001 \001" +
-      "(\005\022\020\n\010username\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\022\021" +
-      "\n\tfirstname\030\004 \001(\t\022\020\n\010lastname\030\005 \001(\t\022\r\n\005e" +
-      "mail\030\006 \001(\t\022\023\n\013GoogleToken\030\007 \001(\t\0229\n\025Googl" +
-      "eTokenExpiration\030\010 \001(\0132\032.google.protobuf" +
-      ".Timestamp\022\023\n\013isCandidate\030\t \001(\010\"\365\001\n\021Cand" +
-      "idateFullInfo\022!\n\004user\030\001 \001(\0132\023.proto.User" +
-      "FullInfo\022-\n\tbirthDate\030\002 \001(\0132\032.google.pro" +
-      "tobuf.Timestamp\022\035\n\006gender\030\003 \001(\0162\r.proto." +
-      "Gender\022<\n\ncurrentCVs\030\004 \003(\0132(.proto.Candi" +
-      "dateFullInfo.CurrentCVsEntry\0321\n\017CurrentC" +
-      "VsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\"" +
-      "W\n\014UserMetaInfo\022\016\n\006userID\030\001 \001(\005\022\020\n\010usern" +
-      "ame\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\022\023\n\013isCandida" +
-      "te\030\004 \001(\010\"q\n\021RecruiterFullInfo\022!\n\004user\030\001 " +
-      "\001(\0132\023.proto.UserFullInfo\022\021\n\tcompanyID\030\002 " +
-      "\001(\005\022\016\n\006roleID\030\003 \001(\005\022\026\n\016departmentName\030\004 " +
-      "\001(\t\"_\n\006Answer\022\016\n\006ansInt\030\001 \001(\005\022\017\n\007ansLong" +
-      "\030\002 \001(\003\022\021\n\tansString\030\003 \001(\t\022\017\n\007ansBool\030\004 \001" +
-      "(\010\022\020\n\010ansBytes\030\005 \001(\014\"\210\003\n\022JobRequestFullI" +
-      "nfo\022\r\n\005jobID\030\001 \001(\005\022\022\n\nlocationID\030\002 \001(\005\022\037" +
-      "\n\007jobType\030\003 \001(\0162\016.proto.JobType\022\023\n\013salar" +
-      "yLeast\030\004 \001(\005\022\026\n\016salaryGreatest\030\005 \001(\005\022\020\n\010" +
-      "currency\030\006 \001(\t\022\020\n\010jobTitle\030\007 \001(\t\022!\n\010jobL" +
-      "evel\030\010 \001(\0162\017.proto.JobLevel\022\026\n\016jobDescri" +
-      "ption\030\t \001(\t\0220\n\014deadlineDate\030\n \001(\0132\032.goog" +
-      "le.protobuf.Timestamp\022=\n\ncurrentCVs\030\013 \003(" +
-      "\0132).proto.JobRequestFullInfo.CurrentCVsE" +
-      "ntry\0321\n\017CurrentCVsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005" +
-      "value\030\002 \001(\010:\0028\001\"7\n\022JobRequestMetaInfo\022\r\n" +
-      "\005jobID\030\001 \001(\005\022\022\n\nlocationID\030\002 \001(\005\"V\n\014Role" +
-      "FullInfo\022\016\n\006roleID\030\001 \001(\005\022\020\n\010roleName\030\002 \001" +
-      "(\t\022\021\n\troleLevel\030\003 \001(\005\022\021\n\tcompanyID\030\004 \001(\005" +
-      "\"\305\001\n\020LocationFullInfo\022\022\n\nlocationID\030\001 \001(" +
-      "\005\022\017\n\007country\030\002 \001(\t\022\r\n\005state\030\003 \001(\t\022\017\n\007add" +
-      "ress\030\004 \001(\t\022\025\n\rcontactNumber\030\005 \001(\t\0224\n\021cur" +
-      "rentJobRequest\030\006 \001(\0132\031.proto.JobRequestF" +
-      "ullInfo\022\014\n\004city\030\007 \001(\t\022\021\n\tcompanyID\030\010 \001(\005" +
-      "\"P\n\020LocationMetaInfo\022\022\n\nlocationID\030\001 \001(\005" +
-      "\022\025\n\rcontactNumber\030\002 \001(\t\022\021\n\tcompanyID\030\003 \001" +
-      "(\005\"\364\002\n\017CompanyFullInfo\022\023\n\013companiesID\030\001 " +
-      "\001(\005\022\023\n\013companyName\030\002 \001(\t\022\030\n\020companyAvata" +
-      "rURL\030\003 \001(\t\022\017\n\007website\030\004 \001(\t\022\r\n\005email\030\005 \001" +
-      "(\t\022F\n\020activeRecruiters\030\006 \003(\0132,.proto.Com" +
-      "panyFullInfo.ActiveRecruitersEntry\022D\n\017ac" +
-      "tiveLocations\030\007 \003(\0132+.proto.CompanyFullI" +
-      "nfo.ActiveLocationsEntry\0327\n\025ActiveRecrui" +
-      "tersEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028" +
-      "\001\0326\n\024ActiveLocationsEntry\022\013\n\003key\030\001 \001(\005\022\r" +
-      "\n\005value\030\002 \001(\010:\0028\001\"9\n\017CompanyMetaInfo\022\021\n\t" +
-      "companyID\030\001 \001(\005\022\023\n\013companyName\030\002 \001(\t\"\333\001\n" +
-      "\026WorkExperienceFullInfo\022\030\n\020workExperienc" +
-      "eID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\020\n\010jobTitle\030\003 \001(" +
-      "\t\022-\n\tstartDate\030\004 \001(\0132\032.google.protobuf.T" +
-      "imestamp\022+\n\007endDate\030\005 \001(\0132\032.google.proto" +
-      "buf.Timestamp\022\026\n\016jobDescription\030\006 \001(\t\022\023\n" +
-      "\013companyName\030\007 \001(\t\"j\n\rSkillFullInfo\022\017\n\007s" +
-      "killID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\021\n\tskillName\030" +
-      "\003 \001(\t\022\'\n\013proficiency\030\004 \001(\0162\022.proto.Profi" +
-      "ciency\"i\n\023PersonalityFullInfo\022\025\n\rpersona" +
-      "lityID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\030\n\020personalit" +
-      "yTitle\030\003 \001(\t\022\023\n\013description\030\004 \001(\t\"\306\001\n\021Ed" +
-      "ucationFullInfo\022\023\n\013educationID\030\001 \001(\005\022\014\n\004" +
-      "CVID\030\002 \001(\005\022\016\n\006degree\030\003 \001(\t\022\r\n\005field\030\004 \001(" +
-      "\t\022\023\n\013institution\030\005 \001(\t\022-\n\tstartDate\030\006 \001(" +
-      "\0132\032.google.protobuf.Timestamp\022+\n\007endDate" +
-      "\030\007 \001(\0132\032.google.protobuf.Timestamp\"\235\001\n\025C" +
-      "ertificationFullInfo\022\027\n\017certificationID\030" +
-      "\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\031\n\021certificationName" +
-      "\030\003 \001(\t\022\020\n\010provider\030\004 \001(\t\0220\n\014providedDate" +
-      "\030\005 \001(\0132\032.google.protobuf.Timestamp\"\370\005\n\nC" +
-      "VFullInfo\022\014\n\004CVID\030\001 \001(\005\022\023\n\013candidateID\030\002" +
-      " \001(\005\022\r\n\005email\030\003 \001(\t\022\023\n\013phoneNumber\030\004 \001(\t" +
-      "\022\020\n\010jobTitle\030\005 \001(\t\022;\n\rcurrentSkills\030\006 \003(" +
-      "\0132$.proto.CVFullInfo.CurrentSkillsEntry\022" +
-      "I\n\024currentPersonalities\030\007 \003(\0132+.proto.CV" +
-      "FullInfo.CurrentPersonalitiesEntry\022M\n\026cu" +
-      "rrentWorkExperiences\030\010 \003(\0132-.proto.CVFul" +
-      "lInfo.CurrentWorkExperiencesEntry\022C\n\021cur" +
-      "rentEducations\030\t \003(\0132(.proto.CVFullInfo." +
-      "CurrentEducationsEntry\022K\n\025currentCertifi" +
-      "cations\030\n \003(\0132,.proto.CVFullInfo.Current" +
-      "CertificationsEntry\0324\n\022CurrentSkillsEntr" +
-      "y\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\032;\n\031Cur" +
-      "rentPersonalitiesEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005v" +
-      "alue\030\002 \001(\010:\0028\001\032=\n\033CurrentWorkExperiences" +
-      "Entry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\0328\n" +
-      "\026CurrentEducationsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005" +
-      "value\030\002 \001(\010:\0028\001\032<\n\032CurrentCertifications" +
-      "Entry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\"/\n" +
-      "\nCVMetaInfo\022\014\n\004CVID\030\001 \001(\005\022\023\n\013candidateID" +
-      "\030\002 \001(\005*\036\n\006Gender\022\010\n\004MALE\020\000\022\n\n\006FEMALE\020\001*f" +
-      "\n\010JobLevel\022\017\n\013ENTRY_LEVEL\020\000\022\r\n\tMID_LEVEL" +
-      "\020\001\022\020\n\014SENIOR_LEVEL\020\002\022\013\n\007MANAGER\020\003\022\014\n\010DIR" +
-      "ECTOR\020\004\022\r\n\tEXECUTIVE\020\005*%\n\007JobType\022\014\n\010FUL" +
-      "LTIME\020\000\022\014\n\010HALFTIME\020\001*I\n\006Status\022\026\n\022APPLI" +
-      "CATION_REVIEW\020\000\022\r\n\tINTERVIEW\020\001\022\013\n\007SUCCES" +
-      "S\020\002\022\013\n\007FAILURE\020\003*9\n\013Proficiency\022\014\n\010BEGIN" +
-      "NER\020\000\022\020\n\014INTERMEDIATE\020\001\022\n\n\006EXPERT\020\0022\232\006\n\013" +
-      "UserService\022E\n\017CandidateCreate\022\030.proto.C" +
-      "andidateFullInfo\032\030.proto.CandidateFullIn" +
-      "fo\022E\n\017RecruiterCreate\022\030.proto.RecruiterF" +
-      "ullInfo\032\030.proto.RecruiterFullInfo\0224\n\010Use" +
-      "rRead\022\023.proto.UserMetaInfo\032\023.proto.UserF" +
-      "ullInfo\022=\n\014UserListRead\022\026.google.protobu" +
-      "f.Empty\032\023.proto.UserMetaInfo0\001\022>\n\rCandid" +
-      "ateRead\022\023.proto.UserMetaInfo\032\030.proto.Can" +
-      "didateFullInfo\022G\n\021CandidateListRead\022\026.go" +
-      "ogle.protobuf.Empty\032\030.proto.CandidateFul" +
-      "lInfo0\001\022>\n\rRecruiterRead\022\023.proto.UserMet" +
-      "aInfo\032\030.proto.RecruiterFullInfo\022G\n\021Recru" +
-      "iterListRead\022\026.google.protobuf.Empty\032\030.p" +
-      "roto.RecruiterFullInfo0\001\0226\n\nUserUpdate\022\023" +
-      ".proto.UserFullInfo\032\023.proto.UserFullInfo" +
-      "\022E\n\017CandidateUpdate\022\030.proto.CandidateFul" +
-      "lInfo\032\030.proto.CandidateFullInfo\022E\n\017Recru" +
-      "iterUpdate\022\030.proto.RecruiterFullInfo\032\030.p" +
-      "roto.RecruiterFullInfo\0220\n\nUserDelete\022\023.p" +
-      "roto.UserMetaInfo\032\r.proto.Answer2\273\003\n\021Job" +
-      "RequestService\022J\n\022JobRequestRegister\022\031.p" +
-      "roto.JobRequestFullInfo\032\031.proto.JobReque" +
-      "stFullInfo\022F\n\016JobRequestRead\022\031.proto.Job" +
-      "RequestMetaInfo\032\031.proto.JobRequestFullIn" +
-      "fo\022I\n\022JobRequestListRead\022\026.google.protob" +
-      "uf.Empty\032\031.proto.JobRequestFullInfo0\001\022L\n" +
-      "\024JobRequestUpdateInfo\022\031.proto.JobRequest" +
-      "FullInfo\032\031.proto.JobRequestFullInfo\022<\n\020J" +
-      "obRequestDelete\022\031.proto.JobRequestMetaIn" +
-      "fo\032\r.proto.Answer\022;\n\017JobRequestApply\022\031.p" +
-      "roto.JobRequestFullInfo\032\r.proto.Answer2\262" +
-      "\002\n\013RoleService\0228\n\014RoleRegister\022\023.proto.R" +
-      "oleFullInfo\032\023.proto.RoleFullInfo\0228\n\014Role" +
-      "ReadInfo\022\023.proto.RoleFullInfo\032\023.proto.Ro" +
-      "leFullInfo\022=\n\014RoleListRead\022\026.proto.Compa" +
-      "nyMetaInfo\032\023.proto.RoleFullInfo0\001\022:\n\016Rol" +
-      "eUpdateInfo\022\023.proto.RoleFullInfo\032\023.proto" +
-      ".RoleFullInfo\0224\n\016RoleDeleteInfo\022\023.proto." +
-      "RoleFullInfo\032\r.proto.Answer2\330\002\n\016CompanyS" +
-      "ervice\022A\n\017CompanyRegister\022\026.proto.Compan" +
-      "yFullInfo\032\026.proto.CompanyFullInfo\022A\n\017Com" +
-      "panyReadInfo\022\026.proto.CompanyMetaInfo\032\026.p" +
-      "roto.CompanyFullInfo\022C\n\017CompanyListRead\022" +
-      "\026.google.protobuf.Empty\032\026.proto.CompanyF" +
-      "ullInfo0\001\022C\n\021CompanyUpdateInfo\022\026.proto.C" +
-      "ompanyFullInfo\032\026.proto.CompanyFullInfo\0226" +
-      "\n\rCompanyDelete\022\026.proto.CompanyMetaInfo\032" +
-      "\r.proto.Answer2\346\002\n\017LocationService\022D\n\020Lo" +
-      "cationRegister\022\027.proto.LocationFullInfo\032" +
-      "\027.proto.LocationFullInfo\022D\n\020LocationRead" +
-      "Info\022\027.proto.LocationMetaInfo\032\027.proto.Lo" +
-      "cationFullInfo\022E\n\020LocationListRead\022\026.goo" +
-      "gle.protobuf.Empty\032\027.proto.LocationFullI" +
-      "nfo0\001\022F\n\022LocationUpdateInfo\022\027.proto.Loca" +
-      "tionFullInfo\032\027.proto.LocationFullInfo\0228\n" +
-      "\016LocationDelete\022\027.proto.LocationMetaInfo" +
-      "\032\r.proto.Answer2\300\002\n\tCVService\0220\n\010CVCreat" +
-      "e\022\021.proto.CVFullInfo\032\021.proto.CVFullInfo\022" +
-      ".\n\006CVRead\022\021.proto.CVMetaInfo\032\021.proto.CVF" +
-      "ullInfo\0226\n\nCVListRead\022\023.proto.UserMetaIn" +
-      "fo\032\021.proto.CVFullInfo0\001\0224\n\014CVUpdateInfo\022" +
-      "\021.proto.CVFullInfo\032\021.proto.CVFullInfo\022,\n" +
-      "\010CVDelete\022\021.proto.CVMetaInfo\032\r.proto.Ans" +
-      "wer\0225\n\tCVApplies\022\031.proto.JobRequestMetaI" +
-      "nfo\032\r.proto.Answer2\257\003\n\025WorkExperienceSer" +
-      "vice\022T\n\024WorkExperienceCreate\022\035.proto.Wor" +
-      "kExperienceFullInfo\032\035.proto.WorkExperien" +
-      "ceFullInfo\022R\n\022WorkExperienceRead\022\035.proto" +
-      ".WorkExperienceFullInfo\032\035.proto.WorkExpe" +
-      "rienceFullInfo\022L\n\026WorkExperienceListRead" +
-      "\022\021.proto.CVMetaInfo\032\035.proto.WorkExperien" +
-      "ceFullInfo0\001\022X\n\030WorkExperienceUpdateInfo" +
-      "\022\035.proto.WorkExperienceFullInfo\032\035.proto." +
-      "WorkExperienceFullInfo\022D\n\024WorkExperience" +
-      "Delete\022\035.proto.WorkExperienceFullInfo\032\r." +
-      "proto.Answer2\261\002\n\014SkillService\0229\n\013SkillCr" +
-      "eate\022\024.proto.SkillFullInfo\032\024.proto.Skill" +
-      "FullInfo\0227\n\tSkillRead\022\024.proto.SkillFullI" +
-      "nfo\032\024.proto.SkillFullInfo\022:\n\rSkillListRe" +
-      "ad\022\021.proto.CVMetaInfo\032\024.proto.SkillFullI" +
-      "nfo0\001\022=\n\017SkillUpdateInfo\022\024.proto.SkillFu" +
-      "llInfo\032\024.proto.SkillFullInfo\0222\n\013SkillDel" +
-      "ete\022\024.proto.SkillFullInfo\032\r.proto.Answer" +
-      "2\205\003\n\022PersonalityService\022K\n\021PersonalityCr" +
-      "eate\022\032.proto.PersonalityFullInfo\032\032.proto" +
-      ".PersonalityFullInfo\022I\n\017PersonalityRead\022" +
-      "\032.proto.PersonalityFullInfo\032\032.proto.Pers" +
-      "onalityFullInfo\022F\n\023PersonalityListRead\022\021" +
-      ".proto.CVMetaInfo\032\032.proto.PersonalityFul" +
-      "lInfo0\001\022O\n\025PersonalityUpdateInfo\022\032.proto" +
-      ".PersonalityFullInfo\032\032.proto.Personality" +
-      "FullInfo\022>\n\021PersonalityDelete\022\032.proto.Pe" +
-      "rsonalityFullInfo\032\r.proto.Answer2\351\002\n\020Edu" +
-      "cationService\022E\n\017EducationCreate\022\030.proto" +
-      ".EducationFullInfo\032\030.proto.EducationFull" +
-      "Info\022C\n\rEducationRead\022\030.proto.EducationF" +
-      "ullInfo\032\030.proto.EducationFullInfo\022B\n\021Edu" +
-      "cationListRead\022\021.proto.CVMetaInfo\032\030.prot" +
-      "o.EducationFullInfo0\001\022I\n\023EducationUpdate" +
-      "Info\022\030.proto.EducationFullInfo\032\030.proto.E" +
-      "ducationFullInfo\022:\n\017EducationDelete\022\030.pr" +
-      "oto.EducationFullInfo\032\r.proto.Answer2\241\003\n" +
-      "\024CertificationService\022Q\n\023CertificationCr" +
-      "eate\022\034.proto.CertificationFullInfo\032\034.pro" +
-      "to.CertificationFullInfo\022O\n\021Certificatio" +
-      "nRead\022\034.proto.CertificationFullInfo\032\034.pr" +
-      "oto.CertificationFullInfo\022J\n\025Certificati" +
-      "onListRead\022\021.proto.CVMetaInfo\032\034.proto.Ce" +
-      "rtificationFullInfo0\001\022U\n\027CertificationUp" +
-      "dateInfo\022\034.proto.CertificationFullInfo\032\034" +
-      ".proto.CertificationFullInfo\022B\n\023Certific" +
-      "ationDelete\022\034.proto.CertificationFullInf" +
-      "o\032\r.proto.Answer2\322\001\n\rSearchService\022H\n\024Ca" +
-      "ndidate_JobRequest\022\023.proto.UserMetaInfo\032" +
-      "\031.proto.JobRequestFullInfo0\001\022B\n\021Recruite" +
-      "r_Company\022\023.proto.UserMetaInfo\032\026.proto.C" +
-      "ompanyFullInfo0\001\0223\n\007CV_User\022\023.proto.User" +
-      "MetaInfo\032\021.proto.CVFullInfo0\001b\006proto3"
+      "pty.proto\032\036google/protobuf/wrappers.prot" +
+      "o\"\333\001\n\014UserFullInfo\022\016\n\006userID\030\001 \001(\005\022\020\n\010us" +
+      "ername\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\022\021\n\tfirstn" +
+      "ame\030\004 \001(\t\022\020\n\010lastname\030\005 \001(\t\022\r\n\005email\030\006 \001" +
+      "(\t\022\023\n\013GoogleToken\030\007 \001(\t\0229\n\025GoogleTokenEx" +
+      "piration\030\010 \001(\0132\032.google.protobuf.Timesta" +
+      "mp\022\023\n\013isCandidate\030\t \001(\010\"\365\001\n\021CandidateFul" +
+      "lInfo\022!\n\004user\030\001 \001(\0132\023.proto.UserFullInfo" +
+      "\022-\n\tbirthDate\030\002 \001(\0132\032.google.protobuf.Ti" +
+      "mestamp\022\035\n\006gender\030\003 \001(\0162\r.proto.Gender\022<" +
+      "\n\ncurrentCVs\030\004 \003(\0132(.proto.CandidateFull" +
+      "Info.CurrentCVsEntry\0321\n\017CurrentCVsEntry\022" +
+      "\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\"W\n\014UserM" +
+      "etaInfo\022\016\n\006userID\030\001 \001(\005\022\020\n\010username\030\002 \001(" +
+      "\t\022\020\n\010password\030\003 \001(\t\022\023\n\013isCandidate\030\004 \001(\010" +
+      "\"q\n\021RecruiterFullInfo\022!\n\004user\030\001 \001(\0132\023.pr" +
+      "oto.UserFullInfo\022\021\n\tcompanyID\030\002 \001(\005\022\016\n\006r" +
+      "oleID\030\003 \001(\005\022\026\n\016departmentName\030\004 \001(\t\"\210\003\n\022" +
+      "JobRequestFullInfo\022\r\n\005jobID\030\001 \001(\005\022\022\n\nloc" +
+      "ationID\030\002 \001(\005\022\037\n\007jobType\030\003 \001(\0162\016.proto.J" +
+      "obType\022\023\n\013salaryLeast\030\004 \001(\005\022\026\n\016salaryGre" +
+      "atest\030\005 \001(\005\022\020\n\010currency\030\006 \001(\t\022\020\n\010jobTitl" +
+      "e\030\007 \001(\t\022!\n\010jobLevel\030\010 \001(\0162\017.proto.JobLev" +
+      "el\022\026\n\016jobDescription\030\t \001(\t\0220\n\014deadlineDa" +
+      "te\030\n \001(\0132\032.google.protobuf.Timestamp\022=\n\n" +
+      "currentCVs\030\013 \003(\0132).proto.JobRequestFullI" +
+      "nfo.CurrentCVsEntry\0321\n\017CurrentCVsEntry\022\013" +
+      "\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\"7\n\022JobReq" +
+      "uestMetaInfo\022\r\n\005jobID\030\001 \001(\005\022\022\n\nlocationI" +
+      "D\030\002 \001(\005\"V\n\014RoleFullInfo\022\016\n\006roleID\030\001 \001(\005\022" +
+      "\020\n\010roleName\030\002 \001(\t\022\021\n\troleLevel\030\003 \001(\005\022\021\n\t" +
+      "companyID\030\004 \001(\005\"\305\001\n\020LocationFullInfo\022\022\n\n" +
+      "locationID\030\001 \001(\005\022\017\n\007country\030\002 \001(\t\022\r\n\005sta" +
+      "te\030\003 \001(\t\022\017\n\007address\030\004 \001(\t\022\025\n\rcontactNumb" +
+      "er\030\005 \001(\t\0224\n\021currentJobRequest\030\006 \001(\0132\031.pr" +
+      "oto.JobRequestFullInfo\022\014\n\004city\030\007 \001(\t\022\021\n\t" +
+      "companyID\030\010 \001(\005\"P\n\020LocationMetaInfo\022\022\n\nl" +
+      "ocationID\030\001 \001(\005\022\025\n\rcontactNumber\030\002 \001(\t\022\021" +
+      "\n\tcompanyID\030\003 \001(\005\"\364\002\n\017CompanyFullInfo\022\023\n" +
+      "\013companiesID\030\001 \001(\005\022\023\n\013companyName\030\002 \001(\t\022" +
+      "\030\n\020companyAvatarURL\030\003 \001(\t\022\017\n\007website\030\004 \001" +
+      "(\t\022\r\n\005email\030\005 \001(\t\022F\n\020activeRecruiters\030\006 " +
+      "\003(\0132,.proto.CompanyFullInfo.ActiveRecrui" +
+      "tersEntry\022D\n\017activeLocations\030\007 \003(\0132+.pro" +
+      "to.CompanyFullInfo.ActiveLocationsEntry\032" +
+      "7\n\025ActiveRecruitersEntry\022\013\n\003key\030\001 \001(\005\022\r\n" +
+      "\005value\030\002 \001(\010:\0028\001\0326\n\024ActiveLocationsEntry" +
+      "\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\"9\n\017Comp" +
+      "anyMetaInfo\022\021\n\tcompanyID\030\001 \001(\005\022\023\n\013compan" +
+      "yName\030\002 \001(\t\"\333\001\n\026WorkExperienceFullInfo\022\030" +
+      "\n\020workExperienceID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\020" +
+      "\n\010jobTitle\030\003 \001(\t\022-\n\tstartDate\030\004 \001(\0132\032.go" +
+      "ogle.protobuf.Timestamp\022+\n\007endDate\030\005 \001(\013" +
+      "2\032.google.protobuf.Timestamp\022\026\n\016jobDescr" +
+      "iption\030\006 \001(\t\022\023\n\013companyName\030\007 \001(\t\"j\n\rSki" +
+      "llFullInfo\022\017\n\007skillID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(" +
+      "\005\022\021\n\tskillName\030\003 \001(\t\022\'\n\013proficiency\030\004 \001(" +
+      "\0162\022.proto.Proficiency\"i\n\023PersonalityFull" +
+      "Info\022\025\n\rpersonalityID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(" +
+      "\005\022\030\n\020personalityTitle\030\003 \001(\t\022\023\n\013descripti" +
+      "on\030\004 \001(\t\"\306\001\n\021EducationFullInfo\022\023\n\013educat" +
+      "ionID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\016\n\006degree\030\003 \001(" +
+      "\t\022\r\n\005field\030\004 \001(\t\022\023\n\013institution\030\005 \001(\t\022-\n" +
+      "\tstartDate\030\006 \001(\0132\032.google.protobuf.Times" +
+      "tamp\022+\n\007endDate\030\007 \001(\0132\032.google.protobuf." +
+      "Timestamp\"\235\001\n\025CertificationFullInfo\022\027\n\017c" +
+      "ertificationID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\031\n\021ce" +
+      "rtificationName\030\003 \001(\t\022\020\n\010provider\030\004 \001(\t\022" +
+      "0\n\014providedDate\030\005 \001(\0132\032.google.protobuf." +
+      "Timestamp\"\370\005\n\nCVFullInfo\022\014\n\004CVID\030\001 \001(\005\022\023" +
+      "\n\013candidateID\030\002 \001(\005\022\r\n\005email\030\003 \001(\t\022\023\n\013ph" +
+      "oneNumber\030\004 \001(\t\022\020\n\010jobTitle\030\005 \001(\t\022;\n\rcur" +
+      "rentSkills\030\006 \003(\0132$.proto.CVFullInfo.Curr" +
+      "entSkillsEntry\022I\n\024currentPersonalities\030\007" +
+      " \003(\0132+.proto.CVFullInfo.CurrentPersonali" +
+      "tiesEntry\022M\n\026currentWorkExperiences\030\010 \003(" +
+      "\0132-.proto.CVFullInfo.CurrentWorkExperien" +
+      "cesEntry\022C\n\021currentEducations\030\t \003(\0132(.pr" +
+      "oto.CVFullInfo.CurrentEducationsEntry\022K\n" +
+      "\025currentCertifications\030\n \003(\0132,.proto.CVF" +
+      "ullInfo.CurrentCertificationsEntry\0324\n\022Cu" +
+      "rrentSkillsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002" +
+      " \001(\010:\0028\001\032;\n\031CurrentPersonalitiesEntry\022\013\n" +
+      "\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\032=\n\033Current" +
+      "WorkExperiencesEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005val" +
+      "ue\030\002 \001(\010:\0028\001\0328\n\026CurrentEducationsEntry\022\013" +
+      "\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\032<\n\032Curren" +
+      "tCertificationsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005val" +
+      "ue\030\002 \001(\010:\0028\001\"/\n\nCVMetaInfo\022\014\n\004CVID\030\001 \001(\005" +
+      "\022\023\n\013candidateID\030\002 \001(\005\"\247\001\n\020WishListFullIn" +
+      "fo\022\023\n\013candidateID\030\001 \001(\005\022\025\n\rsalaryMinimum" +
+      "\030\002 \001(\005\022\020\n\010location\030\003 \001(\t\022\037\n\007jobType\030\004 \001(" +
+      "\0162\016.proto.JobType\022!\n\010jobLevel\030\005 \001(\0162\017.pr" +
+      "oto.JobLevel\022\021\n\tinsurance\030\006 \001(\t*\036\n\006Gende" +
+      "r\022\010\n\004MALE\020\000\022\n\n\006FEMALE\020\001*f\n\010JobLevel\022\017\n\013E" +
+      "NTRY_LEVEL\020\000\022\r\n\tMID_LEVEL\020\001\022\020\n\014SENIOR_LE" +
+      "VEL\020\002\022\013\n\007MANAGER\020\003\022\014\n\010DIRECTOR\020\004\022\r\n\tEXEC" +
+      "UTIVE\020\005*%\n\007JobType\022\014\n\010FULLTIME\020\000\022\014\n\010HALF" +
+      "TIME\020\001*I\n\006Status\022\026\n\022APPLICATION_REVIEW\020\000" +
+      "\022\r\n\tINTERVIEW\020\001\022\013\n\007SUCCESS\020\002\022\013\n\007FAILURE\020" +
+      "\003*9\n\013Proficiency\022\014\n\010BEGINNER\020\000\022\020\n\014INTERM" +
+      "EDIATE\020\001\022\n\n\006EXPERT\020\0022\247\006\n\013UserService\022E\n\017" +
+      "CandidateCreate\022\030.proto.CandidateFullInf" +
+      "o\032\030.proto.CandidateFullInfo\022E\n\017Recruiter" +
+      "Create\022\030.proto.RecruiterFullInfo\032\030.proto" +
+      ".RecruiterFullInfo\0224\n\010UserRead\022\023.proto.U" +
+      "serMetaInfo\032\023.proto.UserFullInfo\022=\n\014User" +
+      "ListRead\022\026.google.protobuf.Empty\032\023.proto" +
+      ".UserMetaInfo0\001\022>\n\rCandidateRead\022\023.proto" +
+      ".UserMetaInfo\032\030.proto.CandidateFullInfo\022" +
+      "G\n\021CandidateListRead\022\026.google.protobuf.E" +
+      "mpty\032\030.proto.CandidateFullInfo0\001\022>\n\rRecr" +
+      "uiterRead\022\023.proto.UserMetaInfo\032\030.proto.R" +
+      "ecruiterFullInfo\022G\n\021RecruiterListRead\022\026." +
+      "google.protobuf.Empty\032\030.proto.RecruiterF" +
+      "ullInfo0\001\0226\n\nUserUpdate\022\023.proto.UserFull" +
+      "Info\032\023.proto.UserFullInfo\022E\n\017CandidateUp" +
+      "date\022\030.proto.CandidateFullInfo\032\030.proto.C" +
+      "andidateFullInfo\022E\n\017RecruiterUpdate\022\030.pr" +
+      "oto.RecruiterFullInfo\032\030.proto.RecruiterF" +
+      "ullInfo\022=\n\nUserDelete\022\023.proto.UserMetaIn" +
+      "fo\032\032.google.protobuf.BoolValue2\242\004\n\021JobRe" +
+      "questService\022J\n\022JobRequestRegister\022\031.pro" +
+      "to.JobRequestFullInfo\032\031.proto.JobRequest" +
+      "FullInfo\022F\n\016JobRequestRead\022\031.proto.JobRe" +
+      "questMetaInfo\032\031.proto.JobRequestFullInfo" +
+      "\022I\n\022JobRequestListRead\022\026.google.protobuf" +
+      ".Empty\032\031.proto.JobRequestFullInfo0\001\022L\n\024J" +
+      "obRequestUpdateInfo\022\031.proto.JobRequestFu" +
+      "llInfo\032\031.proto.JobRequestFullInfo\022I\n\020Job" +
+      "RequestDelete\022\031.proto.JobRequestMetaInfo" +
+      "\032\032.google.protobuf.BoolValue\022H\n\017JobReque" +
+      "stApply\022\031.proto.JobRequestFullInfo\032\032.goo" +
+      "gle.protobuf.BoolValue\022K\n\022JobRequestWith" +
+      "draw\022\031.proto.JobRequestFullInfo\032\032.google" +
+      ".protobuf.BoolValue2\277\002\n\013RoleService\0228\n\014R" +
+      "oleRegister\022\023.proto.RoleFullInfo\032\023.proto" +
+      ".RoleFullInfo\0228\n\014RoleReadInfo\022\023.proto.Ro" +
+      "leFullInfo\032\023.proto.RoleFullInfo\022=\n\014RoleL" +
+      "istRead\022\026.proto.CompanyMetaInfo\032\023.proto." +
+      "RoleFullInfo0\001\022:\n\016RoleUpdateInfo\022\023.proto" +
+      ".RoleFullInfo\032\023.proto.RoleFullInfo\022A\n\016Ro" +
+      "leDeleteInfo\022\023.proto.RoleFullInfo\032\032.goog" +
+      "le.protobuf.BoolValue2\345\002\n\016CompanyService" +
+      "\022A\n\017CompanyRegister\022\026.proto.CompanyFullI" +
+      "nfo\032\026.proto.CompanyFullInfo\022A\n\017CompanyRe" +
+      "adInfo\022\026.proto.CompanyMetaInfo\032\026.proto.C" +
+      "ompanyFullInfo\022C\n\017CompanyListRead\022\026.goog" +
+      "le.protobuf.Empty\032\026.proto.CompanyFullInf" +
+      "o0\001\022C\n\021CompanyUpdateInfo\022\026.proto.Company" +
+      "FullInfo\032\026.proto.CompanyFullInfo\022C\n\rComp" +
+      "anyDelete\022\026.proto.CompanyMetaInfo\032\032.goog" +
+      "le.protobuf.BoolValue2\363\002\n\017LocationServic" +
+      "e\022D\n\020LocationRegister\022\027.proto.LocationFu" +
+      "llInfo\032\027.proto.LocationFullInfo\022D\n\020Locat" +
+      "ionReadInfo\022\027.proto.LocationMetaInfo\032\027.p" +
+      "roto.LocationFullInfo\022E\n\020LocationListRea" +
+      "d\022\026.google.protobuf.Empty\032\027.proto.Locati" +
+      "onFullInfo0\001\022F\n\022LocationUpdateInfo\022\027.pro" +
+      "to.LocationFullInfo\032\027.proto.LocationFull" +
+      "Info\022E\n\016LocationDelete\022\027.proto.LocationM" +
+      "etaInfo\032\032.google.protobuf.BoolValue2\226\002\n\t" +
+      "CVService\0220\n\010CVCreate\022\021.proto.CVFullInfo" +
+      "\032\021.proto.CVFullInfo\022.\n\006CVRead\022\021.proto.CV" +
+      "MetaInfo\032\021.proto.CVFullInfo\0226\n\nCVListRea" +
+      "d\022\023.proto.UserMetaInfo\032\021.proto.CVFullInf" +
+      "o0\001\0224\n\014CVUpdateInfo\022\021.proto.CVFullInfo\032\021" +
+      ".proto.CVFullInfo\0229\n\010CVDelete\022\021.proto.CV" +
+      "MetaInfo\032\032.google.protobuf.BoolValue2\274\003\n" +
+      "\025WorkExperienceService\022T\n\024WorkExperience" +
+      "Create\022\035.proto.WorkExperienceFullInfo\032\035." +
+      "proto.WorkExperienceFullInfo\022R\n\022WorkExpe" +
+      "rienceRead\022\035.proto.WorkExperienceFullInf" +
+      "o\032\035.proto.WorkExperienceFullInfo\022L\n\026Work" +
+      "ExperienceListRead\022\021.proto.CVMetaInfo\032\035." +
+      "proto.WorkExperienceFullInfo0\001\022X\n\030WorkEx" +
+      "perienceUpdateInfo\022\035.proto.WorkExperienc" +
+      "eFullInfo\032\035.proto.WorkExperienceFullInfo" +
+      "\022Q\n\024WorkExperienceDelete\022\035.proto.WorkExp" +
+      "erienceFullInfo\032\032.google.protobuf.BoolVa" +
+      "lue2\276\002\n\014SkillService\0229\n\013SkillCreate\022\024.pr" +
+      "oto.SkillFullInfo\032\024.proto.SkillFullInfo\022" +
+      "7\n\tSkillRead\022\024.proto.SkillFullInfo\032\024.pro" +
+      "to.SkillFullInfo\022:\n\rSkillListRead\022\021.prot" +
+      "o.CVMetaInfo\032\024.proto.SkillFullInfo0\001\022=\n\017" +
+      "SkillUpdateInfo\022\024.proto.SkillFullInfo\032\024." +
+      "proto.SkillFullInfo\022?\n\013SkillDelete\022\024.pro" +
+      "to.SkillFullInfo\032\032.google.protobuf.BoolV" +
+      "alue2\222\003\n\022PersonalityService\022K\n\021Personali" +
+      "tyCreate\022\032.proto.PersonalityFullInfo\032\032.p" +
+      "roto.PersonalityFullInfo\022I\n\017PersonalityR" +
+      "ead\022\032.proto.PersonalityFullInfo\032\032.proto." +
+      "PersonalityFullInfo\022F\n\023PersonalityListRe" +
+      "ad\022\021.proto.CVMetaInfo\032\032.proto.Personalit" +
+      "yFullInfo0\001\022O\n\025PersonalityUpdateInfo\022\032.p" +
+      "roto.PersonalityFullInfo\032\032.proto.Persona" +
+      "lityFullInfo\022K\n\021PersonalityDelete\022\032.prot" +
+      "o.PersonalityFullInfo\032\032.google.protobuf." +
+      "BoolValue2\366\002\n\020EducationService\022E\n\017Educat" +
+      "ionCreate\022\030.proto.EducationFullInfo\032\030.pr" +
+      "oto.EducationFullInfo\022C\n\rEducationRead\022\030" +
+      ".proto.EducationFullInfo\032\030.proto.Educati" +
+      "onFullInfo\022B\n\021EducationListRead\022\021.proto." +
+      "CVMetaInfo\032\030.proto.EducationFullInfo0\001\022I" +
+      "\n\023EducationUpdateInfo\022\030.proto.EducationF" +
+      "ullInfo\032\030.proto.EducationFullInfo\022G\n\017Edu" +
+      "cationDelete\022\030.proto.EducationFullInfo\032\032" +
+      ".google.protobuf.BoolValue2\256\003\n\024Certifica" +
+      "tionService\022Q\n\023CertificationCreate\022\034.pro" +
+      "to.CertificationFullInfo\032\034.proto.Certifi" +
+      "cationFullInfo\022O\n\021CertificationRead\022\034.pr" +
+      "oto.CertificationFullInfo\032\034.proto.Certif" +
+      "icationFullInfo\022J\n\025CertificationListRead" +
+      "\022\021.proto.CVMetaInfo\032\034.proto.Certificatio" +
+      "nFullInfo0\001\022U\n\027CertificationUpdateInfo\022\034" +
+      ".proto.CertificationFullInfo\032\034.proto.Cer" +
+      "tificationFullInfo\022O\n\023CertificationDelet" +
+      "e\022\034.proto.CertificationFullInfo\032\032.google" +
+      ".protobuf.BoolValue2\322\001\n\rSearchService\022H\n" +
+      "\024Candidate_JobRequest\022\023.proto.UserMetaIn" +
+      "fo\032\031.proto.JobRequestFullInfo0\001\022B\n\021Recru" +
+      "iter_Company\022\023.proto.UserMetaInfo\032\026.prot" +
+      "o.CompanyFullInfo0\001\0223\n\007CV_User\022\023.proto.U" +
+      "serMetaInfo\032\021.proto.CVFullInfo0\0012\220\003\n\017Wis" +
+      "hListService\022L\n\016WishListCreate\022\034.proto.C" +
+      "ertificationFullInfo\032\034.proto.Certificati" +
+      "onFullInfo\022J\n\014WishListRead\022\034.proto.Certi" +
+      "ficationFullInfo\032\034.proto.CertificationFu" +
+      "llInfo\022E\n\020WishListListRead\022\021.proto.CVMet" +
+      "aInfo\032\034.proto.CertificationFullInfo0\001\022P\n" +
+      "\022WishListUpdateInfo\022\034.proto.Certificatio" +
+      "nFullInfo\032\034.proto.CertificationFullInfo\022" +
+      "J\n\016WishListDelete\022\034.proto.CertificationF" +
+      "ullInfo\032\032.google.protobuf.BoolValueb\006pro" +
+      "to3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
           com.google.protobuf.EmptyProto.getDescriptor(),
+          com.google.protobuf.WrappersProto.getDescriptor(),
         });
     internal_static_proto_UserFullInfo_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -22579,14 +22809,8 @@ public final class ServerClient {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_RecruiterFullInfo_descriptor,
         new java.lang.String[] { "User", "CompanyID", "RoleID", "DepartmentName", });
-    internal_static_proto_Answer_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_proto_Answer_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_Answer_descriptor,
-        new java.lang.String[] { "AnsInt", "AnsLong", "AnsString", "AnsBool", "AnsBytes", });
     internal_static_proto_JobRequestFullInfo_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_proto_JobRequestFullInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_JobRequestFullInfo_descriptor,
@@ -22598,31 +22822,31 @@ public final class ServerClient {
         internal_static_proto_JobRequestFullInfo_CurrentCVsEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_proto_JobRequestMetaInfo_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_proto_JobRequestMetaInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_JobRequestMetaInfo_descriptor,
         new java.lang.String[] { "JobID", "LocationID", });
     internal_static_proto_RoleFullInfo_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_proto_RoleFullInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_RoleFullInfo_descriptor,
         new java.lang.String[] { "RoleID", "RoleName", "RoleLevel", "CompanyID", });
     internal_static_proto_LocationFullInfo_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_proto_LocationFullInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_LocationFullInfo_descriptor,
         new java.lang.String[] { "LocationID", "Country", "State", "Address", "ContactNumber", "CurrentJobRequest", "City", "CompanyID", });
     internal_static_proto_LocationMetaInfo_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_proto_LocationMetaInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_LocationMetaInfo_descriptor,
         new java.lang.String[] { "LocationID", "ContactNumber", "CompanyID", });
     internal_static_proto_CompanyFullInfo_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_proto_CompanyFullInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_CompanyFullInfo_descriptor,
@@ -22640,43 +22864,43 @@ public final class ServerClient {
         internal_static_proto_CompanyFullInfo_ActiveLocationsEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_proto_CompanyMetaInfo_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_proto_CompanyMetaInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_CompanyMetaInfo_descriptor,
         new java.lang.String[] { "CompanyID", "CompanyName", });
     internal_static_proto_WorkExperienceFullInfo_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_proto_WorkExperienceFullInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_WorkExperienceFullInfo_descriptor,
         new java.lang.String[] { "WorkExperienceID", "CVID", "JobTitle", "StartDate", "EndDate", "JobDescription", "CompanyName", });
     internal_static_proto_SkillFullInfo_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_proto_SkillFullInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_SkillFullInfo_descriptor,
         new java.lang.String[] { "SkillID", "CVID", "SkillName", "Proficiency", });
     internal_static_proto_PersonalityFullInfo_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_proto_PersonalityFullInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_PersonalityFullInfo_descriptor,
         new java.lang.String[] { "PersonalityID", "CVID", "PersonalityTitle", "Description", });
     internal_static_proto_EducationFullInfo_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_proto_EducationFullInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_EducationFullInfo_descriptor,
         new java.lang.String[] { "EducationID", "CVID", "Degree", "Field", "Institution", "StartDate", "EndDate", });
     internal_static_proto_CertificationFullInfo_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_proto_CertificationFullInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_CertificationFullInfo_descriptor,
         new java.lang.String[] { "CertificationID", "CVID", "CertificationName", "Provider", "ProvidedDate", });
     internal_static_proto_CVFullInfo_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_proto_CVFullInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_CVFullInfo_descriptor,
@@ -22712,13 +22936,20 @@ public final class ServerClient {
         internal_static_proto_CVFullInfo_CurrentCertificationsEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_proto_CVMetaInfo_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_proto_CVMetaInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_CVMetaInfo_descriptor,
         new java.lang.String[] { "CVID", "CandidateID", });
+    internal_static_proto_WishListFullInfo_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_proto_WishListFullInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_proto_WishListFullInfo_descriptor,
+        new java.lang.String[] { "CandidateID", "SalaryMinimum", "Location", "JobType", "JobLevel", "Insurance", });
     com.google.protobuf.TimestampProto.getDescriptor();
     com.google.protobuf.EmptyProto.getDescriptor();
+    com.google.protobuf.WrappersProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

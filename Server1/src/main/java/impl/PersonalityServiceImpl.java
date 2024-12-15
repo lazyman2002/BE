@@ -1,5 +1,6 @@
 package impl;
 
+import com.google.protobuf.BoolValue;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
@@ -85,13 +86,13 @@ public class PersonalityServiceImpl extends PersonalityServiceGrpc.PersonalitySe
     }
 
     @Override
-    public void personalityDelete(ServerClient.PersonalityFullInfo request, StreamObserver<ServerClient.Answer> responseObserver) {
+    public void personalityDelete(ServerClient.PersonalityFullInfo request, StreamObserver<BoolValue> responseObserver) {
         System.out.println("personalityDelete");
 
         try {
             PersonalityController personalityController = new PersonalityController();
             Boolean bool = personalityController.personalityDelete(request);
-            responseObserver.onNext(ServerClient.Answer.newBuilder().setAnsBool(bool).build());
+            responseObserver.onNext(BoolValue.newBuilder().setValue(bool).build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             StatusRuntimeException dbError = Status.ALREADY_EXISTS

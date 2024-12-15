@@ -8,24 +8,17 @@ import java.time.Instant;
 import java.util.*;
 
 public class Converter {
-    private static Map<Integer, Boolean> convertHashSetToMap(HashSet<Integer> set) {
-        Map<Integer, Boolean> map = new HashMap<>();
-        for (Integer value : set) {
-            map.put(value, true);
+    public static List<Integer> protoMapToList(Map<Integer, Boolean> currentMap) {
+        List<Integer> cvidList = new ArrayList<>();
+//        Map<Integer, Boolean> currentCVsMap = jobRequest.getCurrentCVsMap();
+
+        for (Map.Entry<Integer, Boolean> entry : currentMap.entrySet()) {
+            if (entry.getValue()) {
+                cvidList.add(entry.getKey());
+            }
         }
-        return map;
-    }
 
-    public static String hashPassword(String password){
-        return password;
-    }
-
-    public static ServerClient.UserMetaInfo userFullToMeta(ServerClient.UserFullInfo userFullInfo){
-        ServerClient.UserMetaInfo.Builder builder = ServerClient.UserMetaInfo.newBuilder();
-        if(userFullInfo.getUserID() !=0)    builder.setUserID(userFullInfo.getUserID());
-        if(userFullInfo.getUsername() != null && !userFullInfo.getUsername().isBlank() && !userFullInfo.getUsername().isEmpty())    builder.setUsername(userFullInfo.getUsername());
-        if(userFullInfo.getPassword() != null && !userFullInfo.getPassword().isEmpty() && !userFullInfo.getPassword().isBlank())    builder.setPassword(userFullInfo.getPassword());
-        return builder.build();
+        return cvidList;
     }
 
     public static com.google.protobuf.Timestamp timesToProto(Timestamp sqlTimestamp) {
@@ -48,6 +41,35 @@ public class Converter {
                 .setSeconds(instant.getEpochSecond())
                 .setNanos(instant.getNano())
                 .build();
+    }
+
+    public static Timestamp protoToTimeStamp(com.google.protobuf.Timestamp timestamp){
+        if(timestamp == null)   return null;
+        long seconds = timestamp.getSeconds();
+        int nanos = timestamp.getNanos();
+
+        long millis = seconds * 1000 + nanos / 1_000_000;
+        return new Timestamp(millis);
+    }
+
+    private static Map<Integer, Boolean> convertHashSetToMap(HashSet<Integer> set) {
+        Map<Integer, Boolean> map = new HashMap<>();
+        for (Integer value : set) {
+            map.put(value, true);
+        }
+        return map;
+    }
+
+    public static String hashPassword(String password){
+        return password;
+    }
+
+    public static ServerClient.UserMetaInfo userFullToMeta(ServerClient.UserFullInfo userFullInfo){
+        ServerClient.UserMetaInfo.Builder builder = ServerClient.UserMetaInfo.newBuilder();
+        if(userFullInfo.getUserID() !=0)    builder.setUserID(userFullInfo.getUserID());
+        if(userFullInfo.getUsername() != null && !userFullInfo.getUsername().isBlank() && !userFullInfo.getUsername().isEmpty())    builder.setUsername(userFullInfo.getUsername());
+        if(userFullInfo.getPassword() != null && !userFullInfo.getPassword().isEmpty() && !userFullInfo.getPassword().isBlank())    builder.setPassword(userFullInfo.getPassword());
+        return builder.build();
     }
 
     public static ServerClient.UserFullInfo usersToProto(Users users){
@@ -75,6 +97,7 @@ public class Converter {
         if(candidates.getEmail() != null && !candidates.getEmail().isEmpty() && !candidates.getEmail().isBlank()) user.setEmail(candidates.getEmail());
         if(candidates.getGoogleToken() != null)     if(!candidates.getGoogleToken().isEmpty() && !candidates.getGoogleToken().isBlank()) user.setGoogleToken(candidates.getGoogleToken());
         if(candidates.getGoogleTokenExpiration() != null)       if(candidates.getGoogleTokenExpiration().getTime() > 0) user.setGoogleTokenExpiration(Converter.timesToProto(candidates.getGoogleTokenExpiration()));
+        user.setIsCandidate(true);
 
         candidate.setUser(user.build());
         if(candidates.getBirthDate() != null)   candidate.setBirthDate(Converter.timesToProto(candidates.getBirthDate()));
@@ -99,11 +122,12 @@ public class Converter {
         if(recruiters.getEmail() != null && !recruiters.getEmail().isEmpty() && !recruiters.getEmail().isBlank()) user.setEmail(recruiters.getEmail());
         if(recruiters.getGoogleToken() != null)     if(!recruiters.getGoogleToken().isEmpty() && !recruiters.getGoogleToken().isBlank()) user.setGoogleToken(recruiters.getGoogleToken());
         if(recruiters.getGoogleTokenExpiration() != null)       if(recruiters.getGoogleTokenExpiration().getTime() > 0) user.setGoogleTokenExpiration(Converter.timesToProto(recruiters.getGoogleTokenExpiration()));
+        user.setIsCandidate(false);
 
         recruiter.setUser(user.build());
         if(recruiters.getCompanyID() != 0)  recruiter.setCompanyID(recruiters.getCompanyID());
         if(recruiters.getRoleID() != 0) recruiter.setRoleID(recruiters.getRoleID());
-        if(!recruiters.getDepartmentName().isEmpty() && !recruiters.getDepartmentName().isBlank())  recruiter.setDepartmentName(recruiters.getDepartmentName());
+        if(recruiters.getDepartmentName() != null && !recruiters.getDepartmentName().isEmpty() && !recruiters.getDepartmentName().isBlank())  recruiter.setDepartmentName(recruiters.getDepartmentName());
         return recruiter.build();
     }
 
@@ -126,15 +150,6 @@ public class Converter {
         if(roles.getCompanyID() != 0)   builder.setCompanyID(roles.getCompanyID());
         if(roles.getRoleName() != null && !roles.getRoleName().isBlank() && !roles.getRoleName().isEmpty()) builder.setRoleName(roles.getRoleName());
         return builder.build();
-    }
-
-    public static Timestamp protoToTimeStamp(com.google.protobuf.Timestamp timestamp){
-        if(timestamp == null)   return null;
-        long seconds = timestamp.getSeconds();
-        int nanos = timestamp.getNanos();
-
-        long millis = seconds * 1000 + nanos / 1_000_000;
-        return new Timestamp(millis);
     }
 
     public static ServerClient.JobRequestFullInfo jobRequestsToFullProto(JobRequests jobRequest) {
@@ -341,18 +356,5 @@ public class Converter {
             builder.putAllCurrentCertifications(convertHashSetToMap(CV.getCurrentCertifications()));
         }
         return builder.build();
-    }
-
-    public static List<Integer> protoMapToList(Map<Integer, Boolean> currentMap) {
-        List<Integer> cvidList = new ArrayList<>();
-//        Map<Integer, Boolean> currentCVsMap = jobRequest.getCurrentCVsMap();
-
-        for (Map.Entry<Integer, Boolean> entry : currentMap.entrySet()) {
-            if (entry.getValue()) {
-                cvidList.add(entry.getKey());
-            }
-        }
-
-        return cvidList;
     }
 }

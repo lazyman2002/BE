@@ -360,28 +360,28 @@ public final class UserServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
-      proto.ServerClient.Answer> getUserDeleteMethod;
+      com.google.protobuf.BoolValue> getUserDeleteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "UserDelete",
       requestType = proto.ServerClient.UserMetaInfo.class,
-      responseType = proto.ServerClient.Answer.class,
+      responseType = com.google.protobuf.BoolValue.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
-      proto.ServerClient.Answer> getUserDeleteMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo, proto.ServerClient.Answer> getUserDeleteMethod;
+      com.google.protobuf.BoolValue> getUserDeleteMethod() {
+    io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo, com.google.protobuf.BoolValue> getUserDeleteMethod;
     if ((getUserDeleteMethod = UserServiceGrpc.getUserDeleteMethod) == null) {
       synchronized (UserServiceGrpc.class) {
         if ((getUserDeleteMethod = UserServiceGrpc.getUserDeleteMethod) == null) {
           UserServiceGrpc.getUserDeleteMethod = getUserDeleteMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.UserMetaInfo, proto.ServerClient.Answer>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.UserMetaInfo, com.google.protobuf.BoolValue>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UserDelete"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.UserMetaInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.Answer.getDefaultInstance()))
+                  com.google.protobuf.BoolValue.getDefaultInstance()))
               .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("UserDelete"))
               .build();
         }
@@ -521,7 +521,7 @@ public final class UserServiceGrpc {
     /**
      */
     public void userDelete(proto.ServerClient.UserMetaInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUserDeleteMethod(), responseObserver);
     }
 
@@ -609,7 +609,7 @@ public final class UserServiceGrpc {
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 proto.ServerClient.UserMetaInfo,
-                proto.ServerClient.Answer>(
+                com.google.protobuf.BoolValue>(
                   this, METHODID_USER_DELETE)))
           .build();
     }
@@ -723,7 +723,7 @@ public final class UserServiceGrpc {
     /**
      */
     public void userDelete(proto.ServerClient.UserMetaInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getUserDeleteMethod(), getCallOptions()), request, responseObserver);
     }
@@ -828,7 +828,7 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public proto.ServerClient.Answer userDelete(proto.ServerClient.UserMetaInfo request) {
+    public com.google.protobuf.BoolValue userDelete(proto.ServerClient.UserMetaInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getUserDeleteMethod(), getCallOptions(), request);
     }
@@ -917,7 +917,7 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<proto.ServerClient.Answer> userDelete(
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> userDelete(
         proto.ServerClient.UserMetaInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getUserDeleteMethod(), getCallOptions()), request);
@@ -1000,7 +1000,7 @@ public final class UserServiceGrpc {
           break;
         case METHODID_USER_DELETE:
           serviceImpl.userDelete((proto.ServerClient.UserMetaInfo) request,
-              (io.grpc.stub.StreamObserver<proto.ServerClient.Answer>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         default:
           throw new AssertionError();

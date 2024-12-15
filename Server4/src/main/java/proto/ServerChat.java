@@ -4354,34 +4354,34 @@ public final class ServerChat {
       "imestamp\"x\n\020ScheduleFullInfo\022\022\n\nschedule" +
       "ID\030\001 \001(\005\022\017\n\007groupID\030\002 \001(\005\022+\n\007timeSet\030\003 \001" +
       "(\0132\032.google.protobuf.Timestamp\022\022\n\nisReco" +
-      "rded\030\004 \001(\010\"\030\n\005Chunk\022\017\n\007Content\030\001 \001(\0142\305\003\n" +
+      "rded\030\004 \001(\010\"\030\n\005Chunk\022\017\n\007Content\030\001 \001(\0142\303\003\n" +
       "\014GroupService\0229\n\013GroupCreate\022\024.proto.Gro" +
       "upMetaInfo\032\024.proto.GroupMetaInfo\0227\n\tGrou" +
       "pRead\022\024.proto.GroupMetaInfo\032\024.proto.Grou" +
-      "pMetaInfo\022;\n\rGroupListRead\022\022.proto.Group" +
-      "Member\032\024.proto.GroupMetaInfo0\001\022=\n\017GroupU" +
-      "pdateInfo\022\024.proto.GroupMetaInfo\032\024.proto." +
-      "GroupMetaInfo\022?\n\013GroupDelete\022\024.proto.Gro" +
-      "upMetaInfo\032\032.google.protobuf.BoolValue\022?" +
+      "pMetaInfo\022=\n\017GroupUpdateInfo\022\024.proto.Gro" +
+      "upMetaInfo\032\024.proto.GroupMetaInfo\022?\n\013Grou" +
+      "pDelete\022\024.proto.GroupMetaInfo\032\032.google.p" +
+      "rotobuf.BoolValue\022;\n\rGroupListRead\022\022.pro" +
+      "to.GroupMember\032\024.proto.GroupMetaInfo0\001\022=" +
       "\n\021GroupAppendMember\022\022.proto.GroupMember\032" +
-      "\024.proto.GroupMetaInfo(\001\022C\n\021GroupDeleteMe" +
-      "mber\022\022.proto.GroupMember\032\032.google.protob" +
-      "uf.BoolValue2\347\002\n\017ScheduleService\022B\n\016Sche" +
-      "duleCreate\022\027.proto.ScheduleFullInfo\032\027.pr" +
-      "oto.ScheduleFullInfo\022@\n\014ScheduleRead\022\027.p" +
-      "roto.ScheduleFullInfo\032\027.proto.ScheduleFu" +
-      "llInfo\022C\n\020ScheduleListRead\022\024.proto.Group" +
-      "MetaInfo\032\027.proto.ScheduleFullInfo0\001\022B\n\016S" +
-      "cheduleUpdate\022\027.proto.ScheduleFullInfo\032\027" +
-      ".proto.ScheduleFullInfo\022E\n\016ScheduleDelet" +
-      "e\022\027.proto.ScheduleFullInfo\032\032.google.prot" +
-      "obuf.BoolValue2\351\001\n\013ChatService\0222\n\004Chat\022\022" +
-      ".proto.MessageInfo\032\022.proto.MessageInfo(\001" +
-      "0\001\0228\n\nUploadFile\022\014.proto.Chunk\032\032.google." +
-      "protobuf.BoolValue(\001\0222\n\014DownloadFile\022\022.p" +
-      "roto.MessageInfo\032\014.proto.Chunk0\001\0228\n\nGetO" +
-      "ldChat\022\024.proto.GroupMetaInfo\032\022.proto.Mes" +
-      "sageInfo0\001b\006proto3"
+      "\024.proto.GroupMetaInfo\022C\n\021GroupDeleteMemb" +
+      "er\022\022.proto.GroupMember\032\032.google.protobuf" +
+      ".BoolValue2\347\002\n\017ScheduleService\022B\n\016Schedu" +
+      "leCreate\022\027.proto.ScheduleFullInfo\032\027.prot" +
+      "o.ScheduleFullInfo\022@\n\014ScheduleRead\022\027.pro" +
+      "to.ScheduleFullInfo\032\027.proto.ScheduleFull" +
+      "Info\022C\n\020ScheduleListRead\022\024.proto.GroupMe" +
+      "taInfo\032\027.proto.ScheduleFullInfo0\001\022B\n\016Sch" +
+      "eduleUpdate\022\027.proto.ScheduleFullInfo\032\027.p" +
+      "roto.ScheduleFullInfo\022E\n\016ScheduleDelete\022" +
+      "\027.proto.ScheduleFullInfo\032\032.google.protob" +
+      "uf.BoolValue2\346\001\n\013ChatService\0222\n\004Chat\022\022.p" +
+      "roto.MessageInfo\032\022.proto.MessageInfo(\0010\001" +
+      "\0228\n\nUploadFile\022\014.proto.Chunk\032\032.google.pr" +
+      "otobuf.BoolValue(\001\022/\n\014DownloadFile\022\017.pro" +
+      "to.FileInfo\032\014.proto.Chunk0\001\0228\n\nGetOldCha" +
+      "t\022\024.proto.GroupMetaInfo\032\022.proto.MessageI" +
+      "nfo0\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

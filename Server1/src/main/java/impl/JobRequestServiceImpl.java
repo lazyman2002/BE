@@ -1,5 +1,6 @@
 package impl;
 
+import com.google.protobuf.BoolValue;
 import com.google.protobuf.Empty;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
@@ -65,13 +66,13 @@ public class JobRequestServiceImpl extends JobRequestServiceGrpc.JobRequestServi
     }
 
     @Override
-    public void jobRequestDelete(ServerClient.JobRequestMetaInfo request, StreamObserver<ServerClient.Answer> responseObserver) {
+    public void jobRequestDelete(ServerClient.JobRequestMetaInfo request, StreamObserver<BoolValue> responseObserver) {
         System.out.println("jobDeleteInfo");
 
         try {
             JobController jobController = new JobController();
             Boolean success = jobController.jobDelete(request);
-            responseObserver.onNext(ServerClient.Answer.newBuilder().setAnsBool(success).build());
+            responseObserver.onNext(BoolValue.newBuilder().setValue(success).build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             StatusRuntimeException dbError = Status.ALREADY_EXISTS
@@ -104,12 +105,13 @@ public class JobRequestServiceImpl extends JobRequestServiceGrpc.JobRequestServi
     }
 
     @Override
-    public void jobRequestApply(ServerClient.JobRequestFullInfo request, StreamObserver<ServerClient.Answer> responseObserver) {
+    public void jobRequestApply(ServerClient.JobRequestFullInfo request, StreamObserver<BoolValue> responseObserver) {
         System.out.println("jobRequestApply");
         try {
             ApplyController applyController = new ApplyController();
             Boolean bool = applyController.CVApply(request);
-            responseObserver.onNext(ServerClient.Answer.newBuilder().setAnsBool(bool).build());
+
+            responseObserver.onNext(BoolValue.newBuilder().setValue(bool).build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             StatusRuntimeException dbError = Status.ALREADY_EXISTS

@@ -39,11 +39,7 @@ public class RecruiterController {
     }
 
     public Recruiters recruiterRead(ServerClient.UserMetaInfo request) throws SQLException {
-        System.out.println("recruitersRead");
-
-        UserDAO userDAO = new UserDAO();
         RecruiterDAO recruiterDAO = new RecruiterDAO();
-        Users users = null;
         Recruiters recruiters;
         Connection connection = null;
         try {

@@ -1,5 +1,6 @@
 package impl;
 
+import com.google.protobuf.BoolValue;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
@@ -85,13 +86,13 @@ public class WorkExperienceServiceImpl extends WorkExperienceServiceGrpc.WorkExp
     }
 
     @Override
-    public void workExperienceDelete(ServerClient.WorkExperienceFullInfo request, StreamObserver<ServerClient.Answer> responseObserver) {
+    public void workExperienceDelete(ServerClient.WorkExperienceFullInfo request, StreamObserver<BoolValue> responseObserver) {
         System.out.println("workExperienceDelete");
 
         try {
             WorkExperienceController workExperienceController = new WorkExperienceController();
             Boolean bool = workExperienceController.workExperienceDelete(request);
-            responseObserver.onNext(ServerClient.Answer.newBuilder().setAnsBool(bool).build());
+            responseObserver.onNext(BoolValue.newBuilder().setValue(bool).build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             StatusRuntimeException dbError = Status.ALREADY_EXISTS

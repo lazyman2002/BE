@@ -1,5 +1,6 @@
 package impl;
 
+import com.google.protobuf.BoolValue;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
@@ -85,13 +86,13 @@ public class EducationServiceImpl extends EducationServiceGrpc.EducationServiceI
     }
 
     @Override
-    public void educationDelete(ServerClient.EducationFullInfo request, StreamObserver<ServerClient.Answer> responseObserver) {
+    public void educationDelete(ServerClient.EducationFullInfo request, StreamObserver<BoolValue> responseObserver) {
         System.out.println("educationDelete");
 
         try {
             EducationController educationController = new EducationController();
             Boolean bool = educationController.educationDelete(request);
-            responseObserver.onNext(ServerClient.Answer.newBuilder().setAnsBool(bool).build());
+            responseObserver.onNext(BoolValue.newBuilder().setValue(bool).build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             StatusRuntimeException dbError = Status.ALREADY_EXISTS

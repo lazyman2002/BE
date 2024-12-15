@@ -1,5 +1,6 @@
 package impl;
 
+import com.google.protobuf.BoolValue;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
@@ -85,13 +86,13 @@ public class SkillServiceImpl extends SkillServiceGrpc.SkillServiceImplBase {
     }
 
     @Override
-    public void skillDelete(ServerClient.SkillFullInfo request, StreamObserver<ServerClient.Answer> responseObserver) {
+    public void skillDelete(ServerClient.SkillFullInfo request, StreamObserver<BoolValue> responseObserver) {
         System.out.println("skillDelete");
 
         try {
             SkillController skillController = new SkillController();
             Boolean bool = skillController.skillDelete(request);
-            responseObserver.onNext(ServerClient.Answer.newBuilder().setAnsBool(bool).build());
+            responseObserver.onNext(BoolValue.newBuilder().setValue(bool).build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             StatusRuntimeException dbError = Status.ALREADY_EXISTS

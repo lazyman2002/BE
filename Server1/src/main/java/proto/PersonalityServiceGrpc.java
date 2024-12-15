@@ -140,28 +140,28 @@ public final class PersonalityServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<proto.ServerClient.PersonalityFullInfo,
-      proto.ServerClient.Answer> getPersonalityDeleteMethod;
+      com.google.protobuf.BoolValue> getPersonalityDeleteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "PersonalityDelete",
       requestType = proto.ServerClient.PersonalityFullInfo.class,
-      responseType = proto.ServerClient.Answer.class,
+      responseType = com.google.protobuf.BoolValue.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<proto.ServerClient.PersonalityFullInfo,
-      proto.ServerClient.Answer> getPersonalityDeleteMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.PersonalityFullInfo, proto.ServerClient.Answer> getPersonalityDeleteMethod;
+      com.google.protobuf.BoolValue> getPersonalityDeleteMethod() {
+    io.grpc.MethodDescriptor<proto.ServerClient.PersonalityFullInfo, com.google.protobuf.BoolValue> getPersonalityDeleteMethod;
     if ((getPersonalityDeleteMethod = PersonalityServiceGrpc.getPersonalityDeleteMethod) == null) {
       synchronized (PersonalityServiceGrpc.class) {
         if ((getPersonalityDeleteMethod = PersonalityServiceGrpc.getPersonalityDeleteMethod) == null) {
           PersonalityServiceGrpc.getPersonalityDeleteMethod = getPersonalityDeleteMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.PersonalityFullInfo, proto.ServerClient.Answer>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.PersonalityFullInfo, com.google.protobuf.BoolValue>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "PersonalityDelete"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.PersonalityFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.Answer.getDefaultInstance()))
+                  com.google.protobuf.BoolValue.getDefaultInstance()))
               .setSchemaDescriptor(new PersonalityServiceMethodDescriptorSupplier("PersonalityDelete"))
               .build();
         }
@@ -249,7 +249,7 @@ public final class PersonalityServiceGrpc {
     /**
      */
     public void personalityDelete(proto.ServerClient.PersonalityFullInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getPersonalityDeleteMethod(), responseObserver);
     }
 
@@ -288,7 +288,7 @@ public final class PersonalityServiceGrpc {
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 proto.ServerClient.PersonalityFullInfo,
-                proto.ServerClient.Answer>(
+                com.google.protobuf.BoolValue>(
                   this, METHODID_PERSONALITY_DELETE)))
           .build();
     }
@@ -343,7 +343,7 @@ public final class PersonalityServiceGrpc {
     /**
      */
     public void personalityDelete(proto.ServerClient.PersonalityFullInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getPersonalityDeleteMethod(), getCallOptions()), request, responseObserver);
     }
@@ -394,7 +394,7 @@ public final class PersonalityServiceGrpc {
 
     /**
      */
-    public proto.ServerClient.Answer personalityDelete(proto.ServerClient.PersonalityFullInfo request) {
+    public com.google.protobuf.BoolValue personalityDelete(proto.ServerClient.PersonalityFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getPersonalityDeleteMethod(), getCallOptions(), request);
     }
@@ -440,7 +440,7 @@ public final class PersonalityServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<proto.ServerClient.Answer> personalityDelete(
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> personalityDelete(
         proto.ServerClient.PersonalityFullInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getPersonalityDeleteMethod(), getCallOptions()), request);
@@ -488,7 +488,7 @@ public final class PersonalityServiceGrpc {
           break;
         case METHODID_PERSONALITY_DELETE:
           serviceImpl.personalityDelete((proto.ServerClient.PersonalityFullInfo) request,
-              (io.grpc.stub.StreamObserver<proto.ServerClient.Answer>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         default:
           throw new AssertionError();

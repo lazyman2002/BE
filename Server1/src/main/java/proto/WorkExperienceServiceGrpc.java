@@ -140,28 +140,28 @@ public final class WorkExperienceServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<proto.ServerClient.WorkExperienceFullInfo,
-      proto.ServerClient.Answer> getWorkExperienceDeleteMethod;
+      com.google.protobuf.BoolValue> getWorkExperienceDeleteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "WorkExperienceDelete",
       requestType = proto.ServerClient.WorkExperienceFullInfo.class,
-      responseType = proto.ServerClient.Answer.class,
+      responseType = com.google.protobuf.BoolValue.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<proto.ServerClient.WorkExperienceFullInfo,
-      proto.ServerClient.Answer> getWorkExperienceDeleteMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.WorkExperienceFullInfo, proto.ServerClient.Answer> getWorkExperienceDeleteMethod;
+      com.google.protobuf.BoolValue> getWorkExperienceDeleteMethod() {
+    io.grpc.MethodDescriptor<proto.ServerClient.WorkExperienceFullInfo, com.google.protobuf.BoolValue> getWorkExperienceDeleteMethod;
     if ((getWorkExperienceDeleteMethod = WorkExperienceServiceGrpc.getWorkExperienceDeleteMethod) == null) {
       synchronized (WorkExperienceServiceGrpc.class) {
         if ((getWorkExperienceDeleteMethod = WorkExperienceServiceGrpc.getWorkExperienceDeleteMethod) == null) {
           WorkExperienceServiceGrpc.getWorkExperienceDeleteMethod = getWorkExperienceDeleteMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.WorkExperienceFullInfo, proto.ServerClient.Answer>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.WorkExperienceFullInfo, com.google.protobuf.BoolValue>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "WorkExperienceDelete"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.WorkExperienceFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.Answer.getDefaultInstance()))
+                  com.google.protobuf.BoolValue.getDefaultInstance()))
               .setSchemaDescriptor(new WorkExperienceServiceMethodDescriptorSupplier("WorkExperienceDelete"))
               .build();
         }
@@ -249,7 +249,7 @@ public final class WorkExperienceServiceGrpc {
     /**
      */
     public void workExperienceDelete(proto.ServerClient.WorkExperienceFullInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getWorkExperienceDeleteMethod(), responseObserver);
     }
 
@@ -288,7 +288,7 @@ public final class WorkExperienceServiceGrpc {
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 proto.ServerClient.WorkExperienceFullInfo,
-                proto.ServerClient.Answer>(
+                com.google.protobuf.BoolValue>(
                   this, METHODID_WORK_EXPERIENCE_DELETE)))
           .build();
     }
@@ -343,7 +343,7 @@ public final class WorkExperienceServiceGrpc {
     /**
      */
     public void workExperienceDelete(proto.ServerClient.WorkExperienceFullInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getWorkExperienceDeleteMethod(), getCallOptions()), request, responseObserver);
     }
@@ -394,7 +394,7 @@ public final class WorkExperienceServiceGrpc {
 
     /**
      */
-    public proto.ServerClient.Answer workExperienceDelete(proto.ServerClient.WorkExperienceFullInfo request) {
+    public com.google.protobuf.BoolValue workExperienceDelete(proto.ServerClient.WorkExperienceFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getWorkExperienceDeleteMethod(), getCallOptions(), request);
     }
@@ -440,7 +440,7 @@ public final class WorkExperienceServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<proto.ServerClient.Answer> workExperienceDelete(
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> workExperienceDelete(
         proto.ServerClient.WorkExperienceFullInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getWorkExperienceDeleteMethod(), getCallOptions()), request);
@@ -488,7 +488,7 @@ public final class WorkExperienceServiceGrpc {
           break;
         case METHODID_WORK_EXPERIENCE_DELETE:
           serviceImpl.workExperienceDelete((proto.ServerClient.WorkExperienceFullInfo) request,
-              (io.grpc.stub.StreamObserver<proto.ServerClient.Answer>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         default:
           throw new AssertionError();

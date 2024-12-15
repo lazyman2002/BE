@@ -140,28 +140,28 @@ public final class CertificationServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<proto.ServerClient.CertificationFullInfo,
-      proto.ServerClient.Answer> getCertificationDeleteMethod;
+      com.google.protobuf.BoolValue> getCertificationDeleteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "CertificationDelete",
       requestType = proto.ServerClient.CertificationFullInfo.class,
-      responseType = proto.ServerClient.Answer.class,
+      responseType = com.google.protobuf.BoolValue.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<proto.ServerClient.CertificationFullInfo,
-      proto.ServerClient.Answer> getCertificationDeleteMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.CertificationFullInfo, proto.ServerClient.Answer> getCertificationDeleteMethod;
+      com.google.protobuf.BoolValue> getCertificationDeleteMethod() {
+    io.grpc.MethodDescriptor<proto.ServerClient.CertificationFullInfo, com.google.protobuf.BoolValue> getCertificationDeleteMethod;
     if ((getCertificationDeleteMethod = CertificationServiceGrpc.getCertificationDeleteMethod) == null) {
       synchronized (CertificationServiceGrpc.class) {
         if ((getCertificationDeleteMethod = CertificationServiceGrpc.getCertificationDeleteMethod) == null) {
           CertificationServiceGrpc.getCertificationDeleteMethod = getCertificationDeleteMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.CertificationFullInfo, proto.ServerClient.Answer>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.CertificationFullInfo, com.google.protobuf.BoolValue>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CertificationDelete"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.CertificationFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.Answer.getDefaultInstance()))
+                  com.google.protobuf.BoolValue.getDefaultInstance()))
               .setSchemaDescriptor(new CertificationServiceMethodDescriptorSupplier("CertificationDelete"))
               .build();
         }
@@ -249,7 +249,7 @@ public final class CertificationServiceGrpc {
     /**
      */
     public void certificationDelete(proto.ServerClient.CertificationFullInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCertificationDeleteMethod(), responseObserver);
     }
 
@@ -288,7 +288,7 @@ public final class CertificationServiceGrpc {
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 proto.ServerClient.CertificationFullInfo,
-                proto.ServerClient.Answer>(
+                com.google.protobuf.BoolValue>(
                   this, METHODID_CERTIFICATION_DELETE)))
           .build();
     }
@@ -343,7 +343,7 @@ public final class CertificationServiceGrpc {
     /**
      */
     public void certificationDelete(proto.ServerClient.CertificationFullInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCertificationDeleteMethod(), getCallOptions()), request, responseObserver);
     }
@@ -394,7 +394,7 @@ public final class CertificationServiceGrpc {
 
     /**
      */
-    public proto.ServerClient.Answer certificationDelete(proto.ServerClient.CertificationFullInfo request) {
+    public com.google.protobuf.BoolValue certificationDelete(proto.ServerClient.CertificationFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCertificationDeleteMethod(), getCallOptions(), request);
     }
@@ -440,7 +440,7 @@ public final class CertificationServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<proto.ServerClient.Answer> certificationDelete(
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> certificationDelete(
         proto.ServerClient.CertificationFullInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCertificationDeleteMethod(), getCallOptions()), request);
@@ -488,7 +488,7 @@ public final class CertificationServiceGrpc {
           break;
         case METHODID_CERTIFICATION_DELETE:
           serviceImpl.certificationDelete((proto.ServerClient.CertificationFullInfo) request,
-              (io.grpc.stub.StreamObserver<proto.ServerClient.Answer>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         default:
           throw new AssertionError();

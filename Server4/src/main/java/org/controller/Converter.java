@@ -1,5 +1,8 @@
 package org.controller;
 
+import org.model.Groups;
+import proto.ServerChat;
+
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.*;
@@ -55,5 +58,14 @@ public class Converter {
             map.put(value, true);
         }
         return map;
+    }
+
+    public static ServerChat.GroupMetaInfo groupToProto(Groups groups){
+        ServerChat.GroupMetaInfo.Builder builder = ServerChat.GroupMetaInfo.newBuilder();
+        if(groups.getGroupID() != null && groups.getGroupID() != 0)
+            builder.setGroupID(groups.getGroupID());
+        if(groups.getGroupName()!= null && !groups.getGroupName().isEmpty() && !groups.getGroupName().isBlank())
+            builder.setGroupName(groups.getGroupName());
+        return builder.build();
     }
 }

@@ -1,5 +1,6 @@
 package impl;
 
+import com.google.protobuf.BoolValue;
 import com.google.protobuf.Empty;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
@@ -153,19 +154,15 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
     }
 
     @Override
-    public void userDelete(ServerClient.UserMetaInfo request, StreamObserver<ServerClient.Answer> responseObserver) {
+    public void userDelete(ServerClient.UserMetaInfo request, StreamObserver<BoolValue> responseObserver) {
         try {
             UserController userController = new UserController();
             Boolean ans = userController.userDelete(request);
             if(ans){
-                responseObserver.onNext(ServerClient.Answer.newBuilder()
-                                .setAnsBool(true)
-                                .build());
+                responseObserver.onNext(BoolValue.newBuilder().setValue(true).build());
             }
             else {
-                responseObserver.onNext(ServerClient.Answer.newBuilder()
-                            .setAnsBool(false)
-                            .build());
+                responseObserver.onNext(BoolValue.newBuilder().setValue(false).build());
             }
             responseObserver.onCompleted();
         }

@@ -22,6 +22,8 @@ public class CVController {
     }
 
     public CVs cvRead(ServerClient.CVMetaInfo request) throws Exception {
+        System.out.println("cvRead");
+
         CVDAO cvDAO = new CVDAO();
         CertificationDAO certificationDAO = new CertificationDAO();
         EducationDAO educationDAO = new EducationDAO();
@@ -100,5 +102,4 @@ public class CVController {
             if (connection != null) connection.close();
         }
     }
-
 }

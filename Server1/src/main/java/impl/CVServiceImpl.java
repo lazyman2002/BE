@@ -1,5 +1,6 @@
 package impl;
 
+import com.google.protobuf.BoolValue;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
@@ -88,13 +89,13 @@ public class CVServiceImpl extends CVServiceGrpc.CVServiceImplBase {
     }
 
     @Override
-    public void cVDelete(ServerClient.CVMetaInfo request, StreamObserver<ServerClient.Answer> responseObserver) {
+    public void cVDelete(ServerClient.CVMetaInfo request, StreamObserver<BoolValue> responseObserver) {
         System.out.println("cvDeleteInfo");
 
         try {
             CVController cvController = new CVController();
             Boolean bool = cvController.cvDelete(request);
-            responseObserver.onNext(ServerClient.Answer.newBuilder().setAnsBool(bool).build());
+            responseObserver.onNext(BoolValue.newBuilder().setValue(bool).build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             StatusRuntimeException dbError = Status.ALREADY_EXISTS

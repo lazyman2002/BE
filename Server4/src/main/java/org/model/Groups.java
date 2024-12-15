@@ -12,6 +12,11 @@ public class Groups {
 
 	public Groups() {}
 
+	public Groups(Integer groupID, String groupName) {
+		this.groupID = groupID;
+		this.groupName = groupName;
+	}
+
 	public Integer getGroupID() {
 		return groupID;
 	}

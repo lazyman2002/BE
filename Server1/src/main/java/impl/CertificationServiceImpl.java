@@ -1,5 +1,6 @@
 package impl;
 
+import com.google.protobuf.BoolValue;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
@@ -85,13 +86,13 @@ public class CertificationServiceImpl extends CertificationServiceGrpc.Certifica
     }
 
     @Override
-    public void certificationDelete(ServerClient.CertificationFullInfo request, StreamObserver<ServerClient.Answer> responseObserver) {
+    public void certificationDelete(ServerClient.CertificationFullInfo request, StreamObserver<BoolValue> responseObserver) {
         System.out.println("certificationDelete");
 
         try {
             CertificationController certificationController = new CertificationController();
             Boolean bool = certificationController.certificationDelete(request);
-            responseObserver.onNext(ServerClient.Answer.newBuilder().setAnsBool(bool).build());
+            responseObserver.onNext(BoolValue.newBuilder().setValue(bool).build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             StatusRuntimeException dbError = Status.ALREADY_EXISTS

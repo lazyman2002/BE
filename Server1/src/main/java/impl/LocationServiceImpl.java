@@ -1,5 +1,6 @@
 package impl;
 
+import com.google.protobuf.BoolValue;
 import com.google.protobuf.Empty;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
@@ -87,13 +88,13 @@ public class LocationServiceImpl extends LocationServiceGrpc.LocationServiceImpl
     }
 
     @Override
-    public void locationDelete(ServerClient.LocationMetaInfo request, StreamObserver<ServerClient.Answer> responseObserver) {
+    public void locationDelete(ServerClient.LocationMetaInfo request, StreamObserver<BoolValue> responseObserver) {
         System.out.println("locationDeleteInfo");
 
         try {
             LocationController locationController = new LocationController();
             Boolean bool = locationController.locationDelete(request);
-            responseObserver.onNext(ServerClient.Answer.newBuilder().setAnsBool(bool).build());
+            responseObserver.onNext(BoolValue.newBuilder().setValue(bool).build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             StatusRuntimeException dbError = Status.ALREADY_EXISTS

@@ -77,27 +77,27 @@ public final class ChatServiceGrpc {
     return getUploadFileMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.MessageInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.FileInfo,
       proto.ServerChat.Chunk> getDownloadFileMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "DownloadFile",
-      requestType = proto.ServerChat.MessageInfo.class,
+      requestType = proto.ServerChat.FileInfo.class,
       responseType = proto.ServerChat.Chunk.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<proto.ServerChat.MessageInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerChat.FileInfo,
       proto.ServerChat.Chunk> getDownloadFileMethod() {
-    io.grpc.MethodDescriptor<proto.ServerChat.MessageInfo, proto.ServerChat.Chunk> getDownloadFileMethod;
+    io.grpc.MethodDescriptor<proto.ServerChat.FileInfo, proto.ServerChat.Chunk> getDownloadFileMethod;
     if ((getDownloadFileMethod = ChatServiceGrpc.getDownloadFileMethod) == null) {
       synchronized (ChatServiceGrpc.class) {
         if ((getDownloadFileMethod = ChatServiceGrpc.getDownloadFileMethod) == null) {
           ChatServiceGrpc.getDownloadFileMethod = getDownloadFileMethod =
-              io.grpc.MethodDescriptor.<proto.ServerChat.MessageInfo, proto.ServerChat.Chunk>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerChat.FileInfo, proto.ServerChat.Chunk>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DownloadFile"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerChat.MessageInfo.getDefaultInstance()))
+                  proto.ServerChat.FileInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerChat.Chunk.getDefaultInstance()))
               .setSchemaDescriptor(new ChatServiceMethodDescriptorSupplier("DownloadFile"))
@@ -203,7 +203,7 @@ public final class ChatServiceGrpc {
 
     /**
      */
-    public void downloadFile(proto.ServerChat.MessageInfo request,
+    public void downloadFile(proto.ServerChat.FileInfo request,
         io.grpc.stub.StreamObserver<proto.ServerChat.Chunk> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDownloadFileMethod(), responseObserver);
     }
@@ -235,7 +235,7 @@ public final class ChatServiceGrpc {
             getDownloadFileMethod(),
             io.grpc.stub.ServerCalls.asyncServerStreamingCall(
               new MethodHandlers<
-                proto.ServerChat.MessageInfo,
+                proto.ServerChat.FileInfo,
                 proto.ServerChat.Chunk>(
                   this, METHODID_DOWNLOAD_FILE)))
           .addMethod(
@@ -281,7 +281,7 @@ public final class ChatServiceGrpc {
 
     /**
      */
-    public void downloadFile(proto.ServerChat.MessageInfo request,
+    public void downloadFile(proto.ServerChat.FileInfo request,
         io.grpc.stub.StreamObserver<proto.ServerChat.Chunk> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getDownloadFileMethod(), getCallOptions()), request, responseObserver);
@@ -313,7 +313,7 @@ public final class ChatServiceGrpc {
     /**
      */
     public java.util.Iterator<proto.ServerChat.Chunk> downloadFile(
-        proto.ServerChat.MessageInfo request) {
+        proto.ServerChat.FileInfo request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getDownloadFileMethod(), getCallOptions(), request);
     }
@@ -365,7 +365,7 @@ public final class ChatServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_DOWNLOAD_FILE:
-          serviceImpl.downloadFile((proto.ServerChat.MessageInfo) request,
+          serviceImpl.downloadFile((proto.ServerChat.FileInfo) request,
               (io.grpc.stub.StreamObserver<proto.ServerChat.Chunk>) responseObserver);
           break;
         case METHODID_GET_OLD_CHAT:

@@ -1,5 +1,6 @@
 package impl;
 
+import com.google.protobuf.BoolValue;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
@@ -89,13 +90,13 @@ public class RoleServiceImpl extends RoleServiceGrpc.RoleServiceImplBase {
     }
 
     @Override
-    public void roleDeleteInfo(ServerClient.RoleFullInfo request, StreamObserver<ServerClient.Answer> responseObserver) {
+    public void roleDeleteInfo(ServerClient.RoleFullInfo request, StreamObserver<BoolValue> responseObserver) {
         System.out.println("roleDeleteInfo");
 
         try {
             RoleController roleController = new RoleController();
             Boolean bool = roleController.roleDelete(request);
-            responseObserver.onNext(ServerClient.Answer.newBuilder().setAnsBool(bool).build());
+            responseObserver.onNext(BoolValue.newBuilder().setValue(bool).build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             StatusRuntimeException dbError = Status.ALREADY_EXISTS

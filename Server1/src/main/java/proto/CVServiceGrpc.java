@@ -140,65 +140,34 @@ public final class CVServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo,
-      proto.ServerClient.Answer> getCVDeleteMethod;
+      com.google.protobuf.BoolValue> getCVDeleteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "CVDelete",
       requestType = proto.ServerClient.CVMetaInfo.class,
-      responseType = proto.ServerClient.Answer.class,
+      responseType = com.google.protobuf.BoolValue.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo,
-      proto.ServerClient.Answer> getCVDeleteMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo, proto.ServerClient.Answer> getCVDeleteMethod;
+      com.google.protobuf.BoolValue> getCVDeleteMethod() {
+    io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo, com.google.protobuf.BoolValue> getCVDeleteMethod;
     if ((getCVDeleteMethod = CVServiceGrpc.getCVDeleteMethod) == null) {
       synchronized (CVServiceGrpc.class) {
         if ((getCVDeleteMethod = CVServiceGrpc.getCVDeleteMethod) == null) {
           CVServiceGrpc.getCVDeleteMethod = getCVDeleteMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.CVMetaInfo, proto.ServerClient.Answer>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.CVMetaInfo, com.google.protobuf.BoolValue>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CVDelete"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.CVMetaInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.Answer.getDefaultInstance()))
+                  com.google.protobuf.BoolValue.getDefaultInstance()))
               .setSchemaDescriptor(new CVServiceMethodDescriptorSupplier("CVDelete"))
               .build();
         }
       }
     }
     return getCVDeleteMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.JobRequestMetaInfo,
-      proto.ServerClient.Answer> getCVAppliesMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "CVApplies",
-      requestType = proto.ServerClient.JobRequestMetaInfo.class,
-      responseType = proto.ServerClient.Answer.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.JobRequestMetaInfo,
-      proto.ServerClient.Answer> getCVAppliesMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.JobRequestMetaInfo, proto.ServerClient.Answer> getCVAppliesMethod;
-    if ((getCVAppliesMethod = CVServiceGrpc.getCVAppliesMethod) == null) {
-      synchronized (CVServiceGrpc.class) {
-        if ((getCVAppliesMethod = CVServiceGrpc.getCVAppliesMethod) == null) {
-          CVServiceGrpc.getCVAppliesMethod = getCVAppliesMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.JobRequestMetaInfo, proto.ServerClient.Answer>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CVApplies"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.JobRequestMetaInfo.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.Answer.getDefaultInstance()))
-              .setSchemaDescriptor(new CVServiceMethodDescriptorSupplier("CVApplies"))
-              .build();
-        }
-      }
-    }
-    return getCVAppliesMethod;
   }
 
   /**
@@ -280,15 +249,8 @@ public final class CVServiceGrpc {
     /**
      */
     public void cVDelete(proto.ServerClient.CVMetaInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCVDeleteMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void cVApplies(proto.ServerClient.JobRequestMetaInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCVAppliesMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -326,15 +288,8 @@ public final class CVServiceGrpc {
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 proto.ServerClient.CVMetaInfo,
-                proto.ServerClient.Answer>(
+                com.google.protobuf.BoolValue>(
                   this, METHODID_CVDELETE)))
-          .addMethod(
-            getCVAppliesMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                proto.ServerClient.JobRequestMetaInfo,
-                proto.ServerClient.Answer>(
-                  this, METHODID_CVAPPLIES)))
           .build();
     }
   }
@@ -388,17 +343,9 @@ public final class CVServiceGrpc {
     /**
      */
     public void cVDelete(proto.ServerClient.CVMetaInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCVDeleteMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void cVApplies(proto.ServerClient.JobRequestMetaInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.Answer> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getCVAppliesMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -447,16 +394,9 @@ public final class CVServiceGrpc {
 
     /**
      */
-    public proto.ServerClient.Answer cVDelete(proto.ServerClient.CVMetaInfo request) {
+    public com.google.protobuf.BoolValue cVDelete(proto.ServerClient.CVMetaInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCVDeleteMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public proto.ServerClient.Answer cVApplies(proto.ServerClient.JobRequestMetaInfo request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCVAppliesMethod(), getCallOptions(), request);
     }
   }
 
@@ -500,18 +440,10 @@ public final class CVServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<proto.ServerClient.Answer> cVDelete(
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> cVDelete(
         proto.ServerClient.CVMetaInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCVDeleteMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<proto.ServerClient.Answer> cVApplies(
-        proto.ServerClient.JobRequestMetaInfo request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getCVAppliesMethod(), getCallOptions()), request);
     }
   }
 
@@ -520,7 +452,6 @@ public final class CVServiceGrpc {
   private static final int METHODID_CVLIST_READ = 2;
   private static final int METHODID_CVUPDATE_INFO = 3;
   private static final int METHODID_CVDELETE = 4;
-  private static final int METHODID_CVAPPLIES = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -557,11 +488,7 @@ public final class CVServiceGrpc {
           break;
         case METHODID_CVDELETE:
           serviceImpl.cVDelete((proto.ServerClient.CVMetaInfo) request,
-              (io.grpc.stub.StreamObserver<proto.ServerClient.Answer>) responseObserver);
-          break;
-        case METHODID_CVAPPLIES:
-          serviceImpl.cVApplies((proto.ServerClient.JobRequestMetaInfo) request,
-              (io.grpc.stub.StreamObserver<proto.ServerClient.Answer>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -629,7 +556,6 @@ public final class CVServiceGrpc {
               .addMethod(getCVListReadMethod())
               .addMethod(getCVUpdateInfoMethod())
               .addMethod(getCVDeleteMethod())
-              .addMethod(getCVAppliesMethod())
               .build();
         }
       }

@@ -1,5 +1,6 @@
 package impl;
 
+import com.google.protobuf.BoolValue;
 import com.google.protobuf.Empty;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
@@ -87,12 +88,12 @@ public class CompanyServiceImpl extends CompanyServiceGrpc.CompanyServiceImplBas
     }
 
     @Override
-    public void companyDelete(ServerClient.CompanyMetaInfo request, StreamObserver<ServerClient.Answer> responseObserver) {
+    public void companyDelete(ServerClient.CompanyMetaInfo request, StreamObserver<BoolValue> responseObserver) {
         System.out.println("companyDelete");
         try {
             CompanyController companyController = new CompanyController();
             Boolean bool = companyController.companyDelete(request);
-            responseObserver.onNext(ServerClient.Answer.newBuilder().setAnsBool(bool).build());
+            responseObserver.onNext(BoolValue.newBuilder().setValue(bool).build());
             responseObserver.onCompleted();
         }
         catch (Exception e){
