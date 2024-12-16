@@ -2,6 +2,7 @@ syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
 
 package proto;
 
@@ -54,7 +55,7 @@ message CandidateFullInfo{
   UserFullInfo user = 1;
   google.protobuf.Timestamp birthDate = 2;
   Gender gender = 3;
-  map<int32, bool>  currentCVs = 4;
+  map<int32, bool> currentCVs = 4;
 }
 
 message UserMetaInfo{
@@ -70,14 +71,6 @@ message RecruiterFullInfo{
   int32 companyID = 2;
   int32 roleID = 3;
   string departmentName = 4;
-}
-
-message Answer{
-  int32 ansInt = 1;
-  int64 ansLong = 2;
-  string ansString = 3;
-  bool ansBool = 4;
-  bytes ansBytes= 5;
 }
 
 message JobRequestFullInfo {
@@ -101,17 +94,20 @@ message JobRequestMetaInfo {
 
 message RoleFullInfo{
   int32 roleID = 1;
-  int32 roleName = 2;
+  string roleName = 2;
   int32 roleLevel = 3;
+  int32 companyID = 4;
 }
 
 message LocationFullInfo {
-  CompanyMetaInfo companyMetaInfo = 1;
+  int32 locationID = 1;
   string country = 2;
   string state = 3;
   string address = 4;
   string contactNumber = 5;
   JobRequestFullInfo currentJobRequest = 6;
+  string city = 7;
+  int32 companyID = 8;
 }
 
 message LocationMetaInfo {
@@ -142,6 +138,7 @@ message WorkExperienceFullInfo{
   google.protobuf.Timestamp startDate = 4;
   google.protobuf.Timestamp endDate = 5;
   string jobDescription = 6;
+  string companyName = 7;
 }
 
 message SkillFullInfo{
@@ -159,7 +156,7 @@ message PersonalityFullInfo{
 }
 
 message EducationFullInfo{
-  int32 EducationID = 1;
+  int32 educationID = 1;
   int32 CVID = 2;
   string degree = 3;
   string field = 4;
@@ -169,7 +166,7 @@ message EducationFullInfo{
 }
 
 message CertificationFullInfo{
-  int32 CertificationID = 1;
+  int32 certificationID = 1;
   int32 CVID = 2;
   string certificationName = 3;
   string provider = 4;
@@ -194,6 +191,16 @@ message CVMetaInfo{
   int32 candidateID = 2;
 }
 
+message WishListFullInfo{
+  int32 candidateID = 1;
+  int32 salaryMinimum = 2;
+  string location = 3;
+  JobType jobType = 4;
+  JobLevel jobLevel = 5;
+  string insurance = 6;
+}
+
+//OK
 service UserService{
   rpc CandidateCreate (CandidateFullInfo) returns (CandidateFullInfo);
   rpc RecruiterCreate (RecruiterFullInfo) returns (RecruiterFullInfo);
@@ -209,30 +216,34 @@ service UserService{
   rpc CandidateUpdate (CandidateFullInfo) returns (CandidateFullInfo);
   rpc RecruiterUpdate (RecruiterFullInfo) returns (RecruiterFullInfo);
 
-  rpc UserDelete (UserMetaInfo) returns (Answer);
+  rpc UserDelete (UserMetaInfo) returns (google.protobuf.BoolValue);
 }
-
+//OK
 service JobRequestService {
   rpc JobRequestRegister (JobRequestFullInfo) returns (JobRequestFullInfo);
   rpc JobRequestRead (JobRequestMetaInfo) returns (JobRequestFullInfo);
+  rpc JobRequestListRead (google.protobuf.Empty) returns (stream JobRequestFullInfo);
   rpc JobRequestUpdateInfo (JobRequestFullInfo) returns (JobRequestFullInfo);
-  rpc JobRequestDelete (JobRequestMetaInfo) returns (JobRequestFullInfo);
-  //  rpc JobRequestAppendCVs ()
-}
+  rpc JobRequestDelete (JobRequestMetaInfo) returns (google.protobuf.BoolValue);
 
+  rpc JobRequestApply (JobRequestFullInfo) returns (google.protobuf.BoolValue);
+  rpc JobRequestWithdraw (JobRequestFullInfo) returns (google.protobuf.BoolValue);
+}
+//OK
 service RoleService {
   rpc RoleRegister (RoleFullInfo) returns (RoleFullInfo);
   rpc RoleReadInfo (RoleFullInfo) returns (RoleFullInfo);
+  rpc RoleListRead (CompanyMetaInfo) returns (stream RoleFullInfo);
   rpc RoleUpdateInfo (RoleFullInfo) returns (RoleFullInfo);
-  rpc RoleDeleteInfo (RoleFullInfo) returns (RoleFullInfo);
+  rpc RoleDeleteInfo (RoleFullInfo) returns (google.protobuf.BoolValue);
 }
-
+//OK
 service CompanyService {
   rpc CompanyRegister (CompanyFullInfo) returns (CompanyFullInfo);
   rpc CompanyReadInfo (CompanyMetaInfo) returns (CompanyFullInfo);
   rpc CompanyListRead (google.protobuf.Empty) returns (stream CompanyFullInfo);
   rpc CompanyUpdateInfo (CompanyFullInfo) returns (CompanyFullInfo);
-  rpc CompanyDelete (CompanyMetaInfo) returns (CompanyFullInfo);
+  rpc CompanyDelete (CompanyMetaInfo) returns (google.protobuf.BoolValue);
 
   //  rpc CompanyAppendRecruiter (RecruiterFullInfo) returns (CompanyFullInfo);
   //  rpc CompanyDeleteRecruiter (RecruiterFullInfo) returns (CompanyFullInfo);
@@ -240,57 +251,24 @@ service CompanyService {
   //  rpc CompanyAppendLocation (LocationMetaInfo) returns (CompanyFullInfo);
   //  rpc CompanyDeleteLocation (LocationMetaInfo) returns (CompanyFullInfo);
 }
-
+//OK
 service LocationService {
   rpc LocationRegister (LocationFullInfo) returns (LocationFullInfo);
   rpc LocationReadInfo (LocationMetaInfo) returns (LocationFullInfo);
+  rpc LocationListRead (google.protobuf.Empty) returns (stream LocationFullInfo);
   rpc LocationUpdateInfo (LocationFullInfo) returns (LocationFullInfo);
-  rpc LocationDelete  (LocationMetaInfo)  returns (LocationFullInfo);
+  rpc LocationDelete  (LocationMetaInfo)  returns (google.protobuf.BoolValue);
 
   //  rpc LocationAppendJobReq (JobRequestMetaInfo) returns (LocationFullInfo);
   //  rpc LocationDeleteJobReq (JobRequestMetaInfo) returns (LocationFullInfo);
 }
 
-service WorkExperienceService {
-  rpc WorkExperienceCreate (WorkExperienceFullInfo) returns (WorkExperienceFullInfo);
-  rpc WorkExperienceRead (WorkExperienceFullInfo) returns (WorkExperienceFullInfo);
-  rpc WorkExperienceUpdateInfo (WorkExperienceFullInfo) returns (WorkExperienceFullInfo);
-  rpc WorkExperienceDelete (WorkExperienceFullInfo) returns (WorkExperienceFullInfo);
-}
-
-service SkillService {
-  rpc SkillCreate (SkillFullInfo) returns (SkillFullInfo);
-  rpc SkillRead (SkillFullInfo) returns (SkillFullInfo);
-  rpc SkillUpdateInfo (SkillFullInfo) returns (SkillFullInfo);
-  rpc SkillDelete (SkillFullInfo) returns (SkillFullInfo);
-}
-
-service PersonalityService {
-  rpc PersonalityCreate (PersonalityFullInfo) returns (PersonalityFullInfo);
-  rpc PersonalityRead (PersonalityFullInfo) returns (PersonalityFullInfo);
-  rpc PersonalityUpdateInfo (PersonalityFullInfo) returns (PersonalityFullInfo);
-  rpc PersonalityDelete (PersonalityFullInfo) returns (PersonalityFullInfo);
-}
-
-service EducationService {
-  rpc EducationCreate (EducationFullInfo) returns (EducationFullInfo);
-  rpc EducationRead (EducationFullInfo) returns (EducationFullInfo);
-  rpc EducationUpdateInfo (EducationFullInfo) returns (EducationFullInfo);
-  rpc EducationDelete (EducationFullInfo) returns (EducationFullInfo);
-}
-
-service CertificationService {
-  rpc CertificationCreate (CertificationFullInfo) returns (CertificationFullInfo);
-  rpc CertificationRead (CertificationFullInfo) returns (CertificationFullInfo);
-  rpc CertificationUpdateInfo (CertificationFullInfo) returns (CertificationFullInfo);
-  rpc CertificationDelete (CertificationFullInfo) returns (CertificationFullInfo);
-}
-
 service CVService{
   rpc CVCreate (CVFullInfo) returns (CVFullInfo);
   rpc CVRead (CVMetaInfo) returns (CVFullInfo);
+  rpc CVListRead(UserMetaInfo) returns (stream CVFullInfo);
   rpc CVUpdateInfo (CVFullInfo) returns (CVFullInfo);
-  rpc CVDelete (CVMetaInfo) returns (CVFullInfo);
+  rpc CVDelete (CVMetaInfo) returns (google.protobuf.BoolValue);
 
   //  rpc CVAppendWorkExperience (WorkExperienceFullInfo) returns (WorkExperienceFullInfo);
   //  rpc CVDeleteWorkExperience (WorkExperienceFullInfo) returns (WorkExperienceFullInfo);
@@ -306,4 +284,58 @@ service CVService{
 
   //  rpc CVAppendCertification (CertificationFullInfo) returns (CertificationFullInfo);
   //  rpc CVDeleteCertification (CertificationFullInfo) returns (CertificationFullInfo);
+}
+
+service WorkExperienceService {
+  rpc WorkExperienceCreate (WorkExperienceFullInfo) returns (WorkExperienceFullInfo);
+  rpc WorkExperienceRead (WorkExperienceFullInfo) returns (WorkExperienceFullInfo);
+  rpc WorkExperienceListRead (CVMetaInfo) returns (stream WorkExperienceFullInfo);
+  rpc WorkExperienceUpdateInfo (WorkExperienceFullInfo) returns (WorkExperienceFullInfo);
+  rpc WorkExperienceDelete (WorkExperienceFullInfo) returns (google.protobuf.BoolValue);
+}
+
+service SkillService {
+  rpc SkillCreate (SkillFullInfo) returns (SkillFullInfo);
+  rpc SkillRead (SkillFullInfo) returns (SkillFullInfo);
+  rpc SkillListRead (CVMetaInfo) returns (stream SkillFullInfo);
+  rpc SkillUpdateInfo (SkillFullInfo) returns (SkillFullInfo);
+  rpc SkillDelete (SkillFullInfo) returns (google.protobuf.BoolValue);
+}
+
+service PersonalityService {
+  rpc PersonalityCreate (PersonalityFullInfo) returns (PersonalityFullInfo);
+  rpc PersonalityRead (PersonalityFullInfo) returns (PersonalityFullInfo);
+  rpc PersonalityListRead (CVMetaInfo) returns (stream PersonalityFullInfo);
+  rpc PersonalityUpdateInfo (PersonalityFullInfo) returns (PersonalityFullInfo);
+  rpc PersonalityDelete (PersonalityFullInfo) returns (google.protobuf.BoolValue);
+}
+
+service EducationService {
+  rpc EducationCreate (EducationFullInfo) returns (EducationFullInfo);
+  rpc EducationRead (EducationFullInfo) returns (EducationFullInfo);
+  rpc EducationListRead (CVMetaInfo) returns (stream EducationFullInfo);
+  rpc EducationUpdateInfo (EducationFullInfo) returns (EducationFullInfo);
+  rpc EducationDelete (EducationFullInfo) returns (google.protobuf.BoolValue);
+}
+
+service CertificationService {
+  rpc CertificationCreate (CertificationFullInfo) returns (CertificationFullInfo);
+  rpc CertificationRead (CertificationFullInfo) returns (CertificationFullInfo);
+  rpc CertificationListRead (CVMetaInfo) returns (stream CertificationFullInfo);
+  rpc CertificationUpdateInfo (CertificationFullInfo) returns (CertificationFullInfo);
+  rpc CertificationDelete (CertificationFullInfo) returns (google.protobuf.BoolValue);
+}
+
+service SearchService{
+  rpc Candidate_JobRequest(UserMetaInfo) returns (stream JobRequestFullInfo);
+  rpc Recruiter_Company(UserMetaInfo) returns (stream CompanyFullInfo);
+
+  rpc CV_User(UserMetaInfo) returns (stream CVFullInfo);
+}
+
+service WishListService{
+  rpc WishListCreate (WishListFullInfo) returns (WishListFullInfo);
+  rpc WishListRead (UserMetaInfo) returns (WishListFullInfo);
+  rpc WishListUpdateInfo (WishListFullInfo) returns (WishListFullInfo);
+  rpc WishListDelete (UserMetaInfo) returns (google.protobuf.BoolValue);
 }

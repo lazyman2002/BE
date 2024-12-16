@@ -1,54 +1,73 @@
-//syntax = "proto3";
-//
-//import "google/protobuf/timestamp.proto";
-//
-//package proto;
-//
-//message GroupMemeber{
-//  int32 userID = 1;
-//  int32 groupID = 2;
-//  bool isAdmin = 3;
-//}
-//
-//message GroupMetaInfo{
-//  int32 groupID = 1;
-//  string groupName = 2;
-//}
-//
-//message FileInfo{
-//  int32 fileID = 1;
-//  int32 fromUserID = 2;
-//  int32 toGroupID = 3;
-//  bytes fileContent = 4;
-//}
-//
-//message MessageInfo{
-//  int32 msgID = 1;
-//  int32 fromUserID = 2;
-//  int32 toGroupID = 3;
-//  string messengerData = 4;
-//}
-//
-//message ScheduleFullInfo{
-//  int32 scheduleID = 1;
-//  int32 groupID = 2;
-//  google.protobuf.Timestamp timeSet= 3;
-//  bool isRecorded = 4;
-//}
-//
-//service GroupService{
-//  rpc GroupCreate (GroupMetaInfo) returns (GroupMetaInfo);
-//  rpc GroupRead (GroupMetaInfo) returns (GroupMetaInfo);
-//  rpc GroupUpdateInfo (GroupMetaInfo) returns (GroupMetaInfo);
-//  rpc GroupDelete (GroupMetaInfo) returns (GroupMetaInfo);
-//
-//  rpc GroupAppendMember (GroupMemeber) returns (GroupMetaInfo);
-//  rpc GroupDeleteMember (GroupMemeber) returns (GroupMetaInfo);
-//
-//  rpc GroupMessengerSent (stream MessageInfo) returns (stream MessageInfo);
-//  rpc GroupFileSent (stream FileInfo) returns (stream FileInfo);
-//}
-//
-//service ScheduleService{
-//
-//}
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+package proto;
+
+message GroupMember{
+  int32 userID = 1;
+  int32 groupID = 2;
+  bool isAdmin = 3;
+}
+
+message GroupMetaInfo{
+  int32 groupID = 1;
+  string groupName = 2;
+  int32 groupCreaterID = 3;
+}
+
+message FileInfo{
+  int32 fileID = 1;
+  int32 fromUserID = 2;
+  int32 toGroupID = 3;
+  bytes fileContent = 4;
+}
+
+message MessageInfo{
+  int32 msgID = 1;
+  int32 fromUserID = 2;
+  int32 toGroupID = 3;
+  string messengerData = 4;
+  google.protobuf.Timestamp sendTime = 5;
+}
+
+message ScheduleFullInfo{
+  int32 scheduleID = 1;
+  int32 groupID = 2;
+  google.protobuf.Timestamp timeSet= 3;
+  bool isRecorded = 4;
+}
+
+message Chunk {
+  bytes Content = 1;
+}
+
+service GroupService{
+  rpc GroupCreate (GroupMetaInfo) returns (GroupMetaInfo);
+  rpc GroupRead (GroupMetaInfo) returns (GroupMetaInfo);
+  rpc GroupUpdateInfo (GroupMetaInfo) returns (GroupMetaInfo);
+  rpc GroupDelete (GroupMetaInfo) returns (google.protobuf.BoolValue);
+
+  rpc GroupListRead (GroupMember) returns (stream GroupMetaInfo);
+  rpc GroupAppendMember (GroupMember) returns (GroupMetaInfo);
+  rpc GroupDeleteMember (GroupMember) returns (google.protobuf.BoolValue);
+}
+
+service ScheduleService{
+  rpc ScheduleCreate (ScheduleFullInfo) returns (ScheduleFullInfo);
+  rpc ScheduleRead (ScheduleFullInfo) returns (ScheduleFullInfo);
+  rpc ScheduleListRead (GroupMetaInfo) returns (stream ScheduleFullInfo);
+  rpc ScheduleUpdate (ScheduleFullInfo) returns (ScheduleFullInfo);
+  rpc ScheduleDelete (ScheduleFullInfo) returns (google.protobuf.BoolValue);
+}
+
+service ChatService{
+  rpc Chat(stream MessageInfo) returns (stream MessageInfo);
+
+  rpc UploadFile(stream Chunk) returns (google.protobuf.BoolValue);
+  rpc DownloadFile(FileInfo) returns (stream Chunk);
+
+  rpc GetOldChat (GroupMetaInfo) returns (stream MessageInfo);
+}
+
