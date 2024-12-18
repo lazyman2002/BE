@@ -8480,19 +8480,36 @@ public final class ServerClient {
         getContactNumberBytes();
 
     /**
-     * <code>.proto.JobRequestFullInfo currentJobRequest = 6;</code>
-     * @return Whether the currentJobRequest field is set.
+     * <code>map&lt;int32, bool&gt; currentJobRequest = 6;</code>
      */
-    boolean hasCurrentJobRequest();
+    int getCurrentJobRequestCount();
     /**
-     * <code>.proto.JobRequestFullInfo currentJobRequest = 6;</code>
-     * @return The currentJobRequest.
+     * <code>map&lt;int32, bool&gt; currentJobRequest = 6;</code>
      */
-    proto.ServerClient.JobRequestFullInfo getCurrentJobRequest();
+    boolean containsCurrentJobRequest(
+        int key);
     /**
-     * <code>.proto.JobRequestFullInfo currentJobRequest = 6;</code>
+     * Use {@link #getCurrentJobRequestMap()} instead.
      */
-    proto.ServerClient.JobRequestFullInfoOrBuilder getCurrentJobRequestOrBuilder();
+    @java.lang.Deprecated
+    java.util.Map<java.lang.Integer, java.lang.Boolean>
+    getCurrentJobRequest();
+    /**
+     * <code>map&lt;int32, bool&gt; currentJobRequest = 6;</code>
+     */
+    java.util.Map<java.lang.Integer, java.lang.Boolean>
+    getCurrentJobRequestMap();
+    /**
+     * <code>map&lt;int32, bool&gt; currentJobRequest = 6;</code>
+     */
+    boolean getCurrentJobRequestOrDefault(
+        int key,
+        boolean defaultValue);
+    /**
+     * <code>map&lt;int32, bool&gt; currentJobRequest = 6;</code>
+     */
+    boolean getCurrentJobRequestOrThrow(
+        int key);
 
     /**
      * <code>string city = 7;</code>
@@ -8549,6 +8566,18 @@ public final class ServerClient {
       return proto.ServerClient.internal_static_proto_LocationFullInfo_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    @java.lang.Override
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 6:
+          return internalGetCurrentJobRequest();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -8725,29 +8754,80 @@ public final class ServerClient {
     }
 
     public static final int CURRENTJOBREQUEST_FIELD_NUMBER = 6;
-    private proto.ServerClient.JobRequestFullInfo currentJobRequest_;
-    /**
-     * <code>.proto.JobRequestFullInfo currentJobRequest = 6;</code>
-     * @return Whether the currentJobRequest field is set.
-     */
-    @java.lang.Override
-    public boolean hasCurrentJobRequest() {
-      return currentJobRequest_ != null;
+    private static final class CurrentJobRequestDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.Integer, java.lang.Boolean> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.Integer, java.lang.Boolean>newDefaultInstance(
+                  proto.ServerClient.internal_static_proto_LocationFullInfo_CurrentJobRequestEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0,
+                  com.google.protobuf.WireFormat.FieldType.BOOL,
+                  false);
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.Integer, java.lang.Boolean> currentJobRequest_;
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Boolean>
+    internalGetCurrentJobRequest() {
+      if (currentJobRequest_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            CurrentJobRequestDefaultEntryHolder.defaultEntry);
+      }
+      return currentJobRequest_;
+    }
+    public int getCurrentJobRequestCount() {
+      return internalGetCurrentJobRequest().getMap().size();
     }
     /**
-     * <code>.proto.JobRequestFullInfo currentJobRequest = 6;</code>
-     * @return The currentJobRequest.
+     * <code>map&lt;int32, bool&gt; currentJobRequest = 6;</code>
      */
     @java.lang.Override
-    public proto.ServerClient.JobRequestFullInfo getCurrentJobRequest() {
-      return currentJobRequest_ == null ? proto.ServerClient.JobRequestFullInfo.getDefaultInstance() : currentJobRequest_;
+    public boolean containsCurrentJobRequest(
+        int key) {
+      
+      return internalGetCurrentJobRequest().getMap().containsKey(key);
     }
     /**
-     * <code>.proto.JobRequestFullInfo currentJobRequest = 6;</code>
+     * Use {@link #getCurrentJobRequestMap()} instead.
      */
     @java.lang.Override
-    public proto.ServerClient.JobRequestFullInfoOrBuilder getCurrentJobRequestOrBuilder() {
-      return currentJobRequest_ == null ? proto.ServerClient.JobRequestFullInfo.getDefaultInstance() : currentJobRequest_;
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, java.lang.Boolean> getCurrentJobRequest() {
+      return getCurrentJobRequestMap();
+    }
+    /**
+     * <code>map&lt;int32, bool&gt; currentJobRequest = 6;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.Integer, java.lang.Boolean> getCurrentJobRequestMap() {
+      return internalGetCurrentJobRequest().getMap();
+    }
+    /**
+     * <code>map&lt;int32, bool&gt; currentJobRequest = 6;</code>
+     */
+    @java.lang.Override
+    public boolean getCurrentJobRequestOrDefault(
+        int key,
+        boolean defaultValue) {
+      
+      java.util.Map<java.lang.Integer, java.lang.Boolean> map =
+          internalGetCurrentJobRequest().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;int32, bool&gt; currentJobRequest = 6;</code>
+     */
+    @java.lang.Override
+    public boolean getCurrentJobRequestOrThrow(
+        int key) {
+      
+      java.util.Map<java.lang.Integer, java.lang.Boolean> map =
+          internalGetCurrentJobRequest().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
     }
 
     public static final int CITY_FIELD_NUMBER = 7;
@@ -8829,9 +8909,12 @@ public final class ServerClient {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(contactNumber_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, contactNumber_);
       }
-      if (currentJobRequest_ != null) {
-        output.writeMessage(6, getCurrentJobRequest());
-      }
+      com.google.protobuf.GeneratedMessageV3
+        .serializeIntegerMapTo(
+          output,
+          internalGetCurrentJobRequest(),
+          CurrentJobRequestDefaultEntryHolder.defaultEntry,
+          6);
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(city_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 7, city_);
       }
@@ -8863,9 +8946,15 @@ public final class ServerClient {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(contactNumber_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, contactNumber_);
       }
-      if (currentJobRequest_ != null) {
+      for (java.util.Map.Entry<java.lang.Integer, java.lang.Boolean> entry
+           : internalGetCurrentJobRequest().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Boolean>
+        currentJobRequest__ = CurrentJobRequestDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, getCurrentJobRequest());
+            .computeMessageSize(6, currentJobRequest__);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(city_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, city_);
@@ -8899,11 +8988,8 @@ public final class ServerClient {
           .equals(other.getAddress())) return false;
       if (!getContactNumber()
           .equals(other.getContactNumber())) return false;
-      if (hasCurrentJobRequest() != other.hasCurrentJobRequest()) return false;
-      if (hasCurrentJobRequest()) {
-        if (!getCurrentJobRequest()
-            .equals(other.getCurrentJobRequest())) return false;
-      }
+      if (!internalGetCurrentJobRequest().equals(
+          other.internalGetCurrentJobRequest())) return false;
       if (!getCity()
           .equals(other.getCity())) return false;
       if (getCompanyID()
@@ -8929,9 +9015,9 @@ public final class ServerClient {
       hash = (53 * hash) + getAddress().hashCode();
       hash = (37 * hash) + CONTACTNUMBER_FIELD_NUMBER;
       hash = (53 * hash) + getContactNumber().hashCode();
-      if (hasCurrentJobRequest()) {
+      if (!internalGetCurrentJobRequest().getMap().isEmpty()) {
         hash = (37 * hash) + CURRENTJOBREQUEST_FIELD_NUMBER;
-        hash = (53 * hash) + getCurrentJobRequest().hashCode();
+        hash = (53 * hash) + internalGetCurrentJobRequest().hashCode();
       }
       hash = (37 * hash) + CITY_FIELD_NUMBER;
       hash = (53 * hash) + getCity().hashCode();
@@ -9044,6 +9130,28 @@ public final class ServerClient {
         return proto.ServerClient.internal_static_proto_LocationFullInfo_descriptor;
       }
 
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMapField(
+          int number) {
+        switch (number) {
+          case 6:
+            return internalGetCurrentJobRequest();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMutableMapField(
+          int number) {
+        switch (number) {
+          case 6:
+            return internalGetMutableCurrentJobRequest();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
@@ -9071,11 +9179,7 @@ public final class ServerClient {
         state_ = "";
         address_ = "";
         contactNumber_ = "";
-        currentJobRequest_ = null;
-        if (currentJobRequestBuilder_ != null) {
-          currentJobRequestBuilder_.dispose();
-          currentJobRequestBuilder_ = null;
-        }
+        internalGetMutableCurrentJobRequest().clear();
         city_ = "";
         companyID_ = 0;
         return this;
@@ -9127,9 +9231,8 @@ public final class ServerClient {
           result.contactNumber_ = contactNumber_;
         }
         if (((from_bitField0_ & 0x00000020) != 0)) {
-          result.currentJobRequest_ = currentJobRequestBuilder_ == null
-              ? currentJobRequest_
-              : currentJobRequestBuilder_.build();
+          result.currentJobRequest_ = internalGetCurrentJobRequest();
+          result.currentJobRequest_.makeImmutable();
         }
         if (((from_bitField0_ & 0x00000040) != 0)) {
           result.city_ = city_;
@@ -9206,9 +9309,9 @@ public final class ServerClient {
           bitField0_ |= 0x00000010;
           onChanged();
         }
-        if (other.hasCurrentJobRequest()) {
-          mergeCurrentJobRequest(other.getCurrentJobRequest());
-        }
+        internalGetMutableCurrentJobRequest().mergeFrom(
+            other.internalGetCurrentJobRequest());
+        bitField0_ |= 0x00000020;
         if (!other.getCity().isEmpty()) {
           city_ = other.city_;
           bitField0_ |= 0x00000040;
@@ -9269,9 +9372,11 @@ public final class ServerClient {
                 break;
               } // case 42
               case 50: {
-                input.readMessage(
-                    getCurrentJobRequestFieldBuilder().getBuilder(),
-                    extensionRegistry);
+                com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Boolean>
+                currentJobRequest__ = input.readMessage(
+                    CurrentJobRequestDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+                internalGetMutableCurrentJobRequest().getMutableMap().put(
+                    currentJobRequest__.getKey(), currentJobRequest__.getValue());
                 bitField0_ |= 0x00000020;
                 break;
               } // case 50
@@ -9622,123 +9727,129 @@ public final class ServerClient {
         return this;
       }
 
-      private proto.ServerClient.JobRequestFullInfo currentJobRequest_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          proto.ServerClient.JobRequestFullInfo, proto.ServerClient.JobRequestFullInfo.Builder, proto.ServerClient.JobRequestFullInfoOrBuilder> currentJobRequestBuilder_;
-      /**
-       * <code>.proto.JobRequestFullInfo currentJobRequest = 6;</code>
-       * @return Whether the currentJobRequest field is set.
-       */
-      public boolean hasCurrentJobRequest() {
-        return ((bitField0_ & 0x00000020) != 0);
-      }
-      /**
-       * <code>.proto.JobRequestFullInfo currentJobRequest = 6;</code>
-       * @return The currentJobRequest.
-       */
-      public proto.ServerClient.JobRequestFullInfo getCurrentJobRequest() {
-        if (currentJobRequestBuilder_ == null) {
-          return currentJobRequest_ == null ? proto.ServerClient.JobRequestFullInfo.getDefaultInstance() : currentJobRequest_;
-        } else {
-          return currentJobRequestBuilder_.getMessage();
+      private com.google.protobuf.MapField<
+          java.lang.Integer, java.lang.Boolean> currentJobRequest_;
+      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Boolean>
+          internalGetCurrentJobRequest() {
+        if (currentJobRequest_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              CurrentJobRequestDefaultEntryHolder.defaultEntry);
         }
+        return currentJobRequest_;
       }
-      /**
-       * <code>.proto.JobRequestFullInfo currentJobRequest = 6;</code>
-       */
-      public Builder setCurrentJobRequest(proto.ServerClient.JobRequestFullInfo value) {
-        if (currentJobRequestBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          currentJobRequest_ = value;
-        } else {
-          currentJobRequestBuilder_.setMessage(value);
+      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Boolean>
+          internalGetMutableCurrentJobRequest() {
+        if (currentJobRequest_ == null) {
+          currentJobRequest_ = com.google.protobuf.MapField.newMapField(
+              CurrentJobRequestDefaultEntryHolder.defaultEntry);
+        }
+        if (!currentJobRequest_.isMutable()) {
+          currentJobRequest_ = currentJobRequest_.copy();
         }
         bitField0_ |= 0x00000020;
         onChanged();
-        return this;
+        return currentJobRequest_;
+      }
+      public int getCurrentJobRequestCount() {
+        return internalGetCurrentJobRequest().getMap().size();
       }
       /**
-       * <code>.proto.JobRequestFullInfo currentJobRequest = 6;</code>
+       * <code>map&lt;int32, bool&gt; currentJobRequest = 6;</code>
        */
-      public Builder setCurrentJobRequest(
-          proto.ServerClient.JobRequestFullInfo.Builder builderForValue) {
-        if (currentJobRequestBuilder_ == null) {
-          currentJobRequest_ = builderForValue.build();
-        } else {
-          currentJobRequestBuilder_.setMessage(builderForValue.build());
+      @java.lang.Override
+      public boolean containsCurrentJobRequest(
+          int key) {
+        
+        return internalGetCurrentJobRequest().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getCurrentJobRequestMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Integer, java.lang.Boolean> getCurrentJobRequest() {
+        return getCurrentJobRequestMap();
+      }
+      /**
+       * <code>map&lt;int32, bool&gt; currentJobRequest = 6;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.Integer, java.lang.Boolean> getCurrentJobRequestMap() {
+        return internalGetCurrentJobRequest().getMap();
+      }
+      /**
+       * <code>map&lt;int32, bool&gt; currentJobRequest = 6;</code>
+       */
+      @java.lang.Override
+      public boolean getCurrentJobRequestOrDefault(
+          int key,
+          boolean defaultValue) {
+        
+        java.util.Map<java.lang.Integer, java.lang.Boolean> map =
+            internalGetCurrentJobRequest().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;int32, bool&gt; currentJobRequest = 6;</code>
+       */
+      @java.lang.Override
+      public boolean getCurrentJobRequestOrThrow(
+          int key) {
+        
+        java.util.Map<java.lang.Integer, java.lang.Boolean> map =
+            internalGetCurrentJobRequest().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
         }
-        bitField0_ |= 0x00000020;
-        onChanged();
-        return this;
+        return map.get(key);
       }
-      /**
-       * <code>.proto.JobRequestFullInfo currentJobRequest = 6;</code>
-       */
-      public Builder mergeCurrentJobRequest(proto.ServerClient.JobRequestFullInfo value) {
-        if (currentJobRequestBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) != 0) &&
-            currentJobRequest_ != null &&
-            currentJobRequest_ != proto.ServerClient.JobRequestFullInfo.getDefaultInstance()) {
-            getCurrentJobRequestBuilder().mergeFrom(value);
-          } else {
-            currentJobRequest_ = value;
-          }
-        } else {
-          currentJobRequestBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000020;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.proto.JobRequestFullInfo currentJobRequest = 6;</code>
-       */
       public Builder clearCurrentJobRequest() {
         bitField0_ = (bitField0_ & ~0x00000020);
-        currentJobRequest_ = null;
-        if (currentJobRequestBuilder_ != null) {
-          currentJobRequestBuilder_.dispose();
-          currentJobRequestBuilder_ = null;
-        }
-        onChanged();
+        internalGetMutableCurrentJobRequest().getMutableMap()
+            .clear();
         return this;
       }
       /**
-       * <code>.proto.JobRequestFullInfo currentJobRequest = 6;</code>
+       * <code>map&lt;int32, bool&gt; currentJobRequest = 6;</code>
        */
-      public proto.ServerClient.JobRequestFullInfo.Builder getCurrentJobRequestBuilder() {
+      public Builder removeCurrentJobRequest(
+          int key) {
+        
+        internalGetMutableCurrentJobRequest().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Integer, java.lang.Boolean>
+          getMutableCurrentJobRequest() {
         bitField0_ |= 0x00000020;
-        onChanged();
-        return getCurrentJobRequestFieldBuilder().getBuilder();
+        return internalGetMutableCurrentJobRequest().getMutableMap();
       }
       /**
-       * <code>.proto.JobRequestFullInfo currentJobRequest = 6;</code>
+       * <code>map&lt;int32, bool&gt; currentJobRequest = 6;</code>
        */
-      public proto.ServerClient.JobRequestFullInfoOrBuilder getCurrentJobRequestOrBuilder() {
-        if (currentJobRequestBuilder_ != null) {
-          return currentJobRequestBuilder_.getMessageOrBuilder();
-        } else {
-          return currentJobRequest_ == null ?
-              proto.ServerClient.JobRequestFullInfo.getDefaultInstance() : currentJobRequest_;
-        }
+      public Builder putCurrentJobRequest(
+          int key,
+          boolean value) {
+        
+        
+        internalGetMutableCurrentJobRequest().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00000020;
+        return this;
       }
       /**
-       * <code>.proto.JobRequestFullInfo currentJobRequest = 6;</code>
+       * <code>map&lt;int32, bool&gt; currentJobRequest = 6;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          proto.ServerClient.JobRequestFullInfo, proto.ServerClient.JobRequestFullInfo.Builder, proto.ServerClient.JobRequestFullInfoOrBuilder> 
-          getCurrentJobRequestFieldBuilder() {
-        if (currentJobRequestBuilder_ == null) {
-          currentJobRequestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              proto.ServerClient.JobRequestFullInfo, proto.ServerClient.JobRequestFullInfo.Builder, proto.ServerClient.JobRequestFullInfoOrBuilder>(
-                  getCurrentJobRequest(),
-                  getParentForChildren(),
-                  isClean());
-          currentJobRequest_ = null;
-        }
-        return currentJobRequestBuilder_;
+      public Builder putAllCurrentJobRequest(
+          java.util.Map<java.lang.Integer, java.lang.Boolean> values) {
+        internalGetMutableCurrentJobRequest().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00000020;
+        return this;
       }
 
       private java.lang.Object city_ = "";
@@ -22436,6 +22547,11 @@ public final class ServerClient {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_LocationFullInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_proto_LocationFullInfo_CurrentJobRequestEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_proto_LocationFullInfo_CurrentJobRequestEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_LocationMetaInfo_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -22567,210 +22683,209 @@ public final class ServerClient {
       "uestMetaInfo\022\r\n\005jobID\030\001 \001(\005\022\022\n\nlocationI" +
       "D\030\002 \001(\005\"V\n\014RoleFullInfo\022\016\n\006roleID\030\001 \001(\005\022" +
       "\020\n\010roleName\030\002 \001(\t\022\021\n\troleLevel\030\003 \001(\005\022\021\n\t" +
-      "companyID\030\004 \001(\005\"\305\001\n\020LocationFullInfo\022\022\n\n" +
+      "companyID\030\004 \001(\005\"\224\002\n\020LocationFullInfo\022\022\n\n" +
       "locationID\030\001 \001(\005\022\017\n\007country\030\002 \001(\t\022\r\n\005sta" +
       "te\030\003 \001(\t\022\017\n\007address\030\004 \001(\t\022\025\n\rcontactNumb" +
-      "er\030\005 \001(\t\0224\n\021currentJobRequest\030\006 \001(\0132\031.pr" +
-      "oto.JobRequestFullInfo\022\014\n\004city\030\007 \001(\t\022\021\n\t" +
-      "companyID\030\010 \001(\005\"P\n\020LocationMetaInfo\022\022\n\nl" +
-      "ocationID\030\001 \001(\005\022\025\n\rcontactNumber\030\002 \001(\t\022\021" +
-      "\n\tcompanyID\030\003 \001(\005\"\364\002\n\017CompanyFullInfo\022\023\n" +
-      "\013companiesID\030\001 \001(\005\022\023\n\013companyName\030\002 \001(\t\022" +
-      "\030\n\020companyAvatarURL\030\003 \001(\t\022\017\n\007website\030\004 \001" +
-      "(\t\022\r\n\005email\030\005 \001(\t\022F\n\020activeRecruiters\030\006 " +
-      "\003(\0132,.proto.CompanyFullInfo.ActiveRecrui" +
-      "tersEntry\022D\n\017activeLocations\030\007 \003(\0132+.pro" +
-      "to.CompanyFullInfo.ActiveLocationsEntry\032" +
-      "7\n\025ActiveRecruitersEntry\022\013\n\003key\030\001 \001(\005\022\r\n" +
-      "\005value\030\002 \001(\010:\0028\001\0326\n\024ActiveLocationsEntry" +
-      "\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\"9\n\017Comp" +
-      "anyMetaInfo\022\021\n\tcompanyID\030\001 \001(\005\022\023\n\013compan" +
-      "yName\030\002 \001(\t\"\333\001\n\026WorkExperienceFullInfo\022\030" +
-      "\n\020workExperienceID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\020" +
-      "\n\010jobTitle\030\003 \001(\t\022-\n\tstartDate\030\004 \001(\0132\032.go" +
-      "ogle.protobuf.Timestamp\022+\n\007endDate\030\005 \001(\013" +
-      "2\032.google.protobuf.Timestamp\022\026\n\016jobDescr" +
-      "iption\030\006 \001(\t\022\023\n\013companyName\030\007 \001(\t\"j\n\rSki" +
-      "llFullInfo\022\017\n\007skillID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(" +
-      "\005\022\021\n\tskillName\030\003 \001(\t\022\'\n\013proficiency\030\004 \001(" +
-      "\0162\022.proto.Proficiency\"i\n\023PersonalityFull" +
-      "Info\022\025\n\rpersonalityID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(" +
-      "\005\022\030\n\020personalityTitle\030\003 \001(\t\022\023\n\013descripti" +
-      "on\030\004 \001(\t\"\306\001\n\021EducationFullInfo\022\023\n\013educat" +
-      "ionID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\016\n\006degree\030\003 \001(" +
-      "\t\022\r\n\005field\030\004 \001(\t\022\023\n\013institution\030\005 \001(\t\022-\n" +
-      "\tstartDate\030\006 \001(\0132\032.google.protobuf.Times" +
-      "tamp\022+\n\007endDate\030\007 \001(\0132\032.google.protobuf." +
-      "Timestamp\"\235\001\n\025CertificationFullInfo\022\027\n\017c" +
-      "ertificationID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\031\n\021ce" +
-      "rtificationName\030\003 \001(\t\022\020\n\010provider\030\004 \001(\t\022" +
-      "0\n\014providedDate\030\005 \001(\0132\032.google.protobuf." +
-      "Timestamp\"\370\005\n\nCVFullInfo\022\014\n\004CVID\030\001 \001(\005\022\023" +
-      "\n\013candidateID\030\002 \001(\005\022\r\n\005email\030\003 \001(\t\022\023\n\013ph" +
-      "oneNumber\030\004 \001(\t\022\020\n\010jobTitle\030\005 \001(\t\022;\n\rcur" +
-      "rentSkills\030\006 \003(\0132$.proto.CVFullInfo.Curr" +
-      "entSkillsEntry\022I\n\024currentPersonalities\030\007" +
-      " \003(\0132+.proto.CVFullInfo.CurrentPersonali" +
-      "tiesEntry\022M\n\026currentWorkExperiences\030\010 \003(" +
-      "\0132-.proto.CVFullInfo.CurrentWorkExperien" +
-      "cesEntry\022C\n\021currentEducations\030\t \003(\0132(.pr" +
-      "oto.CVFullInfo.CurrentEducationsEntry\022K\n" +
-      "\025currentCertifications\030\n \003(\0132,.proto.CVF" +
-      "ullInfo.CurrentCertificationsEntry\0324\n\022Cu" +
-      "rrentSkillsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002" +
-      " \001(\010:\0028\001\032;\n\031CurrentPersonalitiesEntry\022\013\n" +
-      "\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\032=\n\033Current" +
-      "WorkExperiencesEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005val" +
-      "ue\030\002 \001(\010:\0028\001\0328\n\026CurrentEducationsEntry\022\013" +
-      "\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\032<\n\032Curren" +
-      "tCertificationsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005val" +
-      "ue\030\002 \001(\010:\0028\001\"/\n\nCVMetaInfo\022\014\n\004CVID\030\001 \001(\005" +
-      "\022\023\n\013candidateID\030\002 \001(\005\"\247\001\n\020WishListFullIn" +
-      "fo\022\023\n\013candidateID\030\001 \001(\005\022\025\n\rsalaryMinimum" +
-      "\030\002 \001(\005\022\020\n\010location\030\003 \001(\t\022\037\n\007jobType\030\004 \001(" +
-      "\0162\016.proto.JobType\022!\n\010jobLevel\030\005 \001(\0162\017.pr" +
-      "oto.JobLevel\022\021\n\tinsurance\030\006 \001(\t*\036\n\006Gende" +
-      "r\022\010\n\004MALE\020\000\022\n\n\006FEMALE\020\001*f\n\010JobLevel\022\017\n\013E" +
-      "NTRY_LEVEL\020\000\022\r\n\tMID_LEVEL\020\001\022\020\n\014SENIOR_LE" +
-      "VEL\020\002\022\013\n\007MANAGER\020\003\022\014\n\010DIRECTOR\020\004\022\r\n\tEXEC" +
-      "UTIVE\020\005*%\n\007JobType\022\014\n\010FULLTIME\020\000\022\014\n\010HALF" +
-      "TIME\020\001*I\n\006Status\022\026\n\022APPLICATION_REVIEW\020\000" +
-      "\022\r\n\tINTERVIEW\020\001\022\013\n\007SUCCESS\020\002\022\013\n\007FAILURE\020" +
-      "\003*9\n\013Proficiency\022\014\n\010BEGINNER\020\000\022\020\n\014INTERM" +
-      "EDIATE\020\001\022\n\n\006EXPERT\020\0022\247\006\n\013UserService\022E\n\017" +
-      "CandidateCreate\022\030.proto.CandidateFullInf" +
-      "o\032\030.proto.CandidateFullInfo\022E\n\017Recruiter" +
-      "Create\022\030.proto.RecruiterFullInfo\032\030.proto" +
-      ".RecruiterFullInfo\0224\n\010UserRead\022\023.proto.U" +
-      "serMetaInfo\032\023.proto.UserFullInfo\022=\n\014User" +
-      "ListRead\022\026.google.protobuf.Empty\032\023.proto" +
-      ".UserMetaInfo0\001\022>\n\rCandidateRead\022\023.proto" +
-      ".UserMetaInfo\032\030.proto.CandidateFullInfo\022" +
-      "G\n\021CandidateListRead\022\026.google.protobuf.E" +
-      "mpty\032\030.proto.CandidateFullInfo0\001\022>\n\rRecr" +
-      "uiterRead\022\023.proto.UserMetaInfo\032\030.proto.R" +
-      "ecruiterFullInfo\022G\n\021RecruiterListRead\022\026." +
-      "google.protobuf.Empty\032\030.proto.RecruiterF" +
-      "ullInfo0\001\0226\n\nUserUpdate\022\023.proto.UserFull" +
-      "Info\032\023.proto.UserFullInfo\022E\n\017CandidateUp" +
-      "date\022\030.proto.CandidateFullInfo\032\030.proto.C" +
-      "andidateFullInfo\022E\n\017RecruiterUpdate\022\030.pr" +
-      "oto.RecruiterFullInfo\032\030.proto.RecruiterF" +
-      "ullInfo\022=\n\nUserDelete\022\023.proto.UserMetaIn" +
-      "fo\032\032.google.protobuf.BoolValue2\242\004\n\021JobRe" +
-      "questService\022J\n\022JobRequestRegister\022\031.pro" +
-      "to.JobRequestFullInfo\032\031.proto.JobRequest" +
-      "FullInfo\022F\n\016JobRequestRead\022\031.proto.JobRe" +
-      "questMetaInfo\032\031.proto.JobRequestFullInfo" +
-      "\022I\n\022JobRequestListRead\022\026.google.protobuf" +
-      ".Empty\032\031.proto.JobRequestFullInfo0\001\022L\n\024J" +
-      "obRequestUpdateInfo\022\031.proto.JobRequestFu" +
-      "llInfo\032\031.proto.JobRequestFullInfo\022I\n\020Job" +
-      "RequestDelete\022\031.proto.JobRequestMetaInfo" +
-      "\032\032.google.protobuf.BoolValue\022H\n\017JobReque" +
-      "stApply\022\031.proto.JobRequestFullInfo\032\032.goo" +
-      "gle.protobuf.BoolValue\022K\n\022JobRequestWith" +
-      "draw\022\031.proto.JobRequestFullInfo\032\032.google" +
-      ".protobuf.BoolValue2\277\002\n\013RoleService\0228\n\014R" +
-      "oleRegister\022\023.proto.RoleFullInfo\032\023.proto" +
-      ".RoleFullInfo\0228\n\014RoleReadInfo\022\023.proto.Ro" +
-      "leFullInfo\032\023.proto.RoleFullInfo\022=\n\014RoleL" +
-      "istRead\022\026.proto.CompanyMetaInfo\032\023.proto." +
-      "RoleFullInfo0\001\022:\n\016RoleUpdateInfo\022\023.proto" +
-      ".RoleFullInfo\032\023.proto.RoleFullInfo\022A\n\016Ro" +
-      "leDeleteInfo\022\023.proto.RoleFullInfo\032\032.goog" +
-      "le.protobuf.BoolValue2\345\002\n\016CompanyService" +
-      "\022A\n\017CompanyRegister\022\026.proto.CompanyFullI" +
-      "nfo\032\026.proto.CompanyFullInfo\022A\n\017CompanyRe" +
-      "adInfo\022\026.proto.CompanyMetaInfo\032\026.proto.C" +
-      "ompanyFullInfo\022C\n\017CompanyListRead\022\026.goog" +
-      "le.protobuf.Empty\032\026.proto.CompanyFullInf" +
-      "o0\001\022C\n\021CompanyUpdateInfo\022\026.proto.Company" +
-      "FullInfo\032\026.proto.CompanyFullInfo\022C\n\rComp" +
-      "anyDelete\022\026.proto.CompanyMetaInfo\032\032.goog" +
-      "le.protobuf.BoolValue2\363\002\n\017LocationServic" +
-      "e\022D\n\020LocationRegister\022\027.proto.LocationFu" +
-      "llInfo\032\027.proto.LocationFullInfo\022D\n\020Locat" +
-      "ionReadInfo\022\027.proto.LocationMetaInfo\032\027.p" +
-      "roto.LocationFullInfo\022E\n\020LocationListRea" +
-      "d\022\026.google.protobuf.Empty\032\027.proto.Locati" +
-      "onFullInfo0\001\022F\n\022LocationUpdateInfo\022\027.pro" +
-      "to.LocationFullInfo\032\027.proto.LocationFull" +
-      "Info\022E\n\016LocationDelete\022\027.proto.LocationM" +
-      "etaInfo\032\032.google.protobuf.BoolValue2\226\002\n\t" +
-      "CVService\0220\n\010CVCreate\022\021.proto.CVFullInfo" +
-      "\032\021.proto.CVFullInfo\022.\n\006CVRead\022\021.proto.CV" +
-      "MetaInfo\032\021.proto.CVFullInfo\0226\n\nCVListRea" +
-      "d\022\023.proto.UserMetaInfo\032\021.proto.CVFullInf" +
-      "o0\001\0224\n\014CVUpdateInfo\022\021.proto.CVFullInfo\032\021" +
-      ".proto.CVFullInfo\0229\n\010CVDelete\022\021.proto.CV" +
-      "MetaInfo\032\032.google.protobuf.BoolValue2\274\003\n" +
-      "\025WorkExperienceService\022T\n\024WorkExperience" +
-      "Create\022\035.proto.WorkExperienceFullInfo\032\035." +
-      "proto.WorkExperienceFullInfo\022R\n\022WorkExpe" +
-      "rienceRead\022\035.proto.WorkExperienceFullInf" +
-      "o\032\035.proto.WorkExperienceFullInfo\022L\n\026Work" +
-      "ExperienceListRead\022\021.proto.CVMetaInfo\032\035." +
-      "proto.WorkExperienceFullInfo0\001\022X\n\030WorkEx" +
-      "perienceUpdateInfo\022\035.proto.WorkExperienc" +
-      "eFullInfo\032\035.proto.WorkExperienceFullInfo" +
-      "\022Q\n\024WorkExperienceDelete\022\035.proto.WorkExp" +
-      "erienceFullInfo\032\032.google.protobuf.BoolVa" +
-      "lue2\276\002\n\014SkillService\0229\n\013SkillCreate\022\024.pr" +
-      "oto.SkillFullInfo\032\024.proto.SkillFullInfo\022" +
-      "7\n\tSkillRead\022\024.proto.SkillFullInfo\032\024.pro" +
-      "to.SkillFullInfo\022:\n\rSkillListRead\022\021.prot" +
-      "o.CVMetaInfo\032\024.proto.SkillFullInfo0\001\022=\n\017" +
-      "SkillUpdateInfo\022\024.proto.SkillFullInfo\032\024." +
-      "proto.SkillFullInfo\022?\n\013SkillDelete\022\024.pro" +
-      "to.SkillFullInfo\032\032.google.protobuf.BoolV" +
-      "alue2\222\003\n\022PersonalityService\022K\n\021Personali" +
-      "tyCreate\022\032.proto.PersonalityFullInfo\032\032.p" +
-      "roto.PersonalityFullInfo\022I\n\017PersonalityR" +
-      "ead\022\032.proto.PersonalityFullInfo\032\032.proto." +
-      "PersonalityFullInfo\022F\n\023PersonalityListRe" +
-      "ad\022\021.proto.CVMetaInfo\032\032.proto.Personalit" +
-      "yFullInfo0\001\022O\n\025PersonalityUpdateInfo\022\032.p" +
-      "roto.PersonalityFullInfo\032\032.proto.Persona" +
-      "lityFullInfo\022K\n\021PersonalityDelete\022\032.prot" +
-      "o.PersonalityFullInfo\032\032.google.protobuf." +
-      "BoolValue2\366\002\n\020EducationService\022E\n\017Educat" +
-      "ionCreate\022\030.proto.EducationFullInfo\032\030.pr" +
-      "oto.EducationFullInfo\022C\n\rEducationRead\022\030" +
-      ".proto.EducationFullInfo\032\030.proto.Educati" +
-      "onFullInfo\022B\n\021EducationListRead\022\021.proto." +
-      "CVMetaInfo\032\030.proto.EducationFullInfo0\001\022I" +
-      "\n\023EducationUpdateInfo\022\030.proto.EducationF" +
-      "ullInfo\032\030.proto.EducationFullInfo\022G\n\017Edu" +
-      "cationDelete\022\030.proto.EducationFullInfo\032\032" +
-      ".google.protobuf.BoolValue2\256\003\n\024Certifica" +
-      "tionService\022Q\n\023CertificationCreate\022\034.pro" +
+      "er\030\005 \001(\t\022I\n\021currentJobRequest\030\006 \003(\0132..pr" +
+      "oto.LocationFullInfo.CurrentJobRequestEn" +
+      "try\022\014\n\004city\030\007 \001(\t\022\021\n\tcompanyID\030\010 \001(\005\0328\n\026" +
+      "CurrentJobRequestEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005v" +
+      "alue\030\002 \001(\010:\0028\001\"P\n\020LocationMetaInfo\022\022\n\nlo" +
+      "cationID\030\001 \001(\005\022\025\n\rcontactNumber\030\002 \001(\t\022\021\n" +
+      "\tcompanyID\030\003 \001(\005\"\364\002\n\017CompanyFullInfo\022\023\n\013" +
+      "companiesID\030\001 \001(\005\022\023\n\013companyName\030\002 \001(\t\022\030" +
+      "\n\020companyAvatarURL\030\003 \001(\t\022\017\n\007website\030\004 \001(" +
+      "\t\022\r\n\005email\030\005 \001(\t\022F\n\020activeRecruiters\030\006 \003" +
+      "(\0132,.proto.CompanyFullInfo.ActiveRecruit" +
+      "ersEntry\022D\n\017activeLocations\030\007 \003(\0132+.prot" +
+      "o.CompanyFullInfo.ActiveLocationsEntry\0327" +
+      "\n\025ActiveRecruitersEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005" +
+      "value\030\002 \001(\010:\0028\001\0326\n\024ActiveLocationsEntry\022" +
+      "\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\"9\n\017Compa" +
+      "nyMetaInfo\022\021\n\tcompanyID\030\001 \001(\005\022\023\n\013company" +
+      "Name\030\002 \001(\t\"\333\001\n\026WorkExperienceFullInfo\022\030\n" +
+      "\020workExperienceID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\020\n" +
+      "\010jobTitle\030\003 \001(\t\022-\n\tstartDate\030\004 \001(\0132\032.goo" +
+      "gle.protobuf.Timestamp\022+\n\007endDate\030\005 \001(\0132" +
+      "\032.google.protobuf.Timestamp\022\026\n\016jobDescri" +
+      "ption\030\006 \001(\t\022\023\n\013companyName\030\007 \001(\t\"j\n\rSkil" +
+      "lFullInfo\022\017\n\007skillID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005" +
+      "\022\021\n\tskillName\030\003 \001(\t\022\'\n\013proficiency\030\004 \001(\016" +
+      "2\022.proto.Proficiency\"i\n\023PersonalityFullI" +
+      "nfo\022\025\n\rpersonalityID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005" +
+      "\022\030\n\020personalityTitle\030\003 \001(\t\022\023\n\013descriptio" +
+      "n\030\004 \001(\t\"\306\001\n\021EducationFullInfo\022\023\n\013educati" +
+      "onID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\016\n\006degree\030\003 \001(\t" +
+      "\022\r\n\005field\030\004 \001(\t\022\023\n\013institution\030\005 \001(\t\022-\n\t" +
+      "startDate\030\006 \001(\0132\032.google.protobuf.Timest" +
+      "amp\022+\n\007endDate\030\007 \001(\0132\032.google.protobuf.T" +
+      "imestamp\"\235\001\n\025CertificationFullInfo\022\027\n\017ce" +
+      "rtificationID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\031\n\021cer" +
+      "tificationName\030\003 \001(\t\022\020\n\010provider\030\004 \001(\t\0220" +
+      "\n\014providedDate\030\005 \001(\0132\032.google.protobuf.T" +
+      "imestamp\"\370\005\n\nCVFullInfo\022\014\n\004CVID\030\001 \001(\005\022\023\n" +
+      "\013candidateID\030\002 \001(\005\022\r\n\005email\030\003 \001(\t\022\023\n\013pho" +
+      "neNumber\030\004 \001(\t\022\020\n\010jobTitle\030\005 \001(\t\022;\n\rcurr" +
+      "entSkills\030\006 \003(\0132$.proto.CVFullInfo.Curre" +
+      "ntSkillsEntry\022I\n\024currentPersonalities\030\007 " +
+      "\003(\0132+.proto.CVFullInfo.CurrentPersonalit" +
+      "iesEntry\022M\n\026currentWorkExperiences\030\010 \003(\013" +
+      "2-.proto.CVFullInfo.CurrentWorkExperienc" +
+      "esEntry\022C\n\021currentEducations\030\t \003(\0132(.pro" +
+      "to.CVFullInfo.CurrentEducationsEntry\022K\n\025" +
+      "currentCertifications\030\n \003(\0132,.proto.CVFu" +
+      "llInfo.CurrentCertificationsEntry\0324\n\022Cur" +
+      "rentSkillsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 " +
+      "\001(\010:\0028\001\032;\n\031CurrentPersonalitiesEntry\022\013\n\003" +
+      "key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\032=\n\033CurrentW" +
+      "orkExperiencesEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005valu" +
+      "e\030\002 \001(\010:\0028\001\0328\n\026CurrentEducationsEntry\022\013\n" +
+      "\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\032<\n\032Current" +
+      "CertificationsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005valu" +
+      "e\030\002 \001(\010:\0028\001\"/\n\nCVMetaInfo\022\014\n\004CVID\030\001 \001(\005\022" +
+      "\023\n\013candidateID\030\002 \001(\005\"\247\001\n\020WishListFullInf" +
+      "o\022\023\n\013candidateID\030\001 \001(\005\022\025\n\rsalaryMinimum\030" +
+      "\002 \001(\005\022\020\n\010location\030\003 \001(\t\022\037\n\007jobType\030\004 \001(\016" +
+      "2\016.proto.JobType\022!\n\010jobLevel\030\005 \001(\0162\017.pro" +
+      "to.JobLevel\022\021\n\tinsurance\030\006 \001(\t*\036\n\006Gender" +
+      "\022\010\n\004MALE\020\000\022\n\n\006FEMALE\020\001*f\n\010JobLevel\022\017\n\013EN" +
+      "TRY_LEVEL\020\000\022\r\n\tMID_LEVEL\020\001\022\020\n\014SENIOR_LEV" +
+      "EL\020\002\022\013\n\007MANAGER\020\003\022\014\n\010DIRECTOR\020\004\022\r\n\tEXECU" +
+      "TIVE\020\005*%\n\007JobType\022\014\n\010FULLTIME\020\000\022\014\n\010HALFT" +
+      "IME\020\001*I\n\006Status\022\026\n\022APPLICATION_REVIEW\020\000\022" +
+      "\r\n\tINTERVIEW\020\001\022\013\n\007SUCCESS\020\002\022\013\n\007FAILURE\020\003" +
+      "*9\n\013Proficiency\022\014\n\010BEGINNER\020\000\022\020\n\014INTERME" +
+      "DIATE\020\001\022\n\n\006EXPERT\020\0022\247\006\n\013UserService\022E\n\017C" +
+      "andidateCreate\022\030.proto.CandidateFullInfo" +
+      "\032\030.proto.CandidateFullInfo\022E\n\017RecruiterC" +
+      "reate\022\030.proto.RecruiterFullInfo\032\030.proto." +
+      "RecruiterFullInfo\0224\n\010UserRead\022\023.proto.Us" +
+      "erMetaInfo\032\023.proto.UserFullInfo\022=\n\014UserL" +
+      "istRead\022\026.google.protobuf.Empty\032\023.proto." +
+      "UserMetaInfo0\001\022>\n\rCandidateRead\022\023.proto." +
+      "UserMetaInfo\032\030.proto.CandidateFullInfo\022G" +
+      "\n\021CandidateListRead\022\026.google.protobuf.Em" +
+      "pty\032\030.proto.CandidateFullInfo0\001\022>\n\rRecru" +
+      "iterRead\022\023.proto.UserMetaInfo\032\030.proto.Re" +
+      "cruiterFullInfo\022G\n\021RecruiterListRead\022\026.g" +
+      "oogle.protobuf.Empty\032\030.proto.RecruiterFu" +
+      "llInfo0\001\0226\n\nUserUpdate\022\023.proto.UserFullI" +
+      "nfo\032\023.proto.UserFullInfo\022E\n\017CandidateUpd" +
+      "ate\022\030.proto.CandidateFullInfo\032\030.proto.Ca" +
+      "ndidateFullInfo\022E\n\017RecruiterUpdate\022\030.pro" +
+      "to.RecruiterFullInfo\032\030.proto.RecruiterFu" +
+      "llInfo\022=\n\nUserDelete\022\023.proto.UserMetaInf" +
+      "o\032\032.google.protobuf.BoolValue2\242\004\n\021JobReq" +
+      "uestService\022J\n\022JobRequestRegister\022\031.prot" +
+      "o.JobRequestFullInfo\032\031.proto.JobRequestF" +
+      "ullInfo\022F\n\016JobRequestRead\022\031.proto.JobReq" +
+      "uestMetaInfo\032\031.proto.JobRequestFullInfo\022" +
+      "I\n\022JobRequestListRead\022\026.google.protobuf." +
+      "Empty\032\031.proto.JobRequestFullInfo0\001\022L\n\024Jo" +
+      "bRequestUpdateInfo\022\031.proto.JobRequestFul" +
+      "lInfo\032\031.proto.JobRequestFullInfo\022I\n\020JobR" +
+      "equestDelete\022\031.proto.JobRequestMetaInfo\032" +
+      "\032.google.protobuf.BoolValue\022H\n\017JobReques" +
+      "tApply\022\031.proto.JobRequestFullInfo\032\032.goog" +
+      "le.protobuf.BoolValue\022K\n\022JobRequestWithd" +
+      "raw\022\031.proto.JobRequestFullInfo\032\032.google." +
+      "protobuf.BoolValue2\277\002\n\013RoleService\0228\n\014Ro" +
+      "leRegister\022\023.proto.RoleFullInfo\032\023.proto." +
+      "RoleFullInfo\0228\n\014RoleReadInfo\022\023.proto.Rol" +
+      "eFullInfo\032\023.proto.RoleFullInfo\022=\n\014RoleLi" +
+      "stRead\022\026.proto.CompanyMetaInfo\032\023.proto.R" +
+      "oleFullInfo0\001\022:\n\016RoleUpdateInfo\022\023.proto." +
+      "RoleFullInfo\032\023.proto.RoleFullInfo\022A\n\016Rol" +
+      "eDeleteInfo\022\023.proto.RoleFullInfo\032\032.googl" +
+      "e.protobuf.BoolValue2\345\002\n\016CompanyService\022" +
+      "A\n\017CompanyRegister\022\026.proto.CompanyFullIn" +
+      "fo\032\026.proto.CompanyFullInfo\022A\n\017CompanyRea" +
+      "dInfo\022\026.proto.CompanyMetaInfo\032\026.proto.Co" +
+      "mpanyFullInfo\022C\n\017CompanyListRead\022\026.googl" +
+      "e.protobuf.Empty\032\026.proto.CompanyFullInfo" +
+      "0\001\022C\n\021CompanyUpdateInfo\022\026.proto.CompanyF" +
+      "ullInfo\032\026.proto.CompanyFullInfo\022C\n\rCompa" +
+      "nyDelete\022\026.proto.CompanyMetaInfo\032\032.googl" +
+      "e.protobuf.BoolValue2\363\002\n\017LocationService" +
+      "\022D\n\020LocationRegister\022\027.proto.LocationFul" +
+      "lInfo\032\027.proto.LocationFullInfo\022D\n\020Locati" +
+      "onReadInfo\022\027.proto.LocationMetaInfo\032\027.pr" +
+      "oto.LocationFullInfo\022E\n\020LocationListRead" +
+      "\022\026.google.protobuf.Empty\032\027.proto.Locatio" +
+      "nFullInfo0\001\022F\n\022LocationUpdateInfo\022\027.prot" +
+      "o.LocationFullInfo\032\027.proto.LocationFullI" +
+      "nfo\022E\n\016LocationDelete\022\027.proto.LocationMe" +
+      "taInfo\032\032.google.protobuf.BoolValue2\226\002\n\tC" +
+      "VService\0220\n\010CVCreate\022\021.proto.CVFullInfo\032" +
+      "\021.proto.CVFullInfo\022.\n\006CVRead\022\021.proto.CVM" +
+      "etaInfo\032\021.proto.CVFullInfo\0226\n\nCVListRead" +
+      "\022\023.proto.UserMetaInfo\032\021.proto.CVFullInfo" +
+      "0\001\0224\n\014CVUpdateInfo\022\021.proto.CVFullInfo\032\021." +
+      "proto.CVFullInfo\0229\n\010CVDelete\022\021.proto.CVM" +
+      "etaInfo\032\032.google.protobuf.BoolValue2\274\003\n\025" +
+      "WorkExperienceService\022T\n\024WorkExperienceC" +
+      "reate\022\035.proto.WorkExperienceFullInfo\032\035.p" +
+      "roto.WorkExperienceFullInfo\022R\n\022WorkExper" +
+      "ienceRead\022\035.proto.WorkExperienceFullInfo" +
+      "\032\035.proto.WorkExperienceFullInfo\022L\n\026WorkE" +
+      "xperienceListRead\022\021.proto.CVMetaInfo\032\035.p" +
+      "roto.WorkExperienceFullInfo0\001\022X\n\030WorkExp" +
+      "erienceUpdateInfo\022\035.proto.WorkExperience" +
+      "FullInfo\032\035.proto.WorkExperienceFullInfo\022" +
+      "Q\n\024WorkExperienceDelete\022\035.proto.WorkExpe" +
+      "rienceFullInfo\032\032.google.protobuf.BoolVal" +
+      "ue2\276\002\n\014SkillService\0229\n\013SkillCreate\022\024.pro" +
+      "to.SkillFullInfo\032\024.proto.SkillFullInfo\0227" +
+      "\n\tSkillRead\022\024.proto.SkillFullInfo\032\024.prot" +
+      "o.SkillFullInfo\022:\n\rSkillListRead\022\021.proto" +
+      ".CVMetaInfo\032\024.proto.SkillFullInfo0\001\022=\n\017S" +
+      "killUpdateInfo\022\024.proto.SkillFullInfo\032\024.p" +
+      "roto.SkillFullInfo\022?\n\013SkillDelete\022\024.prot" +
+      "o.SkillFullInfo\032\032.google.protobuf.BoolVa" +
+      "lue2\222\003\n\022PersonalityService\022K\n\021Personalit" +
+      "yCreate\022\032.proto.PersonalityFullInfo\032\032.pr" +
+      "oto.PersonalityFullInfo\022I\n\017PersonalityRe" +
+      "ad\022\032.proto.PersonalityFullInfo\032\032.proto.P" +
+      "ersonalityFullInfo\022F\n\023PersonalityListRea" +
+      "d\022\021.proto.CVMetaInfo\032\032.proto.Personality" +
+      "FullInfo0\001\022O\n\025PersonalityUpdateInfo\022\032.pr" +
+      "oto.PersonalityFullInfo\032\032.proto.Personal" +
+      "ityFullInfo\022K\n\021PersonalityDelete\022\032.proto" +
+      ".PersonalityFullInfo\032\032.google.protobuf.B" +
+      "oolValue2\366\002\n\020EducationService\022E\n\017Educati" +
+      "onCreate\022\030.proto.EducationFullInfo\032\030.pro" +
+      "to.EducationFullInfo\022C\n\rEducationRead\022\030." +
+      "proto.EducationFullInfo\032\030.proto.Educatio" +
+      "nFullInfo\022B\n\021EducationListRead\022\021.proto.C" +
+      "VMetaInfo\032\030.proto.EducationFullInfo0\001\022I\n" +
+      "\023EducationUpdateInfo\022\030.proto.EducationFu" +
+      "llInfo\032\030.proto.EducationFullInfo\022G\n\017Educ" +
+      "ationDelete\022\030.proto.EducationFullInfo\032\032." +
+      "google.protobuf.BoolValue2\256\003\n\024Certificat" +
+      "ionService\022Q\n\023CertificationCreate\022\034.prot" +
+      "o.CertificationFullInfo\032\034.proto.Certific" +
+      "ationFullInfo\022O\n\021CertificationRead\022\034.pro" +
       "to.CertificationFullInfo\032\034.proto.Certifi" +
-      "cationFullInfo\022O\n\021CertificationRead\022\034.pr" +
-      "oto.CertificationFullInfo\032\034.proto.Certif" +
-      "icationFullInfo\022J\n\025CertificationListRead" +
-      "\022\021.proto.CVMetaInfo\032\034.proto.Certificatio" +
-      "nFullInfo0\001\022U\n\027CertificationUpdateInfo\022\034" +
-      ".proto.CertificationFullInfo\032\034.proto.Cer" +
-      "tificationFullInfo\022O\n\023CertificationDelet" +
-      "e\022\034.proto.CertificationFullInfo\032\032.google" +
-      ".protobuf.BoolValue2\322\001\n\rSearchService\022H\n" +
-      "\024Candidate_JobRequest\022\023.proto.UserMetaIn" +
-      "fo\032\031.proto.JobRequestFullInfo0\001\022B\n\021Recru" +
-      "iter_Company\022\023.proto.UserMetaInfo\032\026.prot" +
-      "o.CompanyFullInfo0\001\0223\n\007CV_User\022\023.proto.U" +
-      "serMetaInfo\032\021.proto.CVFullInfo0\0012\220\003\n\017Wis" +
-      "hListService\022L\n\016WishListCreate\022\034.proto.C" +
-      "ertificationFullInfo\032\034.proto.Certificati" +
-      "onFullInfo\022J\n\014WishListRead\022\034.proto.Certi" +
-      "ficationFullInfo\032\034.proto.CertificationFu" +
-      "llInfo\022E\n\020WishListListRead\022\021.proto.CVMet" +
-      "aInfo\032\034.proto.CertificationFullInfo0\001\022P\n" +
-      "\022WishListUpdateInfo\022\034.proto.Certificatio" +
-      "nFullInfo\032\034.proto.CertificationFullInfo\022" +
-      "J\n\016WishListDelete\022\034.proto.CertificationF" +
-      "ullInfo\032\032.google.protobuf.BoolValueb\006pro" +
-      "to3"
+      "cationFullInfo\022J\n\025CertificationListRead\022" +
+      "\021.proto.CVMetaInfo\032\034.proto.Certification" +
+      "FullInfo0\001\022U\n\027CertificationUpdateInfo\022\034." +
+      "proto.CertificationFullInfo\032\034.proto.Cert" +
+      "ificationFullInfo\022O\n\023CertificationDelete" +
+      "\022\034.proto.CertificationFullInfo\032\032.google." +
+      "protobuf.BoolValue2\322\001\n\rSearchService\022H\n\024" +
+      "Candidate_JobRequest\022\023.proto.UserMetaInf" +
+      "o\032\031.proto.JobRequestFullInfo0\001\022B\n\021Recrui" +
+      "ter_Company\022\023.proto.UserMetaInfo\032\026.proto" +
+      ".CompanyFullInfo0\001\0223\n\007CV_User\022\023.proto.Us" +
+      "erMetaInfo\032\021.proto.CVFullInfo0\0012\236\002\n\017Wish" +
+      "ListService\022B\n\016WishListCreate\022\027.proto.Wi" +
+      "shListFullInfo\032\027.proto.WishListFullInfo\022" +
+      "<\n\014WishListRead\022\023.proto.UserMetaInfo\032\027.p" +
+      "roto.WishListFullInfo\022F\n\022WishListUpdateI" +
+      "nfo\022\027.proto.WishListFullInfo\032\027.proto.Wis" +
+      "hListFullInfo\022A\n\016WishListDelete\022\023.proto." +
+      "UserMetaInfo\032\032.google.protobuf.BoolValue" +
+      "b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -22839,6 +22954,12 @@ public final class ServerClient {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_LocationFullInfo_descriptor,
         new java.lang.String[] { "LocationID", "Country", "State", "Address", "ContactNumber", "CurrentJobRequest", "City", "CompanyID", });
+    internal_static_proto_LocationFullInfo_CurrentJobRequestEntry_descriptor =
+      internal_static_proto_LocationFullInfo_descriptor.getNestedTypes().get(0);
+    internal_static_proto_LocationFullInfo_CurrentJobRequestEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_proto_LocationFullInfo_CurrentJobRequestEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_proto_LocationMetaInfo_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_proto_LocationMetaInfo_fieldAccessorTable = new
