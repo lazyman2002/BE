@@ -1,44 +1,26 @@
+import JsonProtoParser.parseUserMetaInfo
 import akka.actor.ActorSystem
 import akka.grpc.GrpcClientSettings
-import org.apache.hadoop.shaded.com.google.gson.{Gson, GsonBuilder}
+import akka.stream.Materializer
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions.col
+import org.apache.spark.sql.streaming.Trigger
 import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
 import proto.{UserMetaInfo, UserServiceClient}
 
-import scala.concurrent.Await
-import scala.concurrent.duration._
-
+import scala.concurrent.{Await, ExecutionContext}
+import scala.util.{Failure, Success}
 object Main {
-  
-  val gson : Gson = new GsonBuilder().setPrettyPrinting().create()
   def main(args: Array[String]): Unit = {
-//    val spark = SparkSession.builder()
-//            .appName("Logger")
-//            .master("yarn")
-//            .getOrCreate()
-//    val schema = messageSchema;
-//
-//    RequestCandidateRead(spark)
-    
-    implicit val system: ActorSystem = ActorSystem("AkkaGrpcClientSystem")
-    implicit val ec = system.dispatcher;
-    
-    val clientSettings: GrpcClientSettings = GrpcClientSettings.connectToServiceAt("localhost", 50051).withTls(false)
-    
-    val client: UserServiceClient = UserServiceClient(clientSettings)
-    
-    val responseFuture = client.userRead(UserMetaInfo(userID = 1));
-    
-    responseFuture.onComplete { response =>
-      println(s"Server responded: ${response.get.username}")
-      system.terminate()
-    }
-    
-    Await.result(system.whenTerminated, Duration.Inf)
+    val spark = SparkSession.builder()
+            .appName("1")
+            .master("local[*]")
+            .getOrCreate()
+    RequestCandidateRead(spark);
   }
   
   private def RequestCandidateRead (spark : SparkSession) : Unit ={
-    var RequestCandidateRead = spark
+    var kafkaStream = spark
             .readStream
             .format("kafka")
             .option("kafka.bootstrap.servers", "172.18.0.2:9092,172.18.0.3:9092,172.18.0.4:9092")
@@ -46,12 +28,29 @@ object Main {
             .option("startingOffsets", "latest")
             .load()
     
-    val valueStream = RequestCandidateRead.selectExpr("CAST(value AS STRING) as value")
+    val valueStream = kafkaStream.selectExpr("CAST(value AS STRING)")
     
-    val query = valueStream.writeStream
-            .outputMode("append") // Ghi ra từng bản ghi khi có dữ liệu mới
-            .format("console") // Hiển thị trên console
-            .start()
+    implicit val system: ActorSystem = ActorSystem("AkkaGrpcClientSystem")
+    implicit val materializer: Materializer = Materializer(system)
+    implicit val ec: ExecutionContext = system.dispatcher
+    
+    val clientSettings: GrpcClientSettings = GrpcClientSettings.connectToServiceAt("172.18.0.6", 50051).withTls(false)
+    val grpcClient = UserServiceClient(clientSettings);
+    
+    val sendToGrpc = valueStream.writeStream.foreachBatch { (batchDF, batchId) =>
+      batchDF.collect().foreach { row =>
+        val value = row.getAs[String]("value")
+        
+        val userMetaInfo = parseUserMetaInfo(value)
+        
+        grpcClient.candidateRead(userMetaInfo).onComplete {
+          case Success(response) =>
+            println(s"gRPC server replied: ${response.getUser.email}")
+          case Failure(exception) =>
+            println(s"Failed to send gRPC request: ${exception.getMessage}")
+        }
+      }
+    }.start()
   }
   
   val userSchema = StructType(Seq(
@@ -72,5 +71,7 @@ object Main {
     //Response
     return;
   }
+  
+
 }
 

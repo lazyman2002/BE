@@ -57,5 +57,6 @@ libraryDependencies ++= Seq(
     "io.grpc" % "grpc-protobuf" % "1.47.0", // Protocol Buffers
     "io.grpc" % "grpc-stub" % "1.47.0", // gRPC stub
     "com.google.protobuf" % "protobuf-java" % "3.19.4", // Protobuf library
-    "org.scala-lang.modules" %% "scala-xml" % "1.3.0" // Scala XML support (if needed)
+    "com.google.protobuf" % "protobuf-java-util" % "3.19.4",
+    "org.scala-lang.modules" %% "scala-xml" % "1.3.0"
 )
