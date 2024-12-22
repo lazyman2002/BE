@@ -64,7 +64,7 @@ public class Converter {
         ServerChat.GroupMetaInfo.Builder builder = ServerChat.GroupMetaInfo.newBuilder();
         if(groups.getGroupID() != null && groups.getGroupID() != 0)
             builder.setGroupID(groups.getGroupID());
-        if(groups.getGroupName()!= null && !groups.getGroupName().isEmpty() && !groups.getGroupName().isBlank())
+        if(groups.getGroupName()!= null && !groups.getGroupName().isEmpty())
             builder.setGroupName(groups.getGroupName());
         return builder.build();
     }

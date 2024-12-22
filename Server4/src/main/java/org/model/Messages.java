@@ -47,7 +47,8 @@ public class Messages {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Messages messages)) return false;
+        if (!(o instanceof Messages)) return false;
+        Messages messages = (Messages) o;
         return Objects.equals(msgID, messages.msgID) && Objects.equals(fromUserID, messages.fromUserID) && Objects.equals(toGroupID, messages.toGroupID) && Objects.equals(messengerData, messages.messengerData) && Objects.equals(sendTime, messages.sendTime);
     }
 

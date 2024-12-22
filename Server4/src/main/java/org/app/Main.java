@@ -6,6 +6,7 @@ import impl.ScheduleServiceImpl;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import org.connectConfig.ENVDockers;
+import static spark.Spark.*;
 
 import java.io.IOException;
 
@@ -21,6 +22,12 @@ public class Main {
                 .addService(ProtoReflectionService.newInstance())
                 .build();
         server.start();
+        port(3000);
+        get("/greet/:name", (req, res) -> {
+            String name = req.params(":name");
+            res.type("application/json");
+            return String.format("{ \"message\": \"Hello, %s!\" }", name);
+        });
         server.awaitTermination();
     }
 }

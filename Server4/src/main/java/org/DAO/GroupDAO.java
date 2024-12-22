@@ -54,7 +54,7 @@ public class GroupDAO {
             preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
             String provider = request.getGroupName();
-            if (provider == null || provider.isEmpty() || provider.isBlank()) {
+            if (provider == null || provider.isEmpty()) {
                 throw new Exception("Group name không được để trống");
             }
             preparedStatement.setString(1, provider);
@@ -86,7 +86,7 @@ public class GroupDAO {
         ResultSet resultSet = null;
         List<Object> parameters = new ArrayList<>();
         try {
-            if (request.getGroupName() != null && !request.getGroupName().isBlank()) {
+            if (request.getGroupName() != null && !request.getGroupName().isEmpty()) {
                 sb.append("`Groups`.`groupName` = ?, ");
                 parameters.add(request.getGroupName());
             }

@@ -1,9 +1,11 @@
 package impl;
 
 import com.google.protobuf.BoolValue;
-import hadoop.HadoopService;
+import io.grpc.Status;
+import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
 import org.controller.GroupController;
+import org.model.Messages;
 import proto.ChatServiceGrpc;
 import proto.ServerChat;
 
@@ -12,10 +14,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -76,9 +75,10 @@ public class ChatServiceImpl extends ChatServiceGrpc.ChatServiceImplBase {
         };
     }
 
+
     @Override
     public StreamObserver<ServerChat.Chunk> uploadFile(StreamObserver<BoolValue> responseObserver) {
-        return new StreamObserver<>() {
+        return new StreamObserver<ServerChat.Chunk>() {
             private final String uniqueId = UUID.randomUUID().toString();
             private final String tempFilePath = "temp_" + uniqueId + ".bin";
             private FileOutputStream fileOutputStream;
@@ -149,6 +149,16 @@ public class ChatServiceImpl extends ChatServiceGrpc.ChatServiceImplBase {
 
     @Override
     public void getOldChat(ServerChat.GroupMetaInfo request, StreamObserver<ServerChat.MessageInfo> responseObserver) {
-        super.getOldChat(request, responseObserver);
+//        try {
+//            String groupID = String.valueOf(request.getGroupID());
+//            ChatController chatController = new ChatController("local[*]", "MSG", groupID);
+//            List<Messages> msg = chatController.getOldMessenger(request);
+//        }
+//        catch (Exception e) {
+//            StatusRuntimeException dbError = Status.ALREADY_EXISTS
+//                    .withDescription(e.getMessage())
+//                    .asRuntimeException();
+//            responseObserver.onError(dbError);
+//        }
     }
 }
