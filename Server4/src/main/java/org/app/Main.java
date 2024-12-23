@@ -1,5 +1,8 @@
 package org.app;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import hadoop.HadoopService;
 import impl.ChatServiceImpl;
 import impl.GroupServiceImpl;
 import impl.ScheduleServiceImpl;
@@ -9,8 +12,10 @@ import org.connectConfig.ENVDockers;
 import static spark.Spark.*;
 
 import java.io.IOException;
+import java.util.List;
 
 import io.grpc.protobuf.services.ProtoReflectionService;
+import proto.ServerChat;
 
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -22,11 +27,20 @@ public class Main {
                 .addService(ProtoReflectionService.newInstance())
                 .build();
         server.start();
-        port(3000);
-        get("/greet/:name", (req, res) -> {
-            String name = req.params(":name");
-            res.type("application/json");
-            return String.format("{ \"message\": \"Hello, %s!\" }", name);
+        port(19092);
+        get("/oldchat/:groupID", (req, res) -> {
+            try {
+                Integer groupID = Integer.parseInt(req.params(":groupID"));
+                HadoopService hadoopService = new HadoopService();
+                List<ServerChat.MessageInfo> MSG = hadoopService.getMessagesByGroupID(groupID);
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                String jsonResponse = gson.toJson(MSG);
+                res.type("application/json");
+                return jsonResponse;
+            }
+            catch (Exception e){
+                return e.toString();
+            }
         });
         server.awaitTermination();
     }
