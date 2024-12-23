@@ -47,8 +47,9 @@ public class Personalities {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof Personalities that)) return false;
-        return Objects.equals(CVID, that.CVID) && Objects.equals(personalityTitle, that.personalityTitle) && Objects.equals(detail, that.detail) && Objects.equals(personalityID, that.personalityID);
+		if (!(o instanceof Personalities)) return false;
+		Personalities that = (Personalities) o;
+		return Objects.equals(CVID, that.CVID) && Objects.equals(personalityTitle, that.personalityTitle) && Objects.equals(detail, that.detail) && Objects.equals(personalityID, that.personalityID);
 	}
 
 	@Override

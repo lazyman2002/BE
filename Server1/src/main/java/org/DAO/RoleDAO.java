@@ -96,7 +96,7 @@ public class RoleDAO {
         ResultSet resultSet = null;
         List<Object> parameters = new ArrayList<>();
         try {
-            if(request.getRoleName() != null && !request.getRoleName().isBlank() && !request.getRoleName().isEmpty()) {
+            if(request.getRoleName() != null && !request.getRoleName().isEmpty() && !request.getRoleName().isEmpty()) {
                 sb.append("`Roles`.`roleName` = ?, ");
                 parameters.add(request.getRoleName());
             }
@@ -152,7 +152,7 @@ public class RoleDAO {
             }
 
             String roleName = request.getRoleName();
-            if (roleName == null || roleName.isEmpty() || roleName.isBlank()) {
+            if (roleName == null || roleName.isEmpty() || roleName.isEmpty()) {
                 roleName = "";
             }
 

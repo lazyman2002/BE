@@ -76,6 +76,9 @@ public class CVDAO {
                 String phoneNumber = resultSet.getString("phoneNumber");
                 phoneNumber = (phoneNumber != null) ? phoneNumber : "";
                 String jobTitle = resultSet.getString("jobTitle");
+                String imagePath = resultSet.getString("imagePath");
+                String CVname = resultSet.getString("CVname");
+
                 jobTitle = (jobTitle != null) ? jobTitle : "";
 
                 return new CVs(
@@ -83,7 +86,7 @@ public class CVDAO {
                         userID,
                         email,
                         phoneNumber,
-                        jobTitle
+                        jobTitle, imagePath, CVname
                 );
             } else {
                 throw new Exception("CV not found");
@@ -103,17 +106,17 @@ public class CVDAO {
         ResultSet resultSet = null;
         List<Object> parameters = new ArrayList<>();
         try {
-            if (request.getEmail() != null && !request.getEmail().isBlank()) {
+            if (request.getEmail() != null && !request.getEmail().isEmpty()) {
                 sb.append("`CVs`.`email` = ?, ");
                 parameters.add(request.getEmail());
             }
 
-            if (request.getPhoneNumber() != null && !request.getPhoneNumber().isBlank()) {
+            if (request.getPhoneNumber() != null && !request.getPhoneNumber().isEmpty()) {
                 sb.append("`CVs`.`phoneNumber` = ?, ");
                 parameters.add(request.getPhoneNumber());
             }
 
-            if (request.getJobTitle() != null && !request.getJobTitle().isBlank()) {
+            if (request.getJobTitle() != null && !request.getJobTitle().isEmpty()) {
                 sb.append("`CVs`.`jobTitle` = ?, ");
                 parameters.add(request.getJobTitle());
             }
@@ -169,17 +172,17 @@ public class CVDAO {
             }
 
             String email = request.getEmail();
-            if (email == null || email.isEmpty() || email.isBlank()) {
+            if (email == null || email.isEmpty() || email.isEmpty()) {
                 email = null; // Allow NULL if email is not provided
             }
 
             String phoneNumber = request.getPhoneNumber();
-            if (phoneNumber == null || phoneNumber.isEmpty() || phoneNumber.isBlank()) {
+            if (phoneNumber == null || phoneNumber.isEmpty() || phoneNumber.isEmpty()) {
                 phoneNumber = null; // Allow NULL if phone number is not provided
             }
 
             String jobTitle = request.getJobTitle();
-            if (jobTitle == null || jobTitle.isEmpty() || jobTitle.isBlank()) {
+            if (jobTitle == null || jobTitle.isEmpty() || jobTitle.isEmpty()) {
                 throw new Exception("Job title không hợp lệ");
             }
 

@@ -112,17 +112,17 @@ public class WorkExperienceDAO {
             }
 
             String jobTitle = request.getJobTitle();
-            if (jobTitle == null || jobTitle.isEmpty() || jobTitle.isBlank()) {
+            if (jobTitle == null || jobTitle.isEmpty() || jobTitle.isEmpty()) {
                 throw new Exception("Job title cannot be empty");
             }
 
             String company = request.getCompanyName();
-            if (company == null || company.isEmpty() || company.isBlank()) {
+            if (company == null || company.isEmpty() || company.isEmpty()) {
                 throw new Exception("Company cannot be empty");
             }
 
             String jobDescription = request.getJobDescription();
-            if (jobDescription == null || jobDescription.isEmpty() || jobDescription.isBlank()) {
+            if (jobDescription == null || jobDescription.isEmpty() || jobDescription.isEmpty()) {
                 throw new Exception("Job Description cannot be empty");
             }
 
@@ -172,17 +172,17 @@ public class WorkExperienceDAO {
         ResultSet resultSet = null;
         List<Object> parameters = new ArrayList<>();
         try {
-            if (request.getJobTitle() != null && !request.getJobTitle().isBlank() && !request.getJobTitle().isEmpty()) {
+            if (request.getJobTitle() != null && !request.getJobTitle().isEmpty() && !request.getJobTitle().isEmpty()) {
                 sb.append("`WorkExperiences`.`jobTitle` = ?, ");
                 parameters.add(request.getJobTitle());
             }
 
-            if (request.getCompanyName() != null && !request.getCompanyName().isBlank() && !request.getCompanyName().isEmpty()) {
+            if (request.getCompanyName() != null && !request.getCompanyName().isEmpty() && !request.getCompanyName().isEmpty()) {
                 sb.append("`WorkExperiences`.`companyName` = ?, ");
                 parameters.add(request.getCompanyName());
             }
 
-            if (request.getJobDescription() != null && !request.getJobDescription().isBlank() && !request.getJobDescription().isEmpty()) {
+            if (request.getJobDescription() != null && !request.getJobDescription().isEmpty() && !request.getJobDescription().isEmpty()) {
                 sb.append("`WorkExperiences`.`jobDescription` = ?, ");
                 parameters.add(request.getCompanyName());
             }

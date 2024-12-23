@@ -122,17 +122,17 @@ public class EducationDAO {
             }
 
             String degree = request.getDegree();
-            if (degree == null || degree.isEmpty() || degree.isBlank()) {
+            if (degree == null || degree.isEmpty()) {
                 throw new Exception("Degree không được để trống");
             }
 
             String fieldOfStudy = request.getField();
-            if (fieldOfStudy == null || fieldOfStudy.isEmpty() || fieldOfStudy.isBlank()) {
+            if (fieldOfStudy == null || fieldOfStudy.isEmpty()) {
                 throw new Exception("Field of study không được để trống");
             }
 
             String institution = request.getInstitution();
-            if (institution == null || institution.isEmpty() || institution.isBlank()) {
+            if (institution == null || institution.isEmpty()) {
                 throw new Exception("Institution không được để trống");
             }
 
@@ -183,17 +183,17 @@ public class EducationDAO {
         ResultSet resultSet = null;
         List<Object> parameters = new ArrayList<>();
         try {
-            if (request.getDegree() != null && !request.getDegree().isBlank() && !request.getDegree().isEmpty()) {
+            if (request.getDegree() != null && !request.getDegree().isEmpty() && !request.getDegree().isEmpty()) {
                 sb.append("`Educations`.`degree` = ?, ");
                 parameters.add(request.getDegree());
             }
 
-            if (request.getField() != null && !request.getField().isBlank() && !request.getField().isEmpty()) {
+            if (request.getField() != null && !request.getField().isEmpty() && !request.getField().isEmpty()) {
                 sb.append("`Educations`.`fieldOfStudy` = ?, ");
                 parameters.add(request.getField());
             }
 
-            if (request.getInstitution() != null && !request.getInstitution().isBlank() && !request.getInstitution().isEmpty()) {
+            if (request.getInstitution() != null && !request.getInstitution().isEmpty() && !request.getInstitution().isEmpty()) {
                 sb.append("`Educations`.`institution` = ?, ");
                 parameters.add(request.getInstitution());
             }

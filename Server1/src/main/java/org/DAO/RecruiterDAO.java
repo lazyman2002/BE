@@ -33,7 +33,7 @@ public class RecruiterDAO {
             recruiters.setRoleID(request.getRoleID());
             preparedStatement.setInt(3, request.getRoleID());
 
-            if(!request.getDepartmentName().isBlank() && !request.getDepartmentName().isEmpty()){
+            if(!request.getDepartmentName().isEmpty() && !request.getDepartmentName().isEmpty()){
                 recruiters.setDepartmentName(request.getDepartmentName());
                 preparedStatement.setString(4, request.getDepartmentName());
             }
@@ -115,7 +115,7 @@ public class RecruiterDAO {
                 sb.append("`Recruiters`.`roleID` = ?, ");
                 parameters.add(request.getRoleID());
             }
-            if(request.getDepartmentName() != null && !request.getDepartmentName().isBlank() && !request.getDepartmentName().isEmpty()){
+            if(request.getDepartmentName() != null && !request.getDepartmentName().isEmpty() && !request.getDepartmentName().isEmpty()){
                 sb.append("`Recruiters`.`departmentName` = ?, ");
                 parameters.add(request.getDepartmentName());
             }

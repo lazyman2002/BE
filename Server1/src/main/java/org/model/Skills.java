@@ -46,8 +46,9 @@ public class Skills {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof Skills skills)) return false;
-        return Objects.equals(CVID, skills.CVID) && Objects.equals(skillName, skills.skillName) && proficiency == skills.proficiency && Objects.equals(skillID, skills.skillID);
+		if (!(o instanceof Skills)) return false;
+		Skills skills = (Skills) o;
+		return Objects.equals(CVID, skills.CVID) && Objects.equals(skillName, skills.skillName) && proficiency == skills.proficiency && Objects.equals(skillID, skills.skillID);
 	}
 
 	@Override

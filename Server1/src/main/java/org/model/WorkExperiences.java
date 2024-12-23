@@ -71,8 +71,9 @@ public class WorkExperiences {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof WorkExperiences that)) return false;
-        return Objects.equals(CVID, that.CVID) && Objects.equals(jobTitle, that.jobTitle) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate) && Objects.equals(jobDescription, that.jobDescription) && Objects.equals(workExperienceID, that.workExperienceID) && Objects.equals(companyName, that.companyName);
+		if (!(o instanceof WorkExperiences)) return false;
+		WorkExperiences that = (WorkExperiences) o;
+		return Objects.equals(CVID, that.CVID) && Objects.equals(jobTitle, that.jobTitle) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate) && Objects.equals(jobDescription, that.jobDescription) && Objects.equals(workExperienceID, that.workExperienceID) && Objects.equals(companyName, that.companyName);
 	}
 
 	@Override

@@ -11,6 +11,7 @@ public class Locations {
 	private String country;
 	private String address;
 	private String contactNumber;
+	private String imagePath;
 
 	//Không có trong CSDL
 	private ConcurrentHashMap<Integer, Boolean> currentJobRequest;
@@ -49,6 +50,9 @@ public class Locations {
 	public Integer getCompanyID() {
 		return companyID;
 	}
+	public String getImagePath() {
+		return imagePath;
+	}
 
 	public void setCity(String city) {
 		this.city = city;
@@ -74,17 +78,21 @@ public class Locations {
 	public void setCompanyID(Integer companyID) {
 		this.companyID = companyID;
 	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
 
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof Locations locations)) return false;
-        return Objects.equals(city, locations.city) && Objects.equals(state, locations.state) && Objects.equals(country, locations.country) && Objects.equals(address, locations.address) && Objects.equals(contactNumber, locations.contactNumber) && Objects.equals(locationID, locations.locationID) && Objects.equals(companyID, locations.companyID);
+		if (!(o instanceof Locations)) return false;
+		Locations locations = (Locations) o;
+		return Objects.equals(locationID, locations.locationID) && Objects.equals(companyID, locations.companyID) && Objects.equals(city, locations.city) && Objects.equals(state, locations.state) && Objects.equals(country, locations.country) && Objects.equals(address, locations.address) && Objects.equals(contactNumber, locations.contactNumber) && Objects.equals(imagePath, locations.imagePath) && Objects.equals(currentJobRequest, locations.currentJobRequest);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(city, state, country, address, contactNumber, locationID, companyID);
+		return Objects.hash(locationID, companyID, city, state, country, address, contactNumber, imagePath, currentJobRequest);
 	}
 
 	@Override

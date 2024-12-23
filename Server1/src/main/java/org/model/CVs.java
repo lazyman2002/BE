@@ -10,6 +10,8 @@ public class CVs {
 	private String email;
 	private String phoneNumber;
 	private String jobTitle;
+    private String imagePath;
+    private String CVname;
 
     //	Không có trong CSDL
 	private HashSet<Integer> currentSkills;
@@ -20,12 +22,14 @@ public class CVs {
 
     public CVs() {}
 
-    public CVs(Integer CVID, Integer candidatesID, String email, String phoneNumber, String jobTitle) {
+    public CVs(Integer CVID, Integer candidatesID, String email, String phoneNumber, String jobTitle, String imagePath, String CVname) {
         this.CVID = CVID;
         this.candidatesID = candidatesID;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.jobTitle = jobTitle;
+        this.imagePath = imagePath;
+        this.CVname = CVname;
     }
 
     public Integer getCVID() {
@@ -58,7 +62,12 @@ public class CVs {
     public HashSet<Integer> getCurrentCertifications() {
         return currentCertifications;
     }
-
+    public String getImagePath() {
+        return imagePath;
+    }
+    public String getCVname() {
+        return CVname;
+    }
 
     public void setCVID(Integer CVID) {
         this.CVID = CVID;
@@ -90,17 +99,24 @@ public class CVs {
     public void setCurrentCertifications(HashSet<Integer> currentCertifications) {
         this.currentCertifications = currentCertifications;
     }
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+    public void setCVname(String CVname) {
+        this.CVname = CVname;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CVs cVs)) return false;
-        return Objects.equals(CVID, cVs.CVID) && Objects.equals(candidatesID, cVs.candidatesID) && Objects.equals(email, cVs.email) && Objects.equals(phoneNumber, cVs.phoneNumber) && Objects.equals(jobTitle, cVs.jobTitle);
+        if (!(o instanceof CVs)) return false;
+        CVs cVs = (CVs) o;
+        return Objects.equals(CVID, cVs.CVID) && Objects.equals(candidatesID, cVs.candidatesID) && Objects.equals(email, cVs.email) && Objects.equals(phoneNumber, cVs.phoneNumber) && Objects.equals(jobTitle, cVs.jobTitle) && Objects.equals(imagePath, cVs.imagePath) && Objects.equals(CVname, cVs.CVname) && Objects.equals(currentSkills, cVs.currentSkills) && Objects.equals(currentPersonalities, cVs.currentPersonalities) && Objects.equals(currentWorkExperiences, cVs.currentWorkExperiences) && Objects.equals(currentEducations, cVs.currentEducations) && Objects.equals(currentCertifications, cVs.currentCertifications);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(CVID, candidatesID, email, phoneNumber, jobTitle);
+        return Objects.hash(CVID, candidatesID, email, phoneNumber, jobTitle, imagePath, CVname, currentSkills, currentPersonalities, currentWorkExperiences, currentEducations, currentCertifications);
     }
 
     @Override
@@ -111,6 +127,8 @@ public class CVs {
         sb.append(", email='").append(email).append('\'');
         sb.append(", phoneNumber='").append(phoneNumber).append('\'');
         sb.append(", jobTitle='").append(jobTitle).append('\'');
+        sb.append(", imagePath='").append(imagePath).append('\'');
+        sb.append(", CVname='").append(CVname).append('\'');
         sb.append(", currentSkills=").append(currentSkills);
         sb.append(", currentPersonalities=").append(currentPersonalities);
         sb.append(", currentWorkExperiences=").append(currentWorkExperiences);

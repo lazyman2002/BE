@@ -8528,6 +8528,18 @@ public final class ServerClient {
      * @return The companyID.
      */
     int getCompanyID();
+
+    /**
+     * <code>string imagePath = 9;</code>
+     * @return The imagePath.
+     */
+    java.lang.String getImagePath();
+    /**
+     * <code>string imagePath = 9;</code>
+     * @return The bytes for imagePath.
+     */
+    com.google.protobuf.ByteString
+        getImagePathBytes();
   }
   /**
    * Protobuf type {@code proto.LocationFullInfo}
@@ -8547,6 +8559,7 @@ public final class ServerClient {
       address_ = "";
       contactNumber_ = "";
       city_ = "";
+      imagePath_ = "";
     }
 
     @java.lang.Override
@@ -8880,6 +8893,45 @@ public final class ServerClient {
       return companyID_;
     }
 
+    public static final int IMAGEPATH_FIELD_NUMBER = 9;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object imagePath_ = "";
+    /**
+     * <code>string imagePath = 9;</code>
+     * @return The imagePath.
+     */
+    @java.lang.Override
+    public java.lang.String getImagePath() {
+      java.lang.Object ref = imagePath_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        imagePath_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string imagePath = 9;</code>
+     * @return The bytes for imagePath.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getImagePathBytes() {
+      java.lang.Object ref = imagePath_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        imagePath_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -8920,6 +8972,9 @@ public final class ServerClient {
       }
       if (companyID_ != 0) {
         output.writeInt32(8, companyID_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(imagePath_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, imagePath_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -8963,6 +9018,9 @@ public final class ServerClient {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(8, companyID_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(imagePath_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, imagePath_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -8994,6 +9052,8 @@ public final class ServerClient {
           .equals(other.getCity())) return false;
       if (getCompanyID()
           != other.getCompanyID()) return false;
+      if (!getImagePath()
+          .equals(other.getImagePath())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -9023,6 +9083,8 @@ public final class ServerClient {
       hash = (53 * hash) + getCity().hashCode();
       hash = (37 * hash) + COMPANYID_FIELD_NUMBER;
       hash = (53 * hash) + getCompanyID();
+      hash = (37 * hash) + IMAGEPATH_FIELD_NUMBER;
+      hash = (53 * hash) + getImagePath().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -9182,6 +9244,7 @@ public final class ServerClient {
         internalGetMutableCurrentJobRequest().clear();
         city_ = "";
         companyID_ = 0;
+        imagePath_ = "";
         return this;
       }
 
@@ -9239,6 +9302,9 @@ public final class ServerClient {
         }
         if (((from_bitField0_ & 0x00000080) != 0)) {
           result.companyID_ = companyID_;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.imagePath_ = imagePath_;
         }
       }
 
@@ -9320,6 +9386,11 @@ public final class ServerClient {
         if (other.getCompanyID() != 0) {
           setCompanyID(other.getCompanyID());
         }
+        if (!other.getImagePath().isEmpty()) {
+          imagePath_ = other.imagePath_;
+          bitField0_ |= 0x00000100;
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -9390,6 +9461,11 @@ public final class ServerClient {
                 bitField0_ |= 0x00000080;
                 break;
               } // case 64
+              case 74: {
+                imagePath_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000100;
+                break;
+              } // case 74
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -9955,6 +10031,78 @@ public final class ServerClient {
         onChanged();
         return this;
       }
+
+      private java.lang.Object imagePath_ = "";
+      /**
+       * <code>string imagePath = 9;</code>
+       * @return The imagePath.
+       */
+      public java.lang.String getImagePath() {
+        java.lang.Object ref = imagePath_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          imagePath_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string imagePath = 9;</code>
+       * @return The bytes for imagePath.
+       */
+      public com.google.protobuf.ByteString
+          getImagePathBytes() {
+        java.lang.Object ref = imagePath_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          imagePath_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string imagePath = 9;</code>
+       * @param value The imagePath to set.
+       * @return This builder for chaining.
+       */
+      public Builder setImagePath(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        imagePath_ = value;
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string imagePath = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearImagePath() {
+        imagePath_ = getDefaultInstance().getImagePath();
+        bitField0_ = (bitField0_ & ~0x00000100);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string imagePath = 9;</code>
+       * @param value The bytes for imagePath to set.
+       * @return This builder for chaining.
+       */
+      public Builder setImagePathBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        imagePath_ = value;
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -10046,6 +10194,18 @@ public final class ServerClient {
      * @return The companyID.
      */
     int getCompanyID();
+
+    /**
+     * <code>string imagePath = 4;</code>
+     * @return The imagePath.
+     */
+    java.lang.String getImagePath();
+    /**
+     * <code>string imagePath = 4;</code>
+     * @return The bytes for imagePath.
+     */
+    com.google.protobuf.ByteString
+        getImagePathBytes();
   }
   /**
    * Protobuf type {@code proto.LocationMetaInfo}
@@ -10061,6 +10221,7 @@ public final class ServerClient {
     }
     private LocationMetaInfo() {
       contactNumber_ = "";
+      imagePath_ = "";
     }
 
     @java.lang.Override
@@ -10149,6 +10310,45 @@ public final class ServerClient {
       return companyID_;
     }
 
+    public static final int IMAGEPATH_FIELD_NUMBER = 4;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object imagePath_ = "";
+    /**
+     * <code>string imagePath = 4;</code>
+     * @return The imagePath.
+     */
+    @java.lang.Override
+    public java.lang.String getImagePath() {
+      java.lang.Object ref = imagePath_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        imagePath_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string imagePath = 4;</code>
+     * @return The bytes for imagePath.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getImagePathBytes() {
+      java.lang.Object ref = imagePath_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        imagePath_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -10172,6 +10372,9 @@ public final class ServerClient {
       if (companyID_ != 0) {
         output.writeInt32(3, companyID_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(imagePath_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, imagePath_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -10191,6 +10394,9 @@ public final class ServerClient {
       if (companyID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, companyID_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(imagePath_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, imagePath_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -10213,6 +10419,8 @@ public final class ServerClient {
           .equals(other.getContactNumber())) return false;
       if (getCompanyID()
           != other.getCompanyID()) return false;
+      if (!getImagePath()
+          .equals(other.getImagePath())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -10230,6 +10438,8 @@ public final class ServerClient {
       hash = (53 * hash) + getContactNumber().hashCode();
       hash = (37 * hash) + COMPANYID_FIELD_NUMBER;
       hash = (53 * hash) + getCompanyID();
+      hash = (37 * hash) + IMAGEPATH_FIELD_NUMBER;
+      hash = (53 * hash) + getImagePath().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -10362,6 +10572,7 @@ public final class ServerClient {
         locationID_ = 0;
         contactNumber_ = "";
         companyID_ = 0;
+        imagePath_ = "";
         return this;
       }
 
@@ -10403,6 +10614,9 @@ public final class ServerClient {
         }
         if (((from_bitField0_ & 0x00000004) != 0)) {
           result.companyID_ = companyID_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.imagePath_ = imagePath_;
         }
       }
 
@@ -10461,6 +10675,11 @@ public final class ServerClient {
         if (other.getCompanyID() != 0) {
           setCompanyID(other.getCompanyID());
         }
+        if (!other.getImagePath().isEmpty()) {
+          imagePath_ = other.imagePath_;
+          bitField0_ |= 0x00000008;
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -10502,6 +10721,11 @@ public final class ServerClient {
                 bitField0_ |= 0x00000004;
                 break;
               } // case 24
+              case 34: {
+                imagePath_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -10651,6 +10875,78 @@ public final class ServerClient {
       public Builder clearCompanyID() {
         bitField0_ = (bitField0_ & ~0x00000004);
         companyID_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object imagePath_ = "";
+      /**
+       * <code>string imagePath = 4;</code>
+       * @return The imagePath.
+       */
+      public java.lang.String getImagePath() {
+        java.lang.Object ref = imagePath_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          imagePath_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string imagePath = 4;</code>
+       * @return The bytes for imagePath.
+       */
+      public com.google.protobuf.ByteString
+          getImagePathBytes() {
+        java.lang.Object ref = imagePath_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          imagePath_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string imagePath = 4;</code>
+       * @param value The imagePath to set.
+       * @return This builder for chaining.
+       */
+      public Builder setImagePath(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        imagePath_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string imagePath = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearImagePath() {
+        imagePath_ = getDefaultInstance().getImagePath();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string imagePath = 4;</code>
+       * @param value The bytes for imagePath to set.
+       * @return This builder for chaining.
+       */
+      public Builder setImagePathBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        imagePath_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -18681,6 +18977,30 @@ public final class ServerClient {
      */
     boolean getCurrentCertificationsOrThrow(
         int key);
+
+    /**
+     * <code>string imagePath = 11;</code>
+     * @return The imagePath.
+     */
+    java.lang.String getImagePath();
+    /**
+     * <code>string imagePath = 11;</code>
+     * @return The bytes for imagePath.
+     */
+    com.google.protobuf.ByteString
+        getImagePathBytes();
+
+    /**
+     * <code>string CVname = 12;</code>
+     * @return The cVname.
+     */
+    java.lang.String getCVname();
+    /**
+     * <code>string CVname = 12;</code>
+     * @return The bytes for cVname.
+     */
+    com.google.protobuf.ByteString
+        getCVnameBytes();
   }
   /**
    * Protobuf type {@code proto.CVFullInfo}
@@ -18698,6 +19018,8 @@ public final class ServerClient {
       email_ = "";
       phoneNumber_ = "";
       jobTitle_ = "";
+      imagePath_ = "";
+      cVname_ = "";
     }
 
     @java.lang.Override
@@ -19269,6 +19591,84 @@ public final class ServerClient {
       return map.get(key);
     }
 
+    public static final int IMAGEPATH_FIELD_NUMBER = 11;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object imagePath_ = "";
+    /**
+     * <code>string imagePath = 11;</code>
+     * @return The imagePath.
+     */
+    @java.lang.Override
+    public java.lang.String getImagePath() {
+      java.lang.Object ref = imagePath_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        imagePath_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string imagePath = 11;</code>
+     * @return The bytes for imagePath.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getImagePathBytes() {
+      java.lang.Object ref = imagePath_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        imagePath_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CVNAME_FIELD_NUMBER = 12;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object cVname_ = "";
+    /**
+     * <code>string CVname = 12;</code>
+     * @return The cVname.
+     */
+    @java.lang.Override
+    public java.lang.String getCVname() {
+      java.lang.Object ref = cVname_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        cVname_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string CVname = 12;</code>
+     * @return The bytes for cVname.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCVnameBytes() {
+      java.lang.Object ref = cVname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        cVname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -19328,6 +19728,12 @@ public final class ServerClient {
           internalGetCurrentCertifications(),
           CurrentCertificationsDefaultEntryHolder.defaultEntry,
           10);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(imagePath_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 11, imagePath_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(cVname_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 12, cVname_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -19404,6 +19810,12 @@ public final class ServerClient {
         size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(10, currentCertifications__);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(imagePath_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, imagePath_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(cVname_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, cVname_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -19439,6 +19851,10 @@ public final class ServerClient {
           other.internalGetCurrentEducations())) return false;
       if (!internalGetCurrentCertifications().equals(
           other.internalGetCurrentCertifications())) return false;
+      if (!getImagePath()
+          .equals(other.getImagePath())) return false;
+      if (!getCVname()
+          .equals(other.getCVname())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -19480,6 +19896,10 @@ public final class ServerClient {
         hash = (37 * hash) + CURRENTCERTIFICATIONS_FIELD_NUMBER;
         hash = (53 * hash) + internalGetCurrentCertifications().hashCode();
       }
+      hash = (37 * hash) + IMAGEPATH_FIELD_NUMBER;
+      hash = (53 * hash) + getImagePath().hashCode();
+      hash = (37 * hash) + CVNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getCVname().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -19657,6 +20077,8 @@ public final class ServerClient {
         internalGetMutableCurrentWorkExperiences().clear();
         internalGetMutableCurrentEducations().clear();
         internalGetMutableCurrentCertifications().clear();
+        imagePath_ = "";
+        cVname_ = "";
         return this;
       }
 
@@ -19724,6 +20146,12 @@ public final class ServerClient {
         if (((from_bitField0_ & 0x00000200) != 0)) {
           result.currentCertifications_ = internalGetCurrentCertifications();
           result.currentCertifications_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00000400) != 0)) {
+          result.imagePath_ = imagePath_;
+        }
+        if (((from_bitField0_ & 0x00000800) != 0)) {
+          result.cVname_ = cVname_;
         }
       }
 
@@ -19807,6 +20235,16 @@ public final class ServerClient {
         internalGetMutableCurrentCertifications().mergeFrom(
             other.internalGetCurrentCertifications());
         bitField0_ |= 0x00000200;
+        if (!other.getImagePath().isEmpty()) {
+          imagePath_ = other.imagePath_;
+          bitField0_ |= 0x00000400;
+          onChanged();
+        }
+        if (!other.getCVname().isEmpty()) {
+          cVname_ = other.cVname_;
+          bitField0_ |= 0x00000800;
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -19903,6 +20341,16 @@ public final class ServerClient {
                 bitField0_ |= 0x00000200;
                 break;
               } // case 82
+              case 90: {
+                imagePath_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000400;
+                break;
+              } // case 90
+              case 98: {
+                cVname_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000800;
+                break;
+              } // case 98
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -20824,6 +21272,150 @@ public final class ServerClient {
         bitField0_ |= 0x00000200;
         return this;
       }
+
+      private java.lang.Object imagePath_ = "";
+      /**
+       * <code>string imagePath = 11;</code>
+       * @return The imagePath.
+       */
+      public java.lang.String getImagePath() {
+        java.lang.Object ref = imagePath_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          imagePath_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string imagePath = 11;</code>
+       * @return The bytes for imagePath.
+       */
+      public com.google.protobuf.ByteString
+          getImagePathBytes() {
+        java.lang.Object ref = imagePath_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          imagePath_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string imagePath = 11;</code>
+       * @param value The imagePath to set.
+       * @return This builder for chaining.
+       */
+      public Builder setImagePath(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        imagePath_ = value;
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string imagePath = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearImagePath() {
+        imagePath_ = getDefaultInstance().getImagePath();
+        bitField0_ = (bitField0_ & ~0x00000400);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string imagePath = 11;</code>
+       * @param value The bytes for imagePath to set.
+       * @return This builder for chaining.
+       */
+      public Builder setImagePathBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        imagePath_ = value;
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object cVname_ = "";
+      /**
+       * <code>string CVname = 12;</code>
+       * @return The cVname.
+       */
+      public java.lang.String getCVname() {
+        java.lang.Object ref = cVname_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          cVname_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string CVname = 12;</code>
+       * @return The bytes for cVname.
+       */
+      public com.google.protobuf.ByteString
+          getCVnameBytes() {
+        java.lang.Object ref = cVname_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          cVname_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string CVname = 12;</code>
+       * @param value The cVname to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCVname(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        cVname_ = value;
+        bitField0_ |= 0x00000800;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string CVname = 12;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCVname() {
+        cVname_ = getDefaultInstance().getCVname();
+        bitField0_ = (bitField0_ & ~0x00000800);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string CVname = 12;</code>
+       * @param value The bytes for cVname to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCVnameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        cVname_ = value;
+        bitField0_ |= 0x00000800;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -20903,6 +21495,30 @@ public final class ServerClient {
      * @return The candidateID.
      */
     int getCandidateID();
+
+    /**
+     * <code>string imagePath = 3;</code>
+     * @return The imagePath.
+     */
+    java.lang.String getImagePath();
+    /**
+     * <code>string imagePath = 3;</code>
+     * @return The bytes for imagePath.
+     */
+    com.google.protobuf.ByteString
+        getImagePathBytes();
+
+    /**
+     * <code>string CVname = 4;</code>
+     * @return The cVname.
+     */
+    java.lang.String getCVname();
+    /**
+     * <code>string CVname = 4;</code>
+     * @return The bytes for cVname.
+     */
+    com.google.protobuf.ByteString
+        getCVnameBytes();
   }
   /**
    * Protobuf type {@code proto.CVMetaInfo}
@@ -20917,6 +21533,8 @@ public final class ServerClient {
       super(builder);
     }
     private CVMetaInfo() {
+      imagePath_ = "";
+      cVname_ = "";
     }
 
     @java.lang.Override
@@ -20966,6 +21584,84 @@ public final class ServerClient {
       return candidateID_;
     }
 
+    public static final int IMAGEPATH_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object imagePath_ = "";
+    /**
+     * <code>string imagePath = 3;</code>
+     * @return The imagePath.
+     */
+    @java.lang.Override
+    public java.lang.String getImagePath() {
+      java.lang.Object ref = imagePath_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        imagePath_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string imagePath = 3;</code>
+     * @return The bytes for imagePath.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getImagePathBytes() {
+      java.lang.Object ref = imagePath_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        imagePath_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CVNAME_FIELD_NUMBER = 4;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object cVname_ = "";
+    /**
+     * <code>string CVname = 4;</code>
+     * @return The cVname.
+     */
+    @java.lang.Override
+    public java.lang.String getCVname() {
+      java.lang.Object ref = cVname_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        cVname_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string CVname = 4;</code>
+     * @return The bytes for cVname.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCVnameBytes() {
+      java.lang.Object ref = cVname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        cVname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -20986,6 +21682,12 @@ public final class ServerClient {
       if (candidateID_ != 0) {
         output.writeInt32(2, candidateID_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(imagePath_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, imagePath_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(cVname_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, cVname_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -21002,6 +21704,12 @@ public final class ServerClient {
       if (candidateID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, candidateID_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(imagePath_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, imagePath_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(cVname_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, cVname_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -21022,6 +21730,10 @@ public final class ServerClient {
           != other.getCVID()) return false;
       if (getCandidateID()
           != other.getCandidateID()) return false;
+      if (!getImagePath()
+          .equals(other.getImagePath())) return false;
+      if (!getCVname()
+          .equals(other.getCVname())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -21037,6 +21749,10 @@ public final class ServerClient {
       hash = (53 * hash) + getCVID();
       hash = (37 * hash) + CANDIDATEID_FIELD_NUMBER;
       hash = (53 * hash) + getCandidateID();
+      hash = (37 * hash) + IMAGEPATH_FIELD_NUMBER;
+      hash = (53 * hash) + getImagePath().hashCode();
+      hash = (37 * hash) + CVNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getCVname().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -21168,6 +21884,8 @@ public final class ServerClient {
         bitField0_ = 0;
         cVID_ = 0;
         candidateID_ = 0;
+        imagePath_ = "";
+        cVname_ = "";
         return this;
       }
 
@@ -21206,6 +21924,12 @@ public final class ServerClient {
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
           result.candidateID_ = candidateID_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.imagePath_ = imagePath_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.cVname_ = cVname_;
         }
       }
 
@@ -21259,6 +21983,16 @@ public final class ServerClient {
         if (other.getCandidateID() != 0) {
           setCandidateID(other.getCandidateID());
         }
+        if (!other.getImagePath().isEmpty()) {
+          imagePath_ = other.imagePath_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        if (!other.getCVname().isEmpty()) {
+          cVname_ = other.cVname_;
+          bitField0_ |= 0x00000008;
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -21295,6 +22029,16 @@ public final class ServerClient {
                 bitField0_ |= 0x00000002;
                 break;
               } // case 16
+              case 26: {
+                imagePath_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 34: {
+                cVname_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -21372,6 +22116,150 @@ public final class ServerClient {
       public Builder clearCandidateID() {
         bitField0_ = (bitField0_ & ~0x00000002);
         candidateID_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object imagePath_ = "";
+      /**
+       * <code>string imagePath = 3;</code>
+       * @return The imagePath.
+       */
+      public java.lang.String getImagePath() {
+        java.lang.Object ref = imagePath_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          imagePath_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string imagePath = 3;</code>
+       * @return The bytes for imagePath.
+       */
+      public com.google.protobuf.ByteString
+          getImagePathBytes() {
+        java.lang.Object ref = imagePath_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          imagePath_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string imagePath = 3;</code>
+       * @param value The imagePath to set.
+       * @return This builder for chaining.
+       */
+      public Builder setImagePath(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        imagePath_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string imagePath = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearImagePath() {
+        imagePath_ = getDefaultInstance().getImagePath();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string imagePath = 3;</code>
+       * @param value The bytes for imagePath to set.
+       * @return This builder for chaining.
+       */
+      public Builder setImagePathBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        imagePath_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object cVname_ = "";
+      /**
+       * <code>string CVname = 4;</code>
+       * @return The cVname.
+       */
+      public java.lang.String getCVname() {
+        java.lang.Object ref = cVname_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          cVname_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string CVname = 4;</code>
+       * @return The bytes for cVname.
+       */
+      public com.google.protobuf.ByteString
+          getCVnameBytes() {
+        java.lang.Object ref = cVname_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          cVname_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string CVname = 4;</code>
+       * @param value The cVname to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCVname(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        cVname_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string CVname = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCVname() {
+        cVname_ = getDefaultInstance().getCVname();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string CVname = 4;</code>
+       * @param value The bytes for cVname to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCVnameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        cVname_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -22683,209 +23571,211 @@ public final class ServerClient {
       "uestMetaInfo\022\r\n\005jobID\030\001 \001(\005\022\022\n\nlocationI" +
       "D\030\002 \001(\005\"V\n\014RoleFullInfo\022\016\n\006roleID\030\001 \001(\005\022" +
       "\020\n\010roleName\030\002 \001(\t\022\021\n\troleLevel\030\003 \001(\005\022\021\n\t" +
-      "companyID\030\004 \001(\005\"\224\002\n\020LocationFullInfo\022\022\n\n" +
+      "companyID\030\004 \001(\005\"\247\002\n\020LocationFullInfo\022\022\n\n" +
       "locationID\030\001 \001(\005\022\017\n\007country\030\002 \001(\t\022\r\n\005sta" +
       "te\030\003 \001(\t\022\017\n\007address\030\004 \001(\t\022\025\n\rcontactNumb" +
       "er\030\005 \001(\t\022I\n\021currentJobRequest\030\006 \003(\0132..pr" +
       "oto.LocationFullInfo.CurrentJobRequestEn" +
-      "try\022\014\n\004city\030\007 \001(\t\022\021\n\tcompanyID\030\010 \001(\005\0328\n\026" +
-      "CurrentJobRequestEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005v" +
-      "alue\030\002 \001(\010:\0028\001\"P\n\020LocationMetaInfo\022\022\n\nlo" +
-      "cationID\030\001 \001(\005\022\025\n\rcontactNumber\030\002 \001(\t\022\021\n" +
-      "\tcompanyID\030\003 \001(\005\"\364\002\n\017CompanyFullInfo\022\023\n\013" +
-      "companiesID\030\001 \001(\005\022\023\n\013companyName\030\002 \001(\t\022\030" +
-      "\n\020companyAvatarURL\030\003 \001(\t\022\017\n\007website\030\004 \001(" +
-      "\t\022\r\n\005email\030\005 \001(\t\022F\n\020activeRecruiters\030\006 \003" +
-      "(\0132,.proto.CompanyFullInfo.ActiveRecruit" +
-      "ersEntry\022D\n\017activeLocations\030\007 \003(\0132+.prot" +
-      "o.CompanyFullInfo.ActiveLocationsEntry\0327" +
-      "\n\025ActiveRecruitersEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005" +
-      "value\030\002 \001(\010:\0028\001\0326\n\024ActiveLocationsEntry\022" +
-      "\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\"9\n\017Compa" +
-      "nyMetaInfo\022\021\n\tcompanyID\030\001 \001(\005\022\023\n\013company" +
-      "Name\030\002 \001(\t\"\333\001\n\026WorkExperienceFullInfo\022\030\n" +
-      "\020workExperienceID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\020\n" +
-      "\010jobTitle\030\003 \001(\t\022-\n\tstartDate\030\004 \001(\0132\032.goo" +
-      "gle.protobuf.Timestamp\022+\n\007endDate\030\005 \001(\0132" +
-      "\032.google.protobuf.Timestamp\022\026\n\016jobDescri" +
-      "ption\030\006 \001(\t\022\023\n\013companyName\030\007 \001(\t\"j\n\rSkil" +
-      "lFullInfo\022\017\n\007skillID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005" +
-      "\022\021\n\tskillName\030\003 \001(\t\022\'\n\013proficiency\030\004 \001(\016" +
-      "2\022.proto.Proficiency\"i\n\023PersonalityFullI" +
-      "nfo\022\025\n\rpersonalityID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005" +
-      "\022\030\n\020personalityTitle\030\003 \001(\t\022\023\n\013descriptio" +
-      "n\030\004 \001(\t\"\306\001\n\021EducationFullInfo\022\023\n\013educati" +
-      "onID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\016\n\006degree\030\003 \001(\t" +
-      "\022\r\n\005field\030\004 \001(\t\022\023\n\013institution\030\005 \001(\t\022-\n\t" +
-      "startDate\030\006 \001(\0132\032.google.protobuf.Timest" +
-      "amp\022+\n\007endDate\030\007 \001(\0132\032.google.protobuf.T" +
-      "imestamp\"\235\001\n\025CertificationFullInfo\022\027\n\017ce" +
-      "rtificationID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\031\n\021cer" +
-      "tificationName\030\003 \001(\t\022\020\n\010provider\030\004 \001(\t\0220" +
-      "\n\014providedDate\030\005 \001(\0132\032.google.protobuf.T" +
-      "imestamp\"\370\005\n\nCVFullInfo\022\014\n\004CVID\030\001 \001(\005\022\023\n" +
-      "\013candidateID\030\002 \001(\005\022\r\n\005email\030\003 \001(\t\022\023\n\013pho" +
-      "neNumber\030\004 \001(\t\022\020\n\010jobTitle\030\005 \001(\t\022;\n\rcurr" +
-      "entSkills\030\006 \003(\0132$.proto.CVFullInfo.Curre" +
-      "ntSkillsEntry\022I\n\024currentPersonalities\030\007 " +
-      "\003(\0132+.proto.CVFullInfo.CurrentPersonalit" +
-      "iesEntry\022M\n\026currentWorkExperiences\030\010 \003(\013" +
-      "2-.proto.CVFullInfo.CurrentWorkExperienc" +
-      "esEntry\022C\n\021currentEducations\030\t \003(\0132(.pro" +
-      "to.CVFullInfo.CurrentEducationsEntry\022K\n\025" +
-      "currentCertifications\030\n \003(\0132,.proto.CVFu" +
-      "llInfo.CurrentCertificationsEntry\0324\n\022Cur" +
-      "rentSkillsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 " +
-      "\001(\010:\0028\001\032;\n\031CurrentPersonalitiesEntry\022\013\n\003" +
-      "key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\032=\n\033CurrentW" +
-      "orkExperiencesEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005valu" +
-      "e\030\002 \001(\010:\0028\001\0328\n\026CurrentEducationsEntry\022\013\n" +
-      "\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\032<\n\032Current" +
-      "CertificationsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005valu" +
-      "e\030\002 \001(\010:\0028\001\"/\n\nCVMetaInfo\022\014\n\004CVID\030\001 \001(\005\022" +
-      "\023\n\013candidateID\030\002 \001(\005\"\247\001\n\020WishListFullInf" +
-      "o\022\023\n\013candidateID\030\001 \001(\005\022\025\n\rsalaryMinimum\030" +
-      "\002 \001(\005\022\020\n\010location\030\003 \001(\t\022\037\n\007jobType\030\004 \001(\016" +
-      "2\016.proto.JobType\022!\n\010jobLevel\030\005 \001(\0162\017.pro" +
-      "to.JobLevel\022\021\n\tinsurance\030\006 \001(\t*\036\n\006Gender" +
-      "\022\010\n\004MALE\020\000\022\n\n\006FEMALE\020\001*f\n\010JobLevel\022\017\n\013EN" +
-      "TRY_LEVEL\020\000\022\r\n\tMID_LEVEL\020\001\022\020\n\014SENIOR_LEV" +
-      "EL\020\002\022\013\n\007MANAGER\020\003\022\014\n\010DIRECTOR\020\004\022\r\n\tEXECU" +
-      "TIVE\020\005*%\n\007JobType\022\014\n\010FULLTIME\020\000\022\014\n\010HALFT" +
-      "IME\020\001*I\n\006Status\022\026\n\022APPLICATION_REVIEW\020\000\022" +
-      "\r\n\tINTERVIEW\020\001\022\013\n\007SUCCESS\020\002\022\013\n\007FAILURE\020\003" +
-      "*9\n\013Proficiency\022\014\n\010BEGINNER\020\000\022\020\n\014INTERME" +
-      "DIATE\020\001\022\n\n\006EXPERT\020\0022\247\006\n\013UserService\022E\n\017C" +
-      "andidateCreate\022\030.proto.CandidateFullInfo" +
-      "\032\030.proto.CandidateFullInfo\022E\n\017RecruiterC" +
-      "reate\022\030.proto.RecruiterFullInfo\032\030.proto." +
-      "RecruiterFullInfo\0224\n\010UserRead\022\023.proto.Us" +
-      "erMetaInfo\032\023.proto.UserFullInfo\022=\n\014UserL" +
-      "istRead\022\026.google.protobuf.Empty\032\023.proto." +
-      "UserMetaInfo0\001\022>\n\rCandidateRead\022\023.proto." +
-      "UserMetaInfo\032\030.proto.CandidateFullInfo\022G" +
-      "\n\021CandidateListRead\022\026.google.protobuf.Em" +
-      "pty\032\030.proto.CandidateFullInfo0\001\022>\n\rRecru" +
-      "iterRead\022\023.proto.UserMetaInfo\032\030.proto.Re" +
-      "cruiterFullInfo\022G\n\021RecruiterListRead\022\026.g" +
-      "oogle.protobuf.Empty\032\030.proto.RecruiterFu" +
-      "llInfo0\001\0226\n\nUserUpdate\022\023.proto.UserFullI" +
-      "nfo\032\023.proto.UserFullInfo\022E\n\017CandidateUpd" +
-      "ate\022\030.proto.CandidateFullInfo\032\030.proto.Ca" +
-      "ndidateFullInfo\022E\n\017RecruiterUpdate\022\030.pro" +
-      "to.RecruiterFullInfo\032\030.proto.RecruiterFu" +
-      "llInfo\022=\n\nUserDelete\022\023.proto.UserMetaInf" +
-      "o\032\032.google.protobuf.BoolValue2\242\004\n\021JobReq" +
-      "uestService\022J\n\022JobRequestRegister\022\031.prot" +
-      "o.JobRequestFullInfo\032\031.proto.JobRequestF" +
-      "ullInfo\022F\n\016JobRequestRead\022\031.proto.JobReq" +
-      "uestMetaInfo\032\031.proto.JobRequestFullInfo\022" +
-      "I\n\022JobRequestListRead\022\026.google.protobuf." +
-      "Empty\032\031.proto.JobRequestFullInfo0\001\022L\n\024Jo" +
-      "bRequestUpdateInfo\022\031.proto.JobRequestFul" +
-      "lInfo\032\031.proto.JobRequestFullInfo\022I\n\020JobR" +
-      "equestDelete\022\031.proto.JobRequestMetaInfo\032" +
-      "\032.google.protobuf.BoolValue\022H\n\017JobReques" +
-      "tApply\022\031.proto.JobRequestFullInfo\032\032.goog" +
-      "le.protobuf.BoolValue\022K\n\022JobRequestWithd" +
-      "raw\022\031.proto.JobRequestFullInfo\032\032.google." +
-      "protobuf.BoolValue2\277\002\n\013RoleService\0228\n\014Ro" +
-      "leRegister\022\023.proto.RoleFullInfo\032\023.proto." +
-      "RoleFullInfo\0228\n\014RoleReadInfo\022\023.proto.Rol" +
-      "eFullInfo\032\023.proto.RoleFullInfo\022=\n\014RoleLi" +
-      "stRead\022\026.proto.CompanyMetaInfo\032\023.proto.R" +
-      "oleFullInfo0\001\022:\n\016RoleUpdateInfo\022\023.proto." +
-      "RoleFullInfo\032\023.proto.RoleFullInfo\022A\n\016Rol" +
-      "eDeleteInfo\022\023.proto.RoleFullInfo\032\032.googl" +
-      "e.protobuf.BoolValue2\345\002\n\016CompanyService\022" +
-      "A\n\017CompanyRegister\022\026.proto.CompanyFullIn" +
-      "fo\032\026.proto.CompanyFullInfo\022A\n\017CompanyRea" +
-      "dInfo\022\026.proto.CompanyMetaInfo\032\026.proto.Co" +
-      "mpanyFullInfo\022C\n\017CompanyListRead\022\026.googl" +
-      "e.protobuf.Empty\032\026.proto.CompanyFullInfo" +
-      "0\001\022C\n\021CompanyUpdateInfo\022\026.proto.CompanyF" +
-      "ullInfo\032\026.proto.CompanyFullInfo\022C\n\rCompa" +
-      "nyDelete\022\026.proto.CompanyMetaInfo\032\032.googl" +
-      "e.protobuf.BoolValue2\363\002\n\017LocationService" +
-      "\022D\n\020LocationRegister\022\027.proto.LocationFul" +
-      "lInfo\032\027.proto.LocationFullInfo\022D\n\020Locati" +
-      "onReadInfo\022\027.proto.LocationMetaInfo\032\027.pr" +
-      "oto.LocationFullInfo\022E\n\020LocationListRead" +
-      "\022\026.google.protobuf.Empty\032\027.proto.Locatio" +
-      "nFullInfo0\001\022F\n\022LocationUpdateInfo\022\027.prot" +
-      "o.LocationFullInfo\032\027.proto.LocationFullI" +
-      "nfo\022E\n\016LocationDelete\022\027.proto.LocationMe" +
-      "taInfo\032\032.google.protobuf.BoolValue2\226\002\n\tC" +
-      "VService\0220\n\010CVCreate\022\021.proto.CVFullInfo\032" +
-      "\021.proto.CVFullInfo\022.\n\006CVRead\022\021.proto.CVM" +
-      "etaInfo\032\021.proto.CVFullInfo\0226\n\nCVListRead" +
-      "\022\023.proto.UserMetaInfo\032\021.proto.CVFullInfo" +
-      "0\001\0224\n\014CVUpdateInfo\022\021.proto.CVFullInfo\032\021." +
-      "proto.CVFullInfo\0229\n\010CVDelete\022\021.proto.CVM" +
-      "etaInfo\032\032.google.protobuf.BoolValue2\274\003\n\025" +
-      "WorkExperienceService\022T\n\024WorkExperienceC" +
-      "reate\022\035.proto.WorkExperienceFullInfo\032\035.p" +
-      "roto.WorkExperienceFullInfo\022R\n\022WorkExper" +
-      "ienceRead\022\035.proto.WorkExperienceFullInfo" +
-      "\032\035.proto.WorkExperienceFullInfo\022L\n\026WorkE" +
-      "xperienceListRead\022\021.proto.CVMetaInfo\032\035.p" +
-      "roto.WorkExperienceFullInfo0\001\022X\n\030WorkExp" +
-      "erienceUpdateInfo\022\035.proto.WorkExperience" +
-      "FullInfo\032\035.proto.WorkExperienceFullInfo\022" +
-      "Q\n\024WorkExperienceDelete\022\035.proto.WorkExpe" +
-      "rienceFullInfo\032\032.google.protobuf.BoolVal" +
-      "ue2\276\002\n\014SkillService\0229\n\013SkillCreate\022\024.pro" +
-      "to.SkillFullInfo\032\024.proto.SkillFullInfo\0227" +
-      "\n\tSkillRead\022\024.proto.SkillFullInfo\032\024.prot" +
-      "o.SkillFullInfo\022:\n\rSkillListRead\022\021.proto" +
-      ".CVMetaInfo\032\024.proto.SkillFullInfo0\001\022=\n\017S" +
-      "killUpdateInfo\022\024.proto.SkillFullInfo\032\024.p" +
-      "roto.SkillFullInfo\022?\n\013SkillDelete\022\024.prot" +
-      "o.SkillFullInfo\032\032.google.protobuf.BoolVa" +
-      "lue2\222\003\n\022PersonalityService\022K\n\021Personalit" +
-      "yCreate\022\032.proto.PersonalityFullInfo\032\032.pr" +
-      "oto.PersonalityFullInfo\022I\n\017PersonalityRe" +
-      "ad\022\032.proto.PersonalityFullInfo\032\032.proto.P" +
-      "ersonalityFullInfo\022F\n\023PersonalityListRea" +
-      "d\022\021.proto.CVMetaInfo\032\032.proto.Personality" +
-      "FullInfo0\001\022O\n\025PersonalityUpdateInfo\022\032.pr" +
+      "try\022\014\n\004city\030\007 \001(\t\022\021\n\tcompanyID\030\010 \001(\005\022\021\n\t" +
+      "imagePath\030\t \001(\t\0328\n\026CurrentJobRequestEntr" +
+      "y\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\"c\n\020Loc" +
+      "ationMetaInfo\022\022\n\nlocationID\030\001 \001(\005\022\025\n\rcon" +
+      "tactNumber\030\002 \001(\t\022\021\n\tcompanyID\030\003 \001(\005\022\021\n\ti" +
+      "magePath\030\004 \001(\t\"\364\002\n\017CompanyFullInfo\022\023\n\013co" +
+      "mpaniesID\030\001 \001(\005\022\023\n\013companyName\030\002 \001(\t\022\030\n\020" +
+      "companyAvatarURL\030\003 \001(\t\022\017\n\007website\030\004 \001(\t\022" +
+      "\r\n\005email\030\005 \001(\t\022F\n\020activeRecruiters\030\006 \003(\013" +
+      "2,.proto.CompanyFullInfo.ActiveRecruiter" +
+      "sEntry\022D\n\017activeLocations\030\007 \003(\0132+.proto." +
+      "CompanyFullInfo.ActiveLocationsEntry\0327\n\025" +
+      "ActiveRecruitersEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005va" +
+      "lue\030\002 \001(\010:\0028\001\0326\n\024ActiveLocationsEntry\022\013\n" +
+      "\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\"9\n\017Company" +
+      "MetaInfo\022\021\n\tcompanyID\030\001 \001(\005\022\023\n\013companyNa" +
+      "me\030\002 \001(\t\"\333\001\n\026WorkExperienceFullInfo\022\030\n\020w" +
+      "orkExperienceID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\020\n\010j" +
+      "obTitle\030\003 \001(\t\022-\n\tstartDate\030\004 \001(\0132\032.googl" +
+      "e.protobuf.Timestamp\022+\n\007endDate\030\005 \001(\0132\032." +
+      "google.protobuf.Timestamp\022\026\n\016jobDescript" +
+      "ion\030\006 \001(\t\022\023\n\013companyName\030\007 \001(\t\"j\n\rSkillF" +
+      "ullInfo\022\017\n\007skillID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\021" +
+      "\n\tskillName\030\003 \001(\t\022\'\n\013proficiency\030\004 \001(\0162\022" +
+      ".proto.Proficiency\"i\n\023PersonalityFullInf" +
+      "o\022\025\n\rpersonalityID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\030" +
+      "\n\020personalityTitle\030\003 \001(\t\022\023\n\013description\030" +
+      "\004 \001(\t\"\306\001\n\021EducationFullInfo\022\023\n\013education" +
+      "ID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\016\n\006degree\030\003 \001(\t\022\r" +
+      "\n\005field\030\004 \001(\t\022\023\n\013institution\030\005 \001(\t\022-\n\tst" +
+      "artDate\030\006 \001(\0132\032.google.protobuf.Timestam" +
+      "p\022+\n\007endDate\030\007 \001(\0132\032.google.protobuf.Tim" +
+      "estamp\"\235\001\n\025CertificationFullInfo\022\027\n\017cert" +
+      "ificationID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\031\n\021certi" +
+      "ficationName\030\003 \001(\t\022\020\n\010provider\030\004 \001(\t\0220\n\014" +
+      "providedDate\030\005 \001(\0132\032.google.protobuf.Tim" +
+      "estamp\"\233\006\n\nCVFullInfo\022\014\n\004CVID\030\001 \001(\005\022\023\n\013c" +
+      "andidateID\030\002 \001(\005\022\r\n\005email\030\003 \001(\t\022\023\n\013phone" +
+      "Number\030\004 \001(\t\022\020\n\010jobTitle\030\005 \001(\t\022;\n\rcurren" +
+      "tSkills\030\006 \003(\0132$.proto.CVFullInfo.Current" +
+      "SkillsEntry\022I\n\024currentPersonalities\030\007 \003(" +
+      "\0132+.proto.CVFullInfo.CurrentPersonalitie" +
+      "sEntry\022M\n\026currentWorkExperiences\030\010 \003(\0132-" +
+      ".proto.CVFullInfo.CurrentWorkExperiences" +
+      "Entry\022C\n\021currentEducations\030\t \003(\0132(.proto" +
+      ".CVFullInfo.CurrentEducationsEntry\022K\n\025cu" +
+      "rrentCertifications\030\n \003(\0132,.proto.CVFull" +
+      "Info.CurrentCertificationsEntry\022\021\n\timage" +
+      "Path\030\013 \001(\t\022\016\n\006CVname\030\014 \001(\t\0324\n\022CurrentSki" +
+      "llsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001" +
+      "\032;\n\031CurrentPersonalitiesEntry\022\013\n\003key\030\001 \001" +
+      "(\005\022\r\n\005value\030\002 \001(\010:\0028\001\032=\n\033CurrentWorkExpe" +
+      "riencesEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010" +
+      ":\0028\001\0328\n\026CurrentEducationsEntry\022\013\n\003key\030\001 " +
+      "\001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\032<\n\032CurrentCertifi" +
+      "cationsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010" +
+      ":\0028\001\"R\n\nCVMetaInfo\022\014\n\004CVID\030\001 \001(\005\022\023\n\013cand" +
+      "idateID\030\002 \001(\005\022\021\n\timagePath\030\003 \001(\t\022\016\n\006CVna" +
+      "me\030\004 \001(\t\"\247\001\n\020WishListFullInfo\022\023\n\013candida" +
+      "teID\030\001 \001(\005\022\025\n\rsalaryMinimum\030\002 \001(\005\022\020\n\010loc" +
+      "ation\030\003 \001(\t\022\037\n\007jobType\030\004 \001(\0162\016.proto.Job" +
+      "Type\022!\n\010jobLevel\030\005 \001(\0162\017.proto.JobLevel\022" +
+      "\021\n\tinsurance\030\006 \001(\t*\036\n\006Gender\022\010\n\004MALE\020\000\022\n" +
+      "\n\006FEMALE\020\001*f\n\010JobLevel\022\017\n\013ENTRY_LEVEL\020\000\022" +
+      "\r\n\tMID_LEVEL\020\001\022\020\n\014SENIOR_LEVEL\020\002\022\013\n\007MANA" +
+      "GER\020\003\022\014\n\010DIRECTOR\020\004\022\r\n\tEXECUTIVE\020\005*%\n\007Jo" +
+      "bType\022\014\n\010FULLTIME\020\000\022\014\n\010HALFTIME\020\001*I\n\006Sta" +
+      "tus\022\026\n\022APPLICATION_REVIEW\020\000\022\r\n\tINTERVIEW" +
+      "\020\001\022\013\n\007SUCCESS\020\002\022\013\n\007FAILURE\020\003*9\n\013Proficie" +
+      "ncy\022\014\n\010BEGINNER\020\000\022\020\n\014INTERMEDIATE\020\001\022\n\n\006E" +
+      "XPERT\020\0022\247\006\n\013UserService\022E\n\017CandidateCrea" +
+      "te\022\030.proto.CandidateFullInfo\032\030.proto.Can" +
+      "didateFullInfo\022E\n\017RecruiterCreate\022\030.prot" +
+      "o.RecruiterFullInfo\032\030.proto.RecruiterFul" +
+      "lInfo\0224\n\010UserRead\022\023.proto.UserMetaInfo\032\023" +
+      ".proto.UserFullInfo\022=\n\014UserListRead\022\026.go" +
+      "ogle.protobuf.Empty\032\023.proto.UserMetaInfo" +
+      "0\001\022>\n\rCandidateRead\022\023.proto.UserMetaInfo" +
+      "\032\030.proto.CandidateFullInfo\022G\n\021CandidateL" +
+      "istRead\022\026.google.protobuf.Empty\032\030.proto." +
+      "CandidateFullInfo0\001\022>\n\rRecruiterRead\022\023.p" +
+      "roto.UserMetaInfo\032\030.proto.RecruiterFullI" +
+      "nfo\022G\n\021RecruiterListRead\022\026.google.protob" +
+      "uf.Empty\032\030.proto.RecruiterFullInfo0\001\0226\n\n" +
+      "UserUpdate\022\023.proto.UserFullInfo\032\023.proto." +
+      "UserFullInfo\022E\n\017CandidateUpdate\022\030.proto." +
+      "CandidateFullInfo\032\030.proto.CandidateFullI" +
+      "nfo\022E\n\017RecruiterUpdate\022\030.proto.Recruiter" +
+      "FullInfo\032\030.proto.RecruiterFullInfo\022=\n\nUs" +
+      "erDelete\022\023.proto.UserMetaInfo\032\032.google.p" +
+      "rotobuf.BoolValue2\242\004\n\021JobRequestService\022" +
+      "J\n\022JobRequestRegister\022\031.proto.JobRequest" +
+      "FullInfo\032\031.proto.JobRequestFullInfo\022F\n\016J" +
+      "obRequestRead\022\031.proto.JobRequestMetaInfo" +
+      "\032\031.proto.JobRequestFullInfo\022I\n\022JobReques" +
+      "tListRead\022\026.google.protobuf.Empty\032\031.prot" +
+      "o.JobRequestFullInfo0\001\022L\n\024JobRequestUpda" +
+      "teInfo\022\031.proto.JobRequestFullInfo\032\031.prot" +
+      "o.JobRequestFullInfo\022I\n\020JobRequestDelete" +
+      "\022\031.proto.JobRequestMetaInfo\032\032.google.pro" +
+      "tobuf.BoolValue\022H\n\017JobRequestApply\022\031.pro" +
+      "to.JobRequestFullInfo\032\032.google.protobuf." +
+      "BoolValue\022K\n\022JobRequestWithdraw\022\031.proto." +
+      "JobRequestFullInfo\032\032.google.protobuf.Boo" +
+      "lValue2\277\002\n\013RoleService\0228\n\014RoleRegister\022\023" +
+      ".proto.RoleFullInfo\032\023.proto.RoleFullInfo" +
+      "\0228\n\014RoleReadInfo\022\023.proto.RoleFullInfo\032\023." +
+      "proto.RoleFullInfo\022=\n\014RoleListRead\022\026.pro" +
+      "to.CompanyMetaInfo\032\023.proto.RoleFullInfo0" +
+      "\001\022:\n\016RoleUpdateInfo\022\023.proto.RoleFullInfo" +
+      "\032\023.proto.RoleFullInfo\022A\n\016RoleDeleteInfo\022" +
+      "\023.proto.RoleFullInfo\032\032.google.protobuf.B" +
+      "oolValue2\345\002\n\016CompanyService\022A\n\017CompanyRe" +
+      "gister\022\026.proto.CompanyFullInfo\032\026.proto.C" +
+      "ompanyFullInfo\022A\n\017CompanyReadInfo\022\026.prot" +
+      "o.CompanyMetaInfo\032\026.proto.CompanyFullInf" +
+      "o\022C\n\017CompanyListRead\022\026.google.protobuf.E" +
+      "mpty\032\026.proto.CompanyFullInfo0\001\022C\n\021Compan" +
+      "yUpdateInfo\022\026.proto.CompanyFullInfo\032\026.pr" +
+      "oto.CompanyFullInfo\022C\n\rCompanyDelete\022\026.p" +
+      "roto.CompanyMetaInfo\032\032.google.protobuf.B" +
+      "oolValue2\363\002\n\017LocationService\022D\n\020Location" +
+      "Register\022\027.proto.LocationFullInfo\032\027.prot" +
+      "o.LocationFullInfo\022D\n\020LocationReadInfo\022\027" +
+      ".proto.LocationMetaInfo\032\027.proto.Location" +
+      "FullInfo\022E\n\020LocationListRead\022\026.google.pr" +
+      "otobuf.Empty\032\027.proto.LocationFullInfo0\001\022" +
+      "F\n\022LocationUpdateInfo\022\027.proto.LocationFu" +
+      "llInfo\032\027.proto.LocationFullInfo\022E\n\016Locat" +
+      "ionDelete\022\027.proto.LocationMetaInfo\032\032.goo" +
+      "gle.protobuf.BoolValue2\226\002\n\tCVService\0220\n\010" +
+      "CVCreate\022\021.proto.CVFullInfo\032\021.proto.CVFu" +
+      "llInfo\022.\n\006CVRead\022\021.proto.CVMetaInfo\032\021.pr" +
+      "oto.CVFullInfo\0226\n\nCVListRead\022\023.proto.Use" +
+      "rMetaInfo\032\021.proto.CVFullInfo0\001\0224\n\014CVUpda" +
+      "teInfo\022\021.proto.CVFullInfo\032\021.proto.CVFull" +
+      "Info\0229\n\010CVDelete\022\021.proto.CVMetaInfo\032\032.go" +
+      "ogle.protobuf.BoolValue2\274\003\n\025WorkExperien" +
+      "ceService\022T\n\024WorkExperienceCreate\022\035.prot" +
+      "o.WorkExperienceFullInfo\032\035.proto.WorkExp" +
+      "erienceFullInfo\022R\n\022WorkExperienceRead\022\035." +
+      "proto.WorkExperienceFullInfo\032\035.proto.Wor" +
+      "kExperienceFullInfo\022L\n\026WorkExperienceLis" +
+      "tRead\022\021.proto.CVMetaInfo\032\035.proto.WorkExp" +
+      "erienceFullInfo0\001\022X\n\030WorkExperienceUpdat" +
+      "eInfo\022\035.proto.WorkExperienceFullInfo\032\035.p" +
+      "roto.WorkExperienceFullInfo\022Q\n\024WorkExper" +
+      "ienceDelete\022\035.proto.WorkExperienceFullIn" +
+      "fo\032\032.google.protobuf.BoolValue2\276\002\n\014Skill" +
+      "Service\0229\n\013SkillCreate\022\024.proto.SkillFull" +
+      "Info\032\024.proto.SkillFullInfo\0227\n\tSkillRead\022" +
+      "\024.proto.SkillFullInfo\032\024.proto.SkillFullI" +
+      "nfo\022:\n\rSkillListRead\022\021.proto.CVMetaInfo\032" +
+      "\024.proto.SkillFullInfo0\001\022=\n\017SkillUpdateIn" +
+      "fo\022\024.proto.SkillFullInfo\032\024.proto.SkillFu" +
+      "llInfo\022?\n\013SkillDelete\022\024.proto.SkillFullI" +
+      "nfo\032\032.google.protobuf.BoolValue2\222\003\n\022Pers" +
+      "onalityService\022K\n\021PersonalityCreate\022\032.pr" +
       "oto.PersonalityFullInfo\032\032.proto.Personal" +
-      "ityFullInfo\022K\n\021PersonalityDelete\022\032.proto" +
-      ".PersonalityFullInfo\032\032.google.protobuf.B" +
-      "oolValue2\366\002\n\020EducationService\022E\n\017Educati" +
-      "onCreate\022\030.proto.EducationFullInfo\032\030.pro" +
-      "to.EducationFullInfo\022C\n\rEducationRead\022\030." +
-      "proto.EducationFullInfo\032\030.proto.Educatio" +
-      "nFullInfo\022B\n\021EducationListRead\022\021.proto.C" +
-      "VMetaInfo\032\030.proto.EducationFullInfo0\001\022I\n" +
-      "\023EducationUpdateInfo\022\030.proto.EducationFu" +
-      "llInfo\032\030.proto.EducationFullInfo\022G\n\017Educ" +
-      "ationDelete\022\030.proto.EducationFullInfo\032\032." +
-      "google.protobuf.BoolValue2\256\003\n\024Certificat" +
-      "ionService\022Q\n\023CertificationCreate\022\034.prot" +
-      "o.CertificationFullInfo\032\034.proto.Certific" +
-      "ationFullInfo\022O\n\021CertificationRead\022\034.pro" +
-      "to.CertificationFullInfo\032\034.proto.Certifi" +
-      "cationFullInfo\022J\n\025CertificationListRead\022" +
-      "\021.proto.CVMetaInfo\032\034.proto.Certification" +
-      "FullInfo0\001\022U\n\027CertificationUpdateInfo\022\034." +
-      "proto.CertificationFullInfo\032\034.proto.Cert" +
-      "ificationFullInfo\022O\n\023CertificationDelete" +
-      "\022\034.proto.CertificationFullInfo\032\032.google." +
-      "protobuf.BoolValue2\322\001\n\rSearchService\022H\n\024" +
-      "Candidate_JobRequest\022\023.proto.UserMetaInf" +
-      "o\032\031.proto.JobRequestFullInfo0\001\022B\n\021Recrui" +
-      "ter_Company\022\023.proto.UserMetaInfo\032\026.proto" +
-      ".CompanyFullInfo0\001\0223\n\007CV_User\022\023.proto.Us" +
-      "erMetaInfo\032\021.proto.CVFullInfo0\0012\236\002\n\017Wish" +
-      "ListService\022B\n\016WishListCreate\022\027.proto.Wi" +
-      "shListFullInfo\032\027.proto.WishListFullInfo\022" +
-      "<\n\014WishListRead\022\023.proto.UserMetaInfo\032\027.p" +
-      "roto.WishListFullInfo\022F\n\022WishListUpdateI" +
-      "nfo\022\027.proto.WishListFullInfo\032\027.proto.Wis" +
-      "hListFullInfo\022A\n\016WishListDelete\022\023.proto." +
-      "UserMetaInfo\032\032.google.protobuf.BoolValue" +
-      "b\006proto3"
+      "ityFullInfo\022I\n\017PersonalityRead\022\032.proto.P" +
+      "ersonalityFullInfo\032\032.proto.PersonalityFu" +
+      "llInfo\022F\n\023PersonalityListRead\022\021.proto.CV" +
+      "MetaInfo\032\032.proto.PersonalityFullInfo0\001\022O" +
+      "\n\025PersonalityUpdateInfo\022\032.proto.Personal" +
+      "ityFullInfo\032\032.proto.PersonalityFullInfo\022" +
+      "K\n\021PersonalityDelete\022\032.proto.Personality" +
+      "FullInfo\032\032.google.protobuf.BoolValue2\366\002\n" +
+      "\020EducationService\022E\n\017EducationCreate\022\030.p" +
+      "roto.EducationFullInfo\032\030.proto.Education" +
+      "FullInfo\022C\n\rEducationRead\022\030.proto.Educat" +
+      "ionFullInfo\032\030.proto.EducationFullInfo\022B\n" +
+      "\021EducationListRead\022\021.proto.CVMetaInfo\032\030." +
+      "proto.EducationFullInfo0\001\022I\n\023EducationUp" +
+      "dateInfo\022\030.proto.EducationFullInfo\032\030.pro" +
+      "to.EducationFullInfo\022G\n\017EducationDelete\022" +
+      "\030.proto.EducationFullInfo\032\032.google.proto" +
+      "buf.BoolValue2\256\003\n\024CertificationService\022Q" +
+      "\n\023CertificationCreate\022\034.proto.Certificat" +
+      "ionFullInfo\032\034.proto.CertificationFullInf" +
+      "o\022O\n\021CertificationRead\022\034.proto.Certifica" +
+      "tionFullInfo\032\034.proto.CertificationFullIn" +
+      "fo\022J\n\025CertificationListRead\022\021.proto.CVMe" +
+      "taInfo\032\034.proto.CertificationFullInfo0\001\022U" +
+      "\n\027CertificationUpdateInfo\022\034.proto.Certif" +
+      "icationFullInfo\032\034.proto.CertificationFul" +
+      "lInfo\022O\n\023CertificationDelete\022\034.proto.Cer" +
+      "tificationFullInfo\032\032.google.protobuf.Boo" +
+      "lValue2\322\001\n\rSearchService\022H\n\024Candidate_Jo" +
+      "bRequest\022\023.proto.UserMetaInfo\032\031.proto.Jo" +
+      "bRequestFullInfo0\001\022B\n\021Recruiter_Company\022" +
+      "\023.proto.UserMetaInfo\032\026.proto.CompanyFull" +
+      "Info0\001\0223\n\007CV_User\022\023.proto.UserMetaInfo\032\021" +
+      ".proto.CVFullInfo0\0012\236\002\n\017WishListService\022" +
+      "B\n\016WishListCreate\022\027.proto.WishListFullIn" +
+      "fo\032\027.proto.WishListFullInfo\022<\n\014WishListR" +
+      "ead\022\023.proto.UserMetaInfo\032\027.proto.WishLis" +
+      "tFullInfo\022F\n\022WishListUpdateInfo\022\027.proto." +
+      "WishListFullInfo\032\027.proto.WishListFullInf" +
+      "o\022A\n\016WishListDelete\022\023.proto.UserMetaInfo" +
+      "\032\032.google.protobuf.BoolValueb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -22953,7 +23843,7 @@ public final class ServerClient {
     internal_static_proto_LocationFullInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_LocationFullInfo_descriptor,
-        new java.lang.String[] { "LocationID", "Country", "State", "Address", "ContactNumber", "CurrentJobRequest", "City", "CompanyID", });
+        new java.lang.String[] { "LocationID", "Country", "State", "Address", "ContactNumber", "CurrentJobRequest", "City", "CompanyID", "ImagePath", });
     internal_static_proto_LocationFullInfo_CurrentJobRequestEntry_descriptor =
       internal_static_proto_LocationFullInfo_descriptor.getNestedTypes().get(0);
     internal_static_proto_LocationFullInfo_CurrentJobRequestEntry_fieldAccessorTable = new
@@ -22965,7 +23855,7 @@ public final class ServerClient {
     internal_static_proto_LocationMetaInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_LocationMetaInfo_descriptor,
-        new java.lang.String[] { "LocationID", "ContactNumber", "CompanyID", });
+        new java.lang.String[] { "LocationID", "ContactNumber", "CompanyID", "ImagePath", });
     internal_static_proto_CompanyFullInfo_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_proto_CompanyFullInfo_fieldAccessorTable = new
@@ -23025,7 +23915,7 @@ public final class ServerClient {
     internal_static_proto_CVFullInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_CVFullInfo_descriptor,
-        new java.lang.String[] { "CVID", "CandidateID", "Email", "PhoneNumber", "JobTitle", "CurrentSkills", "CurrentPersonalities", "CurrentWorkExperiences", "CurrentEducations", "CurrentCertifications", });
+        new java.lang.String[] { "CVID", "CandidateID", "Email", "PhoneNumber", "JobTitle", "CurrentSkills", "CurrentPersonalities", "CurrentWorkExperiences", "CurrentEducations", "CurrentCertifications", "ImagePath", "CVname", });
     internal_static_proto_CVFullInfo_CurrentSkillsEntry_descriptor =
       internal_static_proto_CVFullInfo_descriptor.getNestedTypes().get(0);
     internal_static_proto_CVFullInfo_CurrentSkillsEntry_fieldAccessorTable = new
@@ -23061,7 +23951,7 @@ public final class ServerClient {
     internal_static_proto_CVMetaInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_CVMetaInfo_descriptor,
-        new java.lang.String[] { "CVID", "CandidateID", });
+        new java.lang.String[] { "CVID", "CandidateID", "ImagePath", "CVname", });
     internal_static_proto_WishListFullInfo_descriptor =
       getDescriptor().getMessageTypes().get(18);
     internal_static_proto_WishListFullInfo_fieldAccessorTable = new

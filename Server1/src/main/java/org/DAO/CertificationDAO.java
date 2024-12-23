@@ -110,12 +110,12 @@ public class CertificationDAO {
             }
 
             String certificationName = request.getCertificationName();
-            if (certificationName == null || certificationName.isEmpty() || certificationName.isBlank()) {
+            if (certificationName == null || certificationName.isEmpty()) {
                 throw new Exception("Tên chứng chỉ không được để trống");
             }
 
             String provider = request.getProvider();
-            if (provider == null || provider.isEmpty() || provider.isBlank()) {
+            if (provider == null || provider.isEmpty()) {
                 throw new Exception("Provider không được để trống");
             }
 
@@ -162,12 +162,12 @@ public class CertificationDAO {
         List<Object> parameters = new ArrayList<>();
         try {
             // Check and append fields for update
-            if (request.getCertificationName() != null && !request.getCertificationName().isBlank() && !request.getCertificationName().isEmpty()) {
+            if (request.getCertificationName() != null && !request.getCertificationName().isEmpty()) {
                 sb.append("`Certifications`.`certificationName` = ?, ");
                 parameters.add(request.getCertificationName());
             }
 
-            if (request.getProvider() != null && !request.getProvider().isBlank() && !request.getProvider().isEmpty()) {
+            if (request.getProvider() != null && !request.getProvider().isEmpty()) {
                 sb.append("`Certifications`.`provider` = ?, ");
                 parameters.add(request.getProvider());
             }

@@ -7,8 +7,6 @@ import java.util.HashSet;
 public class Candidates extends Users {
 	private Date birthDate;
 	private Gender gender;
-
-//	Ngoài CSDL
 	private HashSet<Integer> currentCVs;
 	public Candidates() {}
 	public Candidates(Integer userID,
@@ -62,14 +60,15 @@ public class Candidates extends Users {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof Candidates that)) return false;
+		if (!(o instanceof Candidates)) return false;
 		if (!super.equals(o)) return false;
-        return Objects.equals(birthDate, that.birthDate) && gender == that.gender;
+		Candidates that = (Candidates) o;
+		return Objects.equals(birthDate, that.birthDate) && gender == that.gender && Objects.equals(currentCVs, that.currentCVs);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(super.hashCode(), birthDate, gender);
+		return Objects.hash(super.hashCode(), birthDate, gender, currentCVs);
 	}
 
 	@Override

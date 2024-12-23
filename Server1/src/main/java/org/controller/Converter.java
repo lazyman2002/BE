@@ -67,20 +67,20 @@ public class Converter {
     public static ServerClient.UserMetaInfo userFullToMeta(ServerClient.UserFullInfo userFullInfo){
         ServerClient.UserMetaInfo.Builder builder = ServerClient.UserMetaInfo.newBuilder();
         if(userFullInfo.getUserID() !=0)    builder.setUserID(userFullInfo.getUserID());
-        if(userFullInfo.getUsername() != null && !userFullInfo.getUsername().isBlank() && !userFullInfo.getUsername().isEmpty())    builder.setUsername(userFullInfo.getUsername());
-        if(userFullInfo.getPassword() != null && !userFullInfo.getPassword().isEmpty() && !userFullInfo.getPassword().isBlank())    builder.setPassword(userFullInfo.getPassword());
+        if(userFullInfo.getUsername() != null && !userFullInfo.getUsername().isEmpty())    builder.setUsername(userFullInfo.getUsername());
+        if(userFullInfo.getPassword() != null && !userFullInfo.getPassword().isEmpty())    builder.setPassword(userFullInfo.getPassword());
         return builder.build();
     }
 
     public static ServerClient.UserFullInfo usersToProto(Users users){
         ServerClient.UserFullInfo.Builder builder = ServerClient.UserFullInfo.newBuilder();
         if(users.getUserID() != 0)  builder.setUserID(users.getUserID());
-        if(users.getUsername() != null && !users.getUsername().isEmpty() && !users.getUsername().isBlank())    builder.setUsername(users.getUsername());
-        if(users.getPassword_hashed() != null && !users.getPassword_hashed().isEmpty() && !users.getPassword_hashed().isBlank())  builder.setPassword(users.getPassword_hashed());
-        if(users.getFirstName() != null && !users.getFirstName().isEmpty() && !users.getFirstName().isBlank())  builder.setFirstname(users.getFirstName());
-        if(users.getLastName()!= null && !users.getLastName().isEmpty() && !users.getLastName().isBlank())    builder.setLastname(users.getLastName());
-        if(users.getEmail() != null && !users.getEmail().isEmpty() && !users.getEmail().isBlank())  builder.setEmail(users.getEmail());
-        if(users.getGoogleToken() != null && !users.getGoogleToken().isEmpty() && !users.getGoogleToken().isBlank())  builder.setGoogleToken(users.getGoogleToken());
+        if(users.getUsername() != null && !users.getUsername().isEmpty())    builder.setUsername(users.getUsername());
+        if(users.getPassword_hashed() != null && !users.getPassword_hashed().isEmpty())  builder.setPassword(users.getPassword_hashed());
+        if(users.getFirstName() != null && !users.getFirstName().isEmpty())  builder.setFirstname(users.getFirstName());
+        if(users.getLastName()!= null && !users.getLastName().isEmpty())    builder.setLastname(users.getLastName());
+        if(users.getEmail() != null && !users.getEmail().isEmpty())  builder.setEmail(users.getEmail());
+        if(users.getGoogleToken() != null && !users.getGoogleToken().isEmpty())  builder.setGoogleToken(users.getGoogleToken());
         if(users.getGoogleTokenExpiration() != null && users.getGoogleTokenExpiration().getTime() > 0)  builder.setGoogleTokenExpiration(Converter.timesToProto(users.getGoogleTokenExpiration()));
         return builder.build();
     }
@@ -90,12 +90,12 @@ public class Converter {
         ServerClient.UserFullInfo.Builder user = ServerClient.UserFullInfo.newBuilder();
 
         if(candidates.getUserID() != null)  user.setUserID(candidates.getUserID());
-        if(candidates.getUsername() != null && !candidates.getUsername().isBlank() && !candidates.getUsername().isEmpty())  user.setUsername(candidates.getUsername());
-        if(candidates.getPassword_hashed() != null && !candidates.getPassword_hashed().isEmpty() && !candidates.getPassword_hashed().isBlank()) user.setPassword(candidates.getPassword_hashed());
-        if(candidates.getFirstName() != null && !candidates.getFirstName().isEmpty() && !candidates.getFirstName().isBlank()) user.setFirstname(candidates.getFirstName());
-        if(candidates.getLastName() != null && !candidates.getLastName().isEmpty() && !candidates.getLastName().isBlank()) user.setLastname(candidates.getLastName());
-        if(candidates.getEmail() != null && !candidates.getEmail().isEmpty() && !candidates.getEmail().isBlank()) user.setEmail(candidates.getEmail());
-        if(candidates.getGoogleToken() != null)     if(!candidates.getGoogleToken().isEmpty() && !candidates.getGoogleToken().isBlank()) user.setGoogleToken(candidates.getGoogleToken());
+        if(candidates.getUsername() != null && !candidates.getUsername().isEmpty())  user.setUsername(candidates.getUsername());
+        if(candidates.getPassword_hashed() != null && !candidates.getPassword_hashed().isEmpty()) user.setPassword(candidates.getPassword_hashed());
+        if(candidates.getFirstName() != null && !candidates.getFirstName().isEmpty()) user.setFirstname(candidates.getFirstName());
+        if(candidates.getLastName() != null && !candidates.getLastName().isEmpty()) user.setLastname(candidates.getLastName());
+        if(candidates.getEmail() != null && !candidates.getEmail().isEmpty()) user.setEmail(candidates.getEmail());
+        if(candidates.getGoogleToken() != null)     if(!candidates.getGoogleToken().isEmpty()) user.setGoogleToken(candidates.getGoogleToken());
         if(candidates.getGoogleTokenExpiration() != null)       if(candidates.getGoogleTokenExpiration().getTime() > 0) user.setGoogleTokenExpiration(Converter.timesToProto(candidates.getGoogleTokenExpiration()));
         user.setIsCandidate(true);
 
@@ -115,19 +115,19 @@ public class Converter {
         ServerClient.UserFullInfo.Builder user = ServerClient.UserFullInfo.newBuilder();
 
         if(recruiters.getUserID() != 0)  user.setUserID(recruiters.getUserID());
-        if(recruiters.getUsername() != null && !recruiters.getUsername().isBlank() && !recruiters.getUsername().isEmpty())  user.setUsername(recruiters.getUsername());
-        if(recruiters.getPassword_hashed() != null && !recruiters.getPassword_hashed().isEmpty() && !recruiters.getPassword_hashed().isBlank()) user.setPassword(recruiters.getPassword_hashed());
-        if(recruiters.getFirstName() != null && !recruiters.getFirstName().isEmpty() && !recruiters.getFirstName().isBlank()) user.setFirstname(recruiters.getFirstName());
-        if(recruiters.getLastName() != null && !recruiters.getLastName().isEmpty() && !recruiters.getLastName().isBlank()) user.setLastname(recruiters.getLastName());
-        if(recruiters.getEmail() != null && !recruiters.getEmail().isEmpty() && !recruiters.getEmail().isBlank()) user.setEmail(recruiters.getEmail());
-        if(recruiters.getGoogleToken() != null)     if(!recruiters.getGoogleToken().isEmpty() && !recruiters.getGoogleToken().isBlank()) user.setGoogleToken(recruiters.getGoogleToken());
+        if(recruiters.getUsername() != null && !recruiters.getUsername().isEmpty())  user.setUsername(recruiters.getUsername());
+        if(recruiters.getPassword_hashed() != null && !recruiters.getPassword_hashed().isEmpty()) user.setPassword(recruiters.getPassword_hashed());
+        if(recruiters.getFirstName() != null && !recruiters.getFirstName().isEmpty()) user.setFirstname(recruiters.getFirstName());
+        if(recruiters.getLastName() != null && !recruiters.getLastName().isEmpty()) user.setLastname(recruiters.getLastName());
+        if(recruiters.getEmail() != null && !recruiters.getEmail().isEmpty()) user.setEmail(recruiters.getEmail());
+        if(recruiters.getGoogleToken() != null)     if(!recruiters.getGoogleToken().isEmpty()) user.setGoogleToken(recruiters.getGoogleToken());
         if(recruiters.getGoogleTokenExpiration() != null)       if(recruiters.getGoogleTokenExpiration().getTime() > 0) user.setGoogleTokenExpiration(Converter.timesToProto(recruiters.getGoogleTokenExpiration()));
         user.setIsCandidate(false);
 
         recruiter.setUser(user.build());
         if(recruiters.getCompanyID() != 0)  recruiter.setCompanyID(recruiters.getCompanyID());
         if(recruiters.getRoleID() != 0) recruiter.setRoleID(recruiters.getRoleID());
-        if(recruiters.getDepartmentName() != null && !recruiters.getDepartmentName().isEmpty() && !recruiters.getDepartmentName().isBlank())  recruiter.setDepartmentName(recruiters.getDepartmentName());
+        if(recruiters.getDepartmentName() != null && !recruiters.getDepartmentName().isEmpty())  recruiter.setDepartmentName(recruiters.getDepartmentName());
         return recruiter.build();
     }
 
@@ -135,10 +135,10 @@ public class Converter {
         ServerClient.CompanyFullInfo.Builder builder = ServerClient.CompanyFullInfo.newBuilder();
 
         if(companies.getCompaniesID() != 0)  builder.setCompaniesID(companies.getCompaniesID());
-        if(companies.getCompanyName() != null && !companies.getCompanyName().isBlank() && !companies.getCompanyName().isEmpty())  builder.setCompanyName(companies.getCompanyName());
-        if(companies.getCompanyAvatarURL() != null && !companies.getCompanyAvatarURL().isBlank() && !companies.getCompanyAvatarURL().isEmpty())    builder.setCompanyAvatarURL(companies.getCompanyAvatarURL());
-        if(companies.getWebsite() != null && !companies.getWebsite().isBlank() && !companies.getWebsite().isEmpty())  builder.setWebsite(companies.getWebsite());
-        if(companies.getEmail() != null && !companies.getEmail().isBlank() && !companies.getEmail().isEmpty())  builder.setEmail(companies.getEmail());
+        if(companies.getCompanyName() != null && !companies.getCompanyName().isEmpty())  builder.setCompanyName(companies.getCompanyName());
+        if(companies.getCompanyAvatarURL() != null && !companies.getCompanyAvatarURL().isEmpty())    builder.setCompanyAvatarURL(companies.getCompanyAvatarURL());
+        if(companies.getWebsite() != null && !companies.getWebsite().isEmpty())  builder.setWebsite(companies.getWebsite());
+        if(companies.getEmail() != null && !companies.getEmail().isEmpty())  builder.setEmail(companies.getEmail());
 
         return builder.build();
     }
@@ -148,7 +148,7 @@ public class Converter {
         if(roles.getRoleID() != 0)  builder.setRoleID(roles.getRoleID());
         if(roles.getRoleLevel() != 0)  builder.setRoleLevel(roles.getRoleLevel());
         if(roles.getCompanyID() != 0)   builder.setCompanyID(roles.getCompanyID());
-        if(roles.getRoleName() != null && !roles.getRoleName().isBlank() && !roles.getRoleName().isEmpty()) builder.setRoleName(roles.getRoleName());
+        if(roles.getRoleName() != null && !roles.getRoleName().isEmpty()) builder.setRoleName(roles.getRoleName());
         return builder.build();
     }
 
@@ -171,16 +171,16 @@ public class Converter {
             builder.setSalaryGreatest(
                     jobRequest.getSalaryGreatest());
         }
-        if (jobRequest.getCurrency() != null && !jobRequest.getCurrency().isBlank() && !jobRequest.getCurrency().isEmpty()) {
+        if (jobRequest.getCurrency() != null && !jobRequest.getCurrency().isEmpty()) {
             builder.setCurrency(jobRequest.getCurrency());
         }
-        if (jobRequest.getJobTitle() != null && !jobRequest.getJobTitle().isBlank()) {
+        if (jobRequest.getJobTitle() != null) {
             builder.setJobTitle(jobRequest.getJobTitle());
         }
         if (jobRequest.getJobLevel() != null) {
             builder.setJobLevel(ServerClient.JobLevel.valueOf(jobRequest.getJobLevel().name()));
         }
-        if (jobRequest.getJobDescription() != null && !jobRequest.getJobDescription().isBlank()) {
+        if (jobRequest.getJobDescription() != null) {
             builder.setJobDescription(jobRequest.getJobDescription());
         }
         if (jobRequest.getDeadlineDate() != null) {
@@ -202,11 +202,16 @@ public class Converter {
         ServerClient.LocationFullInfo.Builder builder = ServerClient.LocationFullInfo.newBuilder();
         if (locations.getLocationID() != 0) builder.setLocationID(locations.getLocationID());
         if (locations.getCompanyID() != 0) builder.setCompanyID(locations.getCompanyID());
-        if (locations.getCity() != null && !locations.getCity().isBlank()) builder.setCity(locations.getCity());
-        if (locations.getState() != null && !locations.getState().isBlank()) builder.setState(locations.getState());
-        if (locations.getCountry() != null && !locations.getCountry().isBlank()) builder.setCountry(locations.getCountry());
-        if (locations.getAddress() != null && !locations.getAddress().isBlank()) builder.setAddress(locations.getAddress());
-        if (locations.getContactNumber() != null && !locations.getContactNumber().isBlank()) builder.setContactNumber(locations.getContactNumber());
+        if (locations.getCity() != null) builder.setCity(locations.getCity());
+        if (locations.getState() != null) builder.setState(locations.getState());
+        if (locations.getCountry() != null) builder.setCountry(locations.getCountry());
+        if (locations.getAddress() != null) builder.setAddress(locations.getAddress());
+        if (locations.getContactNumber() != null) builder.setContactNumber(locations.getContactNumber());
+        if(locations.getCurrentJobRequest()!= null){
+            builder.putAllCurrentJobRequest(locations.getCurrentJobRequest());
+        }
+        if (locations.getImagePath() != null && !locations.getImagePath().isEmpty()) builder.setImagePath(locations.getImagePath());
+
         return builder.build();
     }
 
@@ -216,9 +221,9 @@ public class Converter {
             builder.setCertificationID(certifications.getCertificationID());
         if (certifications.getCVID() != 0)
             builder.setCVID(certifications.getCVID());
-        if (certifications.getCertificationName() != null && !certifications.getCertificationName().isBlank())
+        if (certifications.getCertificationName() != null && !certifications.getCertificationName().isEmpty())
             builder.setCertificationName(certifications.getCertificationName());
-        if (certifications.getProvider() != null && !certifications.getProvider().isBlank())
+        if (certifications.getProvider() != null && !certifications.getProvider().isEmpty())
             builder.setProvider(certifications.getProvider());
         if (certifications.getProvidedDate() != null) {
             Timestamp deadlineTimestamp = new Timestamp(certifications.getProvidedDate().getTime());
@@ -234,11 +239,11 @@ public class Converter {
         ServerClient.EducationFullInfo.Builder builder = ServerClient.EducationFullInfo.newBuilder();
         if(educations.getCVID() != 0)   builder.setCVID(educations.getCVID());
         if(educations.getEducationID() !=0) builder.setEducationID(educations.getEducationID());
-        if(educations.getDegree() != null && !educations.getDegree().isBlank() && !educations.getDegree().isEmpty())
+        if(educations.getDegree() != null && !educations.getDegree().isEmpty())
             builder.setDegree(educations.getDegree());
-        if(educations.getFieldOfStudy() != null && !educations.getFieldOfStudy().isEmpty() && !educations.getFieldOfStudy().isBlank())
+        if(educations.getFieldOfStudy() != null && !educations.getFieldOfStudy().isEmpty())
             builder.setField(educations.getFieldOfStudy());
-        if(educations.getInstitution() != null && !educations.getInstitution().isEmpty() && !educations.getInstitution().isBlank())
+        if(educations.getInstitution() != null && !educations.getInstitution().isEmpty())
             builder.setInstitution(educations.getInstitution());
         if(educations.getStartDate()!= null){
             Timestamp startDate = new Timestamp(educations.getStartDate().getTime());
@@ -261,9 +266,9 @@ public class Converter {
         ServerClient.PersonalityFullInfo.Builder builder = ServerClient.PersonalityFullInfo.newBuilder();
         if(personalities.getCVID() != 0 && personalities.getCVID() != null)
             builder.setCVID(personalities.getCVID());
-        if(personalities.getPersonalityTitle() != null && !personalities.getPersonalityTitle().isBlank() && !personalities.getPersonalityTitle().isEmpty())
+        if(personalities.getPersonalityTitle() != null&& !personalities.getPersonalityTitle().isEmpty())
             builder.setPersonalityTitle(personalities.getPersonalityTitle());
-        if(personalities.getDetail() != null && !personalities.getDetail().isBlank() && !personalities.getDetail().isEmpty())
+        if(personalities.getDetail() != null && !personalities.getDetail().isEmpty())
             builder.setDescription(personalities.getDetail());
         if(personalities.getPersonalityID() != 0 && personalities.getPersonalityID() != null)
             builder.setPersonalityID(personalities.getPersonalityID());
@@ -276,7 +281,7 @@ public class Converter {
             builder.setCVID(skills.getCVID());
         if(skills.getSkillID() != null && skills.getSkillID() !=0)
             builder.setSkillID(skills.getSkillID());
-        if(skills.getSkillName() != null && !skills.getSkillName().isEmpty() && !skills.getSkillName().isBlank())
+        if(skills.getSkillName() != null && !skills.getSkillName().isEmpty())
             builder.setSkillName(skills.getSkillName());
         if (skills.getProficiency() != null) {
             switch (skills.getProficiency()) {
@@ -302,11 +307,11 @@ public class Converter {
             builder.setCVID(workExperiences.getCVID());
         if(workExperiences.getWorkExperienceID() != null && workExperiences.getWorkExperienceID() !=0)
             builder.setWorkExperienceID(workExperiences.getWorkExperienceID());
-        if(workExperiences.getJobTitle() != null && !workExperiences.getJobTitle().isBlank() && !workExperiences.getJobTitle().isEmpty())
+        if(workExperiences.getJobTitle() != null && !workExperiences.getJobTitle().isEmpty())
             builder.setJobTitle(workExperiences.getJobTitle());
-        if(workExperiences.getJobDescription() != null && !workExperiences.getJobDescription().isBlank() && !workExperiences.getJobDescription().isEmpty())
+        if(workExperiences.getJobDescription() != null  && !workExperiences.getJobDescription().isEmpty())
             builder.setJobDescription(workExperiences.getJobDescription());
-        if(workExperiences.getCompanyName() != null && !workExperiences.getCompanyName().isBlank() && !workExperiences.getCompanyName().isEmpty())
+        if(workExperiences.getCompanyName() != null && !workExperiences.getCompanyName().isEmpty())
             builder.setCompanyName(workExperiences.getCompanyName());
 
         if(workExperiences.getStartDate()!= null){
@@ -333,12 +338,16 @@ public class Converter {
             builder.setCVID(CV.getCVID());
         if(CV.getCandidatesID() != null && CV.getCandidatesID() !=0)
             builder.setCandidateID(CV.getCandidatesID());
-        if(CV.getEmail() != null && !CV.getEmail().isBlank() && !CV.getEmail().isEmpty())
+        if(CV.getEmail() != null  && !CV.getEmail().isEmpty())
             builder.setEmail(CV.getEmail());
-        if(CV.getPhoneNumber() != null && !CV.getPhoneNumber().isBlank() && !CV.getPhoneNumber().isEmpty())
+        if(CV.getPhoneNumber() != null  && !CV.getPhoneNumber().isEmpty())
             builder.setPhoneNumber(CV.getPhoneNumber());
-        if(CV.getJobTitle() != null && !CV.getJobTitle().isBlank() && !CV.getJobTitle().isEmpty())
+        if(CV.getJobTitle() != null  && !CV.getJobTitle().isEmpty())
             builder.setJobTitle(CV.getJobTitle());
+        if(CV.getImagePath() != null  && !CV.getImagePath().isEmpty())
+            builder.setImagePath(CV.getImagePath());
+        if(CV.getCVname() != null && !CV.getCVname().isEmpty())
+            builder.setCVname(CV.getCVname());
 
         if (CV.getCurrentSkills() != null) {
             builder.putAllCurrentSkills(convertHashSetToMap(CV.getCurrentSkills()));

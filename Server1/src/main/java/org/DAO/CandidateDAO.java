@@ -50,7 +50,7 @@ public class CandidateDAO {
     }
 
     public Candidates readCandidates(ServerClient.UserMetaInfo request, Connection connection) throws SQLException, RuntimeException {
-        System.out.println("createCandidates");
+        System.out.println("readCandidates");
 
         StringBuilder sb= new StringBuilder();
         sb.append("SELECT * FROM `Candidates` WHERE 1 = 1");

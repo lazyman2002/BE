@@ -104,12 +104,12 @@ public class PersonalityDAO {
             }
 
             String personalityTitle = request.getPersonalityTitle();
-            if (personalityTitle == null || personalityTitle.isEmpty() || personalityTitle.isBlank()) {
+            if (personalityTitle == null || personalityTitle.isEmpty() || personalityTitle.isEmpty()) {
                 throw new Exception("Tiêu đề tính cách không được để trống");
             }
 
             String detail = request.getDescription();
-            if (detail == null || detail.isEmpty() || detail.isBlank()) {
+            if (detail == null || detail.isEmpty() || detail.isEmpty()) {
                 throw new Exception("Chi tiết tính cách không được để trống");
             }
 
@@ -149,12 +149,12 @@ public class PersonalityDAO {
         List<Object> parameters = new ArrayList<>();
         try {
             // Check and append fields for update
-            if (request.getPersonalityTitle() != null && !request.getPersonalityTitle().isBlank() && !request.getPersonalityTitle().isEmpty()) {
+            if (request.getPersonalityTitle() != null && !request.getPersonalityTitle().isEmpty() && !request.getPersonalityTitle().isEmpty()) {
                 sb.append("`Personalities`.`personalityTitle` = ?, ");
                 parameters.add(request.getPersonalityTitle());
             }
 
-            if (request.getDescription() != null && !request.getDescription().isBlank() && !request.getDescription().isEmpty()) {
+            if (request.getDescription() != null && !request.getDescription().isEmpty() && !request.getDescription().isEmpty()) {
                 sb.append("`Personalities`.`detail` = ?, ");
                 parameters.add(request.getDescription());
             }

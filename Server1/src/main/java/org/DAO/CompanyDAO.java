@@ -80,7 +80,10 @@ public class CompanyDAO {
 
                 return new Companies(
                         request.getCompanyID(),
-                        companyName, companyAvatarURL, website, email
+                        companyName,
+                        companyAvatarURL,
+                        website,
+                        email
                 );
             }
             else throw new Exception("Không tìm được công ty");
@@ -107,22 +110,22 @@ public class CompanyDAO {
             }
 
             String companyName = request.getCompanyName();
-            if (companyName == null || companyName.isEmpty() || companyName.isBlank()) {
+            if (companyName == null || companyName.isEmpty()) {
                 companyName = "";
             }
 
             String companyAvatarURL = request.getCompanyAvatarURL();
-            if (companyAvatarURL == null || companyAvatarURL.isEmpty() || companyAvatarURL.isBlank()) {
+            if (companyAvatarURL == null || companyAvatarURL.isEmpty()) {
                 companyAvatarURL = "";
             }
 
             String website = request.getWebsite();
-            if (website == null || website.isEmpty() || website.isBlank()) {
+            if (website == null || website.isEmpty()) {
                 website = "";
             }
 
             String email = request.getEmail();
-            if (email == null || email.isEmpty() || email.isBlank()) {
+            if (email == null || email.isEmpty()) {
                 email = "";
             }
 
@@ -163,22 +166,22 @@ public class CompanyDAO {
         ResultSet resultSet = null;
         List<Object> parameters = new ArrayList<>();
         try{
-            if(request.getCompanyName() != null && !request.getCompanyName().isBlank() && !request.getCompanyName().isEmpty()){
+            if(request.getCompanyName() != null  && !request.getCompanyName().isEmpty()){
                 sb.append("`Companies`.`companyName` = ?, ");
                 parameters.add(request.getCompanyName());
             }
 
-            if(request.getCompanyAvatarURL() != null && !request.getCompanyAvatarURL().isBlank() && !request.getCompanyAvatarURL().isEmpty()){
+            if(request.getCompanyAvatarURL() != null && !request.getCompanyAvatarURL().isEmpty()){
                 sb.append("`Companies`.`companyAvatarURL` = ?, ");
                 parameters.add(request.getCompanyAvatarURL());
             }
 
-            if(request.getWebsite() != null && !request.getWebsite().isBlank() && !request.getWebsite().isEmpty()){
+            if(request.getWebsite() != null && !request.getWebsite().isEmpty()){
                 sb.append("`Companies`.`website` = ?, ");
                 parameters.add(request.getWebsite());
             }
 
-            if(request.getEmail() != null && !request.getEmail().isBlank() && !request.getEmail().isEmpty()){
+            if(request.getEmail() != null && !request.getEmail().isEmpty()){
                 sb.append("`Companies`.`email` = ?, ");
                 parameters.add(request.getEmail());
             }

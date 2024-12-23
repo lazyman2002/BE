@@ -4,6 +4,7 @@ import org.controller.Converter;
 import org.model.JobLevel;
 import org.model.JobRequests;
 import org.model.JobType;
+import org.model.Locations;
 import proto.ServerClient;
 
 import java.sql.Connection;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class JobRequestDAO {
     public JobRequests readJobRequest(ServerClient.JobRequestMetaInfo request, Connection connection) throws Exception {
@@ -179,7 +181,7 @@ public class JobRequestDAO {
         ResultSet resultSet = null;
         List<Object> parameters = new ArrayList<>();
         try {
-            if (request.getJobTitle() != null && !request.getJobTitle().isBlank()) {
+            if (request.getJobTitle() != null && !request.getJobTitle().isEmpty()) {
                 sb.append("`JobRequests`.`jobTitle` = ?, ");
                 parameters.add(request.getJobTitle());
             }
@@ -199,7 +201,7 @@ public class JobRequestDAO {
                 parameters.add(request.getSalaryGreatest());
             }
 
-            if (request.getCurrency() != null && !request.getCurrency().isBlank()) {
+            if (request.getCurrency() != null && !request.getCurrency().isEmpty()) {
                 sb.append("`JobRequests`.`currency` = ?, ");
                 parameters.add(request.getCurrency());
             }
@@ -338,6 +340,41 @@ public class JobRequestDAO {
             }
             return true;
         } finally {
+            if (resultSet != null) resultSet.close();
+            if (preparedStatement != null) preparedStatement.close();
+        }
+    }
+
+    public ConcurrentHashMap<Integer, Boolean> readJobRequestIDs(Locations locations, Connection connection) throws Exception {
+        System.out.println("readJobRequestIDs");
+
+        Integer locationID = locations.getLocationID();
+        if (locationID <= 0) throw new Exception("Kết quả trả về không hợp lệ");
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("SELECT `jobID` FROM `JobRequests` WHERE `JobRequests`.`locationID` = ?;");
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        // ConcurrentHashMap để lưu danh sách các JobRequestID
+        ConcurrentHashMap<Integer, Boolean> jobRequestMap = new ConcurrentHashMap<>();
+
+        try {
+            String sql = sb.toString();
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setInt(1, locationID);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Integer jobRequestID = resultSet.getInt("jobID");
+
+                if (jobRequestID <= 0) throw new Exception("Kết quả trả về không hợp lệ");
+                jobRequestMap.put(jobRequestID, true);
+            }
+            return jobRequestMap;
+        } finally {
+            // Đảm bảo đóng các tài nguyên
             if (resultSet != null) resultSet.close();
             if (preparedStatement != null) preparedStatement.close();
         }

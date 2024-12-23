@@ -50,13 +50,14 @@ public class Roles {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof Roles roles)) return false;
-        return Objects.equals(roleID, roles.roleID) && Objects.equals(roleName, roles.roleName) && Objects.equals(roleLevel, roles.roleLevel);
+		if (!(o instanceof Roles)) return false;
+		Roles roles = (Roles) o;
+		return Objects.equals(roleID, roles.roleID) && Objects.equals(roleName, roles.roleName) && Objects.equals(companyID, roles.companyID) && Objects.equals(roleLevel, roles.roleLevel);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(roleID, roleName, roleLevel);
+		return Objects.hash(roleID, roleName, companyID, roleLevel);
 	}
 
 	@Override

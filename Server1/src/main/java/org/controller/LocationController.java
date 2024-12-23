@@ -1,12 +1,15 @@
 package org.controller;
 
+import org.DAO.JobRequestDAO;
 import org.DAO.LocationDAO;
 import org.connectConfig.HikariDataSource;
+import org.model.JobRequests;
 import org.model.Locations;
 import proto.ServerClient;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class LocationController {
     public ArrayList<Locations> locationList() throws Exception {
@@ -27,6 +30,9 @@ public class LocationController {
             connection = HikariDataSource.getConnection();
             connection.setAutoCommit(false);
             Locations locations = locationDAO.readLocation(request, connection);
+            JobRequestDAO jobRequestDAO = new JobRequestDAO();
+            ConcurrentHashMap<Integer, Boolean> map = jobRequestDAO.readJobRequestIDs(locations, connection);
+            locations.setCurrentJobRequest(map);
             connection.commit();
             return locations;
         } finally {

@@ -90,6 +90,10 @@ public class LocationDAO {
 
                 String contact = resultSet.getString("contact");
                 location.setContactNumber(contact != null ? contact : "");
+
+                String imagePath = resultSet.getString("imagePath");
+                location.setImagePath(imagePath != null ? imagePath : "");
+
                 return location;
             } else {
                 throw new Exception("Location not found");
@@ -121,27 +125,27 @@ public class LocationDAO {
             }
 
             String city = request.getCity();
-            if (city == null || city.isEmpty() || city.isBlank()) {
+            if (city == null || city.isEmpty() || city.isEmpty()) {
                 city = "";
             }
 
             String state = request.getState();
-            if (state == null || state.isEmpty() || state.isBlank()) {
+            if (state == null || state.isEmpty() || state.isEmpty()) {
                 state = "";
             }
 
             String country = request.getCountry();
-            if (country == null || country.isEmpty() || country.isBlank()) {
+            if (country == null || country.isEmpty() || country.isEmpty()) {
                 country = "";
             }
 
             String address = request.getAddress();
-            if (address == null || address.isEmpty() || address.isBlank()) {
+            if (address == null || address.isEmpty() || address.isEmpty()) {
                 address = "";
             }
 
             String contact = request.getContactNumber();
-            if (contact == null || contact.isEmpty() || contact.isBlank()) {
+            if (contact == null || contact.isEmpty() || contact.isEmpty()) {
                 contact = "";
             }
 
@@ -188,27 +192,27 @@ public class LocationDAO {
                 parameters.add(request.getCompanyID());
             }
 
-            if (request.getCity() != null && !request.getCity().isBlank() && !request.getCity().isEmpty()) {
+            if (request.getCity() != null && !request.getCity().isEmpty() && !request.getCity().isEmpty()) {
                 sb.append("`Locations`.`city` = ?, ");
                 parameters.add(request.getCity());
             }
 
-            if (request.getState() != null && !request.getState().isBlank() && !request.getState().isEmpty()) {
+            if (request.getState() != null && !request.getState().isEmpty() && !request.getState().isEmpty()) {
                 sb.append("`Locations`.`state` = ?, ");
                 parameters.add(request.getState());
             }
 
-            if (request.getCountry() != null && !request.getCountry().isBlank() && !request.getCountry().isEmpty()) {
+            if (request.getCountry() != null && !request.getCountry().isEmpty() && !request.getCountry().isEmpty()) {
                 sb.append("`Locations`.`country` = ?, ");
                 parameters.add(request.getCountry());
             }
 
-            if (request.getAddress() != null && !request.getAddress().isBlank() && !request.getAddress().isEmpty()) {
+            if (request.getAddress() != null && !request.getAddress().isEmpty() && !request.getAddress().isEmpty()) {
                 sb.append("`Locations`.`address` = ?, ");
                 parameters.add(request.getAddress());
             }
 
-            if (request.getContactNumber() != null && !request.getContactNumber().isBlank() && !request.getContactNumber().isEmpty()) {
+            if (request.getContactNumber() != null && !request.getContactNumber().isEmpty() && !request.getContactNumber().isEmpty()) {
                 sb.append("`Locations`.`contact` = ?, ");
                 parameters.add(request.getContactNumber());
             }

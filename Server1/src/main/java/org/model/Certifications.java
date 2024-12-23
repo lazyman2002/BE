@@ -62,8 +62,9 @@ public class Certifications {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof Certifications that)) return false;
-        return Objects.equals(CVID, that.CVID) && Objects.equals(certificationName, that.certificationName) && Objects.equals(provider, that.provider) && Objects.equals(providedDate, that.providedDate) && Objects.equals(certificationID, that.certificationID);
+		if (!(o instanceof Certifications)) return false;
+		Certifications that = (Certifications) o;
+		return Objects.equals(CVID, that.CVID) && Objects.equals(certificationName, that.certificationName) && Objects.equals(provider, that.provider) && Objects.equals(providedDate, that.providedDate) && Objects.equals(certificationID, that.certificationID);
 	}
 
 	@Override

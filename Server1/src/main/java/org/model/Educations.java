@@ -71,8 +71,9 @@ public class Educations {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof Educations that)) return false;
-        return Objects.equals(CVID, that.CVID) && Objects.equals(degree, that.degree) && Objects.equals(fieldOfStudy, that.fieldOfStudy) && Objects.equals(institution, that.institution) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate) && Objects.equals(educationID, that.educationID);
+		if (!(o instanceof Educations)) return false;
+		Educations that = (Educations) o;
+		return Objects.equals(CVID, that.CVID) && Objects.equals(degree, that.degree) && Objects.equals(fieldOfStudy, that.fieldOfStudy) && Objects.equals(institution, that.institution) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate) && Objects.equals(educationID, that.educationID);
 	}
 
 	@Override

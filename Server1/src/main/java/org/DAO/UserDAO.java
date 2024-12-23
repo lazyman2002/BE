@@ -24,14 +24,14 @@ public class UserDAO {
             if(request.getUser().getUserID() != 0)  return null;
 
             String username = request.getUser().getUsername();
-            if (username.isEmpty() || username.isBlank()) {
+            if (username.isEmpty() || username.isEmpty()) {
                 return null;
             }
             users.setUsername(username);
             preparedStatement.setString(1, username);
 
             String password = request.getUser().getPassword();
-            if(password.isEmpty() || password.isBlank()){
+            if(password.isEmpty() || password.isEmpty()){
                 return  null;
             }
             password = Converter.hashPassword(password);
@@ -39,7 +39,7 @@ public class UserDAO {
             preparedStatement.setString(2, password);
 
             String firstName = request.getUser().getFirstname();
-            if(!firstName.isEmpty() && !firstName.isBlank()){
+            if(!firstName.isEmpty() && !firstName.isEmpty()){
                 users.setFirstName(firstName);
                 preparedStatement.setString(3, firstName);
             }
@@ -48,7 +48,7 @@ public class UserDAO {
             }
 
             String lastname = request.getUser().getLastname();
-            if(!lastname.isEmpty() && !lastname.isBlank()){
+            if(!lastname.isEmpty() && !lastname.isEmpty()){
                 users.setLastName(lastname);
                 preparedStatement.setString(4, lastname);
             }
@@ -57,7 +57,7 @@ public class UserDAO {
             }
 
             String email = request.getUser().getLastname();
-            if(!email.isEmpty() && !email.isBlank()){
+            if(!email.isEmpty() && !email.isEmpty()){
                 users.setEmail(email);
                 preparedStatement.setString(5, email);
             }
@@ -66,7 +66,7 @@ public class UserDAO {
             }
 
             String googleToken = request.getUser().getGoogleToken();
-            if(!googleToken.isEmpty() && !googleToken.isBlank()){
+            if(!googleToken.isEmpty() && !googleToken.isEmpty()){
                 users.setGoogleToken(googleToken);
                 preparedStatement.setString(6, googleToken);
             }else{
@@ -120,14 +120,14 @@ public class UserDAO {
             if(request.getUser().getUserID() != 0)  return null;
 
             String username = request.getUser().getUsername();
-            if (username.isEmpty() || username.isBlank()) {
+            if (username.isEmpty() || username.isEmpty()) {
                 return null;
             }
             users.setUsername(username);
             preparedStatement.setString(1, username);
 
             String password = request.getUser().getPassword();
-            if(password.isEmpty() || password.isBlank()){
+            if(password.isEmpty() || password.isEmpty()){
                 return  null;
             }
             password = Converter.hashPassword(password);
@@ -135,7 +135,7 @@ public class UserDAO {
             preparedStatement.setString(2, password);
 
             String firstName = request.getUser().getFirstname();
-            if(!firstName.isEmpty() && !firstName.isBlank()){
+            if(!firstName.isEmpty() && !firstName.isEmpty()){
                 users.setFirstName(firstName);
                 preparedStatement.setString(3, firstName);
             }
@@ -144,7 +144,7 @@ public class UserDAO {
             }
 
             String lastname = request.getUser().getLastname();
-            if(!lastname.isEmpty() && !lastname.isBlank()){
+            if(!lastname.isEmpty() && !lastname.isEmpty()){
                 users.setLastName(lastname);
                 preparedStatement.setString(4, lastname);
             }
@@ -153,7 +153,7 @@ public class UserDAO {
             }
 
             String email = request.getUser().getLastname();
-            if(!email.isEmpty() && !email.isBlank()){
+            if(!email.isEmpty() && !email.isEmpty()){
                 users.setEmail(email);
                 preparedStatement.setString(5, email);
             }
@@ -162,7 +162,7 @@ public class UserDAO {
             }
 
             String googleToken = request.getUser().getGoogleToken();
-            if(!googleToken.isEmpty() && !googleToken.isBlank()){
+            if(!googleToken.isEmpty() && !googleToken.isEmpty()){
                 users.setGoogleToken(googleToken);
                 preparedStatement.setString(6, googleToken);
             }else{
@@ -214,11 +214,11 @@ public class UserDAO {
             sb.append(" AND `Users`.`userID` = ?");
             parameters.add(request.getUserID());
         }
-        if(!request.getUsername().isEmpty() && !request.getUsername().isBlank()){
+        if(!request.getUsername().isEmpty() && !request.getUsername().isEmpty()){
             sb.append(" AND `Users`.`username` = ?");
             parameters.add(request.getUsername());
         }
-        if(!request.getPassword().isBlank() && !request.getPassword().isEmpty()){
+        if(!request.getPassword().isEmpty() && !request.getPassword().isEmpty()){
             sb.append(" AND `Users`.`password_hashed` = ?");
             parameters.add(request.getPassword());
         }
@@ -265,19 +265,19 @@ public class UserDAO {
         ResultSet resultSet = null;
         List<Object> parameters = new ArrayList<>();
         try{
-            if(request.getPassword() != null && !request.getPassword().isBlank() && !request.getPassword().isEmpty()){
+            if(request.getPassword() != null && !request.getPassword().isEmpty() && !request.getPassword().isEmpty()){
                 sb.append("`Users`.`password_hashed` = ?, ");
                 parameters.add(request.getPassword());
             }
-            if(request.getFirstname() != null && !request.getFirstname().isBlank() && !request.getFirstname().isEmpty()){
+            if(request.getFirstname() != null && !request.getFirstname().isEmpty() && !request.getFirstname().isEmpty()){
                 sb.append("`Users`.`firstName` = ?, ");
                 parameters.add(request.getFirstname());
             }
-            if(request.getLastname() != null && !request.getLastname().isEmpty() && !request.getLastname().isBlank()){
+            if(request.getLastname() != null && !request.getLastname().isEmpty() && !request.getLastname().isEmpty()){
                 sb.append("`Users`.`lastName` = ?, ");
                 parameters.add(request.getLastname());
             }
-            if(request.getEmail() != null && !request.getEmail().isEmpty() && !request.getEmail().isBlank()){
+            if(request.getEmail() != null && !request.getEmail().isEmpty() && !request.getEmail().isEmpty()){
                 sb.append("`Users`.`email` = ?, ");
                 parameters.add(request.getEmail());
             }

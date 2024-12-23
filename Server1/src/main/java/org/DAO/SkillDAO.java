@@ -120,12 +120,12 @@ public class SkillDAO {
             }
 
             String skillName = request.getSkillName();
-            if (skillName == null || skillName.isEmpty() || skillName.isBlank()) {
+            if (skillName == null || skillName.isEmpty() || skillName.isEmpty()) {
                 throw new Exception("Tên kỹ năng không được để trống");
             }
 
             String proficiencyStr = request.getProficiency().toString();
-            if (proficiencyStr == null || proficiencyStr.isEmpty() || proficiencyStr.isBlank()) {
+            if (proficiencyStr == null || proficiencyStr.isEmpty() || proficiencyStr.isEmpty()) {
                 throw new Exception("Proficiency không được để trống");
             }
 
@@ -165,7 +165,7 @@ public class SkillDAO {
         List<Object> parameters = new ArrayList<>();
         try {
             // Check and append fields for update
-            if (request.getSkillName() != null && !request.getSkillName().isBlank() && !request.getSkillName().isEmpty()) {
+            if (request.getSkillName() != null && !request.getSkillName().isEmpty() && !request.getSkillName().isEmpty()) {
                 sb.append("`Skills`.`skillName` = ?, ");
                 parameters.add(request.getSkillName());
             }

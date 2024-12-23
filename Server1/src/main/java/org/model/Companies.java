@@ -11,6 +11,7 @@ public class Companies {
 	private String companyAvatarURL;
 	private String website;
 	private String email;
+	private String imagePath;
 
 //	Ngoài CSDL
 	private HashSet<Integer> activeRecruiters;
@@ -64,6 +65,9 @@ public class Companies {
 	public Set<Integer> getActiveLocations() {
 		return activeLocations;
 	}
+	public String getImagePath() {
+		return imagePath;
+	}
 
 	public void setCompaniesID(Integer  companiesID) {
 		this.companiesID = companiesID;
@@ -86,18 +90,21 @@ public class Companies {
 	public void setActiveLocations(HashSet<Integer> activeLocations) {
 		this.activeLocations = activeLocations;
 	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
 
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (!(o instanceof Companies)) return false;
 		Companies companies = (Companies) o;
-		return companiesID == companies.companiesID && Objects.equals(companyName, companies.companyName) && Objects.equals(companyAvatarURL, companies.companyAvatarURL) && Objects.equals(website, companies.website) && Objects.equals(email, companies.email);
+		return Objects.equals(companiesID, companies.companiesID) && Objects.equals(companyName, companies.companyName) && Objects.equals(companyAvatarURL, companies.companyAvatarURL) && Objects.equals(website, companies.website) && Objects.equals(email, companies.email) && Objects.equals(imagePath, companies.imagePath) && Objects.equals(activeRecruiters, companies.activeRecruiters) && Objects.equals(activeLocations, companies.activeLocations);
 	}
 
 	@Override
-	public int  hashCode() {
-		return Objects.hash(companiesID, companyName, companyAvatarURL, website, email);
+	public int hashCode() {
+		return Objects.hash(companiesID, companyName, companyAvatarURL, website, email, imagePath, activeRecruiters, activeLocations);
 	}
 
 	@Override
@@ -108,6 +115,7 @@ public class Companies {
 		sb.append(", companyAvatarURL='").append(companyAvatarURL).append('\'');
 		sb.append(", website='").append(website).append('\'');
 		sb.append(", email='").append(email).append('\'');
+		sb.append(", imagePath='").append(imagePath).append('\'');
 		sb.append(", activeRecruiters=").append(activeRecruiters);
 		sb.append(", activeLocations=").append(activeLocations);
 		sb.append('}');
