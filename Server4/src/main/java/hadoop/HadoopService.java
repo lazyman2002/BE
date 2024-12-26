@@ -1,28 +1,33 @@
 package hadoop;
 
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.hbase.Cell;
+import org.apache.hadoop.hbase.CellUtil;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.util.Bytes;
-import org.apache.hadoop.hbase.filter.SingleColumnValueFilter;
-import org.apache.hadoop.hbase.filter.CompareFilter.CompareOp;
+import org.model.Groups;
 import proto.ServerChat;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class HadoopService {
-    private static final String TABLE_NAME = "Messengers";
+    private static final String TABLE_MSG = "Messengers";
     private static final String COLUMN_FAMILY = "info";
+    private Configuration config;
 
-    public void saveGroupData(ServerChat.MessageInfo request) throws Exception {
-        Configuration config = HBaseConfiguration.create();
+    public HadoopService(){
+        config = HBaseConfiguration.create();
         config.set("hbase.zookeeper.quorum", "localhost");
         config.set("hbase.zookeeper.property.clientPort", "2181");
+    }
 
+    public void saveGroupData(ServerChat.MessageInfo request) throws Exception {
         try (Connection connection = ConnectionFactory.createConnection(config)) {
-            Table table = connection.getTable(TableName.valueOf(TABLE_NAME));
+            Table table = connection.getTable(TableName.valueOf(TABLE_MSG));
 
             String rowKey = request.getToGroupID() + "-" + request.getMsgID();
             Put put = new Put(Bytes.toBytes(rowKey));
@@ -37,13 +42,9 @@ public class HadoopService {
     }
 
     public List<ServerChat.MessageInfo> getMessagesByGroupID(Integer toGroupID) throws Exception {
-        Configuration config = HBaseConfiguration.create();
-        config.set("hbase.zookeeper.quorum", "localhost");
-        config.set("hbase.zookeeper.property.clientPort", "2181");
-
         List<ServerChat.MessageInfo> messages = new ArrayList<>();
         try (Connection connection = ConnectionFactory.createConnection(config)) {
-            Table table = connection.getTable(TableName.valueOf(TABLE_NAME));
+            Table table = connection.getTable(TableName.valueOf(TABLE_MSG));
             Scan scan = new Scan();
 
             String startRow = toGroupID + "-";
@@ -51,13 +52,30 @@ public class HadoopService {
             scan.withStartRow(Bytes.toBytes(startRow));
             scan.withStopRow(Bytes.toBytes(stopRow));
 
+            scan.addFamily(Bytes.toBytes(COLUMN_FAMILY));
+            scan.addColumn(Bytes.toBytes(COLUMN_FAMILY), Bytes.toBytes("msgID"));
+            scan.addColumn(Bytes.toBytes(COLUMN_FAMILY), Bytes.toBytes("fromUserID"));
+            scan.addColumn(Bytes.toBytes(COLUMN_FAMILY), Bytes.toBytes("messengerData"));
+
             ResultScanner scanner = table.getScanner(scan);
             for (Result result : scanner) {
-                Integer msgID = Bytes.toInt(result.getValue(Bytes.toBytes(COLUMN_FAMILY), Bytes.toBytes("msgID")));
-                Integer fromUserID = Bytes.toInt(result.getValue(Bytes.toBytes(COLUMN_FAMILY), Bytes.toBytes("fromUserID")));
-                String messengerData = Bytes.toString(result.getValue(Bytes.toBytes(COLUMN_FAMILY), Bytes.toBytes("messengerData")));
+                System.out.println("Result found");
+                byte[] msgIDBytes = result.getValue(Bytes.toBytes(COLUMN_FAMILY), Bytes.toBytes("msgID"));
+                String msgIDStr = msgIDBytes != null ? Bytes.toString(msgIDBytes) : "null";
+                System.out.println("msgID: " + msgIDStr);
+                Integer msgID = Integer.parseInt(msgIDStr);
+
+                byte[] fromUserIDBytes = result.getValue(Bytes.toBytes(COLUMN_FAMILY), Bytes.toBytes("fromUserID"));
+                String fromUserIDStr = fromUserIDBytes != null ? Bytes.toString(fromUserIDBytes) : "null";
+                System.out.println("fromUserID: " + fromUserIDStr);
+                Integer fromUserID = Integer.parseInt(fromUserIDStr);
+
+                byte[] messengerDataBytes = result.getValue(Bytes.toBytes(COLUMN_FAMILY), Bytes.toBytes("messengerData"));
+                String messengerData = messengerDataBytes != null ? Bytes.toString(messengerDataBytes) : "null";
+                System.out.println("messengerData: " + messengerData);
+
                 ServerChat.MessageInfo.Builder builder = ServerChat.MessageInfo.newBuilder();
-                builder.setMsgID(msgID);
+                builder.setMsgID((msgID));
                 builder.setFromUserID(fromUserID);
                 builder.setToGroupID(toGroupID);
                 builder.setMessengerData(messengerData);
@@ -65,5 +83,50 @@ public class HadoopService {
             }
         }
         return messages;
+    }
+
+    public ArrayList<Groups> sortBySendTime(ArrayList<Groups> request) throws Exception{
+        ArrayList<Groups> temp = new ArrayList<>(request);
+        try (Connection connection = ConnectionFactory.createConnection(config)) {
+            Table table = connection.getTable(TableName.valueOf(TABLE_MSG));
+            List<Integer> groupIDs = request.stream()
+                    .map(Groups::getGroupID)
+                    .collect(Collectors.toList());
+
+            Map<Integer, Long> groupIDToTimestampMap = new HashMap<>();
+
+            groupIDs.forEach(groupID -> {
+                String prefix = groupID+"-";
+                Scan scan = new Scan();
+                scan.setRowPrefixFilter(Bytes.toBytes(prefix));
+                scan.setReversed(true);
+                scan.setMaxResultSize(1);
+
+                scan.addFamily(Bytes.toBytes(COLUMN_FAMILY));
+                scan.addColumn(Bytes.toBytes(COLUMN_FAMILY), Bytes.toBytes("messengerData"));
+                try {
+                    ResultScanner scanner = table.getScanner(scan);
+                    for (Result result : scanner) {
+                        List<Cell> cells = result.listCells();
+                        for (Cell cell : cells) {
+                            long writeTimestamp = cell.getTimestamp();
+                            groupIDToTimestampMap.put(groupID, writeTimestamp);
+                        }
+
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
+            List<Integer> sortedGroupIDs = new ArrayList<>(groupIDToTimestampMap.keySet());
+            sortedGroupIDs.sort(Comparator.comparingLong(groupIDToTimestampMap::get));
+
+            temp.sort(Comparator.comparingLong(group -> sortedGroupIDs.indexOf(group.getGroupID())));
+            return temp;
+        }
+        catch (Exception e){
+            throw new Exception(e);
+        }
     }
 }

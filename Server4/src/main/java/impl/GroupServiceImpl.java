@@ -1,6 +1,7 @@
 package impl;
 
 import com.google.protobuf.BoolValue;
+import hadoop.HadoopService;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
@@ -11,15 +12,11 @@ import proto.GroupServiceGrpc;
 import proto.ServerChat;
 
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class GroupServiceImpl extends GroupServiceGrpc.GroupServiceImplBase {
     @Override
     public void groupCreate(ServerChat.GroupMetaInfo request, StreamObserver<ServerChat.GroupMetaInfo> responseObserver) {
         System.out.println("groupCreate");
-
         try {
             GroupController groupController = new GroupController();
             Groups groups = groupController.groupRegister(request);
@@ -42,7 +39,8 @@ public class GroupServiceImpl extends GroupServiceGrpc.GroupServiceImplBase {
         GroupController skillController = new GroupController();
         try {
             ArrayList<Groups> skills = skillController.groupList(request);
-            System.out.println(skills);
+            HadoopService hadoopService =  new HadoopService();
+
             for (Groups skill : skills) {
                 ServerChat.GroupMetaInfo skillFullInfo = Converter.groupToProto(skill);
                 responseObserver.onNext(skillFullInfo);
