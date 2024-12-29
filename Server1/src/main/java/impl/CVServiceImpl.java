@@ -21,7 +21,6 @@ public class CVServiceImpl extends CVServiceGrpc.CVServiceImplBase {
         CVController cvController = new CVController();
         try {
             ArrayList<CVs> cvs = cvController.cvList(request);
-            System.out.println(cvs);
             for (CVs cv : cvs) {
                 ServerClient.CVFullInfo cvFullInfo = Converter.CVToFullProto(cv);
                 responseObserver.onNext(cvFullInfo);

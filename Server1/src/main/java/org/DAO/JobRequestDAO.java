@@ -7,10 +7,7 @@ import org.model.JobType;
 import org.model.Locations;
 import proto.ServerClient;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -378,5 +375,100 @@ public class JobRequestDAO {
             if (resultSet != null) resultSet.close();
             if (preparedStatement != null) preparedStatement.close();
         }
+    }
+
+    public ArrayList<Integer> searchJobsInApplies(ServerClient.JobRequestRestrict requestRestrict, Connection connection) throws Exception {
+        System.out.println("searchJobsInApplies");
+
+        ArrayList<Integer> Jobs = new ArrayList<>();
+        List<Object> parameters = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        StringBuilder queryBuilder = new StringBuilder("SELECT `Applies`.`jobID` FROM `Applies` WHERE 1=1");
+        if(requestRestrict.getCVID() != 0){
+            queryBuilder.append(" AND `Applies`.`CVID` = ?");
+            parameters.add(requestRestrict.getCVID());
+        }
+        try {
+            preparedStatement = connection.prepareStatement(queryBuilder.toString());
+            for (int i = 0; i < parameters.size(); i++) {
+                preparedStatement.setObject(i + 1, parameters.get(i));
+            }
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Jobs.add(resultSet.getInt("locationID"));
+            }
+            return Jobs;
+        } finally {
+            if (resultSet != null) resultSet.close();
+            if (preparedStatement != null) preparedStatement.close();
+        }
+    }
+
+    public ArrayList<JobRequests> searchJobsInJobs(ServerClient.JobRequestRestrict request, ArrayList<Integer> searchLocation, ArrayList<Integer> searchJob, Connection connection) throws Exception {
+        System.out.println("searchJobsInJobs");
+
+        // Construct SQL query
+        StringBuilder sql = new StringBuilder("SELECT `jobID` FROM JobRequests WHERE 1=1");
+
+        // Add location filter
+        if (searchLocation != null && !searchLocation.isEmpty()) {
+            sql.append(" AND locationID IN (");
+            for (int i = 0; i < searchLocation.size(); i++) {
+                sql.append(searchLocation.get(i));
+                if (i < searchLocation.size() - 1) {
+                    sql.append(", ");
+                }
+            }
+            sql.append(")");
+        }
+
+        // Add job filter
+        if (searchJob != null && !searchJob.isEmpty()) {
+            sql.append(" AND jobID IN (");
+            for (int i = 0; i < searchJob.size(); i++) {
+                sql.append(searchJob.get(i));
+                if (i < searchJob.size() - 1) {
+                    sql.append(", ");
+                }
+            }
+            sql.append(")");
+        }
+
+        // Add salary filter
+        if (request.getSalaryMinimum() > 0) {
+            sql.append(" AND salaryLeast >= ").append(request.getSalaryMinimum());
+        }
+
+        if (request.getJobLevel() != null) {
+            sql.append(" AND jobLevel = '").append(request.getJobLevel().name()).append("'"); // Enum to integer mapping
+        }
+
+        if (request.getJobType() != null) {
+            sql.append(" AND jobType = '").append(request.getJobType().name()).append("'"); // Enum to integer mapping
+        }
+
+
+        // Add deadline check filter
+        if (request.getIsEnded()) {
+            sql.append(" AND deadlineDate < CURRENT_DATE");
+        } else {
+            sql.append(" AND deadlineDate >= CURRENT_DATE");
+        }
+
+        // Add ordering to get the most recent jobs
+        sql.append(" ORDER BY createdAt DESC");
+
+        System.out.println(sql.toString());
+        // Execute the query
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery(sql.toString());
+        // Map the result set to JobRequests objects
+        ArrayList<JobRequests> jobRequests = new ArrayList<>();
+        while (rs.next()) {
+            jobRequests.add(this.readJobRequest(ServerClient.JobRequestMetaInfo.newBuilder().setJobID(rs.getInt("jobID")).build(), connection));
+        }
+        return jobRequests;
     }
 }

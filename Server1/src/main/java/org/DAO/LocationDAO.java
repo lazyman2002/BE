@@ -265,4 +265,43 @@ public class LocationDAO {
             if (preparedStatement != null) preparedStatement.close();
         }
     }
+
+    public ArrayList<Integer> searchLocationInJob(ServerClient.JobRequestRestrict request, Connection connection) throws Exception {
+        System.out.println("searchLocationInJob");
+
+        ArrayList<Integer> locationIDs = new ArrayList<>();
+        List<Object> parameters = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        StringBuilder queryBuilder = new StringBuilder("SELECT `Locations`.`locationID` FROM `Locations` WHERE 1=1");
+        if (request.getLocation() != null && !request.getLocation().isEmpty()) {
+            queryBuilder.append(" AND CONCAT(state, '#', city, '#', country, ' ', address) LIKE ?");
+            parameters.add("%" + request.getLocation() + "%");
+        }
+
+        if (request.getCompanyID() !=0) {
+            queryBuilder.append(" AND companyID = ?");
+            parameters.add(request.getCompanyID());
+        }
+        if (request.getLocationID() !=0) {
+            queryBuilder.append(" AND locationID = ?");
+            parameters.add(request.getLocationID());
+        }
+
+        try{
+            preparedStatement = connection.prepareStatement(queryBuilder.toString());
+            for (int i = 0; i < parameters.size(); i++) {
+                preparedStatement.setObject(i + 1, parameters.get(i));
+            }
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                locationIDs.add(resultSet.getInt("locationID"));
+            }
+            return locationIDs;
+        } finally {
+            if (resultSet != null) resultSet.close();
+            if (preparedStatement != null) preparedStatement.close();
+        }
+    }
 }

@@ -23,6 +23,9 @@ public class JobRequests {
 //	Không có trong CSDL
 	private HashSet<Integer> currentCVs;
 
+	public JobRequests() {
+	}
+
 	public JobRequests(Integer jobID,
 					   JobType jobType,
 					   Integer salaryLeast,

@@ -28,19 +28,8 @@ public class Main {
                 .build();
         server.start();
         port(19092);
-        get("/oldchat/:groupID", (req, res) -> {
-            try {
-                Integer groupID = Integer.parseInt(req.params(":groupID"));
-                HadoopService hadoopService = new HadoopService();
-                List<ServerChat.MessageInfo> MSG = hadoopService.getMessagesByGroupID(groupID);
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                String jsonResponse = gson.toJson(MSG);
-                res.type("application/json");
-                return jsonResponse;
-            }
-            catch (Exception e){
-                return e.toString();
-            }
+        get("hello", (req, res) -> {
+            return "hello";
         });
         server.awaitTermination();
     }

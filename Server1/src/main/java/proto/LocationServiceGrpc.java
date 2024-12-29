@@ -3,9 +3,6 @@ package proto;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
- * <pre>
- *OK
- * </pre>
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.50.2)",
@@ -218,9 +215,6 @@ public final class LocationServiceGrpc {
   }
 
   /**
-   * <pre>
-   *OK
-   * </pre>
    */
   public static abstract class LocationServiceImplBase implements io.grpc.BindableService {
 
@@ -301,9 +295,6 @@ public final class LocationServiceGrpc {
   }
 
   /**
-   * <pre>
-   *OK
-   * </pre>
    */
   public static final class LocationServiceStub extends io.grpc.stub.AbstractAsyncStub<LocationServiceStub> {
     private LocationServiceStub(
@@ -359,9 +350,6 @@ public final class LocationServiceGrpc {
   }
 
   /**
-   * <pre>
-   *OK
-   * </pre>
    */
   public static final class LocationServiceBlockingStub extends io.grpc.stub.AbstractBlockingStub<LocationServiceBlockingStub> {
     private LocationServiceBlockingStub(
@@ -413,9 +401,6 @@ public final class LocationServiceGrpc {
   }
 
   /**
-   * <pre>
-   *OK
-   * </pre>
    */
   public static final class LocationServiceFutureStub extends io.grpc.stub.AbstractFutureStub<LocationServiceFutureStub> {
     private LocationServiceFutureStub(

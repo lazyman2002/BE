@@ -1,7 +1,6 @@
 package org.controller;
 
-import org.DAO.CVDAO;
-import org.DAO.JobRequestDAO;
+import org.DAO.*;
 import org.connectConfig.HikariDataSource;
 import org.model.Companies;
 import org.model.JobRequests;
@@ -80,6 +79,22 @@ public class JobController {
         try {
             connection = HikariDataSource.getConnection();
             return jobRequestDAO.readJobRequestList(connection);
+        }
+        finally {
+            if (connection != null) connection.close();
+        }
+    }
+
+    public ArrayList<JobRequests> searchJob(ServerClient.JobRequestRestrict request) throws Exception {
+        JobRequestDAO jobRequestDAO = new JobRequestDAO();
+        LocationDAO locationDAO = new LocationDAO();
+        Connection connection = null;
+        try {
+            connection = HikariDataSource.getConnection();
+            ArrayList<Integer> searchLocation = locationDAO.searchLocationInJob(request, connection);
+            ArrayList<Integer> searchJob = jobRequestDAO.searchJobsInApplies(request, connection);
+            ArrayList<JobRequests> ans = jobRequestDAO.searchJobsInJobs(request, searchLocation, searchJob, connection);
+            return ans;
         }
         finally {
             if (connection != null) connection.close();

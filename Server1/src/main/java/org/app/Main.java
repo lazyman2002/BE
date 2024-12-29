@@ -25,6 +25,7 @@ public class Main {
                 .addService(new SkillServiceImpl())
                 .addService(new WorkExperienceServiceImpl())
                 .addService(new CVServiceImpl())
+                .addService(new SearchServiceImpl())
                 .addService(ProtoReflectionService.newInstance())
                 .build();
         server.start();

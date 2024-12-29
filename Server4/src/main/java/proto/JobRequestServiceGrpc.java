@@ -3,9 +3,6 @@ package proto;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
- * <pre>
- *OK
- * </pre>
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.50.2)",
@@ -280,9 +277,6 @@ public final class JobRequestServiceGrpc {
   }
 
   /**
-   * <pre>
-   *OK
-   * </pre>
    */
   public static abstract class JobRequestServiceImplBase implements io.grpc.BindableService {
 
@@ -391,9 +385,6 @@ public final class JobRequestServiceGrpc {
   }
 
   /**
-   * <pre>
-   *OK
-   * </pre>
    */
   public static final class JobRequestServiceStub extends io.grpc.stub.AbstractAsyncStub<JobRequestServiceStub> {
     private JobRequestServiceStub(
@@ -465,9 +456,6 @@ public final class JobRequestServiceGrpc {
   }
 
   /**
-   * <pre>
-   *OK
-   * </pre>
    */
   public static final class JobRequestServiceBlockingStub extends io.grpc.stub.AbstractBlockingStub<JobRequestServiceBlockingStub> {
     private JobRequestServiceBlockingStub(
@@ -533,9 +521,6 @@ public final class JobRequestServiceGrpc {
   }
 
   /**
-   * <pre>
-   *OK
-   * </pre>
    */
   public static final class JobRequestServiceFutureStub extends io.grpc.stub.AbstractFutureStub<JobRequestServiceFutureStub> {
     private JobRequestServiceFutureStub(

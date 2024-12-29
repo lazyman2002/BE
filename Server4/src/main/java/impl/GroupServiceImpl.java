@@ -38,12 +38,12 @@ public class GroupServiceImpl extends GroupServiceGrpc.GroupServiceImplBase {
 
         GroupController skillController = new GroupController();
         try {
-            ArrayList<Groups> skills = skillController.groupList(request);
+            ArrayList<Groups> groups = skillController.groupList(request);
             HadoopService hadoopService =  new HadoopService();
-
-            for (Groups skill : skills) {
-                ServerChat.GroupMetaInfo skillFullInfo = Converter.groupToProto(skill);
-                responseObserver.onNext(skillFullInfo);
+            groups = hadoopService.sortBySendTime(groups);
+            for (Groups group : groups) {
+                ServerChat.GroupMetaInfo groupMetaInfo = Converter.groupToProto(group);
+                responseObserver.onNext(groupMetaInfo);
             }
             responseObserver.onCompleted();
         } catch (Exception sqlEx) {

@@ -83,5 +83,4 @@ public class LocationController {
             if (connection != null) connection.close();
         }
     }
-
 }

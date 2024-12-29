@@ -1,6 +1,7 @@
 package impl;
 
 import com.google.protobuf.BoolValue;
+import hadoop.HadoopService;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
@@ -75,7 +76,6 @@ public class ChatServiceImpl extends ChatServiceGrpc.ChatServiceImplBase {
         };
     }
 
-
     @Override
     public StreamObserver<ServerChat.Chunk> uploadFile(StreamObserver<BoolValue> responseObserver) {
         return new StreamObserver<ServerChat.Chunk>() {
@@ -149,16 +149,19 @@ public class ChatServiceImpl extends ChatServiceGrpc.ChatServiceImplBase {
 
     @Override
     public void getOldChat(ServerChat.GroupMetaInfo request, StreamObserver<ServerChat.MessageInfo> responseObserver) {
-//        try {
-//            String groupID = String.valueOf(request.getGroupID());
-//            ChatController chatController = new ChatController("local[*]", "MSG", groupID);
-//            List<Messages> msg = chatController.getOldMessenger(request);
-//        }
-//        catch (Exception e) {
-//            StatusRuntimeException dbError = Status.ALREADY_EXISTS
-//                    .withDescription(e.getMessage())
-//                    .asRuntimeException();
-//            responseObserver.onError(dbError);
-//        }
+        try {
+            HadoopService hadoopService = new HadoopService();
+            List<ServerChat.MessageInfo> MSG = hadoopService.getMessagesByGroupID(request.getGroupID());
+            for (ServerChat.MessageInfo msg  : MSG){
+                responseObserver.onNext(msg);
+            }
+            responseObserver.onCompleted();
+        }
+        catch (Exception e) {
+            StatusRuntimeException dbError = Status.ALREADY_EXISTS
+                    .withDescription(e.getMessage())
+                    .asRuntimeException();
+            responseObserver.onError(dbError);
+        }
     }
 }

@@ -8,8 +8,6 @@ lazy val root = (project in file("."))
     name := "ServerMaster"
   )
 
-dependencyOverrides += "org.scala-lang.modules" %% "scala-java8-compat" % "0.8.0"
-
 // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
 libraryDependencies += "org.apache.logging.log4j" % "log4j-core" % "2.23.1"
 // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
@@ -51,12 +49,3 @@ libraryDependencies += "org.apache.spark" %% "spark-streaming" % "3.1.2" % "prov
 libraryDependencies += "org.apache.kafka" %% "kafka" % "3.1.2"
 //// https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients
 //libraryDependencies += "org.apache.kafka" % "kafka-clients" % "3.1.2"
-
-libraryDependencies ++= Seq(
-    "io.grpc" % "grpc-netty" % "1.47.0", // gRPC Netty transport
-    "io.grpc" % "grpc-protobuf" % "1.47.0", // Protocol Buffers
-    "io.grpc" % "grpc-stub" % "1.47.0", // gRPC stub
-    "com.google.protobuf" % "protobuf-java" % "3.19.4", // Protobuf library
-    "com.google.protobuf" % "protobuf-java-util" % "3.19.4",
-    "org.scala-lang.modules" %% "scala-xml" % "1.3.0"
-)

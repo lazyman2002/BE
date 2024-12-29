@@ -15,27 +15,27 @@ public final class SearchServiceGrpc {
   public static final String SERVICE_NAME = "proto.SearchService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.JobRequestRestrict,
       proto.ServerClient.JobRequestFullInfo> getCandidateJobRequestMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Candidate_JobRequest",
-      requestType = proto.ServerClient.UserMetaInfo.class,
+      requestType = proto.ServerClient.JobRequestRestrict.class,
       responseType = proto.ServerClient.JobRequestFullInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.JobRequestRestrict,
       proto.ServerClient.JobRequestFullInfo> getCandidateJobRequestMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo, proto.ServerClient.JobRequestFullInfo> getCandidateJobRequestMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.JobRequestRestrict, proto.ServerClient.JobRequestFullInfo> getCandidateJobRequestMethod;
     if ((getCandidateJobRequestMethod = SearchServiceGrpc.getCandidateJobRequestMethod) == null) {
       synchronized (SearchServiceGrpc.class) {
         if ((getCandidateJobRequestMethod = SearchServiceGrpc.getCandidateJobRequestMethod) == null) {
           SearchServiceGrpc.getCandidateJobRequestMethod = getCandidateJobRequestMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.UserMetaInfo, proto.ServerClient.JobRequestFullInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.JobRequestRestrict, proto.ServerClient.JobRequestFullInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Candidate_JobRequest"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.UserMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.JobRequestRestrict.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.JobRequestFullInfo.getDefaultInstance()))
               .setSchemaDescriptor(new SearchServiceMethodDescriptorSupplier("Candidate_JobRequest"))
@@ -158,7 +158,7 @@ public final class SearchServiceGrpc {
 
     /**
      */
-    public void candidateJobRequest(proto.ServerClient.UserMetaInfo request,
+    public void candidateJobRequest(proto.ServerClient.JobRequestRestrict request,
         io.grpc.stub.StreamObserver<proto.ServerClient.JobRequestFullInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCandidateJobRequestMethod(), responseObserver);
     }
@@ -183,7 +183,7 @@ public final class SearchServiceGrpc {
             getCandidateJobRequestMethod(),
             io.grpc.stub.ServerCalls.asyncServerStreamingCall(
               new MethodHandlers<
-                proto.ServerClient.UserMetaInfo,
+                proto.ServerClient.JobRequestRestrict,
                 proto.ServerClient.JobRequestFullInfo>(
                   this, METHODID_CANDIDATE_JOB_REQUEST)))
           .addMethod(
@@ -220,7 +220,7 @@ public final class SearchServiceGrpc {
 
     /**
      */
-    public void candidateJobRequest(proto.ServerClient.UserMetaInfo request,
+    public void candidateJobRequest(proto.ServerClient.JobRequestRestrict request,
         io.grpc.stub.StreamObserver<proto.ServerClient.JobRequestFullInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getCandidateJobRequestMethod(), getCallOptions()), request, responseObserver);
@@ -260,7 +260,7 @@ public final class SearchServiceGrpc {
     /**
      */
     public java.util.Iterator<proto.ServerClient.JobRequestFullInfo> candidateJobRequest(
-        proto.ServerClient.UserMetaInfo request) {
+        proto.ServerClient.JobRequestRestrict request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getCandidateJobRequestMethod(), getCallOptions(), request);
     }
@@ -319,7 +319,7 @@ public final class SearchServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_CANDIDATE_JOB_REQUEST:
-          serviceImpl.candidateJobRequest((proto.ServerClient.UserMetaInfo) request,
+          serviceImpl.candidateJobRequest((proto.ServerClient.JobRequestRestrict) request,
               (io.grpc.stub.StreamObserver<proto.ServerClient.JobRequestFullInfo>) responseObserver);
           break;
         case METHODID_RECRUITER_COMPANY:
