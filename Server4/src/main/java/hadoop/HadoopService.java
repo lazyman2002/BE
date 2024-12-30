@@ -62,14 +62,12 @@ public class HadoopService {
             for (Result result : scanner) {
                 System.out.println("Result found");
                 byte[] msgIDBytes = result.getValue(Bytes.toBytes(COLUMN_FAMILY), Bytes.toBytes("msgID"));
-                String msgIDStr = msgIDBytes != null ? Bytes.toString(msgIDBytes) : "null";
-                System.out.println("msgID: " + msgIDStr);
-                Integer msgID = Integer.parseInt(msgIDStr);
+                Integer msgID = msgIDBytes != null ? Bytes.toInt(msgIDBytes) : null;
+                System.out.println("msgID: " + (msgID != null ? msgID : "null"));
 
                 byte[] fromUserIDBytes = result.getValue(Bytes.toBytes(COLUMN_FAMILY), Bytes.toBytes("fromUserID"));
-                String fromUserIDStr = fromUserIDBytes != null ? Bytes.toString(fromUserIDBytes) : "null";
-                System.out.println("fromUserID: " + fromUserIDStr);
-                Integer fromUserID = Integer.parseInt(fromUserIDStr);
+                Integer fromUserID = fromUserIDBytes != null ? Bytes.toInt(fromUserIDBytes) : null;
+                System.out.println("fromUserID: " + (fromUserID != null ? fromUserID : "null"));
 
                 byte[] messengerDataBytes = result.getValue(Bytes.toBytes(COLUMN_FAMILY), Bytes.toBytes("messengerData"));
                 String messengerData = messengerDataBytes != null ? Bytes.toString(messengerDataBytes) : "null";
