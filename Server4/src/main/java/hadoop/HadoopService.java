@@ -7,6 +7,7 @@ import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.util.Bytes;
+import org.apache.hadoop.hbase.filter.PrefixFilter;
 import org.model.Groups;
 import proto.ServerChat;
 
@@ -21,7 +22,7 @@ public class HadoopService {
 
     public HadoopService(){
         config = HBaseConfiguration.create();
-        config.set("hbase.zookeeper.quorum", "localhost");
+        config.set("hbase.zookeeper.quorum", "172.18.0.7");
         config.set("hbase.zookeeper.property.clientPort", "2181");
     }
 
@@ -92,37 +93,39 @@ public class HadoopService {
             List<Integer> groupIDs = request.stream()
                     .map(Groups::getGroupID)
                     .collect(Collectors.toList());
-
             Map<Integer, Long> groupIDToTimestampMap = new HashMap<>();
 
             groupIDs.forEach(groupID -> {
                 String prefix = groupID+"-";
                 Scan scan = new Scan();
-                scan.setRowPrefixFilter(Bytes.toBytes(prefix));
                 scan.setReversed(true);
                 scan.setMaxResultSize(1);
+
+                PrefixFilter prefixFilter = new PrefixFilter(Bytes.toBytes(prefix));
+                scan.setFilter(prefixFilter);
 
                 scan.addFamily(Bytes.toBytes(COLUMN_FAMILY));
                 scan.addColumn(Bytes.toBytes(COLUMN_FAMILY), Bytes.toBytes("messengerData"));
                 try {
+                    System.out.println("Scanning for groupID: "+prefix);
                     ResultScanner scanner = table.getScanner(scan);
                     for (Result result : scanner) {
+                        System.out.println("Result found "+ prefix);
                         List<Cell> cells = result.listCells();
                         for (Cell cell : cells) {
                             long writeTimestamp = cell.getTimestamp();
                             groupIDToTimestampMap.put(groupID, writeTimestamp);
                         }
-
                     }
+                    System.out.println("Scanner closed");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             });
-
             List<Integer> sortedGroupIDs = new ArrayList<>(groupIDToTimestampMap.keySet());
-            sortedGroupIDs.sort(Comparator.comparingLong(groupIDToTimestampMap::get));
-
+            sortedGroupIDs.sort(Comparator.comparingLong(groupIDToTimestampMap::get).reversed());
             temp.sort(Comparator.comparingLong(group -> sortedGroupIDs.indexOf(group.getGroupID())));
+            connection.close();
             return temp;
         }
         catch (Exception e){
