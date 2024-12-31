@@ -8,6 +8,7 @@ import proto.ServerChat;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class GroupController {
     public ArrayList<Groups> groupList(ServerChat.GroupMember request) throws Exception {
@@ -127,4 +128,16 @@ public class GroupController {
             if (connection != null) connection.close();
         }
     }
+
+    public ArrayList<ServerChat.GroupMember> groupMemberRead(ServerChat.GroupMetaInfo request) throws Exception {
+        GroupMemberDAO groupMemberDAO = new GroupMemberDAO();
+        Connection connection = null;
+        try {
+            connection = HikariDataSource.getConnection();
+            return groupMemberDAO.readGroupMemberList(request, connection);
+        } finally {
+            if (connection != null) connection.close();
+        }
+    }
+
 }

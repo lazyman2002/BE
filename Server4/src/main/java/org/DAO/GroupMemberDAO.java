@@ -152,4 +152,38 @@ public class GroupMemberDAO {
         }
         return  false;
     }
+
+    public ArrayList<ServerChat.GroupMember> readGroupMemberList(ServerChat.GroupMetaInfo request, Connection connection) throws Exception {
+        System.out.println("readGroupMemberList");
+
+        String query = "SELECT `userID`, `isAdmin` FROM `GroupMembers` WHERE `GroupMembers`.`groupID` = ?;";
+        ArrayList<ServerChat.GroupMember> memberList = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            if (request.getGroupID() == 0) throw new Exception("groupID is missing");
+            preparedStatement.setInt(1, request.getGroupID());
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int userID = resultSet.getInt("userID");
+                if (userID <= 0) throw new Exception("userID returned is not valid");
+                boolean isAdmin = resultSet.getBoolean("isAdmin");
+
+                ServerChat.GroupMember groupMember = ServerChat.GroupMember.newBuilder()
+                        .setUserID(userID)
+                        .setIsAdmin(isAdmin)
+                        .build();
+
+                memberList.add(groupMember);
+            }
+            return memberList;
+        } finally {
+            if (resultSet != null) resultSet.close();
+            if (preparedStatement != null) preparedStatement.close();
+        }
+    }
+
 }

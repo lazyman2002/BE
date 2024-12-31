@@ -170,6 +170,68 @@ public final class ScheduleServiceGrpc {
     return getScheduleDeleteMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.ScheduleFullInfo,
+      com.google.protobuf.BoolValue> getScheduleAppendInterviewerMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ScheduleAppendInterviewer",
+      requestType = proto.ServerChat.ScheduleFullInfo.class,
+      responseType = com.google.protobuf.BoolValue.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<proto.ServerChat.ScheduleFullInfo,
+      com.google.protobuf.BoolValue> getScheduleAppendInterviewerMethod() {
+    io.grpc.MethodDescriptor<proto.ServerChat.ScheduleFullInfo, com.google.protobuf.BoolValue> getScheduleAppendInterviewerMethod;
+    if ((getScheduleAppendInterviewerMethod = ScheduleServiceGrpc.getScheduleAppendInterviewerMethod) == null) {
+      synchronized (ScheduleServiceGrpc.class) {
+        if ((getScheduleAppendInterviewerMethod = ScheduleServiceGrpc.getScheduleAppendInterviewerMethod) == null) {
+          ScheduleServiceGrpc.getScheduleAppendInterviewerMethod = getScheduleAppendInterviewerMethod =
+              io.grpc.MethodDescriptor.<proto.ServerChat.ScheduleFullInfo, com.google.protobuf.BoolValue>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ScheduleAppendInterviewer"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  proto.ServerChat.ScheduleFullInfo.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.google.protobuf.BoolValue.getDefaultInstance()))
+              .setSchemaDescriptor(new ScheduleServiceMethodDescriptorSupplier("ScheduleAppendInterviewer"))
+              .build();
+        }
+      }
+    }
+    return getScheduleAppendInterviewerMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.ScheduleFullInfo,
+      com.google.protobuf.BoolValue> getScheduleDeleteInterviewerMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ScheduleDeleteInterviewer",
+      requestType = proto.ServerChat.ScheduleFullInfo.class,
+      responseType = com.google.protobuf.BoolValue.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<proto.ServerChat.ScheduleFullInfo,
+      com.google.protobuf.BoolValue> getScheduleDeleteInterviewerMethod() {
+    io.grpc.MethodDescriptor<proto.ServerChat.ScheduleFullInfo, com.google.protobuf.BoolValue> getScheduleDeleteInterviewerMethod;
+    if ((getScheduleDeleteInterviewerMethod = ScheduleServiceGrpc.getScheduleDeleteInterviewerMethod) == null) {
+      synchronized (ScheduleServiceGrpc.class) {
+        if ((getScheduleDeleteInterviewerMethod = ScheduleServiceGrpc.getScheduleDeleteInterviewerMethod) == null) {
+          ScheduleServiceGrpc.getScheduleDeleteInterviewerMethod = getScheduleDeleteInterviewerMethod =
+              io.grpc.MethodDescriptor.<proto.ServerChat.ScheduleFullInfo, com.google.protobuf.BoolValue>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ScheduleDeleteInterviewer"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  proto.ServerChat.ScheduleFullInfo.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.google.protobuf.BoolValue.getDefaultInstance()))
+              .setSchemaDescriptor(new ScheduleServiceMethodDescriptorSupplier("ScheduleDeleteInterviewer"))
+              .build();
+        }
+      }
+    }
+    return getScheduleDeleteInterviewerMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -253,6 +315,20 @@ public final class ScheduleServiceGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getScheduleDeleteMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void scheduleAppendInterviewer(proto.ServerChat.ScheduleFullInfo request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getScheduleAppendInterviewerMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void scheduleDeleteInterviewer(proto.ServerChat.ScheduleFullInfo request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getScheduleDeleteInterviewerMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -290,6 +366,20 @@ public final class ScheduleServiceGrpc {
                 proto.ServerChat.ScheduleFullInfo,
                 com.google.protobuf.BoolValue>(
                   this, METHODID_SCHEDULE_DELETE)))
+          .addMethod(
+            getScheduleAppendInterviewerMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                proto.ServerChat.ScheduleFullInfo,
+                com.google.protobuf.BoolValue>(
+                  this, METHODID_SCHEDULE_APPEND_INTERVIEWER)))
+          .addMethod(
+            getScheduleDeleteInterviewerMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                proto.ServerChat.ScheduleFullInfo,
+                com.google.protobuf.BoolValue>(
+                  this, METHODID_SCHEDULE_DELETE_INTERVIEWER)))
           .build();
     }
   }
@@ -347,6 +437,22 @@ public final class ScheduleServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getScheduleDeleteMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void scheduleAppendInterviewer(proto.ServerChat.ScheduleFullInfo request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getScheduleAppendInterviewerMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void scheduleDeleteInterviewer(proto.ServerChat.ScheduleFullInfo request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getScheduleDeleteInterviewerMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -398,6 +504,20 @@ public final class ScheduleServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getScheduleDeleteMethod(), getCallOptions(), request);
     }
+
+    /**
+     */
+    public com.google.protobuf.BoolValue scheduleAppendInterviewer(proto.ServerChat.ScheduleFullInfo request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getScheduleAppendInterviewerMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.google.protobuf.BoolValue scheduleDeleteInterviewer(proto.ServerChat.ScheduleFullInfo request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getScheduleDeleteInterviewerMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -445,6 +565,22 @@ public final class ScheduleServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getScheduleDeleteMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> scheduleAppendInterviewer(
+        proto.ServerChat.ScheduleFullInfo request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getScheduleAppendInterviewerMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> scheduleDeleteInterviewer(
+        proto.ServerChat.ScheduleFullInfo request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getScheduleDeleteInterviewerMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_SCHEDULE_CREATE = 0;
@@ -452,6 +588,8 @@ public final class ScheduleServiceGrpc {
   private static final int METHODID_SCHEDULE_LIST_READ = 2;
   private static final int METHODID_SCHEDULE_UPDATE = 3;
   private static final int METHODID_SCHEDULE_DELETE = 4;
+  private static final int METHODID_SCHEDULE_APPEND_INTERVIEWER = 5;
+  private static final int METHODID_SCHEDULE_DELETE_INTERVIEWER = 6;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -488,6 +626,14 @@ public final class ScheduleServiceGrpc {
           break;
         case METHODID_SCHEDULE_DELETE:
           serviceImpl.scheduleDelete((proto.ServerChat.ScheduleFullInfo) request,
+              (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
+          break;
+        case METHODID_SCHEDULE_APPEND_INTERVIEWER:
+          serviceImpl.scheduleAppendInterviewer((proto.ServerChat.ScheduleFullInfo) request,
+              (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
+          break;
+        case METHODID_SCHEDULE_DELETE_INTERVIEWER:
+          serviceImpl.scheduleDeleteInterviewer((proto.ServerChat.ScheduleFullInfo) request,
               (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         default:
@@ -556,6 +702,8 @@ public final class ScheduleServiceGrpc {
               .addMethod(getScheduleListReadMethod())
               .addMethod(getScheduleUpdateMethod())
               .addMethod(getScheduleDeleteMethod())
+              .addMethod(getScheduleAppendInterviewerMethod())
+              .addMethod(getScheduleDeleteInterviewerMethod())
               .build();
         }
       }

@@ -1,6 +1,8 @@
 package org.controller;
 
 import org.DAO.CompanyDAO;
+import org.DAO.LocationDAO;
+import org.DAO.UserDAO;
 import org.connectConfig.HikariDataSource;
 import org.model.Companies;
 import proto.ServerClient;
@@ -8,6 +10,7 @@ import proto.ServerClient;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class CompanyController {
     public ArrayList<Companies> companyList() throws Exception {
@@ -24,10 +27,18 @@ public class CompanyController {
 
     public Companies companyRead(ServerClient.CompanyMetaInfo request) throws Exception {
         CompanyDAO companyDAO = new CompanyDAO();
+        UserDAO userDAO = new UserDAO();
+        LocationDAO locationDAO = new LocationDAO();
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
-            return companyDAO.readCompany(request, connection);
+            connection.setAutoCommit(false);
+            Companies companies = companyDAO.readCompany(request, connection);
+            ArrayList<Integer> locationList = locationDAO.readLocationList(companies, connection);
+            companies.setActiveLocations(new HashSet<>(locationList));
+            ArrayList<Integer> recruiterList = userDAO.readRecruiterList(companies, connection);
+            companies.setActiveRecruiters(new HashSet<>(recruiterList));
+            return companies;
         }
         finally {
             if (connection != null) connection.close();

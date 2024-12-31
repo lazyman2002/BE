@@ -1,8 +1,5 @@
 package org.app;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import hadoop.HadoopService;
 import impl.ChatServiceImpl;
 import impl.GroupServiceImpl;
 import impl.ScheduleServiceImpl;
@@ -12,10 +9,8 @@ import org.connectConfig.ENVDockers;
 import static spark.Spark.*;
 
 import java.io.IOException;
-import java.util.List;
 
 import io.grpc.protobuf.services.ProtoReflectionService;
-import proto.ServerChat;
 
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {

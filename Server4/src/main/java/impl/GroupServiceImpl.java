@@ -28,8 +28,6 @@ public class GroupServiceImpl extends GroupServiceGrpc.GroupServiceImplBase {
                     .asRuntimeException();
             responseObserver.onError(dbError);
         }
-
-
     }
 
     @Override
@@ -130,6 +128,25 @@ public class GroupServiceImpl extends GroupServiceGrpc.GroupServiceImplBase {
             GroupController groupController = new GroupController();
             Groups groups = groupController.groupAppendMember(request);
             responseObserver.onNext(Converter.groupToProto(groups));
+            responseObserver.onCompleted();
+        } catch (Exception e) {
+            StatusRuntimeException dbError = Status.ALREADY_EXISTS
+                    .withDescription(e.getMessage())
+                    .asRuntimeException();
+            responseObserver.onError(dbError);
+        }
+    }
+
+    @Override
+    public void groupMemberRead(ServerChat.GroupMetaInfo request, StreamObserver<ServerChat.GroupMember> responseObserver) {
+        System.out.println("groupMemberRead");
+
+        try {
+            GroupController groupController = new GroupController();
+            ArrayList<ServerChat.GroupMember> groupMembers = groupController.groupMemberRead(request);
+            for (ServerChat.GroupMember groupMember: groupMembers){
+                responseObserver.onNext(groupMember);
+            }
             responseObserver.onCompleted();
         } catch (Exception e) {
             StatusRuntimeException dbError = Status.ALREADY_EXISTS

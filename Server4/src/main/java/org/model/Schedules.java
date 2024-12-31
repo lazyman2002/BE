@@ -1,13 +1,18 @@
 package org.model;
 
 import java.sql.Timestamp;
-import java.util.Objects;
+import java.util.HashMap;
 
 public class Schedules {
 	private Integer scheduleID;
 	private Timestamp timeSet;
 	private Boolean isRecored;
 	private Integer groupID;
+
+//	Ngoài CSDL
+	private HashMap<Integer, Integer> interviewers;
+	public Schedules() {
+	}
 
 	public Integer getScheduleID() {
 		return scheduleID;
@@ -21,6 +26,9 @@ public class Schedules {
 	public Integer getGroupID() {
 		return groupID;
 	}
+	public HashMap<Integer, Integer> getInterviewers() {
+		return interviewers;
+	}
 
 	public void setScheduleID(Integer scheduleID) {
 		this.scheduleID = scheduleID;
@@ -33,5 +41,8 @@ public class Schedules {
 	}
 	public void setGroupID(Integer groupID) {
 		this.groupID = groupID;
+	}
+	public void setInterviewers(HashMap<Integer, Integer> interviewers) {
+		this.interviewers = interviewers;
 	}
 }

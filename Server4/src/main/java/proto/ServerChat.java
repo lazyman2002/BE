@@ -3036,6 +3036,38 @@ public final class ServerChat {
      * @return The isRecorded.
      */
     boolean getIsRecorded();
+
+    /**
+     * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
+     */
+    int getInterviewersCount();
+    /**
+     * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
+     */
+    boolean containsInterviewers(
+        int key);
+    /**
+     * Use {@link #getInterviewersMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.Integer, java.lang.Integer>
+    getInterviewers();
+    /**
+     * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
+     */
+    java.util.Map<java.lang.Integer, java.lang.Integer>
+    getInterviewersMap();
+    /**
+     * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
+     */
+    int getInterviewersOrDefault(
+        int key,
+        int defaultValue);
+    /**
+     * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
+     */
+    int getInterviewersOrThrow(
+        int key);
   }
   /**
    * Protobuf type {@code proto.ScheduleFullInfo}
@@ -3069,6 +3101,18 @@ public final class ServerChat {
       return proto.ServerChat.internal_static_proto_ScheduleFullInfo_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    @java.lang.Override
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 5:
+          return internalGetInterviewers();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -3136,6 +3180,83 @@ public final class ServerChat {
       return isRecorded_;
     }
 
+    public static final int INTERVIEWERS_FIELD_NUMBER = 5;
+    private static final class InterviewersDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.Integer, java.lang.Integer> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.Integer, java.lang.Integer>newDefaultInstance(
+                  proto.ServerChat.internal_static_proto_ScheduleFullInfo_InterviewersEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0,
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0);
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.Integer, java.lang.Integer> interviewers_;
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+    internalGetInterviewers() {
+      if (interviewers_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            InterviewersDefaultEntryHolder.defaultEntry);
+      }
+      return interviewers_;
+    }
+    public int getInterviewersCount() {
+      return internalGetInterviewers().getMap().size();
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
+     */
+    @java.lang.Override
+    public boolean containsInterviewers(
+        int key) {
+      
+      return internalGetInterviewers().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getInterviewersMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, java.lang.Integer> getInterviewers() {
+      return getInterviewersMap();
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.Integer, java.lang.Integer> getInterviewersMap() {
+      return internalGetInterviewers().getMap();
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
+     */
+    @java.lang.Override
+    public int getInterviewersOrDefault(
+        int key,
+        int defaultValue) {
+      
+      java.util.Map<java.lang.Integer, java.lang.Integer> map =
+          internalGetInterviewers().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
+     */
+    @java.lang.Override
+    public int getInterviewersOrThrow(
+        int key) {
+      
+      java.util.Map<java.lang.Integer, java.lang.Integer> map =
+          internalGetInterviewers().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3162,6 +3283,12 @@ public final class ServerChat {
       if (isRecorded_ != false) {
         output.writeBool(4, isRecorded_);
       }
+      com.google.protobuf.GeneratedMessageV3
+        .serializeIntegerMapTo(
+          output,
+          internalGetInterviewers(),
+          InterviewersDefaultEntryHolder.defaultEntry,
+          5);
       getUnknownFields().writeTo(output);
     }
 
@@ -3186,6 +3313,16 @@ public final class ServerChat {
       if (isRecorded_ != false) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(4, isRecorded_);
+      }
+      for (java.util.Map.Entry<java.lang.Integer, java.lang.Integer> entry
+           : internalGetInterviewers().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
+        interviewers__ = InterviewersDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(5, interviewers__);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -3213,6 +3350,8 @@ public final class ServerChat {
       }
       if (getIsRecorded()
           != other.getIsRecorded()) return false;
+      if (!internalGetInterviewers().equals(
+          other.internalGetInterviewers())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -3235,6 +3374,10 @@ public final class ServerChat {
       hash = (37 * hash) + ISRECORDED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getIsRecorded());
+      if (!internalGetInterviewers().getMap().isEmpty()) {
+        hash = (37 * hash) + INTERVIEWERS_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetInterviewers().hashCode();
+      }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3342,6 +3485,28 @@ public final class ServerChat {
         return proto.ServerChat.internal_static_proto_ScheduleFullInfo_descriptor;
       }
 
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMapField(
+          int number) {
+        switch (number) {
+          case 5:
+            return internalGetInterviewers();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMutableMapField(
+          int number) {
+        switch (number) {
+          case 5:
+            return internalGetMutableInterviewers();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
@@ -3372,6 +3537,7 @@ public final class ServerChat {
           timeSetBuilder_ = null;
         }
         isRecorded_ = false;
+        internalGetMutableInterviewers().clear();
         return this;
       }
 
@@ -3418,6 +3584,10 @@ public final class ServerChat {
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
           result.isRecorded_ = isRecorded_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.interviewers_ = internalGetInterviewers();
+          result.interviewers_.makeImmutable();
         }
       }
 
@@ -3477,6 +3647,9 @@ public final class ServerChat {
         if (other.getIsRecorded() != false) {
           setIsRecorded(other.getIsRecorded());
         }
+        internalGetMutableInterviewers().mergeFrom(
+            other.internalGetInterviewers());
+        bitField0_ |= 0x00000010;
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -3525,6 +3698,15 @@ public final class ServerChat {
                 bitField0_ |= 0x00000008;
                 break;
               } // case 32
+              case 42: {
+                com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
+                interviewers__ = input.readMessage(
+                    InterviewersDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+                internalGetMutableInterviewers().getMutableMap().put(
+                    interviewers__.getKey(), interviewers__.getValue());
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -3754,6 +3936,131 @@ public final class ServerChat {
         bitField0_ = (bitField0_ & ~0x00000008);
         isRecorded_ = false;
         onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.Integer, java.lang.Integer> interviewers_;
+      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+          internalGetInterviewers() {
+        if (interviewers_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              InterviewersDefaultEntryHolder.defaultEntry);
+        }
+        return interviewers_;
+      }
+      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+          internalGetMutableInterviewers() {
+        if (interviewers_ == null) {
+          interviewers_ = com.google.protobuf.MapField.newMapField(
+              InterviewersDefaultEntryHolder.defaultEntry);
+        }
+        if (!interviewers_.isMutable()) {
+          interviewers_ = interviewers_.copy();
+        }
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return interviewers_;
+      }
+      public int getInterviewersCount() {
+        return internalGetInterviewers().getMap().size();
+      }
+      /**
+       * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
+       */
+      @java.lang.Override
+      public boolean containsInterviewers(
+          int key) {
+        
+        return internalGetInterviewers().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getInterviewersMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Integer, java.lang.Integer> getInterviewers() {
+        return getInterviewersMap();
+      }
+      /**
+       * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.Integer, java.lang.Integer> getInterviewersMap() {
+        return internalGetInterviewers().getMap();
+      }
+      /**
+       * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
+       */
+      @java.lang.Override
+      public int getInterviewersOrDefault(
+          int key,
+          int defaultValue) {
+        
+        java.util.Map<java.lang.Integer, java.lang.Integer> map =
+            internalGetInterviewers().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
+       */
+      @java.lang.Override
+      public int getInterviewersOrThrow(
+          int key) {
+        
+        java.util.Map<java.lang.Integer, java.lang.Integer> map =
+            internalGetInterviewers().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearInterviewers() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        internalGetMutableInterviewers().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
+       */
+      public Builder removeInterviewers(
+          int key) {
+        
+        internalGetMutableInterviewers().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Integer, java.lang.Integer>
+          getMutableInterviewers() {
+        bitField0_ |= 0x00000010;
+        return internalGetMutableInterviewers().getMutableMap();
+      }
+      /**
+       * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
+       */
+      public Builder putInterviewers(
+          int key,
+          int value) {
+        
+        
+        internalGetMutableInterviewers().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
+       */
+      public Builder putAllInterviewers(
+          java.util.Map<java.lang.Integer, java.lang.Integer> values) {
+        internalGetMutableInterviewers().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00000010;
         return this;
       }
       @java.lang.Override
@@ -4326,6 +4633,11 @@ public final class ServerChat {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_ScheduleFullInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_proto_ScheduleFullInfo_InterviewersEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_proto_ScheduleFullInfo_InterviewersEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_Chunk_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -4351,37 +4663,45 @@ public final class ServerChat {
       "eInfo\022\r\n\005msgID\030\001 \001(\005\022\022\n\nfromUserID\030\002 \001(\005" +
       "\022\021\n\ttoGroupID\030\003 \001(\005\022\025\n\rmessengerData\030\004 \001" +
       "(\t\022,\n\010sendTime\030\005 \001(\0132\032.google.protobuf.T" +
-      "imestamp\"x\n\020ScheduleFullInfo\022\022\n\nschedule" +
-      "ID\030\001 \001(\005\022\017\n\007groupID\030\002 \001(\005\022+\n\007timeSet\030\003 \001" +
-      "(\0132\032.google.protobuf.Timestamp\022\022\n\nisReco" +
-      "rded\030\004 \001(\010\"\030\n\005Chunk\022\017\n\007Content\030\001 \001(\0142\303\003\n" +
-      "\014GroupService\0229\n\013GroupCreate\022\024.proto.Gro" +
-      "upMetaInfo\032\024.proto.GroupMetaInfo\0227\n\tGrou" +
-      "pRead\022\024.proto.GroupMetaInfo\032\024.proto.Grou" +
-      "pMetaInfo\022=\n\017GroupUpdateInfo\022\024.proto.Gro" +
-      "upMetaInfo\032\024.proto.GroupMetaInfo\022?\n\013Grou" +
-      "pDelete\022\024.proto.GroupMetaInfo\032\032.google.p" +
-      "rotobuf.BoolValue\022;\n\rGroupListRead\022\022.pro" +
-      "to.GroupMember\032\024.proto.GroupMetaInfo0\001\022=" +
-      "\n\021GroupAppendMember\022\022.proto.GroupMember\032" +
-      "\024.proto.GroupMetaInfo\022C\n\021GroupDeleteMemb" +
-      "er\022\022.proto.GroupMember\032\032.google.protobuf" +
-      ".BoolValue2\347\002\n\017ScheduleService\022B\n\016Schedu" +
-      "leCreate\022\027.proto.ScheduleFullInfo\032\027.prot" +
-      "o.ScheduleFullInfo\022@\n\014ScheduleRead\022\027.pro" +
-      "to.ScheduleFullInfo\032\027.proto.ScheduleFull" +
-      "Info\022C\n\020ScheduleListRead\022\024.proto.GroupMe" +
-      "taInfo\032\027.proto.ScheduleFullInfo0\001\022B\n\016Sch" +
-      "eduleUpdate\022\027.proto.ScheduleFullInfo\032\027.p" +
-      "roto.ScheduleFullInfo\022E\n\016ScheduleDelete\022" +
-      "\027.proto.ScheduleFullInfo\032\032.google.protob" +
-      "uf.BoolValue2\346\001\n\013ChatService\0222\n\004Chat\022\022.p" +
-      "roto.MessageInfo\032\022.proto.MessageInfo(\0010\001" +
-      "\0228\n\nUploadFile\022\014.proto.Chunk\032\032.google.pr" +
-      "otobuf.BoolValue(\001\022/\n\014DownloadFile\022\017.pro" +
-      "to.FileInfo\032\014.proto.Chunk0\001\0228\n\nGetOldCha" +
-      "t\022\024.proto.GroupMetaInfo\032\022.proto.MessageI" +
-      "nfo0\001b\006proto3"
+      "imestamp\"\356\001\n\020ScheduleFullInfo\022\022\n\nschedul" +
+      "eID\030\001 \001(\005\022\017\n\007groupID\030\002 \001(\005\022+\n\007timeSet\030\003 " +
+      "\001(\0132\032.google.protobuf.Timestamp\022\022\n\nisRec" +
+      "orded\030\004 \001(\010\022?\n\014interviewers\030\005 \003(\0132).prot" +
+      "o.ScheduleFullInfo.InterviewersEntry\0323\n\021" +
+      "InterviewersEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030" +
+      "\002 \001(\005:\0028\001\"\030\n\005Chunk\022\017\n\007Content\030\001 \001(\0142\202\004\n\014" +
+      "GroupService\0229\n\013GroupCreate\022\024.proto.Grou" +
+      "pMetaInfo\032\024.proto.GroupMetaInfo\0227\n\tGroup" +
+      "Read\022\024.proto.GroupMetaInfo\032\024.proto.Group" +
+      "MetaInfo\022=\n\017GroupUpdateInfo\022\024.proto.Grou" +
+      "pMetaInfo\032\024.proto.GroupMetaInfo\022?\n\013Group" +
+      "Delete\022\024.proto.GroupMetaInfo\032\032.google.pr" +
+      "otobuf.BoolValue\022=\n\017GroupMemberRead\022\024.pr" +
+      "oto.GroupMetaInfo\032\022.proto.GroupMember0\001\022" +
+      ";\n\rGroupListRead\022\022.proto.GroupMember\032\024.p" +
+      "roto.GroupMetaInfo0\001\022=\n\021GroupAppendMembe" +
+      "r\022\022.proto.GroupMember\032\024.proto.GroupMetaI" +
+      "nfo\022C\n\021GroupDeleteMember\022\022.proto.GroupMe" +
+      "mber\032\032.google.protobuf.BoolValue2\213\004\n\017Sch" +
+      "eduleService\022B\n\016ScheduleCreate\022\027.proto.S" +
+      "cheduleFullInfo\032\027.proto.ScheduleFullInfo" +
+      "\022@\n\014ScheduleRead\022\027.proto.ScheduleFullInf" +
+      "o\032\027.proto.ScheduleFullInfo\022C\n\020ScheduleLi" +
+      "stRead\022\024.proto.GroupMetaInfo\032\027.proto.Sch" +
+      "eduleFullInfo0\001\022B\n\016ScheduleUpdate\022\027.prot" +
+      "o.ScheduleFullInfo\032\027.proto.ScheduleFullI" +
+      "nfo\022E\n\016ScheduleDelete\022\027.proto.ScheduleFu" +
+      "llInfo\032\032.google.protobuf.BoolValue\022P\n\031Sc" +
+      "heduleAppendInterviewer\022\027.proto.Schedule" +
+      "FullInfo\032\032.google.protobuf.BoolValue\022P\n\031" +
+      "ScheduleDeleteInterviewer\022\027.proto.Schedu" +
+      "leFullInfo\032\032.google.protobuf.BoolValue2\346" +
+      "\001\n\013ChatService\0222\n\004Chat\022\022.proto.MessageIn" +
+      "fo\032\022.proto.MessageInfo(\0010\001\0228\n\nUploadFile" +
+      "\022\014.proto.Chunk\032\032.google.protobuf.BoolVal" +
+      "ue(\001\022/\n\014DownloadFile\022\017.proto.FileInfo\032\014." +
+      "proto.Chunk0\001\0228\n\nGetOldChat\022\024.proto.Grou" +
+      "pMetaInfo\032\022.proto.MessageInfo0\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4419,7 +4739,13 @@ public final class ServerChat {
     internal_static_proto_ScheduleFullInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_ScheduleFullInfo_descriptor,
-        new java.lang.String[] { "ScheduleID", "GroupID", "TimeSet", "IsRecorded", });
+        new java.lang.String[] { "ScheduleID", "GroupID", "TimeSet", "IsRecorded", "Interviewers", });
+    internal_static_proto_ScheduleFullInfo_InterviewersEntry_descriptor =
+      internal_static_proto_ScheduleFullInfo_descriptor.getNestedTypes().get(0);
+    internal_static_proto_ScheduleFullInfo_InterviewersEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_proto_ScheduleFullInfo_InterviewersEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_proto_Chunk_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_proto_Chunk_fieldAccessorTable = new

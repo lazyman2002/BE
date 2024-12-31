@@ -1,6 +1,7 @@
 package org.controller;
 
 import org.model.Groups;
+import org.model.Schedules;
 import proto.ServerChat;
 
 import java.sql.Timestamp;
@@ -66,6 +67,22 @@ public class Converter {
             builder.setGroupID(groups.getGroupID());
         if(groups.getGroupName()!= null && !groups.getGroupName().isEmpty())
             builder.setGroupName(groups.getGroupName());
+        return builder.build();
+    }
+
+    public static ServerChat.ScheduleFullInfo scheduleToProto(Schedules schedules){
+        ServerChat.ScheduleFullInfo.Builder builder = ServerChat.ScheduleFullInfo.newBuilder();
+        if(schedules.getScheduleID() != null && schedules.getScheduleID() !=0)
+            builder.setScheduleID(schedules.getScheduleID());
+        if(schedules.getGroupID() != null && schedules.getGroupID() != 0)
+            builder.setGroupID(schedules.getGroupID());
+        if(schedules.getRecored() != null)
+            builder.setIsRecorded(schedules.getRecored());
+        if(schedules.getTimeSet() != null)
+            builder.setTimeSet(timesToProto(schedules.getTimeSet()));
+        if(!schedules.getInterviewers().isEmpty()){
+            builder.putAllInterviewers(schedules.getInterviewers());
+        }
         return builder.build();
     }
 }

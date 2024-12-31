@@ -371,4 +371,27 @@ public class UserDAO {
             if(preparedStatement != null)   resultSet.close();
         }
     }
+
+    public ArrayList<Integer> readRecruiterList(Companies companies, Connection connection) throws Exception {
+        System.out.println("readRecruiterList");
+
+        String query = "SELECT userID FROM `Recruiters` WHERE companyID = ?;";
+        ArrayList<Integer> recruiterIDs = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, companies.getCompaniesID()); // Assuming `Companies` has a `getCompanyID` method
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                recruiterIDs.add(resultSet.getInt("userID"));
+            }
+
+            return recruiterIDs;
+        } finally {
+            if (resultSet != null) resultSet.close();
+            if (preparedStatement != null) preparedStatement.close();
+        }
+    }
 }

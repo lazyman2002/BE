@@ -1,5 +1,6 @@
 package org.DAO;
 
+import org.model.Companies;
 import org.model.Locations;
 import proto.ServerClient;
 
@@ -298,6 +299,29 @@ public class LocationDAO {
             while (resultSet.next()) {
                 locationIDs.add(resultSet.getInt("locationID"));
             }
+            return locationIDs;
+        } finally {
+            if (resultSet != null) resultSet.close();
+            if (preparedStatement != null) preparedStatement.close();
+        }
+    }
+
+    public ArrayList<Integer> readLocationList(Companies companies, Connection connection) throws Exception {
+        System.out.println("readLocationList");
+
+        String query = "SELECT locationID FROM `Locations` WHERE companyID = ?;";
+        ArrayList<Integer> locationIDs = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, companies.getCompaniesID()); // Assuming `Companies` has a `getCompanyID` method
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                locationIDs.add(resultSet.getInt("locationID"));
+            }
+
             return locationIDs;
         } finally {
             if (resultSet != null) resultSet.close();

@@ -139,7 +139,16 @@ public class Converter {
         if(companies.getCompanyAvatarURL() != null && !companies.getCompanyAvatarURL().isEmpty())    builder.setCompanyAvatarURL(companies.getCompanyAvatarURL());
         if(companies.getWebsite() != null && !companies.getWebsite().isEmpty())  builder.setWebsite(companies.getWebsite());
         if(companies.getEmail() != null && !companies.getEmail().isEmpty())  builder.setEmail(companies.getEmail());
-
+        if (companies.getActiveLocations() != null) {
+            builder.putAllActiveLocations(
+                    convertHashSetToMap((HashSet<Integer>) companies.getActiveLocations())
+            );
+        }
+        if (companies.getActiveRecruiters() != null) {
+            builder.putAllActiveRecruiters(
+                    convertHashSetToMap((HashSet<Integer>) companies.getActiveRecruiters())
+            );
+        }
         return builder.build();
     }
 

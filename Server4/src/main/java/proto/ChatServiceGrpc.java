@@ -195,6 +195,9 @@ public final class ChatServiceGrpc {
     }
 
     /**
+     * <pre>
+     *Bỏ
+     * </pre>
      */
     public io.grpc.stub.StreamObserver<proto.ServerChat.Chunk> uploadFile(
         io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
@@ -202,6 +205,9 @@ public final class ChatServiceGrpc {
     }
 
     /**
+     * <pre>
+     *Bỏ
+     * </pre>
      */
     public void downloadFile(proto.ServerChat.FileInfo request,
         io.grpc.stub.StreamObserver<proto.ServerChat.Chunk> responseObserver) {
@@ -272,6 +278,9 @@ public final class ChatServiceGrpc {
     }
 
     /**
+     * <pre>
+     *Bỏ
+     * </pre>
      */
     public io.grpc.stub.StreamObserver<proto.ServerChat.Chunk> uploadFile(
         io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
@@ -280,6 +289,9 @@ public final class ChatServiceGrpc {
     }
 
     /**
+     * <pre>
+     *Bỏ
+     * </pre>
      */
     public void downloadFile(proto.ServerChat.FileInfo request,
         io.grpc.stub.StreamObserver<proto.ServerChat.Chunk> responseObserver) {
@@ -311,6 +323,9 @@ public final class ChatServiceGrpc {
     }
 
     /**
+     * <pre>
+     *Bỏ
+     * </pre>
      */
     public java.util.Iterator<proto.ServerChat.Chunk> downloadFile(
         proto.ServerChat.FileInfo request) {

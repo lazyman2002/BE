@@ -23390,7 +23390,7 @@ public final class ServerClient {
 
     /**
      * <pre>
-     * Search trong jobDescription # jobTitle
+     * Search trong jobDescription # jobTitle bảng job
      * </pre>
      *
      * <code>string searchParam = 1;</code>
@@ -23399,7 +23399,7 @@ public final class ServerClient {
     java.lang.String getSearchParam();
     /**
      * <pre>
-     * Search trong jobDescription # jobTitle
+     * Search trong jobDescription # jobTitle bảng job
      * </pre>
      *
      * <code>string searchParam = 1;</code>
@@ -23409,19 +23409,11 @@ public final class ServerClient {
         getSearchParamBytes();
 
     /**
-     * <pre>
-     *search trong state # city # country # address
-     * </pre>
-     *
      * <code>string location = 2;</code>
      * @return The location.
      */
     java.lang.String getLocation();
     /**
-     * <pre>
-     *search trong state # city # country # address
-     * </pre>
-     *
      * <code>string location = 2;</code>
      * @return The bytes for location.
      */
@@ -23430,6 +23422,7 @@ public final class ServerClient {
 
     /**
      * <pre>
+     * bảng job
      * </pre>
      *
      * <code>int32 salaryMinimum = 3;</code>
@@ -23439,6 +23432,7 @@ public final class ServerClient {
 
     /**
      * <pre>
+     * bảng job
      * </pre>
      *
      * <code>.proto.JobLevel jobLevel = 4;</code>
@@ -23447,6 +23441,7 @@ public final class ServerClient {
     int getJobLevelValue();
     /**
      * <pre>
+     * bảng job
      * </pre>
      *
      * <code>.proto.JobLevel jobLevel = 4;</code>
@@ -23456,6 +23451,7 @@ public final class ServerClient {
 
     /**
      * <pre>
+     *bảng job
      * </pre>
      *
      * <code>.proto.JobType jobType = 5;</code>
@@ -23464,6 +23460,7 @@ public final class ServerClient {
     int getJobTypeValue();
     /**
      * <pre>
+     *bảng job
      * </pre>
      *
      * <code>.proto.JobType jobType = 5;</code>
@@ -23482,10 +23479,14 @@ public final class ServerClient {
     boolean getIsEnded();
 
     /**
-     * <code>int32 candidateID = 7;</code>
-     * @return The candidateID.
+     * <pre>
+     * bảng CV, applied thay bằng CVID
+     * </pre>
+     *
+     * <code>int32 CVID = 7;</code>
+     * @return The cVID.
      */
-    int getCandidateID();
+    int getCVID();
 
     /**
      * <code>int32 companyID = 8;</code>
@@ -23500,6 +23501,10 @@ public final class ServerClient {
     int getLocationID();
 
     /**
+     * <pre>
+     * bảng job
+     * </pre>
+     *
      * <code>int32 jobRequestID = 10;</code>
      * @return The jobRequestID.
      */
@@ -23554,7 +23559,7 @@ public final class ServerClient {
     private volatile java.lang.Object searchParam_ = "";
     /**
      * <pre>
-     * Search trong jobDescription # jobTitle
+     * Search trong jobDescription # jobTitle bảng job
      * </pre>
      *
      * <code>string searchParam = 1;</code>
@@ -23575,7 +23580,7 @@ public final class ServerClient {
     }
     /**
      * <pre>
-     * Search trong jobDescription # jobTitle
+     * Search trong jobDescription # jobTitle bảng job
      * </pre>
      *
      * <code>string searchParam = 1;</code>
@@ -23600,10 +23605,6 @@ public final class ServerClient {
     @SuppressWarnings("serial")
     private volatile java.lang.Object location_ = "";
     /**
-     * <pre>
-     *search trong state # city # country # address
-     * </pre>
-     *
      * <code>string location = 2;</code>
      * @return The location.
      */
@@ -23621,10 +23622,6 @@ public final class ServerClient {
       }
     }
     /**
-     * <pre>
-     *search trong state # city # country # address
-     * </pre>
-     *
      * <code>string location = 2;</code>
      * @return The bytes for location.
      */
@@ -23647,6 +23644,7 @@ public final class ServerClient {
     private int salaryMinimum_ = 0;
     /**
      * <pre>
+     * bảng job
      * </pre>
      *
      * <code>int32 salaryMinimum = 3;</code>
@@ -23661,6 +23659,7 @@ public final class ServerClient {
     private int jobLevel_ = 0;
     /**
      * <pre>
+     * bảng job
      * </pre>
      *
      * <code>.proto.JobLevel jobLevel = 4;</code>
@@ -23671,6 +23670,7 @@ public final class ServerClient {
     }
     /**
      * <pre>
+     * bảng job
      * </pre>
      *
      * <code>.proto.JobLevel jobLevel = 4;</code>
@@ -23685,6 +23685,7 @@ public final class ServerClient {
     private int jobType_ = 0;
     /**
      * <pre>
+     *bảng job
      * </pre>
      *
      * <code>.proto.JobType jobType = 5;</code>
@@ -23695,6 +23696,7 @@ public final class ServerClient {
     }
     /**
      * <pre>
+     *bảng job
      * </pre>
      *
      * <code>.proto.JobType jobType = 5;</code>
@@ -23720,15 +23722,19 @@ public final class ServerClient {
       return isEnded_;
     }
 
-    public static final int CANDIDATEID_FIELD_NUMBER = 7;
-    private int candidateID_ = 0;
+    public static final int CVID_FIELD_NUMBER = 7;
+    private int cVID_ = 0;
     /**
-     * <code>int32 candidateID = 7;</code>
-     * @return The candidateID.
+     * <pre>
+     * bảng CV, applied thay bằng CVID
+     * </pre>
+     *
+     * <code>int32 CVID = 7;</code>
+     * @return The cVID.
      */
     @java.lang.Override
-    public int getCandidateID() {
-      return candidateID_;
+    public int getCVID() {
+      return cVID_;
     }
 
     public static final int COMPANYID_FIELD_NUMBER = 8;
@@ -23756,6 +23762,10 @@ public final class ServerClient {
     public static final int JOBREQUESTID_FIELD_NUMBER = 10;
     private int jobRequestID_ = 0;
     /**
+     * <pre>
+     * bảng job
+     * </pre>
+     *
      * <code>int32 jobRequestID = 10;</code>
      * @return The jobRequestID.
      */
@@ -23796,8 +23806,8 @@ public final class ServerClient {
       if (isEnded_ != false) {
         output.writeBool(6, isEnded_);
       }
-      if (candidateID_ != 0) {
-        output.writeInt32(7, candidateID_);
+      if (cVID_ != 0) {
+        output.writeInt32(7, cVID_);
       }
       if (companyID_ != 0) {
         output.writeInt32(8, companyID_);
@@ -23839,9 +23849,9 @@ public final class ServerClient {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(6, isEnded_);
       }
-      if (candidateID_ != 0) {
+      if (cVID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, candidateID_);
+          .computeInt32Size(7, cVID_);
       }
       if (companyID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
@@ -23880,8 +23890,8 @@ public final class ServerClient {
       if (jobType_ != other.jobType_) return false;
       if (getIsEnded()
           != other.getIsEnded()) return false;
-      if (getCandidateID()
-          != other.getCandidateID()) return false;
+      if (getCVID()
+          != other.getCVID()) return false;
       if (getCompanyID()
           != other.getCompanyID()) return false;
       if (getLocationID()
@@ -23912,8 +23922,8 @@ public final class ServerClient {
       hash = (37 * hash) + ISENDED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getIsEnded());
-      hash = (37 * hash) + CANDIDATEID_FIELD_NUMBER;
-      hash = (53 * hash) + getCandidateID();
+      hash = (37 * hash) + CVID_FIELD_NUMBER;
+      hash = (53 * hash) + getCVID();
       hash = (37 * hash) + COMPANYID_FIELD_NUMBER;
       hash = (53 * hash) + getCompanyID();
       hash = (37 * hash) + LOCATIONID_FIELD_NUMBER;
@@ -24055,7 +24065,7 @@ public final class ServerClient {
         jobLevel_ = 0;
         jobType_ = 0;
         isEnded_ = false;
-        candidateID_ = 0;
+        cVID_ = 0;
         companyID_ = 0;
         locationID_ = 0;
         jobRequestID_ = 0;
@@ -24111,7 +24121,7 @@ public final class ServerClient {
           result.isEnded_ = isEnded_;
         }
         if (((from_bitField0_ & 0x00000040) != 0)) {
-          result.candidateID_ = candidateID_;
+          result.cVID_ = cVID_;
         }
         if (((from_bitField0_ & 0x00000080) != 0)) {
           result.companyID_ = companyID_;
@@ -24190,8 +24200,8 @@ public final class ServerClient {
         if (other.getIsEnded() != false) {
           setIsEnded(other.getIsEnded());
         }
-        if (other.getCandidateID() != 0) {
-          setCandidateID(other.getCandidateID());
+        if (other.getCVID() != 0) {
+          setCVID(other.getCVID());
         }
         if (other.getCompanyID() != 0) {
           setCompanyID(other.getCompanyID());
@@ -24259,7 +24269,7 @@ public final class ServerClient {
                 break;
               } // case 48
               case 56: {
-                candidateID_ = input.readInt32();
+                cVID_ = input.readInt32();
                 bitField0_ |= 0x00000040;
                 break;
               } // case 56
@@ -24298,7 +24308,7 @@ public final class ServerClient {
       private java.lang.Object searchParam_ = "";
       /**
        * <pre>
-       * Search trong jobDescription # jobTitle
+       * Search trong jobDescription # jobTitle bảng job
        * </pre>
        *
        * <code>string searchParam = 1;</code>
@@ -24318,7 +24328,7 @@ public final class ServerClient {
       }
       /**
        * <pre>
-       * Search trong jobDescription # jobTitle
+       * Search trong jobDescription # jobTitle bảng job
        * </pre>
        *
        * <code>string searchParam = 1;</code>
@@ -24339,7 +24349,7 @@ public final class ServerClient {
       }
       /**
        * <pre>
-       * Search trong jobDescription # jobTitle
+       * Search trong jobDescription # jobTitle bảng job
        * </pre>
        *
        * <code>string searchParam = 1;</code>
@@ -24356,7 +24366,7 @@ public final class ServerClient {
       }
       /**
        * <pre>
-       * Search trong jobDescription # jobTitle
+       * Search trong jobDescription # jobTitle bảng job
        * </pre>
        *
        * <code>string searchParam = 1;</code>
@@ -24370,7 +24380,7 @@ public final class ServerClient {
       }
       /**
        * <pre>
-       * Search trong jobDescription # jobTitle
+       * Search trong jobDescription # jobTitle bảng job
        * </pre>
        *
        * <code>string searchParam = 1;</code>
@@ -24389,10 +24399,6 @@ public final class ServerClient {
 
       private java.lang.Object location_ = "";
       /**
-       * <pre>
-       *search trong state # city # country # address
-       * </pre>
-       *
        * <code>string location = 2;</code>
        * @return The location.
        */
@@ -24409,10 +24415,6 @@ public final class ServerClient {
         }
       }
       /**
-       * <pre>
-       *search trong state # city # country # address
-       * </pre>
-       *
        * <code>string location = 2;</code>
        * @return The bytes for location.
        */
@@ -24430,10 +24432,6 @@ public final class ServerClient {
         }
       }
       /**
-       * <pre>
-       *search trong state # city # country # address
-       * </pre>
-       *
        * <code>string location = 2;</code>
        * @param value The location to set.
        * @return This builder for chaining.
@@ -24447,10 +24445,6 @@ public final class ServerClient {
         return this;
       }
       /**
-       * <pre>
-       *search trong state # city # country # address
-       * </pre>
-       *
        * <code>string location = 2;</code>
        * @return This builder for chaining.
        */
@@ -24461,10 +24455,6 @@ public final class ServerClient {
         return this;
       }
       /**
-       * <pre>
-       *search trong state # city # country # address
-       * </pre>
-       *
        * <code>string location = 2;</code>
        * @param value The bytes for location to set.
        * @return This builder for chaining.
@@ -24482,6 +24472,7 @@ public final class ServerClient {
       private int salaryMinimum_ ;
       /**
        * <pre>
+       * bảng job
        * </pre>
        *
        * <code>int32 salaryMinimum = 3;</code>
@@ -24493,6 +24484,7 @@ public final class ServerClient {
       }
       /**
        * <pre>
+       * bảng job
        * </pre>
        *
        * <code>int32 salaryMinimum = 3;</code>
@@ -24508,6 +24500,7 @@ public final class ServerClient {
       }
       /**
        * <pre>
+       * bảng job
        * </pre>
        *
        * <code>int32 salaryMinimum = 3;</code>
@@ -24523,6 +24516,7 @@ public final class ServerClient {
       private int jobLevel_ = 0;
       /**
        * <pre>
+       * bảng job
        * </pre>
        *
        * <code>.proto.JobLevel jobLevel = 4;</code>
@@ -24533,6 +24527,7 @@ public final class ServerClient {
       }
       /**
        * <pre>
+       * bảng job
        * </pre>
        *
        * <code>.proto.JobLevel jobLevel = 4;</code>
@@ -24547,6 +24542,7 @@ public final class ServerClient {
       }
       /**
        * <pre>
+       * bảng job
        * </pre>
        *
        * <code>.proto.JobLevel jobLevel = 4;</code>
@@ -24559,6 +24555,7 @@ public final class ServerClient {
       }
       /**
        * <pre>
+       * bảng job
        * </pre>
        *
        * <code>.proto.JobLevel jobLevel = 4;</code>
@@ -24576,6 +24573,7 @@ public final class ServerClient {
       }
       /**
        * <pre>
+       * bảng job
        * </pre>
        *
        * <code>.proto.JobLevel jobLevel = 4;</code>
@@ -24591,6 +24589,7 @@ public final class ServerClient {
       private int jobType_ = 0;
       /**
        * <pre>
+       *bảng job
        * </pre>
        *
        * <code>.proto.JobType jobType = 5;</code>
@@ -24601,6 +24600,7 @@ public final class ServerClient {
       }
       /**
        * <pre>
+       *bảng job
        * </pre>
        *
        * <code>.proto.JobType jobType = 5;</code>
@@ -24615,6 +24615,7 @@ public final class ServerClient {
       }
       /**
        * <pre>
+       *bảng job
        * </pre>
        *
        * <code>.proto.JobType jobType = 5;</code>
@@ -24627,6 +24628,7 @@ public final class ServerClient {
       }
       /**
        * <pre>
+       *bảng job
        * </pre>
        *
        * <code>.proto.JobType jobType = 5;</code>
@@ -24644,6 +24646,7 @@ public final class ServerClient {
       }
       /**
        * <pre>
+       *bảng job
        * </pre>
        *
        * <code>.proto.JobType jobType = 5;</code>
@@ -24700,34 +24703,46 @@ public final class ServerClient {
         return this;
       }
 
-      private int candidateID_ ;
+      private int cVID_ ;
       /**
-       * <code>int32 candidateID = 7;</code>
-       * @return The candidateID.
+       * <pre>
+       * bảng CV, applied thay bằng CVID
+       * </pre>
+       *
+       * <code>int32 CVID = 7;</code>
+       * @return The cVID.
        */
       @java.lang.Override
-      public int getCandidateID() {
-        return candidateID_;
+      public int getCVID() {
+        return cVID_;
       }
       /**
-       * <code>int32 candidateID = 7;</code>
-       * @param value The candidateID to set.
+       * <pre>
+       * bảng CV, applied thay bằng CVID
+       * </pre>
+       *
+       * <code>int32 CVID = 7;</code>
+       * @param value The cVID to set.
        * @return This builder for chaining.
        */
-      public Builder setCandidateID(int value) {
+      public Builder setCVID(int value) {
         
-        candidateID_ = value;
+        cVID_ = value;
         bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 candidateID = 7;</code>
+       * <pre>
+       * bảng CV, applied thay bằng CVID
+       * </pre>
+       *
+       * <code>int32 CVID = 7;</code>
        * @return This builder for chaining.
        */
-      public Builder clearCandidateID() {
+      public Builder clearCVID() {
         bitField0_ = (bitField0_ & ~0x00000040);
-        candidateID_ = 0;
+        cVID_ = 0;
         onChanged();
         return this;
       }
@@ -24798,6 +24813,10 @@ public final class ServerClient {
 
       private int jobRequestID_ ;
       /**
+       * <pre>
+       * bảng job
+       * </pre>
+       *
        * <code>int32 jobRequestID = 10;</code>
        * @return The jobRequestID.
        */
@@ -24806,6 +24825,10 @@ public final class ServerClient {
         return jobRequestID_;
       }
       /**
+       * <pre>
+       * bảng job
+       * </pre>
+       *
        * <code>int32 jobRequestID = 10;</code>
        * @param value The jobRequestID to set.
        * @return This builder for chaining.
@@ -24818,6 +24841,10 @@ public final class ServerClient {
         return this;
       }
       /**
+       * <pre>
+       * bảng job
+       * </pre>
+       *
        * <code>int32 jobRequestID = 10;</code>
        * @return This builder for chaining.
        */
@@ -25150,151 +25177,151 @@ public final class ServerClient {
       "teID\030\001 \001(\005\022\025\n\rsalaryMinimum\030\002 \001(\005\022\020\n\010loc" +
       "ation\030\003 \001(\t\022\037\n\007jobType\030\004 \001(\0162\016.proto.Job" +
       "Type\022!\n\010jobLevel\030\005 \001(\0162\017.proto.JobLevel\022" +
-      "\021\n\tinsurance\030\006 \001(\t\"\371\001\n\022JobRequestRestric" +
+      "\021\n\tinsurance\030\006 \001(\t\"\362\001\n\022JobRequestRestric" +
       "t\022\023\n\013searchParam\030\001 \001(\t\022\020\n\010location\030\002 \001(\t" +
       "\022\025\n\rsalaryMinimum\030\003 \001(\005\022!\n\010jobLevel\030\004 \001(" +
       "\0162\017.proto.JobLevel\022\037\n\007jobType\030\005 \001(\0162\016.pr" +
-      "oto.JobType\022\017\n\007isEnded\030\006 \001(\010\022\023\n\013candidat" +
-      "eID\030\007 \001(\005\022\021\n\tcompanyID\030\010 \001(\005\022\022\n\nlocation" +
-      "ID\030\t \001(\005\022\024\n\014jobRequestID\030\n \001(\005*\036\n\006Gender" +
-      "\022\010\n\004MALE\020\000\022\n\n\006FEMALE\020\001*f\n\010JobLevel\022\017\n\013EN" +
-      "TRY_LEVEL\020\000\022\r\n\tMID_LEVEL\020\001\022\020\n\014SENIOR_LEV" +
-      "EL\020\002\022\013\n\007MANAGER\020\003\022\014\n\010DIRECTOR\020\004\022\r\n\tEXECU" +
-      "TIVE\020\005*%\n\007JobType\022\014\n\010FULLTIME\020\000\022\014\n\010HALFT" +
-      "IME\020\001*I\n\006Status\022\026\n\022APPLICATION_REVIEW\020\000\022" +
-      "\r\n\tINTERVIEW\020\001\022\013\n\007SUCCESS\020\002\022\013\n\007FAILURE\020\003" +
-      "*9\n\013Proficiency\022\014\n\010BEGINNER\020\000\022\020\n\014INTERME" +
-      "DIATE\020\001\022\n\n\006EXPERT\020\0022\247\006\n\013UserService\022E\n\017C" +
-      "andidateCreate\022\030.proto.CandidateFullInfo" +
-      "\032\030.proto.CandidateFullInfo\022E\n\017RecruiterC" +
-      "reate\022\030.proto.RecruiterFullInfo\032\030.proto." +
-      "RecruiterFullInfo\0224\n\010UserRead\022\023.proto.Us" +
-      "erMetaInfo\032\023.proto.UserFullInfo\022=\n\014UserL" +
-      "istRead\022\026.google.protobuf.Empty\032\023.proto." +
-      "UserMetaInfo0\001\022>\n\rCandidateRead\022\023.proto." +
-      "UserMetaInfo\032\030.proto.CandidateFullInfo\022G" +
-      "\n\021CandidateListRead\022\026.google.protobuf.Em" +
-      "pty\032\030.proto.CandidateFullInfo0\001\022>\n\rRecru" +
-      "iterRead\022\023.proto.UserMetaInfo\032\030.proto.Re" +
-      "cruiterFullInfo\022G\n\021RecruiterListRead\022\026.g" +
-      "oogle.protobuf.Empty\032\030.proto.RecruiterFu" +
-      "llInfo0\001\0226\n\nUserUpdate\022\023.proto.UserFullI" +
-      "nfo\032\023.proto.UserFullInfo\022E\n\017CandidateUpd" +
-      "ate\022\030.proto.CandidateFullInfo\032\030.proto.Ca" +
-      "ndidateFullInfo\022E\n\017RecruiterUpdate\022\030.pro" +
-      "to.RecruiterFullInfo\032\030.proto.RecruiterFu" +
-      "llInfo\022=\n\nUserDelete\022\023.proto.UserMetaInf" +
-      "o\032\032.google.protobuf.BoolValue2\242\004\n\021JobReq" +
-      "uestService\022J\n\022JobRequestRegister\022\031.prot" +
-      "o.JobRequestFullInfo\032\031.proto.JobRequestF" +
-      "ullInfo\022F\n\016JobRequestRead\022\031.proto.JobReq" +
-      "uestMetaInfo\032\031.proto.JobRequestFullInfo\022" +
-      "I\n\022JobRequestListRead\022\026.google.protobuf." +
-      "Empty\032\031.proto.JobRequestFullInfo0\001\022L\n\024Jo" +
-      "bRequestUpdateInfo\022\031.proto.JobRequestFul" +
-      "lInfo\032\031.proto.JobRequestFullInfo\022I\n\020JobR" +
-      "equestDelete\022\031.proto.JobRequestMetaInfo\032" +
-      "\032.google.protobuf.BoolValue\022H\n\017JobReques" +
-      "tApply\022\031.proto.JobRequestFullInfo\032\032.goog" +
-      "le.protobuf.BoolValue\022K\n\022JobRequestWithd" +
-      "raw\022\031.proto.JobRequestFullInfo\032\032.google." +
-      "protobuf.BoolValue2\277\002\n\013RoleService\0228\n\014Ro" +
-      "leRegister\022\023.proto.RoleFullInfo\032\023.proto." +
-      "RoleFullInfo\0228\n\014RoleReadInfo\022\023.proto.Rol" +
-      "eFullInfo\032\023.proto.RoleFullInfo\022=\n\014RoleLi" +
-      "stRead\022\026.proto.CompanyMetaInfo\032\023.proto.R" +
-      "oleFullInfo0\001\022:\n\016RoleUpdateInfo\022\023.proto." +
-      "RoleFullInfo\032\023.proto.RoleFullInfo\022A\n\016Rol" +
-      "eDeleteInfo\022\023.proto.RoleFullInfo\032\032.googl" +
-      "e.protobuf.BoolValue2\345\002\n\016CompanyService\022" +
-      "A\n\017CompanyRegister\022\026.proto.CompanyFullIn" +
-      "fo\032\026.proto.CompanyFullInfo\022A\n\017CompanyRea" +
-      "dInfo\022\026.proto.CompanyMetaInfo\032\026.proto.Co" +
-      "mpanyFullInfo\022C\n\017CompanyListRead\022\026.googl" +
-      "e.protobuf.Empty\032\026.proto.CompanyFullInfo" +
-      "0\001\022C\n\021CompanyUpdateInfo\022\026.proto.CompanyF" +
-      "ullInfo\032\026.proto.CompanyFullInfo\022C\n\rCompa" +
-      "nyDelete\022\026.proto.CompanyMetaInfo\032\032.googl" +
-      "e.protobuf.BoolValue2\363\002\n\017LocationService" +
-      "\022D\n\020LocationRegister\022\027.proto.LocationFul" +
-      "lInfo\032\027.proto.LocationFullInfo\022D\n\020Locati" +
-      "onReadInfo\022\027.proto.LocationMetaInfo\032\027.pr" +
-      "oto.LocationFullInfo\022E\n\020LocationListRead" +
-      "\022\026.google.protobuf.Empty\032\027.proto.Locatio" +
-      "nFullInfo0\001\022F\n\022LocationUpdateInfo\022\027.prot" +
-      "o.LocationFullInfo\032\027.proto.LocationFullI" +
-      "nfo\022E\n\016LocationDelete\022\027.proto.LocationMe" +
-      "taInfo\032\032.google.protobuf.BoolValue2\226\002\n\tC" +
-      "VService\0220\n\010CVCreate\022\021.proto.CVFullInfo\032" +
-      "\021.proto.CVFullInfo\022.\n\006CVRead\022\021.proto.CVM" +
-      "etaInfo\032\021.proto.CVFullInfo\0226\n\nCVListRead" +
-      "\022\023.proto.UserMetaInfo\032\021.proto.CVFullInfo" +
-      "0\001\0224\n\014CVUpdateInfo\022\021.proto.CVFullInfo\032\021." +
-      "proto.CVFullInfo\0229\n\010CVDelete\022\021.proto.CVM" +
-      "etaInfo\032\032.google.protobuf.BoolValue2\274\003\n\025" +
-      "WorkExperienceService\022T\n\024WorkExperienceC" +
-      "reate\022\035.proto.WorkExperienceFullInfo\032\035.p" +
-      "roto.WorkExperienceFullInfo\022R\n\022WorkExper" +
-      "ienceRead\022\035.proto.WorkExperienceFullInfo" +
-      "\032\035.proto.WorkExperienceFullInfo\022L\n\026WorkE" +
-      "xperienceListRead\022\021.proto.CVMetaInfo\032\035.p" +
-      "roto.WorkExperienceFullInfo0\001\022X\n\030WorkExp" +
-      "erienceUpdateInfo\022\035.proto.WorkExperience" +
-      "FullInfo\032\035.proto.WorkExperienceFullInfo\022" +
-      "Q\n\024WorkExperienceDelete\022\035.proto.WorkExpe" +
-      "rienceFullInfo\032\032.google.protobuf.BoolVal" +
-      "ue2\276\002\n\014SkillService\0229\n\013SkillCreate\022\024.pro" +
-      "to.SkillFullInfo\032\024.proto.SkillFullInfo\0227" +
-      "\n\tSkillRead\022\024.proto.SkillFullInfo\032\024.prot" +
-      "o.SkillFullInfo\022:\n\rSkillListRead\022\021.proto" +
-      ".CVMetaInfo\032\024.proto.SkillFullInfo0\001\022=\n\017S" +
-      "killUpdateInfo\022\024.proto.SkillFullInfo\032\024.p" +
-      "roto.SkillFullInfo\022?\n\013SkillDelete\022\024.prot" +
-      "o.SkillFullInfo\032\032.google.protobuf.BoolVa" +
-      "lue2\222\003\n\022PersonalityService\022K\n\021Personalit" +
-      "yCreate\022\032.proto.PersonalityFullInfo\032\032.pr" +
-      "oto.PersonalityFullInfo\022I\n\017PersonalityRe" +
-      "ad\022\032.proto.PersonalityFullInfo\032\032.proto.P" +
-      "ersonalityFullInfo\022F\n\023PersonalityListRea" +
-      "d\022\021.proto.CVMetaInfo\032\032.proto.Personality" +
-      "FullInfo0\001\022O\n\025PersonalityUpdateInfo\022\032.pr" +
+      "oto.JobType\022\017\n\007isEnded\030\006 \001(\010\022\014\n\004CVID\030\007 \001" +
+      "(\005\022\021\n\tcompanyID\030\010 \001(\005\022\022\n\nlocationID\030\t \001(" +
+      "\005\022\024\n\014jobRequestID\030\n \001(\005*\036\n\006Gender\022\010\n\004MAL" +
+      "E\020\000\022\n\n\006FEMALE\020\001*f\n\010JobLevel\022\017\n\013ENTRY_LEV" +
+      "EL\020\000\022\r\n\tMID_LEVEL\020\001\022\020\n\014SENIOR_LEVEL\020\002\022\013\n" +
+      "\007MANAGER\020\003\022\014\n\010DIRECTOR\020\004\022\r\n\tEXECUTIVE\020\005*" +
+      "%\n\007JobType\022\014\n\010FULLTIME\020\000\022\014\n\010HALFTIME\020\001*I" +
+      "\n\006Status\022\026\n\022APPLICATION_REVIEW\020\000\022\r\n\tINTE" +
+      "RVIEW\020\001\022\013\n\007SUCCESS\020\002\022\013\n\007FAILURE\020\003*9\n\013Pro" +
+      "ficiency\022\014\n\010BEGINNER\020\000\022\020\n\014INTERMEDIATE\020\001" +
+      "\022\n\n\006EXPERT\020\0022\247\006\n\013UserService\022E\n\017Candidat" +
+      "eCreate\022\030.proto.CandidateFullInfo\032\030.prot" +
+      "o.CandidateFullInfo\022E\n\017RecruiterCreate\022\030" +
+      ".proto.RecruiterFullInfo\032\030.proto.Recruit" +
+      "erFullInfo\0224\n\010UserRead\022\023.proto.UserMetaI" +
+      "nfo\032\023.proto.UserFullInfo\022=\n\014UserListRead" +
+      "\022\026.google.protobuf.Empty\032\023.proto.UserMet" +
+      "aInfo0\001\022>\n\rCandidateRead\022\023.proto.UserMet" +
+      "aInfo\032\030.proto.CandidateFullInfo\022G\n\021Candi" +
+      "dateListRead\022\026.google.protobuf.Empty\032\030.p" +
+      "roto.CandidateFullInfo0\001\022>\n\rRecruiterRea" +
+      "d\022\023.proto.UserMetaInfo\032\030.proto.Recruiter" +
+      "FullInfo\022G\n\021RecruiterListRead\022\026.google.p" +
+      "rotobuf.Empty\032\030.proto.RecruiterFullInfo0" +
+      "\001\0226\n\nUserUpdate\022\023.proto.UserFullInfo\032\023.p" +
+      "roto.UserFullInfo\022E\n\017CandidateUpdate\022\030.p" +
+      "roto.CandidateFullInfo\032\030.proto.Candidate" +
+      "FullInfo\022E\n\017RecruiterUpdate\022\030.proto.Recr" +
+      "uiterFullInfo\032\030.proto.RecruiterFullInfo\022" +
+      "=\n\nUserDelete\022\023.proto.UserMetaInfo\032\032.goo" +
+      "gle.protobuf.BoolValue2\242\004\n\021JobRequestSer" +
+      "vice\022J\n\022JobRequestRegister\022\031.proto.JobRe" +
+      "questFullInfo\032\031.proto.JobRequestFullInfo" +
+      "\022F\n\016JobRequestRead\022\031.proto.JobRequestMet" +
+      "aInfo\032\031.proto.JobRequestFullInfo\022I\n\022JobR" +
+      "equestListRead\022\026.google.protobuf.Empty\032\031" +
+      ".proto.JobRequestFullInfo0\001\022L\n\024JobReques" +
+      "tUpdateInfo\022\031.proto.JobRequestFullInfo\032\031" +
+      ".proto.JobRequestFullInfo\022I\n\020JobRequestD" +
+      "elete\022\031.proto.JobRequestMetaInfo\032\032.googl" +
+      "e.protobuf.BoolValue\022H\n\017JobRequestApply\022" +
+      "\031.proto.JobRequestFullInfo\032\032.google.prot" +
+      "obuf.BoolValue\022K\n\022JobRequestWithdraw\022\031.p" +
+      "roto.JobRequestFullInfo\032\032.google.protobu" +
+      "f.BoolValue2\277\002\n\013RoleService\0228\n\014RoleRegis" +
+      "ter\022\023.proto.RoleFullInfo\032\023.proto.RoleFul" +
+      "lInfo\0228\n\014RoleReadInfo\022\023.proto.RoleFullIn" +
+      "fo\032\023.proto.RoleFullInfo\022=\n\014RoleListRead\022" +
+      "\026.proto.CompanyMetaInfo\032\023.proto.RoleFull" +
+      "Info0\001\022:\n\016RoleUpdateInfo\022\023.proto.RoleFul" +
+      "lInfo\032\023.proto.RoleFullInfo\022A\n\016RoleDelete" +
+      "Info\022\023.proto.RoleFullInfo\032\032.google.proto" +
+      "buf.BoolValue2\345\002\n\016CompanyService\022A\n\017Comp" +
+      "anyRegister\022\026.proto.CompanyFullInfo\032\026.pr" +
+      "oto.CompanyFullInfo\022A\n\017CompanyReadInfo\022\026" +
+      ".proto.CompanyMetaInfo\032\026.proto.CompanyFu" +
+      "llInfo\022C\n\017CompanyListRead\022\026.google.proto" +
+      "buf.Empty\032\026.proto.CompanyFullInfo0\001\022C\n\021C" +
+      "ompanyUpdateInfo\022\026.proto.CompanyFullInfo" +
+      "\032\026.proto.CompanyFullInfo\022C\n\rCompanyDelet" +
+      "e\022\026.proto.CompanyMetaInfo\032\032.google.proto" +
+      "buf.BoolValue2\363\002\n\017LocationService\022D\n\020Loc" +
+      "ationRegister\022\027.proto.LocationFullInfo\032\027" +
+      ".proto.LocationFullInfo\022D\n\020LocationReadI" +
+      "nfo\022\027.proto.LocationMetaInfo\032\027.proto.Loc" +
+      "ationFullInfo\022E\n\020LocationListRead\022\026.goog" +
+      "le.protobuf.Empty\032\027.proto.LocationFullIn" +
+      "fo0\001\022F\n\022LocationUpdateInfo\022\027.proto.Locat" +
+      "ionFullInfo\032\027.proto.LocationFullInfo\022E\n\016" +
+      "LocationDelete\022\027.proto.LocationMetaInfo\032" +
+      "\032.google.protobuf.BoolValue2\226\002\n\tCVServic" +
+      "e\0220\n\010CVCreate\022\021.proto.CVFullInfo\032\021.proto" +
+      ".CVFullInfo\022.\n\006CVRead\022\021.proto.CVMetaInfo" +
+      "\032\021.proto.CVFullInfo\0226\n\nCVListRead\022\023.prot" +
+      "o.UserMetaInfo\032\021.proto.CVFullInfo0\001\0224\n\014C" +
+      "VUpdateInfo\022\021.proto.CVFullInfo\032\021.proto.C" +
+      "VFullInfo\0229\n\010CVDelete\022\021.proto.CVMetaInfo" +
+      "\032\032.google.protobuf.BoolValue2\274\003\n\025WorkExp" +
+      "erienceService\022T\n\024WorkExperienceCreate\022\035" +
+      ".proto.WorkExperienceFullInfo\032\035.proto.Wo" +
+      "rkExperienceFullInfo\022R\n\022WorkExperienceRe" +
+      "ad\022\035.proto.WorkExperienceFullInfo\032\035.prot" +
+      "o.WorkExperienceFullInfo\022L\n\026WorkExperien" +
+      "ceListRead\022\021.proto.CVMetaInfo\032\035.proto.Wo" +
+      "rkExperienceFullInfo0\001\022X\n\030WorkExperience" +
+      "UpdateInfo\022\035.proto.WorkExperienceFullInf" +
+      "o\032\035.proto.WorkExperienceFullInfo\022Q\n\024Work" +
+      "ExperienceDelete\022\035.proto.WorkExperienceF" +
+      "ullInfo\032\032.google.protobuf.BoolValue2\276\002\n\014" +
+      "SkillService\0229\n\013SkillCreate\022\024.proto.Skil" +
+      "lFullInfo\032\024.proto.SkillFullInfo\0227\n\tSkill" +
+      "Read\022\024.proto.SkillFullInfo\032\024.proto.Skill" +
+      "FullInfo\022:\n\rSkillListRead\022\021.proto.CVMeta" +
+      "Info\032\024.proto.SkillFullInfo0\001\022=\n\017SkillUpd" +
+      "ateInfo\022\024.proto.SkillFullInfo\032\024.proto.Sk" +
+      "illFullInfo\022?\n\013SkillDelete\022\024.proto.Skill" +
+      "FullInfo\032\032.google.protobuf.BoolValue2\222\003\n" +
+      "\022PersonalityService\022K\n\021PersonalityCreate" +
+      "\022\032.proto.PersonalityFullInfo\032\032.proto.Per" +
+      "sonalityFullInfo\022I\n\017PersonalityRead\022\032.pr" +
       "oto.PersonalityFullInfo\032\032.proto.Personal" +
-      "ityFullInfo\022K\n\021PersonalityDelete\022\032.proto" +
-      ".PersonalityFullInfo\032\032.google.protobuf.B" +
-      "oolValue2\366\002\n\020EducationService\022E\n\017Educati" +
-      "onCreate\022\030.proto.EducationFullInfo\032\030.pro" +
-      "to.EducationFullInfo\022C\n\rEducationRead\022\030." +
-      "proto.EducationFullInfo\032\030.proto.Educatio" +
-      "nFullInfo\022B\n\021EducationListRead\022\021.proto.C" +
-      "VMetaInfo\032\030.proto.EducationFullInfo0\001\022I\n" +
-      "\023EducationUpdateInfo\022\030.proto.EducationFu" +
-      "llInfo\032\030.proto.EducationFullInfo\022G\n\017Educ" +
-      "ationDelete\022\030.proto.EducationFullInfo\032\032." +
-      "google.protobuf.BoolValue2\256\003\n\024Certificat" +
-      "ionService\022Q\n\023CertificationCreate\022\034.prot" +
-      "o.CertificationFullInfo\032\034.proto.Certific" +
-      "ationFullInfo\022O\n\021CertificationRead\022\034.pro" +
-      "to.CertificationFullInfo\032\034.proto.Certifi" +
-      "cationFullInfo\022J\n\025CertificationListRead\022" +
-      "\021.proto.CVMetaInfo\032\034.proto.Certification" +
-      "FullInfo0\001\022U\n\027CertificationUpdateInfo\022\034." +
-      "proto.CertificationFullInfo\032\034.proto.Cert" +
-      "ificationFullInfo\022O\n\023CertificationDelete" +
-      "\022\034.proto.CertificationFullInfo\032\032.google." +
-      "protobuf.BoolValue2\330\001\n\rSearchService\022N\n\024" +
-      "Candidate_JobRequest\022\031.proto.JobRequestR" +
-      "estrict\032\031.proto.JobRequestFullInfo0\001\022B\n\021" +
-      "Recruiter_Company\022\023.proto.UserMetaInfo\032\026" +
-      ".proto.CompanyFullInfo0\001\0223\n\007CV_User\022\023.pr" +
-      "oto.UserMetaInfo\032\021.proto.CVFullInfo0\0012\236\002" +
-      "\n\017WishListService\022B\n\016WishListCreate\022\027.pr" +
-      "oto.WishListFullInfo\032\027.proto.WishListFul" +
-      "lInfo\022<\n\014WishListRead\022\023.proto.UserMetaIn" +
-      "fo\032\027.proto.WishListFullInfo\022F\n\022WishListU" +
-      "pdateInfo\022\027.proto.WishListFullInfo\032\027.pro" +
-      "to.WishListFullInfo\022A\n\016WishListDelete\022\023." +
-      "proto.UserMetaInfo\032\032.google.protobuf.Boo" +
-      "lValueb\006proto3"
+      "ityFullInfo\022F\n\023PersonalityListRead\022\021.pro" +
+      "to.CVMetaInfo\032\032.proto.PersonalityFullInf" +
+      "o0\001\022O\n\025PersonalityUpdateInfo\022\032.proto.Per" +
+      "sonalityFullInfo\032\032.proto.PersonalityFull" +
+      "Info\022K\n\021PersonalityDelete\022\032.proto.Person" +
+      "alityFullInfo\032\032.google.protobuf.BoolValu" +
+      "e2\366\002\n\020EducationService\022E\n\017EducationCreat" +
+      "e\022\030.proto.EducationFullInfo\032\030.proto.Educ" +
+      "ationFullInfo\022C\n\rEducationRead\022\030.proto.E" +
+      "ducationFullInfo\032\030.proto.EducationFullIn" +
+      "fo\022B\n\021EducationListRead\022\021.proto.CVMetaIn" +
+      "fo\032\030.proto.EducationFullInfo0\001\022I\n\023Educat" +
+      "ionUpdateInfo\022\030.proto.EducationFullInfo\032" +
+      "\030.proto.EducationFullInfo\022G\n\017EducationDe" +
+      "lete\022\030.proto.EducationFullInfo\032\032.google." +
+      "protobuf.BoolValue2\256\003\n\024CertificationServ" +
+      "ice\022Q\n\023CertificationCreate\022\034.proto.Certi" +
+      "ficationFullInfo\032\034.proto.CertificationFu" +
+      "llInfo\022O\n\021CertificationRead\022\034.proto.Cert" +
+      "ificationFullInfo\032\034.proto.CertificationF" +
+      "ullInfo\022J\n\025CertificationListRead\022\021.proto" +
+      ".CVMetaInfo\032\034.proto.CertificationFullInf" +
+      "o0\001\022U\n\027CertificationUpdateInfo\022\034.proto.C" +
+      "ertificationFullInfo\032\034.proto.Certificati" +
+      "onFullInfo\022O\n\023CertificationDelete\022\034.prot" +
+      "o.CertificationFullInfo\032\032.google.protobu" +
+      "f.BoolValue2\330\001\n\rSearchService\022N\n\024Candida" +
+      "te_JobRequest\022\031.proto.JobRequestRestrict" +
+      "\032\031.proto.JobRequestFullInfo0\001\022B\n\021Recruit" +
+      "er_Company\022\023.proto.UserMetaInfo\032\026.proto." +
+      "CompanyFullInfo0\001\0223\n\007CV_User\022\023.proto.Use" +
+      "rMetaInfo\032\021.proto.CVFullInfo0\0012\236\002\n\017WishL" +
+      "istService\022B\n\016WishListCreate\022\027.proto.Wis" +
+      "hListFullInfo\032\027.proto.WishListFullInfo\022<" +
+      "\n\014WishListRead\022\023.proto.UserMetaInfo\032\027.pr" +
+      "oto.WishListFullInfo\022F\n\022WishListUpdateIn" +
+      "fo\022\027.proto.WishListFullInfo\032\027.proto.Wish" +
+      "ListFullInfo\022A\n\016WishListDelete\022\023.proto.U" +
+      "serMetaInfo\032\032.google.protobuf.BoolValueb" +
+      "\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -25482,7 +25509,7 @@ public final class ServerClient {
     internal_static_proto_JobRequestRestrict_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_JobRequestRestrict_descriptor,
-        new java.lang.String[] { "SearchParam", "Location", "SalaryMinimum", "JobLevel", "JobType", "IsEnded", "CandidateID", "CompanyID", "LocationID", "JobRequestID", });
+        new java.lang.String[] { "SearchParam", "Location", "SalaryMinimum", "JobLevel", "JobType", "IsEnded", "CVID", "CompanyID", "LocationID", "JobRequestID", });
     com.google.protobuf.TimestampProto.getDescriptor();
     com.google.protobuf.EmptyProto.getDescriptor();
     com.google.protobuf.WrappersProto.getDescriptor();

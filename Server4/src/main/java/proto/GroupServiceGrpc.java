@@ -139,6 +139,37 @@ public final class GroupServiceGrpc {
     return getGroupDeleteMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo,
+      proto.ServerChat.GroupMember> getGroupMemberReadMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GroupMemberRead",
+      requestType = proto.ServerChat.GroupMetaInfo.class,
+      responseType = proto.ServerChat.GroupMember.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo,
+      proto.ServerChat.GroupMember> getGroupMemberReadMethod() {
+    io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo, proto.ServerChat.GroupMember> getGroupMemberReadMethod;
+    if ((getGroupMemberReadMethod = GroupServiceGrpc.getGroupMemberReadMethod) == null) {
+      synchronized (GroupServiceGrpc.class) {
+        if ((getGroupMemberReadMethod = GroupServiceGrpc.getGroupMemberReadMethod) == null) {
+          GroupServiceGrpc.getGroupMemberReadMethod = getGroupMemberReadMethod =
+              io.grpc.MethodDescriptor.<proto.ServerChat.GroupMetaInfo, proto.ServerChat.GroupMember>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GroupMemberRead"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  proto.ServerChat.GroupMetaInfo.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  proto.ServerChat.GroupMember.getDefaultInstance()))
+              .setSchemaDescriptor(new GroupServiceMethodDescriptorSupplier("GroupMemberRead"))
+              .build();
+        }
+      }
+    }
+    return getGroupMemberReadMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<proto.ServerChat.GroupMember,
       proto.ServerChat.GroupMetaInfo> getGroupListReadMethod;
 
@@ -310,6 +341,13 @@ public final class GroupServiceGrpc {
 
     /**
      */
+    public void groupMemberRead(proto.ServerChat.GroupMetaInfo request,
+        io.grpc.stub.StreamObserver<proto.ServerChat.GroupMember> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGroupMemberReadMethod(), responseObserver);
+    }
+
+    /**
+     */
     public void groupListRead(proto.ServerChat.GroupMember request,
         io.grpc.stub.StreamObserver<proto.ServerChat.GroupMetaInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGroupListReadMethod(), responseObserver);
@@ -359,6 +397,13 @@ public final class GroupServiceGrpc {
                 proto.ServerChat.GroupMetaInfo,
                 com.google.protobuf.BoolValue>(
                   this, METHODID_GROUP_DELETE)))
+          .addMethod(
+            getGroupMemberReadMethod(),
+            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+              new MethodHandlers<
+                proto.ServerChat.GroupMetaInfo,
+                proto.ServerChat.GroupMember>(
+                  this, METHODID_GROUP_MEMBER_READ)))
           .addMethod(
             getGroupListReadMethod(),
             io.grpc.stub.ServerCalls.asyncServerStreamingCall(
@@ -432,6 +477,14 @@ public final class GroupServiceGrpc {
 
     /**
      */
+    public void groupMemberRead(proto.ServerChat.GroupMetaInfo request,
+        io.grpc.stub.StreamObserver<proto.ServerChat.GroupMember> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getGroupMemberReadMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
     public void groupListRead(proto.ServerChat.GroupMember request,
         io.grpc.stub.StreamObserver<proto.ServerChat.GroupMetaInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
@@ -495,6 +548,14 @@ public final class GroupServiceGrpc {
     public com.google.protobuf.BoolValue groupDelete(proto.ServerChat.GroupMetaInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGroupDeleteMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<proto.ServerChat.GroupMember> groupMemberRead(
+        proto.ServerChat.GroupMetaInfo request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getGroupMemberReadMethod(), getCallOptions(), request);
     }
 
     /**
@@ -587,9 +648,10 @@ public final class GroupServiceGrpc {
   private static final int METHODID_GROUP_READ = 1;
   private static final int METHODID_GROUP_UPDATE_INFO = 2;
   private static final int METHODID_GROUP_DELETE = 3;
-  private static final int METHODID_GROUP_LIST_READ = 4;
-  private static final int METHODID_GROUP_APPEND_MEMBER = 5;
-  private static final int METHODID_GROUP_DELETE_MEMBER = 6;
+  private static final int METHODID_GROUP_MEMBER_READ = 4;
+  private static final int METHODID_GROUP_LIST_READ = 5;
+  private static final int METHODID_GROUP_APPEND_MEMBER = 6;
+  private static final int METHODID_GROUP_DELETE_MEMBER = 7;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -623,6 +685,10 @@ public final class GroupServiceGrpc {
         case METHODID_GROUP_DELETE:
           serviceImpl.groupDelete((proto.ServerChat.GroupMetaInfo) request,
               (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
+          break;
+        case METHODID_GROUP_MEMBER_READ:
+          serviceImpl.groupMemberRead((proto.ServerChat.GroupMetaInfo) request,
+              (io.grpc.stub.StreamObserver<proto.ServerChat.GroupMember>) responseObserver);
           break;
         case METHODID_GROUP_LIST_READ:
           serviceImpl.groupListRead((proto.ServerChat.GroupMember) request,
@@ -701,6 +767,7 @@ public final class GroupServiceGrpc {
               .addMethod(getGroupReadMethod())
               .addMethod(getGroupUpdateInfoMethod())
               .addMethod(getGroupDeleteMethod())
+              .addMethod(getGroupMemberReadMethod())
               .addMethod(getGroupListReadMethod())
               .addMethod(getGroupAppendMemberMethod())
               .addMethod(getGroupDeleteMemberMethod())
