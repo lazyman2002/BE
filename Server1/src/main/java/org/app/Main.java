@@ -27,6 +27,7 @@ public class Main {
                 .addService(new CVServiceImpl())
                 .addService(new SearchServiceImpl())
                 .addService(ProtoReflectionService.newInstance())
+                .addService(new WishListImpl())
                 .build();
         server.start();
         server.awaitTermination();

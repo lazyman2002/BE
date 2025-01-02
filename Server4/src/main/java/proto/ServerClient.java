@@ -24918,6 +24918,662 @@ public final class ServerClient {
 
   }
 
+  public interface AppliesInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:proto.AppliesInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 jobRequestID = 1;</code>
+     * @return The jobRequestID.
+     */
+    int getJobRequestID();
+
+    /**
+     * <code>int32 userID = 2;</code>
+     * @return The userID.
+     */
+    int getUserID();
+
+    /**
+     * <code>.proto.Status status = 3;</code>
+     * @return The enum numeric value on the wire for status.
+     */
+    int getStatusValue();
+    /**
+     * <code>.proto.Status status = 3;</code>
+     * @return The status.
+     */
+    proto.ServerClient.Status getStatus();
+  }
+  /**
+   * Protobuf type {@code proto.AppliesInfo}
+   */
+  public static final class AppliesInfo extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:proto.AppliesInfo)
+      AppliesInfoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use AppliesInfo.newBuilder() to construct.
+    private AppliesInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private AppliesInfo() {
+      status_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new AppliesInfo();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto.ServerClient.internal_static_proto_AppliesInfo_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto.ServerClient.internal_static_proto_AppliesInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto.ServerClient.AppliesInfo.class, proto.ServerClient.AppliesInfo.Builder.class);
+    }
+
+    public static final int JOBREQUESTID_FIELD_NUMBER = 1;
+    private int jobRequestID_ = 0;
+    /**
+     * <code>int32 jobRequestID = 1;</code>
+     * @return The jobRequestID.
+     */
+    @java.lang.Override
+    public int getJobRequestID() {
+      return jobRequestID_;
+    }
+
+    public static final int USERID_FIELD_NUMBER = 2;
+    private int userID_ = 0;
+    /**
+     * <code>int32 userID = 2;</code>
+     * @return The userID.
+     */
+    @java.lang.Override
+    public int getUserID() {
+      return userID_;
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 3;
+    private int status_ = 0;
+    /**
+     * <code>.proto.Status status = 3;</code>
+     * @return The enum numeric value on the wire for status.
+     */
+    @java.lang.Override public int getStatusValue() {
+      return status_;
+    }
+    /**
+     * <code>.proto.Status status = 3;</code>
+     * @return The status.
+     */
+    @java.lang.Override public proto.ServerClient.Status getStatus() {
+      proto.ServerClient.Status result = proto.ServerClient.Status.forNumber(status_);
+      return result == null ? proto.ServerClient.Status.UNRECOGNIZED : result;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (jobRequestID_ != 0) {
+        output.writeInt32(1, jobRequestID_);
+      }
+      if (userID_ != 0) {
+        output.writeInt32(2, userID_);
+      }
+      if (status_ != proto.ServerClient.Status.APPLICATION_REVIEW.getNumber()) {
+        output.writeEnum(3, status_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (jobRequestID_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, jobRequestID_);
+      }
+      if (userID_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, userID_);
+      }
+      if (status_ != proto.ServerClient.Status.APPLICATION_REVIEW.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, status_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto.ServerClient.AppliesInfo)) {
+        return super.equals(obj);
+      }
+      proto.ServerClient.AppliesInfo other = (proto.ServerClient.AppliesInfo) obj;
+
+      if (getJobRequestID()
+          != other.getJobRequestID()) return false;
+      if (getUserID()
+          != other.getUserID()) return false;
+      if (status_ != other.status_) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + JOBREQUESTID_FIELD_NUMBER;
+      hash = (53 * hash) + getJobRequestID();
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
+      hash = (53 * hash) + getUserID();
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + status_;
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto.ServerClient.AppliesInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.ServerClient.AppliesInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.ServerClient.AppliesInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.ServerClient.AppliesInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.ServerClient.AppliesInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.ServerClient.AppliesInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.ServerClient.AppliesInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.ServerClient.AppliesInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.ServerClient.AppliesInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto.ServerClient.AppliesInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.ServerClient.AppliesInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.ServerClient.AppliesInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto.ServerClient.AppliesInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code proto.AppliesInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:proto.AppliesInfo)
+        proto.ServerClient.AppliesInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto.ServerClient.internal_static_proto_AppliesInfo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto.ServerClient.internal_static_proto_AppliesInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto.ServerClient.AppliesInfo.class, proto.ServerClient.AppliesInfo.Builder.class);
+      }
+
+      // Construct using proto.ServerClient.AppliesInfo.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        jobRequestID_ = 0;
+        userID_ = 0;
+        status_ = 0;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto.ServerClient.internal_static_proto_AppliesInfo_descriptor;
+      }
+
+      @java.lang.Override
+      public proto.ServerClient.AppliesInfo getDefaultInstanceForType() {
+        return proto.ServerClient.AppliesInfo.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto.ServerClient.AppliesInfo build() {
+        proto.ServerClient.AppliesInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto.ServerClient.AppliesInfo buildPartial() {
+        proto.ServerClient.AppliesInfo result = new proto.ServerClient.AppliesInfo(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(proto.ServerClient.AppliesInfo result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.jobRequestID_ = jobRequestID_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.userID_ = userID_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.status_ = status_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto.ServerClient.AppliesInfo) {
+          return mergeFrom((proto.ServerClient.AppliesInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto.ServerClient.AppliesInfo other) {
+        if (other == proto.ServerClient.AppliesInfo.getDefaultInstance()) return this;
+        if (other.getJobRequestID() != 0) {
+          setJobRequestID(other.getJobRequestID());
+        }
+        if (other.getUserID() != 0) {
+          setUserID(other.getUserID());
+        }
+        if (other.status_ != 0) {
+          setStatusValue(other.getStatusValue());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                jobRequestID_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                userID_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                status_ = input.readEnum();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private int jobRequestID_ ;
+      /**
+       * <code>int32 jobRequestID = 1;</code>
+       * @return The jobRequestID.
+       */
+      @java.lang.Override
+      public int getJobRequestID() {
+        return jobRequestID_;
+      }
+      /**
+       * <code>int32 jobRequestID = 1;</code>
+       * @param value The jobRequestID to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobRequestID(int value) {
+        
+        jobRequestID_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 jobRequestID = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearJobRequestID() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        jobRequestID_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int userID_ ;
+      /**
+       * <code>int32 userID = 2;</code>
+       * @return The userID.
+       */
+      @java.lang.Override
+      public int getUserID() {
+        return userID_;
+      }
+      /**
+       * <code>int32 userID = 2;</code>
+       * @param value The userID to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserID(int value) {
+        
+        userID_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 userID = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUserID() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        userID_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int status_ = 0;
+      /**
+       * <code>.proto.Status status = 3;</code>
+       * @return The enum numeric value on the wire for status.
+       */
+      @java.lang.Override public int getStatusValue() {
+        return status_;
+      }
+      /**
+       * <code>.proto.Status status = 3;</code>
+       * @param value The enum numeric value on the wire for status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatusValue(int value) {
+        status_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.proto.Status status = 3;</code>
+       * @return The status.
+       */
+      @java.lang.Override
+      public proto.ServerClient.Status getStatus() {
+        proto.ServerClient.Status result = proto.ServerClient.Status.forNumber(status_);
+        return result == null ? proto.ServerClient.Status.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.proto.Status status = 3;</code>
+       * @param value The status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatus(proto.ServerClient.Status value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000004;
+        status_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.proto.Status status = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStatus() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        status_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:proto.AppliesInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:proto.AppliesInfo)
+    private static final proto.ServerClient.AppliesInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto.ServerClient.AppliesInfo();
+    }
+
+    public static proto.ServerClient.AppliesInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AppliesInfo>
+        PARSER = new com.google.protobuf.AbstractParser<AppliesInfo>() {
+      @java.lang.Override
+      public AppliesInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<AppliesInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AppliesInfo> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto.ServerClient.AppliesInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_UserFullInfo_descriptor;
   private static final 
@@ -25068,6 +25724,11 @@ public final class ServerClient {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_JobRequestRestrict_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_proto_AppliesInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_proto_AppliesInfo_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -25183,145 +25844,145 @@ public final class ServerClient {
       "\0162\017.proto.JobLevel\022\037\n\007jobType\030\005 \001(\0162\016.pr" +
       "oto.JobType\022\017\n\007isEnded\030\006 \001(\010\022\014\n\004CVID\030\007 \001" +
       "(\005\022\021\n\tcompanyID\030\010 \001(\005\022\022\n\nlocationID\030\t \001(" +
-      "\005\022\024\n\014jobRequestID\030\n \001(\005*\036\n\006Gender\022\010\n\004MAL" +
-      "E\020\000\022\n\n\006FEMALE\020\001*f\n\010JobLevel\022\017\n\013ENTRY_LEV" +
-      "EL\020\000\022\r\n\tMID_LEVEL\020\001\022\020\n\014SENIOR_LEVEL\020\002\022\013\n" +
-      "\007MANAGER\020\003\022\014\n\010DIRECTOR\020\004\022\r\n\tEXECUTIVE\020\005*" +
-      "%\n\007JobType\022\014\n\010FULLTIME\020\000\022\014\n\010HALFTIME\020\001*I" +
-      "\n\006Status\022\026\n\022APPLICATION_REVIEW\020\000\022\r\n\tINTE" +
-      "RVIEW\020\001\022\013\n\007SUCCESS\020\002\022\013\n\007FAILURE\020\003*9\n\013Pro" +
-      "ficiency\022\014\n\010BEGINNER\020\000\022\020\n\014INTERMEDIATE\020\001" +
-      "\022\n\n\006EXPERT\020\0022\247\006\n\013UserService\022E\n\017Candidat" +
-      "eCreate\022\030.proto.CandidateFullInfo\032\030.prot" +
-      "o.CandidateFullInfo\022E\n\017RecruiterCreate\022\030" +
-      ".proto.RecruiterFullInfo\032\030.proto.Recruit" +
-      "erFullInfo\0224\n\010UserRead\022\023.proto.UserMetaI" +
-      "nfo\032\023.proto.UserFullInfo\022=\n\014UserListRead" +
-      "\022\026.google.protobuf.Empty\032\023.proto.UserMet" +
-      "aInfo0\001\022>\n\rCandidateRead\022\023.proto.UserMet" +
-      "aInfo\032\030.proto.CandidateFullInfo\022G\n\021Candi" +
-      "dateListRead\022\026.google.protobuf.Empty\032\030.p" +
-      "roto.CandidateFullInfo0\001\022>\n\rRecruiterRea" +
-      "d\022\023.proto.UserMetaInfo\032\030.proto.Recruiter" +
-      "FullInfo\022G\n\021RecruiterListRead\022\026.google.p" +
-      "rotobuf.Empty\032\030.proto.RecruiterFullInfo0" +
-      "\001\0226\n\nUserUpdate\022\023.proto.UserFullInfo\032\023.p" +
-      "roto.UserFullInfo\022E\n\017CandidateUpdate\022\030.p" +
-      "roto.CandidateFullInfo\032\030.proto.Candidate" +
-      "FullInfo\022E\n\017RecruiterUpdate\022\030.proto.Recr" +
-      "uiterFullInfo\032\030.proto.RecruiterFullInfo\022" +
-      "=\n\nUserDelete\022\023.proto.UserMetaInfo\032\032.goo" +
-      "gle.protobuf.BoolValue2\242\004\n\021JobRequestSer" +
-      "vice\022J\n\022JobRequestRegister\022\031.proto.JobRe" +
-      "questFullInfo\032\031.proto.JobRequestFullInfo" +
-      "\022F\n\016JobRequestRead\022\031.proto.JobRequestMet" +
-      "aInfo\032\031.proto.JobRequestFullInfo\022I\n\022JobR" +
-      "equestListRead\022\026.google.protobuf.Empty\032\031" +
-      ".proto.JobRequestFullInfo0\001\022L\n\024JobReques" +
-      "tUpdateInfo\022\031.proto.JobRequestFullInfo\032\031" +
-      ".proto.JobRequestFullInfo\022I\n\020JobRequestD" +
-      "elete\022\031.proto.JobRequestMetaInfo\032\032.googl" +
-      "e.protobuf.BoolValue\022H\n\017JobRequestApply\022" +
-      "\031.proto.JobRequestFullInfo\032\032.google.prot" +
-      "obuf.BoolValue\022K\n\022JobRequestWithdraw\022\031.p" +
-      "roto.JobRequestFullInfo\032\032.google.protobu" +
-      "f.BoolValue2\277\002\n\013RoleService\0228\n\014RoleRegis" +
-      "ter\022\023.proto.RoleFullInfo\032\023.proto.RoleFul" +
-      "lInfo\0228\n\014RoleReadInfo\022\023.proto.RoleFullIn" +
-      "fo\032\023.proto.RoleFullInfo\022=\n\014RoleListRead\022" +
-      "\026.proto.CompanyMetaInfo\032\023.proto.RoleFull" +
-      "Info0\001\022:\n\016RoleUpdateInfo\022\023.proto.RoleFul" +
-      "lInfo\032\023.proto.RoleFullInfo\022A\n\016RoleDelete" +
-      "Info\022\023.proto.RoleFullInfo\032\032.google.proto" +
-      "buf.BoolValue2\345\002\n\016CompanyService\022A\n\017Comp" +
-      "anyRegister\022\026.proto.CompanyFullInfo\032\026.pr" +
-      "oto.CompanyFullInfo\022A\n\017CompanyReadInfo\022\026" +
-      ".proto.CompanyMetaInfo\032\026.proto.CompanyFu" +
-      "llInfo\022C\n\017CompanyListRead\022\026.google.proto" +
-      "buf.Empty\032\026.proto.CompanyFullInfo0\001\022C\n\021C" +
-      "ompanyUpdateInfo\022\026.proto.CompanyFullInfo" +
-      "\032\026.proto.CompanyFullInfo\022C\n\rCompanyDelet" +
-      "e\022\026.proto.CompanyMetaInfo\032\032.google.proto" +
-      "buf.BoolValue2\363\002\n\017LocationService\022D\n\020Loc" +
-      "ationRegister\022\027.proto.LocationFullInfo\032\027" +
-      ".proto.LocationFullInfo\022D\n\020LocationReadI" +
-      "nfo\022\027.proto.LocationMetaInfo\032\027.proto.Loc" +
-      "ationFullInfo\022E\n\020LocationListRead\022\026.goog" +
-      "le.protobuf.Empty\032\027.proto.LocationFullIn" +
-      "fo0\001\022F\n\022LocationUpdateInfo\022\027.proto.Locat" +
-      "ionFullInfo\032\027.proto.LocationFullInfo\022E\n\016" +
-      "LocationDelete\022\027.proto.LocationMetaInfo\032" +
-      "\032.google.protobuf.BoolValue2\226\002\n\tCVServic" +
-      "e\0220\n\010CVCreate\022\021.proto.CVFullInfo\032\021.proto" +
-      ".CVFullInfo\022.\n\006CVRead\022\021.proto.CVMetaInfo" +
-      "\032\021.proto.CVFullInfo\0226\n\nCVListRead\022\023.prot" +
-      "o.UserMetaInfo\032\021.proto.CVFullInfo0\001\0224\n\014C" +
-      "VUpdateInfo\022\021.proto.CVFullInfo\032\021.proto.C" +
-      "VFullInfo\0229\n\010CVDelete\022\021.proto.CVMetaInfo" +
-      "\032\032.google.protobuf.BoolValue2\274\003\n\025WorkExp" +
-      "erienceService\022T\n\024WorkExperienceCreate\022\035" +
-      ".proto.WorkExperienceFullInfo\032\035.proto.Wo" +
-      "rkExperienceFullInfo\022R\n\022WorkExperienceRe" +
-      "ad\022\035.proto.WorkExperienceFullInfo\032\035.prot" +
-      "o.WorkExperienceFullInfo\022L\n\026WorkExperien" +
-      "ceListRead\022\021.proto.CVMetaInfo\032\035.proto.Wo" +
-      "rkExperienceFullInfo0\001\022X\n\030WorkExperience" +
-      "UpdateInfo\022\035.proto.WorkExperienceFullInf" +
-      "o\032\035.proto.WorkExperienceFullInfo\022Q\n\024Work" +
-      "ExperienceDelete\022\035.proto.WorkExperienceF" +
-      "ullInfo\032\032.google.protobuf.BoolValue2\276\002\n\014" +
-      "SkillService\0229\n\013SkillCreate\022\024.proto.Skil" +
-      "lFullInfo\032\024.proto.SkillFullInfo\0227\n\tSkill" +
-      "Read\022\024.proto.SkillFullInfo\032\024.proto.Skill" +
-      "FullInfo\022:\n\rSkillListRead\022\021.proto.CVMeta" +
-      "Info\032\024.proto.SkillFullInfo0\001\022=\n\017SkillUpd" +
-      "ateInfo\022\024.proto.SkillFullInfo\032\024.proto.Sk" +
-      "illFullInfo\022?\n\013SkillDelete\022\024.proto.Skill" +
-      "FullInfo\032\032.google.protobuf.BoolValue2\222\003\n" +
-      "\022PersonalityService\022K\n\021PersonalityCreate" +
-      "\022\032.proto.PersonalityFullInfo\032\032.proto.Per" +
-      "sonalityFullInfo\022I\n\017PersonalityRead\022\032.pr" +
-      "oto.PersonalityFullInfo\032\032.proto.Personal" +
-      "ityFullInfo\022F\n\023PersonalityListRead\022\021.pro" +
-      "to.CVMetaInfo\032\032.proto.PersonalityFullInf" +
-      "o0\001\022O\n\025PersonalityUpdateInfo\022\032.proto.Per" +
-      "sonalityFullInfo\032\032.proto.PersonalityFull" +
-      "Info\022K\n\021PersonalityDelete\022\032.proto.Person" +
-      "alityFullInfo\032\032.google.protobuf.BoolValu" +
-      "e2\366\002\n\020EducationService\022E\n\017EducationCreat" +
-      "e\022\030.proto.EducationFullInfo\032\030.proto.Educ" +
-      "ationFullInfo\022C\n\rEducationRead\022\030.proto.E" +
-      "ducationFullInfo\032\030.proto.EducationFullIn" +
-      "fo\022B\n\021EducationListRead\022\021.proto.CVMetaIn" +
-      "fo\032\030.proto.EducationFullInfo0\001\022I\n\023Educat" +
-      "ionUpdateInfo\022\030.proto.EducationFullInfo\032" +
-      "\030.proto.EducationFullInfo\022G\n\017EducationDe" +
-      "lete\022\030.proto.EducationFullInfo\032\032.google." +
-      "protobuf.BoolValue2\256\003\n\024CertificationServ" +
-      "ice\022Q\n\023CertificationCreate\022\034.proto.Certi" +
-      "ficationFullInfo\032\034.proto.CertificationFu" +
-      "llInfo\022O\n\021CertificationRead\022\034.proto.Cert" +
-      "ificationFullInfo\032\034.proto.CertificationF" +
-      "ullInfo\022J\n\025CertificationListRead\022\021.proto" +
-      ".CVMetaInfo\032\034.proto.CertificationFullInf" +
-      "o0\001\022U\n\027CertificationUpdateInfo\022\034.proto.C" +
+      "\005\022\024\n\014jobRequestID\030\n \001(\005\"R\n\013AppliesInfo\022\024" +
+      "\n\014jobRequestID\030\001 \001(\005\022\016\n\006userID\030\002 \001(\005\022\035\n\006" +
+      "status\030\003 \001(\0162\r.proto.Status*\036\n\006Gender\022\010\n" +
+      "\004MALE\020\000\022\n\n\006FEMALE\020\001*f\n\010JobLevel\022\017\n\013ENTRY" +
+      "_LEVEL\020\000\022\r\n\tMID_LEVEL\020\001\022\020\n\014SENIOR_LEVEL\020" +
+      "\002\022\013\n\007MANAGER\020\003\022\014\n\010DIRECTOR\020\004\022\r\n\tEXECUTIV" +
+      "E\020\005*%\n\007JobType\022\014\n\010FULLTIME\020\000\022\014\n\010HALFTIME" +
+      "\020\001*I\n\006Status\022\026\n\022APPLICATION_REVIEW\020\000\022\r\n\t" +
+      "INTERVIEW\020\001\022\013\n\007SUCCESS\020\002\022\013\n\007FAILURE\020\003*9\n" +
+      "\013Proficiency\022\014\n\010BEGINNER\020\000\022\020\n\014INTERMEDIA" +
+      "TE\020\001\022\n\n\006EXPERT\020\0022\247\006\n\013UserService\022E\n\017Cand" +
+      "idateCreate\022\030.proto.CandidateFullInfo\032\030." +
+      "proto.CandidateFullInfo\022E\n\017RecruiterCrea" +
+      "te\022\030.proto.RecruiterFullInfo\032\030.proto.Rec" +
+      "ruiterFullInfo\0224\n\010UserRead\022\023.proto.UserM" +
+      "etaInfo\032\023.proto.UserFullInfo\022=\n\014UserList" +
+      "Read\022\026.google.protobuf.Empty\032\023.proto.Use" +
+      "rMetaInfo0\001\022>\n\rCandidateRead\022\023.proto.Use" +
+      "rMetaInfo\032\030.proto.CandidateFullInfo\022G\n\021C" +
+      "andidateListRead\022\026.google.protobuf.Empty" +
+      "\032\030.proto.CandidateFullInfo0\001\022>\n\rRecruite" +
+      "rRead\022\023.proto.UserMetaInfo\032\030.proto.Recru" +
+      "iterFullInfo\022G\n\021RecruiterListRead\022\026.goog" +
+      "le.protobuf.Empty\032\030.proto.RecruiterFullI" +
+      "nfo0\001\0226\n\nUserUpdate\022\023.proto.UserFullInfo" +
+      "\032\023.proto.UserFullInfo\022E\n\017CandidateUpdate" +
+      "\022\030.proto.CandidateFullInfo\032\030.proto.Candi" +
+      "dateFullInfo\022E\n\017RecruiterUpdate\022\030.proto." +
+      "RecruiterFullInfo\032\030.proto.RecruiterFullI" +
+      "nfo\022=\n\nUserDelete\022\023.proto.UserMetaInfo\032\032" +
+      ".google.protobuf.BoolValue2\242\004\n\021JobReques" +
+      "tService\022J\n\022JobRequestRegister\022\031.proto.J" +
+      "obRequestFullInfo\032\031.proto.JobRequestFull" +
+      "Info\022F\n\016JobRequestRead\022\031.proto.JobReques" +
+      "tMetaInfo\032\031.proto.JobRequestFullInfo\022I\n\022" +
+      "JobRequestListRead\022\026.google.protobuf.Emp" +
+      "ty\032\031.proto.JobRequestFullInfo0\001\022L\n\024JobRe" +
+      "questUpdateInfo\022\031.proto.JobRequestFullIn" +
+      "fo\032\031.proto.JobRequestFullInfo\022I\n\020JobRequ" +
+      "estDelete\022\031.proto.JobRequestMetaInfo\032\032.g" +
+      "oogle.protobuf.BoolValue\022H\n\017JobRequestAp" +
+      "ply\022\031.proto.JobRequestFullInfo\032\032.google." +
+      "protobuf.BoolValue\022K\n\022JobRequestWithdraw" +
+      "\022\031.proto.JobRequestFullInfo\032\032.google.pro" +
+      "tobuf.BoolValue2\277\002\n\013RoleService\0228\n\014RoleR" +
+      "egister\022\023.proto.RoleFullInfo\032\023.proto.Rol" +
+      "eFullInfo\0228\n\014RoleReadInfo\022\023.proto.RoleFu" +
+      "llInfo\032\023.proto.RoleFullInfo\022=\n\014RoleListR" +
+      "ead\022\026.proto.CompanyMetaInfo\032\023.proto.Role" +
+      "FullInfo0\001\022:\n\016RoleUpdateInfo\022\023.proto.Rol" +
+      "eFullInfo\032\023.proto.RoleFullInfo\022A\n\016RoleDe" +
+      "leteInfo\022\023.proto.RoleFullInfo\032\032.google.p" +
+      "rotobuf.BoolValue2\345\002\n\016CompanyService\022A\n\017" +
+      "CompanyRegister\022\026.proto.CompanyFullInfo\032" +
+      "\026.proto.CompanyFullInfo\022A\n\017CompanyReadIn" +
+      "fo\022\026.proto.CompanyMetaInfo\032\026.proto.Compa" +
+      "nyFullInfo\022C\n\017CompanyListRead\022\026.google.p" +
+      "rotobuf.Empty\032\026.proto.CompanyFullInfo0\001\022" +
+      "C\n\021CompanyUpdateInfo\022\026.proto.CompanyFull" +
+      "Info\032\026.proto.CompanyFullInfo\022C\n\rCompanyD" +
+      "elete\022\026.proto.CompanyMetaInfo\032\032.google.p" +
+      "rotobuf.BoolValue2\363\002\n\017LocationService\022D\n" +
+      "\020LocationRegister\022\027.proto.LocationFullIn" +
+      "fo\032\027.proto.LocationFullInfo\022D\n\020LocationR" +
+      "eadInfo\022\027.proto.LocationMetaInfo\032\027.proto" +
+      ".LocationFullInfo\022E\n\020LocationListRead\022\026." +
+      "google.protobuf.Empty\032\027.proto.LocationFu" +
+      "llInfo0\001\022F\n\022LocationUpdateInfo\022\027.proto.L" +
+      "ocationFullInfo\032\027.proto.LocationFullInfo" +
+      "\022E\n\016LocationDelete\022\027.proto.LocationMetaI" +
+      "nfo\032\032.google.protobuf.BoolValue2\226\002\n\tCVSe" +
+      "rvice\0220\n\010CVCreate\022\021.proto.CVFullInfo\032\021.p" +
+      "roto.CVFullInfo\022.\n\006CVRead\022\021.proto.CVMeta" +
+      "Info\032\021.proto.CVFullInfo\0226\n\nCVListRead\022\023." +
+      "proto.UserMetaInfo\032\021.proto.CVFullInfo0\001\022" +
+      "4\n\014CVUpdateInfo\022\021.proto.CVFullInfo\032\021.pro" +
+      "to.CVFullInfo\0229\n\010CVDelete\022\021.proto.CVMeta" +
+      "Info\032\032.google.protobuf.BoolValue2\274\003\n\025Wor" +
+      "kExperienceService\022T\n\024WorkExperienceCrea" +
+      "te\022\035.proto.WorkExperienceFullInfo\032\035.prot" +
+      "o.WorkExperienceFullInfo\022R\n\022WorkExperien" +
+      "ceRead\022\035.proto.WorkExperienceFullInfo\032\035." +
+      "proto.WorkExperienceFullInfo\022L\n\026WorkExpe" +
+      "rienceListRead\022\021.proto.CVMetaInfo\032\035.prot" +
+      "o.WorkExperienceFullInfo0\001\022X\n\030WorkExperi" +
+      "enceUpdateInfo\022\035.proto.WorkExperienceFul" +
+      "lInfo\032\035.proto.WorkExperienceFullInfo\022Q\n\024" +
+      "WorkExperienceDelete\022\035.proto.WorkExperie" +
+      "nceFullInfo\032\032.google.protobuf.BoolValue2" +
+      "\276\002\n\014SkillService\0229\n\013SkillCreate\022\024.proto." +
+      "SkillFullInfo\032\024.proto.SkillFullInfo\0227\n\tS" +
+      "killRead\022\024.proto.SkillFullInfo\032\024.proto.S" +
+      "killFullInfo\022:\n\rSkillListRead\022\021.proto.CV" +
+      "MetaInfo\032\024.proto.SkillFullInfo0\001\022=\n\017Skil" +
+      "lUpdateInfo\022\024.proto.SkillFullInfo\032\024.prot" +
+      "o.SkillFullInfo\022?\n\013SkillDelete\022\024.proto.S" +
+      "killFullInfo\032\032.google.protobuf.BoolValue" +
+      "2\222\003\n\022PersonalityService\022K\n\021PersonalityCr" +
+      "eate\022\032.proto.PersonalityFullInfo\032\032.proto" +
+      ".PersonalityFullInfo\022I\n\017PersonalityRead\022" +
+      "\032.proto.PersonalityFullInfo\032\032.proto.Pers" +
+      "onalityFullInfo\022F\n\023PersonalityListRead\022\021" +
+      ".proto.CVMetaInfo\032\032.proto.PersonalityFul" +
+      "lInfo0\001\022O\n\025PersonalityUpdateInfo\022\032.proto" +
+      ".PersonalityFullInfo\032\032.proto.Personality" +
+      "FullInfo\022K\n\021PersonalityDelete\022\032.proto.Pe" +
+      "rsonalityFullInfo\032\032.google.protobuf.Bool" +
+      "Value2\366\002\n\020EducationService\022E\n\017EducationC" +
+      "reate\022\030.proto.EducationFullInfo\032\030.proto." +
+      "EducationFullInfo\022C\n\rEducationRead\022\030.pro" +
+      "to.EducationFullInfo\032\030.proto.EducationFu" +
+      "llInfo\022B\n\021EducationListRead\022\021.proto.CVMe" +
+      "taInfo\032\030.proto.EducationFullInfo0\001\022I\n\023Ed" +
+      "ucationUpdateInfo\022\030.proto.EducationFullI" +
+      "nfo\032\030.proto.EducationFullInfo\022G\n\017Educati" +
+      "onDelete\022\030.proto.EducationFullInfo\032\032.goo" +
+      "gle.protobuf.BoolValue2\256\003\n\024Certification" +
+      "Service\022Q\n\023CertificationCreate\022\034.proto.C" +
       "ertificationFullInfo\032\034.proto.Certificati" +
-      "onFullInfo\022O\n\023CertificationDelete\022\034.prot" +
-      "o.CertificationFullInfo\032\032.google.protobu" +
-      "f.BoolValue2\330\001\n\rSearchService\022N\n\024Candida" +
-      "te_JobRequest\022\031.proto.JobRequestRestrict" +
-      "\032\031.proto.JobRequestFullInfo0\001\022B\n\021Recruit" +
-      "er_Company\022\023.proto.UserMetaInfo\032\026.proto." +
-      "CompanyFullInfo0\001\0223\n\007CV_User\022\023.proto.Use" +
-      "rMetaInfo\032\021.proto.CVFullInfo0\0012\236\002\n\017WishL" +
-      "istService\022B\n\016WishListCreate\022\027.proto.Wis" +
-      "hListFullInfo\032\027.proto.WishListFullInfo\022<" +
-      "\n\014WishListRead\022\023.proto.UserMetaInfo\032\027.pr" +
-      "oto.WishListFullInfo\022F\n\022WishListUpdateIn" +
-      "fo\022\027.proto.WishListFullInfo\032\027.proto.Wish" +
-      "ListFullInfo\022A\n\016WishListDelete\022\023.proto.U" +
-      "serMetaInfo\032\032.google.protobuf.BoolValueb" +
-      "\006proto3"
+      "onFullInfo\022O\n\021CertificationRead\022\034.proto." +
+      "CertificationFullInfo\032\034.proto.Certificat" +
+      "ionFullInfo\022J\n\025CertificationListRead\022\021.p" +
+      "roto.CVMetaInfo\032\034.proto.CertificationFul" +
+      "lInfo0\001\022U\n\027CertificationUpdateInfo\022\034.pro" +
+      "to.CertificationFullInfo\032\034.proto.Certifi" +
+      "cationFullInfo\022O\n\023CertificationDelete\022\034." +
+      "proto.CertificationFullInfo\032\032.google.pro" +
+      "tobuf.BoolValue2\237\001\n\rSearchService\022N\n\024Can" +
+      "didate_JobRequest\022\031.proto.JobRequestRest" +
+      "rict\032\031.proto.JobRequestFullInfo0\001\022>\n\014Rec" +
+      "ruiter_CV\022\031.proto.JobRequestRestrict\032\021.p" +
+      "roto.CVFullInfo0\0012\236\002\n\017WishListService\022B\n" +
+      "\016WishListCreate\022\027.proto.WishListFullInfo" +
+      "\032\027.proto.WishListFullInfo\022<\n\014WishListRea" +
+      "d\022\023.proto.UserMetaInfo\032\027.proto.WishListF" +
+      "ullInfo\022F\n\022WishListUpdateInfo\022\027.proto.Wi" +
+      "shListFullInfo\032\027.proto.WishListFullInfo\022" +
+      "A\n\016WishListDelete\022\023.proto.UserMetaInfo\032\032" +
+      ".google.protobuf.BoolValueb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -25510,6 +26171,12 @@ public final class ServerClient {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_JobRequestRestrict_descriptor,
         new java.lang.String[] { "SearchParam", "Location", "SalaryMinimum", "JobLevel", "JobType", "IsEnded", "CVID", "CompanyID", "LocationID", "JobRequestID", });
+    internal_static_proto_AppliesInfo_descriptor =
+      getDescriptor().getMessageTypes().get(20);
+    internal_static_proto_AppliesInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_proto_AppliesInfo_descriptor,
+        new java.lang.String[] { "JobRequestID", "UserID", "Status", });
     com.google.protobuf.TimestampProto.getDescriptor();
     com.google.protobuf.EmptyProto.getDescriptor();
     com.google.protobuf.WrappersProto.getDescriptor();

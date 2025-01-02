@@ -105,4 +105,6 @@ public class RoleServiceImpl extends RoleServiceGrpc.RoleServiceImplBase {
             responseObserver.onError(dbError);
         }
     }
+
+
 }

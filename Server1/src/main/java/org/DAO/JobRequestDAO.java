@@ -1,10 +1,7 @@
 package org.DAO;
 
 import org.controller.Converter;
-import org.model.JobLevel;
-import org.model.JobRequests;
-import org.model.JobType;
-import org.model.Locations;
+import org.model.*;
 import proto.ServerClient;
 
 import java.sql.*;
@@ -397,7 +394,7 @@ public class JobRequestDAO {
             }
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Jobs.add(resultSet.getInt("locationID"));
+                Jobs.add(resultSet.getInt("jobID"));
             }
             return Jobs;
         } finally {
@@ -441,13 +438,13 @@ public class JobRequestDAO {
             sql.append(" AND salaryLeast >= ").append(request.getSalaryMinimum());
         }
 
-        if (request.getJobLevel() != null) {
-            sql.append(" AND jobLevel = '").append(request.getJobLevel().name()).append("'"); // Enum to integer mapping
-        }
+//        if (request.getJobLevel() != null) {
+//            sql.append(" AND jobLevel = '").append(request.getJobLevel().name()).append("'"); // Enum to integer mapping
+//        }
 
-        if (request.getJobType() != null) {
-            sql.append(" AND jobType = '").append(request.getJobType().name()).append("'"); // Enum to integer mapping
-        }
+//        if (request.getJobType() != null) {
+//            sql.append(" AND jobType = '").append(request.getJobType().name()).append("'"); // Enum to integer mapping
+//        }
 
 
         // Add deadline check filter
@@ -470,5 +467,59 @@ public class JobRequestDAO {
             jobRequests.add(this.readJobRequest(ServerClient.JobRequestMetaInfo.newBuilder().setJobID(rs.getInt("jobID")).build(), connection));
         }
         return jobRequests;
+    }
+
+    public ArrayList<ServerClient.AppliesInfo> searchCV(ServerClient.JobRequestRestrict request, Connection connection) throws Exception {
+        System.out.println("searchCV");
+
+        Integer CVID = request.getCVID();
+        Integer jobID = request.getJobRequestID();
+
+        if ((CVID == null || CVID == 0) && (jobID == null || jobID == 0)) {
+            throw new Exception("Either CVID or jobID must be provided.");
+        }
+
+        // Dynamically build the SQL query based on the available parameters
+        StringBuilder sqlBuilder = new StringBuilder("SELECT * FROM Applies WHERE 1=1"); // Start with a base query
+
+        if (CVID != null && CVID != 0) {
+            sqlBuilder.append(" AND CVID = ?");
+        }
+        if (jobID != null && jobID != 0) {
+            sqlBuilder.append(" AND jobID = ?");
+        }
+
+        String sql = sqlBuilder.toString();
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            int paramIndex = 1;
+
+            // Set the parameters dynamically
+            if (CVID != null && CVID != 0) {
+                stmt.setInt(paramIndex++, CVID);
+            }
+            if (jobID != null && jobID != 0) {
+                stmt.setInt(paramIndex++, jobID);
+            }
+
+            ArrayList<ServerClient.AppliesInfo> ans = new ArrayList<>();
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    ServerClient.AppliesInfo.Builder builder = ServerClient.AppliesInfo.newBuilder();
+
+                    // Build the AppliesInfo object from the ResultSet
+                    builder.setCVID(rs.getInt("CVID"));
+                    builder.setJobRequestID(rs.getInt("jobID"));
+                    builder.setStatus(ServerClient.Status.valueOf(rs.getString("status")));
+
+                    ans.add(builder.build());
+                }
+                return ans;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new Exception("Error executing the query", e);
+        }
     }
 }

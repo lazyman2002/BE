@@ -46,66 +46,35 @@ public final class SearchServiceGrpc {
     return getCandidateJobRequestMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
-      proto.ServerClient.CompanyFullInfo> getRecruiterCompanyMethod;
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.JobRequestRestrict,
+      proto.ServerClient.CVFullInfo> getRecruiterCVMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "Recruiter_Company",
-      requestType = proto.ServerClient.UserMetaInfo.class,
-      responseType = proto.ServerClient.CompanyFullInfo.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
-      proto.ServerClient.CompanyFullInfo> getRecruiterCompanyMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo, proto.ServerClient.CompanyFullInfo> getRecruiterCompanyMethod;
-    if ((getRecruiterCompanyMethod = SearchServiceGrpc.getRecruiterCompanyMethod) == null) {
-      synchronized (SearchServiceGrpc.class) {
-        if ((getRecruiterCompanyMethod = SearchServiceGrpc.getRecruiterCompanyMethod) == null) {
-          SearchServiceGrpc.getRecruiterCompanyMethod = getRecruiterCompanyMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.UserMetaInfo, proto.ServerClient.CompanyFullInfo>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Recruiter_Company"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.UserMetaInfo.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.CompanyFullInfo.getDefaultInstance()))
-              .setSchemaDescriptor(new SearchServiceMethodDescriptorSupplier("Recruiter_Company"))
-              .build();
-        }
-      }
-    }
-    return getRecruiterCompanyMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
-      proto.ServerClient.CVFullInfo> getCVUserMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "CV_User",
-      requestType = proto.ServerClient.UserMetaInfo.class,
+      fullMethodName = SERVICE_NAME + '/' + "Recruiter_CV",
+      requestType = proto.ServerClient.JobRequestRestrict.class,
       responseType = proto.ServerClient.CVFullInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
-      proto.ServerClient.CVFullInfo> getCVUserMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo, proto.ServerClient.CVFullInfo> getCVUserMethod;
-    if ((getCVUserMethod = SearchServiceGrpc.getCVUserMethod) == null) {
+  public static io.grpc.MethodDescriptor<proto.ServerClient.JobRequestRestrict,
+      proto.ServerClient.CVFullInfo> getRecruiterCVMethod() {
+    io.grpc.MethodDescriptor<proto.ServerClient.JobRequestRestrict, proto.ServerClient.CVFullInfo> getRecruiterCVMethod;
+    if ((getRecruiterCVMethod = SearchServiceGrpc.getRecruiterCVMethod) == null) {
       synchronized (SearchServiceGrpc.class) {
-        if ((getCVUserMethod = SearchServiceGrpc.getCVUserMethod) == null) {
-          SearchServiceGrpc.getCVUserMethod = getCVUserMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.UserMetaInfo, proto.ServerClient.CVFullInfo>newBuilder()
+        if ((getRecruiterCVMethod = SearchServiceGrpc.getRecruiterCVMethod) == null) {
+          SearchServiceGrpc.getRecruiterCVMethod = getRecruiterCVMethod =
+              io.grpc.MethodDescriptor.<proto.ServerClient.JobRequestRestrict, proto.ServerClient.CVFullInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CV_User"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Recruiter_CV"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.UserMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.JobRequestRestrict.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.CVFullInfo.getDefaultInstance()))
-              .setSchemaDescriptor(new SearchServiceMethodDescriptorSupplier("CV_User"))
+              .setSchemaDescriptor(new SearchServiceMethodDescriptorSupplier("Recruiter_CV"))
               .build();
         }
       }
     }
-    return getCVUserMethod;
+    return getRecruiterCVMethod;
   }
 
   /**
@@ -165,16 +134,9 @@ public final class SearchServiceGrpc {
 
     /**
      */
-    public void recruiterCompany(proto.ServerClient.UserMetaInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.CompanyFullInfo> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRecruiterCompanyMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void cVUser(proto.ServerClient.UserMetaInfo request,
+    public void recruiterCV(proto.ServerClient.JobRequestRestrict request,
         io.grpc.stub.StreamObserver<proto.ServerClient.CVFullInfo> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCVUserMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRecruiterCVMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -187,19 +149,12 @@ public final class SearchServiceGrpc {
                 proto.ServerClient.JobRequestFullInfo>(
                   this, METHODID_CANDIDATE_JOB_REQUEST)))
           .addMethod(
-            getRecruiterCompanyMethod(),
+            getRecruiterCVMethod(),
             io.grpc.stub.ServerCalls.asyncServerStreamingCall(
               new MethodHandlers<
-                proto.ServerClient.UserMetaInfo,
-                proto.ServerClient.CompanyFullInfo>(
-                  this, METHODID_RECRUITER_COMPANY)))
-          .addMethod(
-            getCVUserMethod(),
-            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-              new MethodHandlers<
-                proto.ServerClient.UserMetaInfo,
+                proto.ServerClient.JobRequestRestrict,
                 proto.ServerClient.CVFullInfo>(
-                  this, METHODID_CV_USER)))
+                  this, METHODID_RECRUITER_CV)))
           .build();
     }
   }
@@ -228,18 +183,10 @@ public final class SearchServiceGrpc {
 
     /**
      */
-    public void recruiterCompany(proto.ServerClient.UserMetaInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.CompanyFullInfo> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
-          getChannel().newCall(getRecruiterCompanyMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void cVUser(proto.ServerClient.UserMetaInfo request,
+    public void recruiterCV(proto.ServerClient.JobRequestRestrict request,
         io.grpc.stub.StreamObserver<proto.ServerClient.CVFullInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
-          getChannel().newCall(getCVUserMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getRecruiterCVMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -267,18 +214,10 @@ public final class SearchServiceGrpc {
 
     /**
      */
-    public java.util.Iterator<proto.ServerClient.CompanyFullInfo> recruiterCompany(
-        proto.ServerClient.UserMetaInfo request) {
+    public java.util.Iterator<proto.ServerClient.CVFullInfo> recruiterCV(
+        proto.ServerClient.JobRequestRestrict request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
-          getChannel(), getRecruiterCompanyMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public java.util.Iterator<proto.ServerClient.CVFullInfo> cVUser(
-        proto.ServerClient.UserMetaInfo request) {
-      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
-          getChannel(), getCVUserMethod(), getCallOptions(), request);
+          getChannel(), getRecruiterCVMethod(), getCallOptions(), request);
     }
   }
 
@@ -298,8 +237,7 @@ public final class SearchServiceGrpc {
   }
 
   private static final int METHODID_CANDIDATE_JOB_REQUEST = 0;
-  private static final int METHODID_RECRUITER_COMPANY = 1;
-  private static final int METHODID_CV_USER = 2;
+  private static final int METHODID_RECRUITER_CV = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -322,12 +260,8 @@ public final class SearchServiceGrpc {
           serviceImpl.candidateJobRequest((proto.ServerClient.JobRequestRestrict) request,
               (io.grpc.stub.StreamObserver<proto.ServerClient.JobRequestFullInfo>) responseObserver);
           break;
-        case METHODID_RECRUITER_COMPANY:
-          serviceImpl.recruiterCompany((proto.ServerClient.UserMetaInfo) request,
-              (io.grpc.stub.StreamObserver<proto.ServerClient.CompanyFullInfo>) responseObserver);
-          break;
-        case METHODID_CV_USER:
-          serviceImpl.cVUser((proto.ServerClient.UserMetaInfo) request,
+        case METHODID_RECRUITER_CV:
+          serviceImpl.recruiterCV((proto.ServerClient.JobRequestRestrict) request,
               (io.grpc.stub.StreamObserver<proto.ServerClient.CVFullInfo>) responseObserver);
           break;
         default:
@@ -392,8 +326,7 @@ public final class SearchServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new SearchServiceFileDescriptorSupplier())
               .addMethod(getCandidateJobRequestMethod())
-              .addMethod(getRecruiterCompanyMethod())
-              .addMethod(getCVUserMethod())
+              .addMethod(getRecruiterCVMethod())
               .build();
         }
       }
