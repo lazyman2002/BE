@@ -1,6 +1,5 @@
 package org.DAO;
 
-import org.controller.Converter;
 import org.model.Companies;
 import proto.ServerClient;
 
@@ -22,28 +21,13 @@ public class CompanyDAO {
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Companies company = new Companies();
-
                 Integer companyID = resultSet.getInt("companyID");
-                if (resultSet.wasNull()) {
-                    company.setCompaniesID(null);
-                } else {
-                    company.setCompaniesID(companyID);
-                }
-
-                String companyName = resultSet.getString("companyName");
-                company.setCompanyName(companyName != null ? companyName : "");
-
-                String companyAvatarURL = resultSet.getString("companyAvatarURL");
-                company.setCompanyAvatarURL(companyAvatarURL != null ? companyAvatarURL : "");
-
-                String website = resultSet.getString("website");
-                company.setWebsite(website != null ? website : "");
-
-                String email = resultSet.getString("email");
-                company.setEmail(email != null ? email : "");
-
-                companiesList.add(company);
+                companiesList.add(this.readCompany(
+                        ServerClient.CompanyFullInfo.newBuilder()
+                                .setCompaniesID(companyID)
+                                .build(),
+                        connection
+                ));
             }
             return companiesList;
         }finally {
@@ -52,7 +36,7 @@ public class CompanyDAO {
         }
     }
 
-    public Companies readCompany(ServerClient.CompanyMetaInfo request, Connection connection) throws Exception {
+    public Companies readCompany(ServerClient.CompanyFullInfo request, Connection connection) throws Exception {
         System.out.println("readCompany");
 
         StringBuilder sb = new StringBuilder();
@@ -63,28 +47,45 @@ public class CompanyDAO {
             String sql  = sb.toString();
             preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setInt(1, request.getCompanyID());
+            preparedStatement.setInt(1, request.getCompaniesID());
             resultSet = preparedStatement.executeQuery();
             if(resultSet.next()){
-                String companyName = resultSet.getString("companyName");
-                companyName = (companyName != null) ? companyName : ""; // Gán giá trị mặc định nếu null
+                Companies companies = new Companies();
+                companies.setCompaniesID(request.getCompaniesID());
 
-                String companyAvatarURL = resultSet.getString("companyAvatarURL");
-                companyAvatarURL = (companyAvatarURL != null) ? companyAvatarURL : ""; // Giá trị mặc định
+                String companyName = resultSet.getString("companyName");
+                companyName = (companyName != null) ? companyName : "";
+                companies.setCompanyName(companyName);
+
+                String imagePath = resultSet.getString("imagePath");
+                imagePath = (imagePath != null) ? imagePath : "";
+                companies.setImagePath(imagePath);
+
+                String size = resultSet.getString("size");
+                size = (size != null) ? size : "";
+                companies.setSize(size);
+
+                String specialty = resultSet.getString("specialty");
+                specialty = (specialty != null) ? specialty : "";
+                companies.setSpecialty(specialty);
+
+                String introduction = resultSet.getString("introduction");
+                introduction = (introduction != null) ? introduction : "";
+                companies.setIntroduction(introduction);
+
+                String address = resultSet.getString("address");
+                address = (address != null) ? address : "";
+                companies.setAddress(address);
 
                 String website = resultSet.getString("website");
                 website = (website != null) ? website : "";
+                companies.setWebsite(website);
 
                 String email = resultSet.getString("email");
                 email = (email != null) ? email : "";
+                companies.setEmail(email);
 
-                return new Companies(
-                        request.getCompanyID(),
-                        companyName,
-                        companyAvatarURL,
-                        website,
-                        email
-                );
+                return companies;
             }
             else throw new Exception("Không tìm được công ty");
         }
@@ -98,7 +99,7 @@ public class CompanyDAO {
         System.out.println("registerCompany");
 
         StringBuilder sb = new StringBuilder();
-        sb.append("INSERT INTO `Companies`(`companyName`, `companyAvatarURL`, `website`, `email`) VALUES (?, ?, ?, ?);");
+        sb.append("INSERT INTO `Companies`(`companyName`, `imagePath`, `specialty`, `size`, `introduction`, `address`, `website`, `email`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
@@ -110,29 +111,38 @@ public class CompanyDAO {
             }
 
             String companyName = request.getCompanyName();
-            if (companyName == null || companyName.isEmpty()) {
-                companyName = "";
-            }
+            if (companyName.isEmpty()) companyName = "";
 
-            String companyAvatarURL = request.getCompanyAvatarURL();
-            if (companyAvatarURL == null || companyAvatarURL.isEmpty()) {
-                companyAvatarURL = "";
-            }
+            String imagePath = request.getImagePath();
+            if (imagePath.isEmpty()) imagePath = "";
+
+            String specialty = request.getSpecialty();
+            if (specialty.isEmpty()) specialty = "";
+
+            String size = request.getSize();
+            if (size.isEmpty()) size = "";
+
+            String introduction = request.getIntroduction();
+            if (introduction.isEmpty()) introduction = "";
+
+            String address = request.getAddress();
+            if (address.isEmpty()) address = "";
 
             String website = request.getWebsite();
-            if (website == null || website.isEmpty()) {
-                website = "";
-            }
+            if (website.isEmpty()) website = "";
 
             String email = request.getEmail();
-            if (email == null || email.isEmpty()) {
-                email = "";
-            }
+            if (email.isEmpty()) email = "";
+
 
             preparedStatement.setString(1, companyName);
-            preparedStatement.setString(2, companyAvatarURL);
-            preparedStatement.setString(3, website);
-            preparedStatement.setString(4, email);
+            preparedStatement.setString(2, imagePath);
+            preparedStatement.setString(3, specialty);
+            preparedStatement.setString(4, size);
+            preparedStatement.setString(5, introduction);
+            preparedStatement.setString(6, address);
+            preparedStatement.setString(7, website);
+            preparedStatement.setString(8, email);
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
@@ -140,10 +150,9 @@ public class CompanyDAO {
                 Integer companyID;
                 if (resultSet.next()) {
                     companyID = resultSet.getInt(1);
-                    CompanyDAO companyDAO = new CompanyDAO();
-                    return companyDAO.readCompany(ServerClient.CompanyMetaInfo
+                    return this.readCompany(ServerClient.CompanyFullInfo
                                     .newBuilder()
-                                    .setCompanyID(companyID)
+                                    .setCompaniesID(companyID)
                                     .build(),
                             connection);
                 }
@@ -166,22 +175,42 @@ public class CompanyDAO {
         ResultSet resultSet = null;
         List<Object> parameters = new ArrayList<>();
         try{
-            if(request.getCompanyName() != null  && !request.getCompanyName().isEmpty()){
+            if(!request.getCompanyName().isEmpty()){
                 sb.append("`Companies`.`companyName` = ?, ");
                 parameters.add(request.getCompanyName());
             }
 
-            if(request.getCompanyAvatarURL() != null && !request.getCompanyAvatarURL().isEmpty()){
-                sb.append("`Companies`.`companyAvatarURL` = ?, ");
-                parameters.add(request.getCompanyAvatarURL());
+            if(!request.getImagePath().isEmpty()){
+                sb.append("`Companies`.`imagePath` = ?, ");
+                parameters.add(request.getImagePath());
             }
 
-            if(request.getWebsite() != null && !request.getWebsite().isEmpty()){
+            if(!request.getSpecialty().isEmpty()){
+                sb.append("`Companies`.`specialty` = ?, ");
+                parameters.add(request.getSpecialty());
+            }
+
+            if(!request.getSize().isEmpty()){
+                sb.append("`Companies`.`size` = ?, ");
+                parameters.add(request.getSize());
+            }
+
+            if(!request.getIntroduction().isEmpty()){
+                sb.append("`Companies`.`introduction` = ?, ");
+                parameters.add(request.getIntroduction());
+            }
+
+            if(!request.getAddress().isEmpty()){
+                sb.append("`Companies`.`address` = ?, ");
+                parameters.add(request.getAddress());
+            }
+
+            if(!request.getWebsite().isEmpty()){
                 sb.append("`Companies`.`website` = ?, ");
                 parameters.add(request.getWebsite());
             }
 
-            if(request.getEmail() != null && !request.getEmail().isEmpty()){
+            if(!request.getEmail().isEmpty()){
                 sb.append("`Companies`.`email` = ?, ");
                 parameters.add(request.getEmail());
             }
@@ -198,8 +227,8 @@ public class CompanyDAO {
             }
             int rowsUpdated = preparedStatement.executeUpdate();
             if(rowsUpdated >0 ){
-                return this.readCompany(ServerClient.CompanyMetaInfo.newBuilder()
-                                .setCompanyID(request.getCompaniesID())
+                return this.readCompany(ServerClient.CompanyFullInfo.newBuilder()
+                                .setCompaniesID(request.getCompaniesID())
                                 .build(),
                         connection);
             }
@@ -211,7 +240,7 @@ public class CompanyDAO {
         }
     }
 
-    public Boolean deleteCompany(ServerClient.CompanyMetaInfo request,Connection connection) throws Exception{
+    public Boolean deleteCompany(ServerClient.CompanyFullInfo request,Connection connection) throws Exception{
         System.out.println("deleteCompany");
 
         StringBuilder sb = new StringBuilder();
@@ -220,9 +249,9 @@ public class CompanyDAO {
         ResultSet resultSet = null;
         try {
             String sql = sb.toString();
-            if(request.getCompanyID() == 0) throw new Exception("Không có CompanyID");
+            if(request.getCompaniesID() == 0) throw new Exception("Không có CompanyID");
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, request.getCompanyID());
+            preparedStatement.setInt(1, request.getCompaniesID());
 
             int rowsAffected = preparedStatement.executeUpdate();
             if(rowsAffected == 1){

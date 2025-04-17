@@ -1,7 +1,7 @@
 package org.DAO;
 
 import org.controller.Converter;
-import org.model.Companies;
+import org.model.Branchs;
 import org.model.Users;
 import proto.ServerClient;
 
@@ -10,81 +10,59 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO {
-    public Users createUser(ServerClient.CandidateFullInfo request, Connection connection) throws Exception {
+    public Users createUser(ServerClient.UserFullInfo request, Connection connection) throws Exception {
         System.out.println("createUser");
 
         StringBuilder sb= new StringBuilder();
-        sb.append("INSERT INTO `Users`(`username`, `password_hashed`, `firstName`, `lastName`, `email`, `googleToken`, `googleTokenExpiration`) VALUES (?, ?, ?, ?, ?, ?, ?);");
+        sb.append("INSERT INTO `Users`(`username`, `password_hashed`, `firstName`, `lastName`, `email`) VALUES (?, ?, ?, ?, ?);");
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         Users users = new Users();
+        System.out.println(request);
         try {
             String sql = sb.toString();
             preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-            if(request.getUser().getUserID() != 0)  return null;
 
-            String username = request.getUser().getUsername();
-            if (username.isEmpty() || username.isEmpty()) {
-                return null;
-            }
+            String username = request.getUsername();
+            if(username.isEmpty())      return null;
             users.setUsername(username);
             preparedStatement.setString(1, username);
 
-            String password = request.getUser().getPassword();
-            if(password.isEmpty() || password.isEmpty()){
-                return  null;
-            }
+            String password = request.getPasswordHashed();
+            if(password.isEmpty())      return  null;
             password = Converter.hashPassword(password);
             users.setPassword_hashed(password);
             preparedStatement.setString(2, password);
 
-            String firstName = request.getUser().getFirstname();
-            if(!firstName.isEmpty() && !firstName.isEmpty()){
+            String firstName = request.getFirstname();
+            if(!firstName.isEmpty()){
                 users.setFirstName(firstName);
                 preparedStatement.setString(3, firstName);
             }
             else {
-                preparedStatement.setString(3, "firstName");
+                preparedStatement.setString(3, "");
             }
 
-            String lastname = request.getUser().getLastname();
-            if(!lastname.isEmpty() && !lastname.isEmpty()){
+            String lastname = request.getLastname();
+            if(!lastname.isEmpty()){
                 users.setLastName(lastname);
                 preparedStatement.setString(4, lastname);
             }
             else {
-                preparedStatement.setString(4, "lastname");
+                preparedStatement.setString(4, "");
             }
 
-            String email = request.getUser().getLastname();
-            if(!email.isEmpty() && !email.isEmpty()){
+            String email = request.getLastname();
+            if(!email.isEmpty()){
                 users.setEmail(email);
                 preparedStatement.setString(5, email);
             }
             else {
-                preparedStatement.setString(5, "email");
+                preparedStatement.setString(5, "");
             }
 
-            String googleToken = request.getUser().getGoogleToken();
-            if(!googleToken.isEmpty() && !googleToken.isEmpty()){
-                users.setGoogleToken(googleToken);
-                preparedStatement.setString(6, googleToken);
-            }else{
-                preparedStatement.setString(6, "googleToken");
-            }
-
-            Timestamp timestamp = Converter.protoToTimeStamp(request.getUser().getGoogleTokenExpiration());
-            if(timestamp.getTime() != 0){
-                users.setGoogleTokenExpiration(timestamp);
-                Date date = new Date(timestamp.getTime());
-                preparedStatement.setDate(7, date);
-            }
-            else {
-                preparedStatement.setDate(7, Date.valueOf("1970-01-01"));
-            }
             int rowsInserted = preparedStatement.executeUpdate();
             if(rowsInserted == 1){
-                System.out.println("1");
                 resultSet = preparedStatement.getGeneratedKeys();
                 Integer userID;
                 if (resultSet.next()) {
@@ -96,8 +74,7 @@ public class UserDAO {
                 throw new Exception("Thêm được nhưng không tìm được Users");
             }
             else {
-                System.out.println("Không thêm được Users");
-                return null;
+                throw new Exception("Không thêm được Users");
             }
         }
         finally {
@@ -106,102 +83,7 @@ public class UserDAO {
         }
     }
 
-    public Users createUser(ServerClient.RecruiterFullInfo request, Connection connection) throws SQLException {
-        System.out.println("createUser");
-
-        StringBuilder sb= new StringBuilder();
-        sb.append("INSERT INTO `Users`(`username`, `password_hashed`, `firstName`, `lastName`, `email`, `googleToken`, `googleTokenExpiration`) VALUES (?, ?, ?, ?, ?, ?, ?);");
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        Users users = new Users();
-        try {
-            String sql = sb.toString();
-            preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-            if(request.getUser().getUserID() != 0)  return null;
-
-            String username = request.getUser().getUsername();
-            if (username.isEmpty() || username.isEmpty()) {
-                return null;
-            }
-            users.setUsername(username);
-            preparedStatement.setString(1, username);
-
-            String password = request.getUser().getPassword();
-            if(password.isEmpty() || password.isEmpty()){
-                return  null;
-            }
-            password = Converter.hashPassword(password);
-            users.setPassword_hashed(password);
-            preparedStatement.setString(2, password);
-
-            String firstName = request.getUser().getFirstname();
-            if(!firstName.isEmpty() && !firstName.isEmpty()){
-                users.setFirstName(firstName);
-                preparedStatement.setString(3, firstName);
-            }
-            else {
-                preparedStatement.setString(3, "firstName");
-            }
-
-            String lastname = request.getUser().getLastname();
-            if(!lastname.isEmpty() && !lastname.isEmpty()){
-                users.setLastName(lastname);
-                preparedStatement.setString(4, lastname);
-            }
-            else {
-                preparedStatement.setString(4, "lastname");
-            }
-
-            String email = request.getUser().getLastname();
-            if(!email.isEmpty() && !email.isEmpty()){
-                users.setEmail(email);
-                preparedStatement.setString(5, email);
-            }
-            else {
-                preparedStatement.setString(5, "email");
-            }
-
-            String googleToken = request.getUser().getGoogleToken();
-            if(!googleToken.isEmpty() && !googleToken.isEmpty()){
-                users.setGoogleToken(googleToken);
-                preparedStatement.setString(6, googleToken);
-            }else{
-                preparedStatement.setString(6, "googleToken");
-            }
-
-            Timestamp timestamp = Converter.protoToTimeStamp(request.getUser().getGoogleTokenExpiration());
-            if(timestamp.getTime() != 0){
-                users.setGoogleTokenExpiration(timestamp);
-                Date date = new Date(timestamp.getTime());
-                preparedStatement.setDate(7, date);
-            }
-            else {
-                preparedStatement.setDate(7, Date.valueOf("1970-01-01"));
-            }
-            int rowsInserted = preparedStatement.executeUpdate();
-            if(rowsInserted == 1){
-                ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
-                Integer userID;
-                if (generatedKeys.next()) {
-                    userID = generatedKeys.getInt(1);
-                    users.setUserID(userID);
-                    System.out.println("Thêm được Users");
-                    return users;
-                }
-                return null;
-            }
-            else {
-                System.out.println("Không thêm được Users");
-                return null;
-            }
-        }
-        finally {
-            if(resultSet != null)   resultSet.close();
-            if(preparedStatement != null)   preparedStatement.close();
-        }
-    }
-
-    public Users readUser(ServerClient.UserMetaInfo request, Connection connection) throws SQLException {
+    public Users readUser(ServerClient.UserFullInfo request, Connection connection) throws Exception {
         System.out.println("readUser");
 
         StringBuilder sb = new StringBuilder();
@@ -214,13 +96,28 @@ public class UserDAO {
             sb.append(" AND `Users`.`userID` = ?");
             parameters.add(request.getUserID());
         }
-        if(!request.getUsername().isEmpty() && !request.getUsername().isEmpty()){
+
+        if(!request.getUsername().isEmpty()){
             sb.append(" AND `Users`.`username` = ?");
             parameters.add(request.getUsername());
         }
-        if(!request.getPassword().isEmpty() && !request.getPassword().isEmpty()){
+
+        if(!request.getPasswordHashed().isEmpty()){
             sb.append(" AND `Users`.`password_hashed` = ?");
-            parameters.add(request.getPassword());
+            parameters.add(request.getPasswordHashed());
+        }
+
+        if(!request.getFirstname().isEmpty()){
+            sb.append(" AND `Users`.`firstName` = ?");
+            parameters.add(request.getFirstname());
+        }
+        if(!request.getLastname().isEmpty()){
+            sb.append(" AND `Users`.`lastName` = ?");
+            parameters.add(request.getLastname());
+        }
+        if(!request.getEmail().isEmpty()){
+            sb.append(" AND `Users`.`email` = ?");
+            parameters.add(request.getLastname());
         }
         try {
             sb.append(";");
@@ -231,6 +128,7 @@ public class UserDAO {
             }
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
+                Users users = new Users();
                 Integer userID = resultSet.getInt("userID");
                 String username = resultSet.getString("username");
                 String password_hashed = resultSet.getString("password_hashed");
@@ -238,16 +136,16 @@ public class UserDAO {
                 String lastName = resultSet.getString("lastName");
                 String email = resultSet.getString("email");
 
-                Users user = new Users(userID,
-                        username,
-                        password_hashed,
-                        firstName,
-                        lastName,
-                        email, request.getIsCandidate());
-                return  user;
+                users.setUserID(userID);
+                users.setUsername(username);
+                users.setPassword_hashed(password_hashed);
+                users.setFirstName(firstName);
+                users.setLastName(lastName);
+                users.setEmail(email);
+                return  users;
             }
             else {
-                return null;
+                throw new Exception("Không tìm thấy");
             }
         }
         finally {
@@ -256,7 +154,7 @@ public class UserDAO {
         }
     }
 
-    public Users updateUser(ServerClient.UserFullInfo request, Connection connection) throws SQLException {
+    public Users updateUser(ServerClient.UserFullInfo request, Connection connection) throws Exception {
         System.out.println("updateUser");
 
         StringBuilder sb = new StringBuilder();
@@ -265,19 +163,22 @@ public class UserDAO {
         ResultSet resultSet = null;
         List<Object> parameters = new ArrayList<>();
         try{
-            if(request.getPassword() != null && !request.getPassword().isEmpty() && !request.getPassword().isEmpty()){
+            if(!request.getPasswordHashed().isEmpty()){
                 sb.append("`Users`.`password_hashed` = ?, ");
-                parameters.add(request.getPassword());
+                parameters.add(request.getPasswordHashed());
             }
-            if(request.getFirstname() != null && !request.getFirstname().isEmpty() && !request.getFirstname().isEmpty()){
+
+            if(!request.getFirstname().isEmpty()){
                 sb.append("`Users`.`firstName` = ?, ");
                 parameters.add(request.getFirstname());
             }
-            if(request.getLastname() != null && !request.getLastname().isEmpty() && !request.getLastname().isEmpty()){
+
+            if(!request.getLastname().isEmpty()){
                 sb.append("`Users`.`lastName` = ?, ");
                 parameters.add(request.getLastname());
             }
-            if(request.getEmail() != null && !request.getEmail().isEmpty() && !request.getEmail().isEmpty()){
+
+            if(!request.getEmail().isEmpty()){
                 sb.append("`Users`.`email` = ?, ");
                 parameters.add(request.getEmail());
             }
@@ -295,7 +196,11 @@ public class UserDAO {
             int rowsUpdated = preparedStatement.executeUpdate();
             if(rowsUpdated >0 ){
                 UserDAO userDAO = new UserDAO();
-                return userDAO.readUser(Converter.userFullToMeta(request), connection);
+                return userDAO.readUser(ServerClient.UserFullInfo
+                                                    .newBuilder()
+                                                    .setUserID(request.getUserID())
+                                                    .build()
+                        , connection);
             }
             throw new RuntimeException("Không update thành công");
         }
@@ -306,7 +211,7 @@ public class UserDAO {
 
     }
 
-    public Boolean deleteUser(ServerClient.UserMetaInfo request, Connection connection) throws SQLException {
+    public Boolean deleteUser(ServerClient.UserFullInfo request, Connection connection) throws Exception {
         System.out.println("deleteUser");
 
         StringBuilder sb = new StringBuilder();
@@ -330,13 +235,13 @@ public class UserDAO {
         }
     }
 
-    public ArrayList<Users> readUserList(Connection connection) throws SQLException {
+    public ArrayList<Users> readUserList(Connection connection) throws Exception {
         System.out.println("readUserList");
 
         String sql = "SELECT * FROM `Users`;";
         ArrayList<Users> usersArrayList = new ArrayList<>();
         PreparedStatement preparedStatement = null;
-        ResultSet resultSet =null;
+        ResultSet resultSet = null;
         try {
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
@@ -372,16 +277,16 @@ public class UserDAO {
         }
     }
 
-    public ArrayList<Integer> readRecruiterList(Companies companies, Connection connection) throws Exception {
+    public ArrayList<Integer> readRecruiterList(Branchs branch, Connection connection) throws Exception {
         System.out.println("readRecruiterList");
 
-        String query = "SELECT userID FROM `Recruiters` WHERE companyID = ?;";
+        String query = "SELECT userID FROM `Recruiters` WHERE branchID = ?;";
         ArrayList<Integer> recruiterIDs = new ArrayList<>();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, companies.getCompaniesID()); // Assuming `Companies` has a `getCompanyID` method
+            preparedStatement.setInt(1, branch.getBranchID()); // Assuming `Companies` has a `getCompanyID` method
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {

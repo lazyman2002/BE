@@ -1,13 +1,14 @@
 package org.DAO;
 
 import org.controller.Converter;
-import org.model.Candidates;
-import org.model.Gender;
 import org.model.Recruiters;
 import org.model.Users;
 import proto.ServerClient;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class RecruiterDAO {
         System.out.println("createRecruiter");
 
         StringBuilder sb= new StringBuilder();
-        sb.append("INSERT INTO `Recruiters`(`userID`, `companyID`, `roleID`, `departmentName`) VALUES (?, ? , ?, ?)");
+        sb.append("INSERT INTO `Recruiters`(`userID`, `branchID`, `roleName`, `roleLevel`, `departmentName`) VALUES (?, ? , ?, ?, ?)");
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         Recruiters recruiters = new Recruiters(users);
@@ -25,19 +26,35 @@ public class RecruiterDAO {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, users.getUserID());
 
-            if(users.getUserID() == 0) throw new Exception("Copany không tồn tại");
-            recruiters.setCompanyID(request.getCompanyID());
-            preparedStatement.setInt(2, request.getCompanyID());
+            if(request.getBranchID() == 0) {
+                preparedStatement.setInt(2, 1);
+            }
+            else {
+                recruiters.setBranchID(request.getBranchID());
+                preparedStatement.setInt(2, request.getBranchID());
+            }
 
-            if(request.getRoleID() == 0) throw  new Exception("Role không tồn tại");
-            recruiters.setRoleID(request.getRoleID());
-            preparedStatement.setInt(3, request.getRoleID());
+            if(!request.getRoleName().isEmpty()){
+                recruiters.setRoleName(request.getRoleName());
+                preparedStatement.setString(3, request.getRoleName());
+            }
+            else preparedStatement.setString(3, "");
+
+
+            if(request.getRoleLevel() == 0){
+                preparedStatement.setInt(4, 999);
+            }
+            else {
+                recruiters.setRoleLevel(request.getRoleLevel());
+                preparedStatement.setInt(4, request.getRoleLevel());
+
+            }
 
             if(!request.getDepartmentName().isEmpty() && !request.getDepartmentName().isEmpty()){
                 recruiters.setDepartmentName(request.getDepartmentName());
-                preparedStatement.setString(4, request.getDepartmentName());
+                preparedStatement.setString(5, request.getDepartmentName());
             }
-            else preparedStatement.setString(4, "");
+            else preparedStatement.setString(5, "");
 
             int rowsInserted = preparedStatement.executeUpdate();
 
@@ -54,7 +71,7 @@ public class RecruiterDAO {
 
     }
 
-    public Recruiters readRecruiter(ServerClient.UserMetaInfo request, Connection connection) throws SQLException {
+    public Recruiters readRecruiter(ServerClient.UserFullInfo request, Connection connection) throws Exception {
         System.out.println("readRecruiter");
 
         StringBuilder sb = new StringBuilder();
@@ -78,13 +95,15 @@ public class RecruiterDAO {
 
             if (resultSet.next()) {
                 if (resultSet.isLast()) {
-                    Integer companyID = resultSet.getInt("companyID");
-                    Integer roleID = resultSet.getInt("roleID");
+                    Integer branchID = resultSet.getInt("branchID");
+                    Integer roleLevel = resultSet.getInt("roleLevel");
+                    String roleName = resultSet.getString("roleName");
                     String departmentName = resultSet.getString("departmentName");
 
-                    recruiters.setCompanyID(companyID);
-                    recruiters.setRoleID(roleID);
+                    recruiters.setBranchID(branchID);
+                    recruiters.setRoleLevel(roleLevel);
                     recruiters.setDepartmentName(departmentName);
+                    recruiters.setRoleName(roleName);
                     return recruiters;
                 } else {
                     throw new IllegalStateException("Query nhiều kết quả");
@@ -98,7 +117,7 @@ public class RecruiterDAO {
         }
     }
 
-    public Recruiters updateRecruiter(ServerClient.RecruiterFullInfo request, Connection connection) throws SQLException {
+    public Recruiters updateRecruiter(ServerClient.RecruiterFullInfo request, Connection connection) throws Exception {
         System.out.println("updateRecruiter");
 
         StringBuilder sb = new StringBuilder();
@@ -107,18 +126,26 @@ public class RecruiterDAO {
         ResultSet resultSet = null;
         List<Object> parameters = new ArrayList<>();
         try {
-            if(request.getCompanyID() != 0){
-                sb.append("`Recruiters`.`companyID` = ?, ");
-                parameters.add(request.getCompanyID());
+            if(request.getBranchID() != 0){
+                sb.append("`Recruiters`.`branchID` = ?, ");
+                parameters.add(request.getBranchID());
             }
-            if(request.getRoleID() != 0){
-                sb.append("`Recruiters`.`roleID` = ?, ");
-                parameters.add(request.getRoleID());
+
+            if(request.getRoleLevel() != 0){
+                sb.append("`Recruiters`.`roleLevel` = ?, ");
+                parameters.add(request.getRoleLevel());
             }
-            if(request.getDepartmentName() != null && !request.getDepartmentName().isEmpty() && !request.getDepartmentName().isEmpty()){
+
+            if(!request.getDepartmentName().isEmpty()){
                 sb.append("`Recruiters`.`departmentName` = ?, ");
                 parameters.add(request.getDepartmentName());
             }
+
+            if(!request.getRoleName().isEmpty()){
+                sb.append("`Recruiters`.`roleName` = ?, ");
+                parameters.add(request.getRoleName());
+            }
+
             sb.setLength(sb.length()-2);
             if(request.getUser().getUserID() != 0){
                 sb.append(" WHERE `Recruiters`.`userID` = ?;");
@@ -136,7 +163,7 @@ public class RecruiterDAO {
             int rowsUpdated = preparedStatement.executeUpdate();
             if(rowsUpdated > 0){
                 RecruiterDAO recruiterDAO = new RecruiterDAO();
-                return recruiterDAO.readRecruiter(Converter.userFullToMeta(request.getUser()), connection);
+                return recruiterDAO.readRecruiter(request.getUser(), connection);
             }
             throw new RuntimeException("Không update thành công");
         }finally {
@@ -145,7 +172,7 @@ public class RecruiterDAO {
         }
     }
 
-    public ArrayList<Recruiters> readRecruiterList(Connection connection) throws SQLException {
+    public ArrayList<Recruiters> readRecruiterList(Connection connection) throws Exception {
         System.out.println("readRecruiterLost");
 
         StringBuilder sb = new StringBuilder();
@@ -159,17 +186,23 @@ public class RecruiterDAO {
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 Integer userID = resultSet.getInt("userID");
-                Recruiters recruiters = new Recruiters(userDAO.readUser(ServerClient.UserMetaInfo.newBuilder().setUserID(userID).build(), connection));
+                Recruiters recruiters = new Recruiters(userDAO.readUser(ServerClient.UserFullInfo
+                                                                            .newBuilder()
+                                                                            .setUserID(userID)
+                                                                            .build()
+                        , connection));
 
-                Integer companyID = resultSet.getInt("companyID");
-                recruiters.setCompanyID(companyID);
+                Integer branchID = resultSet.getInt("branchID");
+                recruiters.setBranchID(branchID);
 
-                Integer roleID = resultSet.getInt("roleID");
-                recruiters.setRoleID(roleID);
+                Integer roleLevel = resultSet.getInt("roleLevel");
+                recruiters.setRoleLevel(roleLevel);
 
                 String departmentName = resultSet.getString("departmentName");
                 recruiters.setDepartmentName(departmentName != null ? departmentName : "");
 
+                String roleName = resultSet.getString("roleName");
+                recruiters.setRoleName(roleName != null ? roleName : "");
                 arrayList.add(recruiters);
             }
             return  arrayList;

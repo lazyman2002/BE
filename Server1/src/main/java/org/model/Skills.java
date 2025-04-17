@@ -4,21 +4,17 @@ import java.util.Objects;
 
 public class Skills {
 	private Integer CVID;
+	private Integer skillID;
 	private String skillName;
 	private Proficiency proficiency;
-	private Integer skillID;
 
 	public Skills() {}
 
-	public Skills(Integer CVID, String skillName, Proficiency proficiency, Integer skillID) {
-		this.CVID = CVID;
-		this.skillName = skillName;
-		this.proficiency = proficiency;
-		this.skillID = skillID;
-	}
-
 	public Integer getCVID() {
 		return CVID;
+	}
+	public Integer getSkillID() {
+		return skillID;
 	}
 	public String getSkillName() {
 		return skillName;
@@ -26,21 +22,18 @@ public class Skills {
 	public Proficiency getProficiency() {
 		return proficiency;
 	}
-	public Integer getSkillID() {
-		return skillID;
-	}
 
 	public void setCVID(Integer CVID) {
 		this.CVID = CVID;
+	}
+	public void setSkillID(Integer skillID) {
+		this.skillID = skillID;
 	}
 	public void setSkillName(String skillName) {
 		this.skillName = skillName;
 	}
 	public void setProficiency(Proficiency proficiency) {
 		this.proficiency = proficiency;
-	}
-	public void setSkillID(Integer skillID) {
-		this.skillID = skillID;
 	}
 
 	@Override

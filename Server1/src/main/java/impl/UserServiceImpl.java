@@ -12,13 +12,12 @@ import org.model.Users;
 import proto.ServerClient;
 import proto.UserServiceGrpc;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
     @Override
     public void candidateCreate(ServerClient.CandidateFullInfo request, StreamObserver<ServerClient.CandidateFullInfo> responseObserver) {
+        System.out.println("candidateCreate");
         try {
             CandidateController candidateController = new CandidateController();
             Candidates candidates = candidateController.candidateCreate(request);
@@ -36,6 +35,7 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
 
     @Override
     public void recruiterCreate(ServerClient.RecruiterFullInfo request, StreamObserver<ServerClient.RecruiterFullInfo> responseObserver) {
+        System.out.println("recruiterCreate");
         try {
             System.out.println(request);
             RecruiterController recruiterController = new RecruiterController();
@@ -53,7 +53,8 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
     }
 
     @Override
-    public void userRead(ServerClient.UserMetaInfo request, StreamObserver<ServerClient.UserFullInfo> responseObserver) {
+    public void userRead(ServerClient.UserFullInfo request, StreamObserver<ServerClient.UserFullInfo> responseObserver) {
+        System.out.println("userRead");
         try {
             UserController userController = new UserController();
             Users users = userController.userRead(request);
@@ -70,7 +71,8 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
     }
 
     @Override
-    public void candidateRead(ServerClient.UserMetaInfo request, StreamObserver<ServerClient.CandidateFullInfo> responseObserver) {
+    public void candidateRead(ServerClient.UserFullInfo request, StreamObserver<ServerClient.CandidateFullInfo> responseObserver) {
+        System.out.println("candidateRead");
         try {
             CandidateController candidateController = new CandidateController();
             Candidates candidates = candidateController.candidateRead(request);
@@ -87,7 +89,8 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
     }
 
     @Override
-    public void recruiterRead(ServerClient.UserMetaInfo request, StreamObserver<ServerClient.RecruiterFullInfo> responseObserver) {
+    public void recruiterRead(ServerClient.UserFullInfo request, StreamObserver<ServerClient.RecruiterFullInfo> responseObserver) {
+        System.out.println("recruiterRead");
         try {
             RecruiterController recruiterController = new RecruiterController();
             Recruiters recruiters = recruiterController.recruiterRead(request);
@@ -105,6 +108,7 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
 
     @Override
     public void userUpdate(ServerClient.UserFullInfo request, StreamObserver<ServerClient.UserFullInfo> responseObserver) {
+        System.out.println("userUpdate");
         try {
             UserController userController = new UserController();
             Users users = userController.userUpdate(request);
@@ -121,6 +125,7 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
 
     @Override
     public void candidateUpdate(ServerClient.CandidateFullInfo request, StreamObserver<ServerClient.CandidateFullInfo> responseObserver) {
+        System.out.println("candidateUpdate");
         try {
             CandidateController candidateController = new CandidateController();
             Candidates candidates = candidateController.candidateUpdate(request);
@@ -138,6 +143,7 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
 
     @Override
     public void recruiterUpdate(ServerClient.RecruiterFullInfo request, StreamObserver<ServerClient.RecruiterFullInfo> responseObserver) {
+        System.out.println("recruiterUpdate");
         try{
             RecruiterController recruiterController = new RecruiterController();
             Recruiters recruiters = recruiterController.recruiterUpdate(request);
@@ -154,7 +160,8 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
     }
 
     @Override
-    public void userDelete(ServerClient.UserMetaInfo request, StreamObserver<BoolValue> responseObserver) {
+    public void userDelete(ServerClient.UserFullInfo request, StreamObserver<BoolValue> responseObserver) {
+        System.out.println("userDelete");
         try {
             UserController userController = new UserController();
             Boolean ans = userController.userDelete(request);
@@ -175,13 +182,14 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
     }
 
     @Override
-    public void userListRead(Empty request, StreamObserver<ServerClient.UserMetaInfo> responseObserver) {
+    public void userListRead(Empty request, StreamObserver<ServerClient.UserFullInfo> responseObserver) {
+        System.out.println("userListRead");
         try {
             UserController userController = new UserController();
             ArrayList<Users> usersArrayList = userController.userList();
             for(Users users : usersArrayList){
                 ServerClient.UserFullInfo userFullInfo = Converter.usersToProto(users);
-                responseObserver.onNext(Converter.userFullToMeta(userFullInfo));
+                responseObserver.onNext(userFullInfo);
             }
             responseObserver.onCompleted();
         }
@@ -195,6 +203,7 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
 
     @Override
     public void recruiterListRead(Empty request, StreamObserver<ServerClient.RecruiterFullInfo> responseObserver) {
+        System.out.println("recruiterListRead");
         try {
             RecruiterController recruiterController = new RecruiterController();
             ArrayList<Recruiters>   recruitersArrayList = recruiterController.recruiterList();
@@ -214,6 +223,7 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
 
     @Override
     public void candidateListRead(Empty request, StreamObserver<ServerClient.CandidateFullInfo> responseObserver) {
+        System.out.println("candidateListRead");
         try {
             CandidateController candidateController = new CandidateController();
             ArrayList<Candidates> candidateArrayList = candidateController.candidateList();

@@ -1,8 +1,9 @@
 package org.controller;
 
-import org.DAO.*;
+import org.DAO.BranchDAO;
+import org.DAO.CVDAO;
+import org.DAO.JobRequestDAO;
 import org.connectConfig.HikariDataSource;
-import org.model.Companies;
 import org.model.JobRequests;
 import proto.ServerClient;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class JobController {
-    public JobRequests jobRequestRead(ServerClient.JobRequestMetaInfo request) throws Exception {
+    public JobRequests jobRequestRead(ServerClient.JobRequestFullInfo request) throws Exception {
         JobRequestDAO jobRequestDAO = new JobRequestDAO();
         Connection connection = null;
         try {
@@ -57,7 +58,7 @@ public class JobController {
         }
     }
 
-    public Boolean jobDelete(ServerClient.JobRequestMetaInfo request) throws Exception {
+    public Boolean jobDelete(ServerClient.JobRequestFullInfo request) throws Exception {
         JobRequestDAO jobRequestDAO = new JobRequestDAO();
         Connection connection = null;
         try {
@@ -87,13 +88,15 @@ public class JobController {
 
     public ArrayList<JobRequests> searchJob(ServerClient.JobRequestRestrict request) throws Exception {
         JobRequestDAO jobRequestDAO = new JobRequestDAO();
-        LocationDAO locationDAO = new LocationDAO();
+        BranchDAO branchDAO = new BranchDAO();
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
-            ArrayList<Integer> searchLocation = locationDAO.searchLocationInJob(request, connection);
+            ArrayList<Integer> searchLocation = branchDAO.searchBranchInJob(request, connection);
             ArrayList<Integer> searchJob = jobRequestDAO.searchJobsInApplies(request, connection);
+            System.out.println(searchJob);
             ArrayList<JobRequests> ans = jobRequestDAO.searchJobsInJobs(request, searchLocation, searchJob, connection);
+            System.out.println(ans);
             return ans;
         }
         finally {

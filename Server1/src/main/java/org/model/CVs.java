@@ -7,30 +7,26 @@ import java.util.concurrent.ConcurrentHashMap;
 public class CVs {
 	private Integer CVID;
 	private Integer candidatesID;
+
+    private String CVname;
+    private String imagePath;
+    private String jobPositions;
+    private String introduce;
+
 	private String email;
 	private String phoneNumber;
-	private String jobTitle;
-    private String imagePath;
-    private String CVname;
+    private String socialMedia;
 
     //	Không có trong CSDL
-	private HashSet<Integer> currentSkills;
+	private HashSet<Integer> currentProjects;
 	private HashSet<Integer> currentPersonalities;
+	private HashSet<Integer> currentSkills;
 	private HashSet<Integer> currentWorkExperiences;
 	private HashSet<Integer> currentEducations;
-	private HashSet<Integer> currentCertifications;
+    private HashSet<Integer> currentCertifications;
+    private HashSet<Integer> currentAwards;
 
     public CVs() {}
-
-    public CVs(Integer CVID, Integer candidatesID, String email, String phoneNumber, String jobTitle, String imagePath, String CVname) {
-        this.CVID = CVID;
-        this.candidatesID = candidatesID;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.jobTitle = jobTitle;
-        this.imagePath = imagePath;
-        this.CVname = CVname;
-    }
 
     public Integer getCVID() {
         return CVID;
@@ -38,20 +34,35 @@ public class CVs {
     public Integer getCandidatesID() {
         return candidatesID;
     }
+    public String getCVname() {
+        return CVname;
+    }
+    public String getImagePath() {
+        return imagePath;
+    }
+    public String getJobPositions() {
+        return jobPositions;
+    }
+    public String getIntroduce() {
+        return introduce;
+    }
     public String getEmail() {
         return email;
     }
     public String getPhoneNumber() {
         return phoneNumber;
     }
-    public String getJobTitle() {
-        return jobTitle;
+    public String getSocialMedia() {
+        return socialMedia;
     }
-    public HashSet<Integer> getCurrentSkills() {
-        return currentSkills;
+    public HashSet<Integer> getCurrentProjects() {
+        return currentProjects;
     }
     public HashSet<Integer> getCurrentPersonalities() {
         return currentPersonalities;
+    }
+    public HashSet<Integer> getCurrentSkills() {
+        return currentSkills;
     }
     public HashSet<Integer> getCurrentWorkExperiences() {
         return currentWorkExperiences;
@@ -62,11 +73,8 @@ public class CVs {
     public HashSet<Integer> getCurrentCertifications() {
         return currentCertifications;
     }
-    public String getImagePath() {
-        return imagePath;
-    }
-    public String getCVname() {
-        return CVname;
+    public HashSet<Integer> getCurrentAwards() {
+        return currentAwards;
     }
 
     public void setCVID(Integer CVID) {
@@ -75,20 +83,35 @@ public class CVs {
     public void setCandidatesID(Integer candidatesID) {
         this.candidatesID = candidatesID;
     }
+    public void setCVname(String CVname) {
+        this.CVname = CVname;
+    }
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+    public void setJobPositions(String jobPositions) {
+        this.jobPositions = jobPositions;
+    }
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
+    }
     public void setEmail(String email) {
         this.email = email;
     }
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
+    public void setSocialMedia(String socialMedia) {
+        this.socialMedia = socialMedia;
     }
-    public void setCurrentSkills(HashSet<Integer> currentSkills) {
-        this.currentSkills = currentSkills;
+    public void setCurrentProjects(HashSet<Integer> currentProjects) {
+        this.currentProjects = currentProjects;
     }
     public void setCurrentPersonalities(HashSet<Integer> currentPersonalities) {
         this.currentPersonalities = currentPersonalities;
+    }
+    public void setCurrentSkills(HashSet<Integer> currentSkills) {
+        this.currentSkills = currentSkills;
     }
     public void setCurrentWorkExperiences(HashSet<Integer> currentWorkExperiences) {
         this.currentWorkExperiences = currentWorkExperiences;
@@ -99,11 +122,8 @@ public class CVs {
     public void setCurrentCertifications(HashSet<Integer> currentCertifications) {
         this.currentCertifications = currentCertifications;
     }
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-    public void setCVname(String CVname) {
-        this.CVname = CVname;
+    public void setCurrentAwards(HashSet<Integer> currentAwards) {
+        this.currentAwards = currentAwards;
     }
 
     @Override
@@ -111,12 +131,12 @@ public class CVs {
         if (this == o) return true;
         if (!(o instanceof CVs)) return false;
         CVs cVs = (CVs) o;
-        return Objects.equals(CVID, cVs.CVID) && Objects.equals(candidatesID, cVs.candidatesID) && Objects.equals(email, cVs.email) && Objects.equals(phoneNumber, cVs.phoneNumber) && Objects.equals(jobTitle, cVs.jobTitle) && Objects.equals(imagePath, cVs.imagePath) && Objects.equals(CVname, cVs.CVname) && Objects.equals(currentSkills, cVs.currentSkills) && Objects.equals(currentPersonalities, cVs.currentPersonalities) && Objects.equals(currentWorkExperiences, cVs.currentWorkExperiences) && Objects.equals(currentEducations, cVs.currentEducations) && Objects.equals(currentCertifications, cVs.currentCertifications);
+        return Objects.equals(CVID, cVs.CVID) && Objects.equals(candidatesID, cVs.candidatesID) && Objects.equals(CVname, cVs.CVname) && Objects.equals(imagePath, cVs.imagePath) && Objects.equals(jobPositions, cVs.jobPositions) && Objects.equals(introduce, cVs.introduce) && Objects.equals(email, cVs.email) && Objects.equals(phoneNumber, cVs.phoneNumber) && Objects.equals(socialMedia, cVs.socialMedia) && Objects.equals(currentProjects, cVs.currentProjects) && Objects.equals(currentPersonalities, cVs.currentPersonalities) && Objects.equals(currentSkills, cVs.currentSkills) && Objects.equals(currentWorkExperiences, cVs.currentWorkExperiences) && Objects.equals(currentEducations, cVs.currentEducations) && Objects.equals(currentCertifications, cVs.currentCertifications) && Objects.equals(currentAwards, cVs.currentAwards);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(CVID, candidatesID, email, phoneNumber, jobTitle, imagePath, CVname, currentSkills, currentPersonalities, currentWorkExperiences, currentEducations, currentCertifications);
+        return Objects.hash(CVID, candidatesID, CVname, imagePath, jobPositions, introduce, email, phoneNumber, socialMedia, currentProjects, currentPersonalities, currentSkills, currentWorkExperiences, currentEducations, currentCertifications, currentAwards);
     }
 
     @Override
@@ -124,16 +144,20 @@ public class CVs {
         final StringBuffer sb = new StringBuffer("CVs{");
         sb.append("CVID=").append(CVID);
         sb.append(", candidatesID=").append(candidatesID);
+        sb.append(", CVname='").append(CVname).append('\'');
+        sb.append(", imagePath='").append(imagePath).append('\'');
+        sb.append(", jobPositions='").append(jobPositions).append('\'');
+        sb.append(", introduce='").append(introduce).append('\'');
         sb.append(", email='").append(email).append('\'');
         sb.append(", phoneNumber='").append(phoneNumber).append('\'');
-        sb.append(", jobTitle='").append(jobTitle).append('\'');
-        sb.append(", imagePath='").append(imagePath).append('\'');
-        sb.append(", CVname='").append(CVname).append('\'');
-        sb.append(", currentSkills=").append(currentSkills);
+        sb.append(", socialMedia='").append(socialMedia).append('\'');
+        sb.append(", currentProjects=").append(currentProjects);
         sb.append(", currentPersonalities=").append(currentPersonalities);
+        sb.append(", currentSkills=").append(currentSkills);
         sb.append(", currentWorkExperiences=").append(currentWorkExperiences);
         sb.append(", currentEducations=").append(currentEducations);
         sb.append(", currentCertifications=").append(currentCertifications);
+        sb.append(", currentAwards=").append(currentAwards);
         sb.append('}');
         return sb.toString();
     }

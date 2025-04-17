@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class EducationDAO {
-    public ArrayList<Educations> readEducationList(ServerClient.CVMetaInfo request, Connection connection) throws Exception {
+    public ArrayList<Educations> readEducationList(ServerClient.CVFullInfo request, Connection connection) throws Exception {
         System.out.println("readEducationList");
 
         String query = "SELECT * FROM `Educations` WHERE `Educations`.`CVID` = ?;";
@@ -36,11 +36,11 @@ public class EducationDAO {
                 String degree = resultSet.getString("degree");
                 education.setDegree(degree != null ? degree : "");
 
-                String fieldOfStudy = resultSet.getString("fieldOfStudy");
-                education.setFieldOfStudy(fieldOfStudy != null ? fieldOfStudy : "");
+                String fieldOfStudy = resultSet.getString("EduFields");
+                education.setEduFields(fieldOfStudy != null ? fieldOfStudy : "");
 
-                String institution = resultSet.getString("institution");
-                education.setInstitution(institution != null ? institution : "");
+                String institution = resultSet.getString("EduDescription");
+                education.setEduDescription(institution != null ? institution : "");
 
                 Date startDate = resultSet.getDate("startDate");
                 education.setStartDate(startDate);
@@ -72,31 +72,29 @@ public class EducationDAO {
             resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-
+                Educations educations = new Educations();
+                educations.setEducationID(request.getEducationID());
                 Integer CVID = resultSet.getInt("CVID");
                 if (CVID <= 0) throw new Exception("Invalid CVID returned");
+                educations.setCVID(CVID);
 
                 String degree = resultSet.getString("degree");
                 degree = (degree != null) ? degree : "";
+                educations.setDegree(degree);
 
-                String fieldOfStudy = resultSet.getString("fieldOfStudy");
-                fieldOfStudy = (fieldOfStudy != null) ? fieldOfStudy : "";
+                String EduFields = resultSet.getString("EduFields");
+                EduFields = (EduFields != null) ? EduFields : "";
+                educations.setEduFields(EduFields);
 
-                String institution = resultSet.getString("institution");
-                institution = (institution != null) ? institution : "";
+                String EduDescription = resultSet.getString("EduDescription");
+                EduDescription = (EduDescription != null) ? EduDescription : "";
+                educations.setEduDescription(EduDescription);
 
                 Date startDate = resultSet.getDate("startDate");
                 Date endDate = resultSet.getDate("endDate");
-
-                return new Educations(
-                        CVID,
-                        degree,
-                        fieldOfStudy,
-                        institution,
-                        startDate,
-                        endDate,
-                        request.getEducationID()
-                );
+                educations.setStartDate(startDate);
+                educations.setEndDate(endDate);
+                return educations;
             } else {
                 throw new Exception("Education not found");
             }
@@ -110,7 +108,7 @@ public class EducationDAO {
         System.out.println("registerEducation");
 
         StringBuilder sb = new StringBuilder();
-        sb.append("INSERT INTO `Educations`(`CVID`, `degree`, `fieldOfStudy`, `institution`, `startDate`, `endDate`) VALUES (?, ?, ?, ?, ?, ?);");
+        sb.append("INSERT INTO `Educations`(`CVID`, `degree`, `EduFields`, `EduDescription`, `startDate`, `endDate`) VALUES (?, ?, ?, ?, ?, ?);");
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
@@ -122,18 +120,18 @@ public class EducationDAO {
             }
 
             String degree = request.getDegree();
-            if (degree == null || degree.isEmpty()) {
+            if (degree.isEmpty()) {
                 throw new Exception("Degree không được để trống");
             }
 
-            String fieldOfStudy = request.getField();
-            if (fieldOfStudy == null || fieldOfStudy.isEmpty()) {
+            String fieldOfStudy = request.getEduFields();
+            if (fieldOfStudy.isEmpty()) {
                 throw new Exception("Field of study không được để trống");
             }
 
-            String institution = request.getInstitution();
-            if (institution == null || institution.isEmpty()) {
-                throw new Exception("Institution không được để trống");
+            String institution = request.getEduDescription();
+            if (institution.isEmpty()) {
+                throw new Exception("EduDescription không được để trống");
             }
 
             com.google.protobuf.Timestamp startTimestamp = request.getStartDate();
@@ -142,8 +140,8 @@ public class EducationDAO {
                 throw new Exception("StartDate hoặc EndDate không hợp lệ");
             }
 
-            java.sql.Date startDate = new java.sql.Date(startTimestamp.getSeconds() * 1000);
-            java.sql.Date endDate = new java.sql.Date(endTimestamp.getSeconds() * 1000);
+            Date startDate = new Date(startTimestamp.getSeconds() * 1000);
+            Date endDate = new Date(endTimestamp.getSeconds() * 1000);
 
             preparedStatement.setInt(1, request.getCVID());
             preparedStatement.setString(2, degree);
@@ -183,29 +181,29 @@ public class EducationDAO {
         ResultSet resultSet = null;
         List<Object> parameters = new ArrayList<>();
         try {
-            if (request.getDegree() != null && !request.getDegree().isEmpty() && !request.getDegree().isEmpty()) {
+            if (!request.getDegree().isEmpty()) {
                 sb.append("`Educations`.`degree` = ?, ");
                 parameters.add(request.getDegree());
             }
 
-            if (request.getField() != null && !request.getField().isEmpty() && !request.getField().isEmpty()) {
-                sb.append("`Educations`.`fieldOfStudy` = ?, ");
-                parameters.add(request.getField());
+            if (!request.getEduFields().isEmpty()) {
+                sb.append("`Educations`.`EduFields` = ?, ");
+                parameters.add(request.getEduFields());
             }
 
-            if (request.getInstitution() != null && !request.getInstitution().isEmpty() && !request.getInstitution().isEmpty()) {
-                sb.append("`Educations`.`institution` = ?, ");
-                parameters.add(request.getInstitution());
+            if (!request.getEduDescription().isEmpty()) {
+                sb.append("`Educations`.`EduDescription` = ?, ");
+                parameters.add(request.getEduDescription());
             }
 
             if (request.hasStartDate()) {
-                java.sql.Date startDate = new java.sql.Date(request.getStartDate().getSeconds() * 1000);
+                Date startDate = new Date(request.getStartDate().getSeconds() * 1000);
                 sb.append("`Educations`.`startDate` = ?, ");
                 parameters.add(startDate);
             }
 
             if (request.hasEndDate()) {
-                java.sql.Date endDate = new java.sql.Date(request.getEndDate().getSeconds() * 1000);
+                Date endDate = new Date(request.getEndDate().getSeconds() * 1000);
                 sb.append("`Educations`.`endDate` = ?, ");
                 parameters.add(endDate);
             }

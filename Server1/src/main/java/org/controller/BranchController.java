@@ -1,38 +1,44 @@
 package org.controller;
 
 import org.DAO.JobRequestDAO;
-import org.DAO.LocationDAO;
+import org.DAO.BranchDAO;
+import org.DAO.UserDAO;
 import org.connectConfig.HikariDataSource;
-import org.model.JobRequests;
+import org.model.Branchs;
 import org.model.Locations;
 import proto.ServerClient;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class LocationController {
-    public ArrayList<Locations> locationList() throws Exception {
-        LocationDAO locationDAO = new LocationDAO();
+public class BranchController {
+    public ArrayList<Branchs> branchList() throws Exception {
+        BranchDAO BranchDAO = new BranchDAO();
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
-            return locationDAO.readLocationList(connection);
+            return BranchDAO.readBranchList(connection);
         } finally {
             if (connection != null) connection.close();
         }
     }
 
-    public Locations locationRead(ServerClient.LocationMetaInfo request) throws Exception {
-        LocationDAO locationDAO = new LocationDAO();
+    public Branchs branchRead(ServerClient.BranchFullInfo request) throws Exception {
+        BranchDAO BranchDAO = new BranchDAO();
+        UserDAO userDAO = new UserDAO();
+        JobRequestDAO jobRequestDAO = new JobRequestDAO();
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
             connection.setAutoCommit(false);
-            Locations locations = locationDAO.readLocation(request, connection);
-            JobRequestDAO jobRequestDAO = new JobRequestDAO();
-            ConcurrentHashMap<Integer, Boolean> map = jobRequestDAO.readJobRequestIDs(locations, connection);
-            locations.setCurrentJobRequest(map);
+            Branchs locations = BranchDAO.readBranch(request, connection);
+            ArrayList<Integer> map = jobRequestDAO.readJobRequestIDs(locations, connection);
+            locations.setActiveJobs(new HashSet<>(map));
+
+            ArrayList<Integer> recruiterList = userDAO.readRecruiterList(locations, connection);
+            locations.setActiveRecruiters(new HashSet<>(recruiterList));
             connection.commit();
             return locations;
         } finally {
@@ -40,13 +46,13 @@ public class LocationController {
         }
     }
 
-    public Locations locationUpdate(ServerClient.LocationFullInfo request) throws Exception {
-        LocationDAO locationDAO = new LocationDAO();
+    public Branchs branchUpdate(ServerClient.BranchFullInfo request) throws Exception {
+        BranchDAO branchDAO = new BranchDAO();
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
             connection.setAutoCommit(false);
-            Locations locations = locationDAO.updateLocation(request, connection);
+            Branchs locations = branchDAO.updateBranch(request, connection);
             connection.commit();
             return locations;
         } finally {
@@ -54,13 +60,13 @@ public class LocationController {
         }
     }
 
-    public Locations locationRegister(ServerClient.LocationFullInfo request) throws Exception {
-        LocationDAO locationDAO = new LocationDAO();
+    public Branchs branchRegister(ServerClient.BranchFullInfo request) throws Exception {
+        BranchDAO BranchDAO = new BranchDAO();
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
             connection.setAutoCommit(false);
-            Locations locations = locationDAO.registerLocation(request, connection);
+            Branchs locations = BranchDAO.registerBranch(request, connection);
             connection.commit();
             return locations;
         } finally {
@@ -68,13 +74,13 @@ public class LocationController {
         }
     }
 
-    public Boolean locationDelete(ServerClient.LocationMetaInfo request) throws Exception {
-        LocationDAO locationDAO = new LocationDAO();
+    public Boolean branchDelete(ServerClient.BranchFullInfo request) throws Exception {
+        BranchDAO BranchDAO = new BranchDAO();
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
             connection.setAutoCommit(false);
-            if (locationDAO.deleteLocation(request, connection)) {
+            if (BranchDAO.deleteBranch(request, connection)) {
                 connection.commit();
                 return true;
             }

@@ -77,27 +77,27 @@ public final class CertificationServiceGrpc {
     return getCertificationReadMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo,
       proto.ServerClient.CertificationFullInfo> getCertificationListReadMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "CertificationListRead",
-      requestType = proto.ServerClient.CVMetaInfo.class,
+      requestType = proto.ServerClient.CVFullInfo.class,
       responseType = proto.ServerClient.CertificationFullInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo,
       proto.ServerClient.CertificationFullInfo> getCertificationListReadMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo, proto.ServerClient.CertificationFullInfo> getCertificationListReadMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo, proto.ServerClient.CertificationFullInfo> getCertificationListReadMethod;
     if ((getCertificationListReadMethod = CertificationServiceGrpc.getCertificationListReadMethod) == null) {
       synchronized (CertificationServiceGrpc.class) {
         if ((getCertificationListReadMethod = CertificationServiceGrpc.getCertificationListReadMethod) == null) {
           CertificationServiceGrpc.getCertificationListReadMethod = getCertificationListReadMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.CVMetaInfo, proto.ServerClient.CertificationFullInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.CVFullInfo, proto.ServerClient.CertificationFullInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CertificationListRead"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.CVMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.CVFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.CertificationFullInfo.getDefaultInstance()))
               .setSchemaDescriptor(new CertificationServiceMethodDescriptorSupplier("CertificationListRead"))
@@ -234,7 +234,7 @@ public final class CertificationServiceGrpc {
 
     /**
      */
-    public void certificationListRead(proto.ServerClient.CVMetaInfo request,
+    public void certificationListRead(proto.ServerClient.CVFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.CertificationFullInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCertificationListReadMethod(), responseObserver);
     }
@@ -273,7 +273,7 @@ public final class CertificationServiceGrpc {
             getCertificationListReadMethod(),
             io.grpc.stub.ServerCalls.asyncServerStreamingCall(
               new MethodHandlers<
-                proto.ServerClient.CVMetaInfo,
+                proto.ServerClient.CVFullInfo,
                 proto.ServerClient.CertificationFullInfo>(
                   this, METHODID_CERTIFICATION_LIST_READ)))
           .addMethod(
@@ -326,7 +326,7 @@ public final class CertificationServiceGrpc {
 
     /**
      */
-    public void certificationListRead(proto.ServerClient.CVMetaInfo request,
+    public void certificationListRead(proto.ServerClient.CVFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.CertificationFullInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getCertificationListReadMethod(), getCallOptions()), request, responseObserver);
@@ -380,7 +380,7 @@ public final class CertificationServiceGrpc {
     /**
      */
     public java.util.Iterator<proto.ServerClient.CertificationFullInfo> certificationListRead(
-        proto.ServerClient.CVMetaInfo request) {
+        proto.ServerClient.CVFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getCertificationListReadMethod(), getCallOptions(), request);
     }
@@ -479,7 +479,7 @@ public final class CertificationServiceGrpc {
               (io.grpc.stub.StreamObserver<proto.ServerClient.CertificationFullInfo>) responseObserver);
           break;
         case METHODID_CERTIFICATION_LIST_READ:
-          serviceImpl.certificationListRead((proto.ServerClient.CVMetaInfo) request,
+          serviceImpl.certificationListRead((proto.ServerClient.CVFullInfo) request,
               (io.grpc.stub.StreamObserver<proto.ServerClient.CertificationFullInfo>) responseObserver);
           break;
         case METHODID_CERTIFICATION_UPDATE_INFO:

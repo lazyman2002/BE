@@ -77,27 +77,27 @@ public final class PersonalityServiceGrpc {
     return getPersonalityReadMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo,
       proto.ServerClient.PersonalityFullInfo> getPersonalityListReadMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "PersonalityListRead",
-      requestType = proto.ServerClient.CVMetaInfo.class,
+      requestType = proto.ServerClient.CVFullInfo.class,
       responseType = proto.ServerClient.PersonalityFullInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo,
       proto.ServerClient.PersonalityFullInfo> getPersonalityListReadMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo, proto.ServerClient.PersonalityFullInfo> getPersonalityListReadMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo, proto.ServerClient.PersonalityFullInfo> getPersonalityListReadMethod;
     if ((getPersonalityListReadMethod = PersonalityServiceGrpc.getPersonalityListReadMethod) == null) {
       synchronized (PersonalityServiceGrpc.class) {
         if ((getPersonalityListReadMethod = PersonalityServiceGrpc.getPersonalityListReadMethod) == null) {
           PersonalityServiceGrpc.getPersonalityListReadMethod = getPersonalityListReadMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.CVMetaInfo, proto.ServerClient.PersonalityFullInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.CVFullInfo, proto.ServerClient.PersonalityFullInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "PersonalityListRead"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.CVMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.CVFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.PersonalityFullInfo.getDefaultInstance()))
               .setSchemaDescriptor(new PersonalityServiceMethodDescriptorSupplier("PersonalityListRead"))
@@ -234,7 +234,7 @@ public final class PersonalityServiceGrpc {
 
     /**
      */
-    public void personalityListRead(proto.ServerClient.CVMetaInfo request,
+    public void personalityListRead(proto.ServerClient.CVFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.PersonalityFullInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getPersonalityListReadMethod(), responseObserver);
     }
@@ -273,7 +273,7 @@ public final class PersonalityServiceGrpc {
             getPersonalityListReadMethod(),
             io.grpc.stub.ServerCalls.asyncServerStreamingCall(
               new MethodHandlers<
-                proto.ServerClient.CVMetaInfo,
+                proto.ServerClient.CVFullInfo,
                 proto.ServerClient.PersonalityFullInfo>(
                   this, METHODID_PERSONALITY_LIST_READ)))
           .addMethod(
@@ -326,7 +326,7 @@ public final class PersonalityServiceGrpc {
 
     /**
      */
-    public void personalityListRead(proto.ServerClient.CVMetaInfo request,
+    public void personalityListRead(proto.ServerClient.CVFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.PersonalityFullInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getPersonalityListReadMethod(), getCallOptions()), request, responseObserver);
@@ -380,7 +380,7 @@ public final class PersonalityServiceGrpc {
     /**
      */
     public java.util.Iterator<proto.ServerClient.PersonalityFullInfo> personalityListRead(
-        proto.ServerClient.CVMetaInfo request) {
+        proto.ServerClient.CVFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getPersonalityListReadMethod(), getCallOptions(), request);
     }
@@ -479,7 +479,7 @@ public final class PersonalityServiceGrpc {
               (io.grpc.stub.StreamObserver<proto.ServerClient.PersonalityFullInfo>) responseObserver);
           break;
         case METHODID_PERSONALITY_LIST_READ:
-          serviceImpl.personalityListRead((proto.ServerClient.CVMetaInfo) request,
+          serviceImpl.personalityListRead((proto.ServerClient.CVFullInfo) request,
               (io.grpc.stub.StreamObserver<proto.ServerClient.PersonalityFullInfo>) responseObserver);
           break;
         case METHODID_PERSONALITY_UPDATE_INFO:

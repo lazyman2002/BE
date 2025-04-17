@@ -46,27 +46,27 @@ public final class WishListServiceGrpc {
     return getWishListCreateMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo,
       proto.ServerClient.WishListFullInfo> getWishListReadMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "WishListRead",
-      requestType = proto.ServerClient.UserMetaInfo.class,
+      requestType = proto.ServerClient.UserFullInfo.class,
       responseType = proto.ServerClient.WishListFullInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo,
       proto.ServerClient.WishListFullInfo> getWishListReadMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo, proto.ServerClient.WishListFullInfo> getWishListReadMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo, proto.ServerClient.WishListFullInfo> getWishListReadMethod;
     if ((getWishListReadMethod = WishListServiceGrpc.getWishListReadMethod) == null) {
       synchronized (WishListServiceGrpc.class) {
         if ((getWishListReadMethod = WishListServiceGrpc.getWishListReadMethod) == null) {
           WishListServiceGrpc.getWishListReadMethod = getWishListReadMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.UserMetaInfo, proto.ServerClient.WishListFullInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.UserFullInfo, proto.ServerClient.WishListFullInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "WishListRead"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.UserMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.UserFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.WishListFullInfo.getDefaultInstance()))
               .setSchemaDescriptor(new WishListServiceMethodDescriptorSupplier("WishListRead"))
@@ -108,27 +108,27 @@ public final class WishListServiceGrpc {
     return getWishListUpdateInfoMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo,
       com.google.protobuf.BoolValue> getWishListDeleteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "WishListDelete",
-      requestType = proto.ServerClient.UserMetaInfo.class,
+      requestType = proto.ServerClient.UserFullInfo.class,
       responseType = com.google.protobuf.BoolValue.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo,
       com.google.protobuf.BoolValue> getWishListDeleteMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo, com.google.protobuf.BoolValue> getWishListDeleteMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo, com.google.protobuf.BoolValue> getWishListDeleteMethod;
     if ((getWishListDeleteMethod = WishListServiceGrpc.getWishListDeleteMethod) == null) {
       synchronized (WishListServiceGrpc.class) {
         if ((getWishListDeleteMethod = WishListServiceGrpc.getWishListDeleteMethod) == null) {
           WishListServiceGrpc.getWishListDeleteMethod = getWishListDeleteMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.UserMetaInfo, com.google.protobuf.BoolValue>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.UserFullInfo, com.google.protobuf.BoolValue>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "WishListDelete"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.UserMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.UserFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.google.protobuf.BoolValue.getDefaultInstance()))
               .setSchemaDescriptor(new WishListServiceMethodDescriptorSupplier("WishListDelete"))
@@ -196,7 +196,7 @@ public final class WishListServiceGrpc {
 
     /**
      */
-    public void wishListRead(proto.ServerClient.UserMetaInfo request,
+    public void wishListRead(proto.ServerClient.UserFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.WishListFullInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getWishListReadMethod(), responseObserver);
     }
@@ -210,7 +210,7 @@ public final class WishListServiceGrpc {
 
     /**
      */
-    public void wishListDelete(proto.ServerClient.UserMetaInfo request,
+    public void wishListDelete(proto.ServerClient.UserFullInfo request,
         io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getWishListDeleteMethod(), responseObserver);
     }
@@ -228,7 +228,7 @@ public final class WishListServiceGrpc {
             getWishListReadMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                proto.ServerClient.UserMetaInfo,
+                proto.ServerClient.UserFullInfo,
                 proto.ServerClient.WishListFullInfo>(
                   this, METHODID_WISH_LIST_READ)))
           .addMethod(
@@ -242,7 +242,7 @@ public final class WishListServiceGrpc {
             getWishListDeleteMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                proto.ServerClient.UserMetaInfo,
+                proto.ServerClient.UserFullInfo,
                 com.google.protobuf.BoolValue>(
                   this, METHODID_WISH_LIST_DELETE)))
           .build();
@@ -273,7 +273,7 @@ public final class WishListServiceGrpc {
 
     /**
      */
-    public void wishListRead(proto.ServerClient.UserMetaInfo request,
+    public void wishListRead(proto.ServerClient.UserFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.WishListFullInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getWishListReadMethod(), getCallOptions()), request, responseObserver);
@@ -289,7 +289,7 @@ public final class WishListServiceGrpc {
 
     /**
      */
-    public void wishListDelete(proto.ServerClient.UserMetaInfo request,
+    public void wishListDelete(proto.ServerClient.UserFullInfo request,
         io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getWishListDeleteMethod(), getCallOptions()), request, responseObserver);
@@ -319,7 +319,7 @@ public final class WishListServiceGrpc {
 
     /**
      */
-    public proto.ServerClient.WishListFullInfo wishListRead(proto.ServerClient.UserMetaInfo request) {
+    public proto.ServerClient.WishListFullInfo wishListRead(proto.ServerClient.UserFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getWishListReadMethod(), getCallOptions(), request);
     }
@@ -333,7 +333,7 @@ public final class WishListServiceGrpc {
 
     /**
      */
-    public com.google.protobuf.BoolValue wishListDelete(proto.ServerClient.UserMetaInfo request) {
+    public com.google.protobuf.BoolValue wishListDelete(proto.ServerClient.UserFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getWishListDeleteMethod(), getCallOptions(), request);
     }
@@ -364,7 +364,7 @@ public final class WishListServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<proto.ServerClient.WishListFullInfo> wishListRead(
-        proto.ServerClient.UserMetaInfo request) {
+        proto.ServerClient.UserFullInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getWishListReadMethod(), getCallOptions()), request);
     }
@@ -380,7 +380,7 @@ public final class WishListServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> wishListDelete(
-        proto.ServerClient.UserMetaInfo request) {
+        proto.ServerClient.UserFullInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getWishListDeleteMethod(), getCallOptions()), request);
     }
@@ -413,7 +413,7 @@ public final class WishListServiceGrpc {
               (io.grpc.stub.StreamObserver<proto.ServerClient.WishListFullInfo>) responseObserver);
           break;
         case METHODID_WISH_LIST_READ:
-          serviceImpl.wishListRead((proto.ServerClient.UserMetaInfo) request,
+          serviceImpl.wishListRead((proto.ServerClient.UserFullInfo) request,
               (io.grpc.stub.StreamObserver<proto.ServerClient.WishListFullInfo>) responseObserver);
           break;
         case METHODID_WISH_LIST_UPDATE_INFO:
@@ -421,7 +421,7 @@ public final class WishListServiceGrpc {
               (io.grpc.stub.StreamObserver<proto.ServerClient.WishListFullInfo>) responseObserver);
           break;
         case METHODID_WISH_LIST_DELETE:
-          serviceImpl.wishListDelete((proto.ServerClient.UserMetaInfo) request,
+          serviceImpl.wishListDelete((proto.ServerClient.UserFullInfo) request,
               (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         default:

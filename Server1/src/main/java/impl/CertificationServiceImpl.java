@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class CertificationServiceImpl extends CertificationServiceGrpc.CertificationServiceImplBase {
     @Override
-    public void certificationListRead(ServerClient.CVMetaInfo request, StreamObserver<ServerClient.CertificationFullInfo> responseObserver) {
+    public void certificationListRead(ServerClient.CVFullInfo request, StreamObserver<ServerClient.CertificationFullInfo> responseObserver) {
         System.out.println("certificationListRead");
 
         CertificationController certificationController = new CertificationController();

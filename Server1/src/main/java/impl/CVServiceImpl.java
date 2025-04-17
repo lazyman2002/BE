@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class CVServiceImpl extends CVServiceGrpc.CVServiceImplBase {
     @Override
-    public void cVListRead(ServerClient.UserMetaInfo request, StreamObserver<ServerClient.CVFullInfo> responseObserver) {
+    public void cVListRead(ServerClient.UserFullInfo request, StreamObserver<ServerClient.CVFullInfo> responseObserver) {
         System.out.println("cvListRead");
 
         CVController cvController = new CVController();
@@ -35,7 +35,7 @@ public class CVServiceImpl extends CVServiceGrpc.CVServiceImplBase {
     }
 
     @Override
-    public void cVRead(ServerClient.CVMetaInfo request, StreamObserver<ServerClient.CVFullInfo> responseObserver) {
+    public void cVRead(ServerClient.CVFullInfo request, StreamObserver<ServerClient.CVFullInfo> responseObserver) {
         System.out.println("cvReadInfo");
 
         try {
@@ -88,7 +88,7 @@ public class CVServiceImpl extends CVServiceGrpc.CVServiceImplBase {
     }
 
     @Override
-    public void cVDelete(ServerClient.CVMetaInfo request, StreamObserver<BoolValue> responseObserver) {
+    public void cVDelete(ServerClient.CVFullInfo request, StreamObserver<BoolValue> responseObserver) {
         System.out.println("cvDeleteInfo");
 
         try {

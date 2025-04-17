@@ -14,20 +14,21 @@ public class Main {
         System.out.println("start Server");
         Server server = ServerBuilder.forPort(ENVDockers.gRPC_port)
                 .addService(new UserServiceImpl())
+                .addService(new BranchServiceImpl())
                 .addService(new CompanyServiceImpl())
-                .addService(new RoleServiceImpl())
                 .addService(new JobRequestServiceImpl())
-                .addService(new LocationServiceImpl())
-
+//
                 .addService(new CertificationServiceImpl())
                 .addService(new EducationServiceImpl())
                 .addService(new PersonalityServiceImpl())
                 .addService(new SkillServiceImpl())
                 .addService(new WorkExperienceServiceImpl())
-                .addService(new CVServiceImpl())
+                .addService(new ProjectServiceImpl())
+                .addService(new AwardServiceImpl())
                 .addService(new SearchServiceImpl())
+                .addService(new CVServiceImpl())
+//                .addService(new WishListImpl())
                 .addService(ProtoReflectionService.newInstance())
-                .addService(new WishListImpl())
                 .build();
         server.start();
         server.awaitTermination();

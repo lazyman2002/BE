@@ -4,7 +4,6 @@ import org.model.Personalities;
 import proto.ServerClient;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class PersonalityDAO {
-    public ArrayList<Personalities> readPersonalityList(ServerClient.CVMetaInfo request, Connection connection) throws Exception {
+    public ArrayList<Personalities> readPersonalityList(ServerClient.CVFullInfo request, Connection connection) throws Exception {
         System.out.println("readPersonalityList");
 
         String query = "SELECT * FROM `Personalities` WHERE `Personalities`.`CVID` = ?;";
@@ -33,8 +32,8 @@ public class PersonalityDAO {
                 if(personalityID <= 0) throw new Exception("PersonalityID is invalid");
                 personality.setPersonalityID(personalityID);
 
-                String personalityTitle = resultSet.getString("personalityTitle");
-                personality.setPersonalityTitle(personalityTitle != null ? personalityTitle : "");
+                String personalityTitle = resultSet.getString("personalityName");
+                personality.setPersonalityName(personalityTitle != null ? personalityTitle : "");
 
                 String detail = resultSet.getString("detail");
                 personality.setDetail(detail != null ? detail : "");
@@ -63,22 +62,22 @@ public class PersonalityDAO {
             resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
+                Personalities personalities = new Personalities();
+                personalities.setPersonalityID(request.getPersonalityID());
 
                 Integer CVID = resultSet.getInt("CVID");
                 if (CVID <= 0) throw new Exception("Kết quả trả về không hợp lệ");
+                personalities.setCVID(CVID);
 
-                String personalityTitle = resultSet.getString("personalityTitle");
+                String personalityTitle = resultSet.getString("personalityName");
                 personalityTitle = (personalityTitle != null) ? personalityTitle : "";
+                personalities.setPersonalityName(personalityTitle);
 
                 String detail = resultSet.getString("detail");
                 detail = (detail != null) ? detail : "";
+                personalities.setDetail(detail);
 
-                return new Personalities(
-                        CVID,
-                        personalityTitle,
-                        detail,
-                        resultSet.getInt("personalityID")
-                );
+                return personalities;
             } else {
                 throw new Exception("Personality not found");
             }
@@ -92,7 +91,7 @@ public class PersonalityDAO {
         System.out.println("registerPersonality");
 
         StringBuilder sb = new StringBuilder();
-        sb.append("INSERT INTO `Personalities`(`CVID`, `personalityTitle`, `detail`) VALUES (?, ?, ?);");
+        sb.append("INSERT INTO `Personalities`(`CVID`, `personalityName`, `detail`) VALUES (?, ?, ?);");
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
@@ -103,13 +102,13 @@ public class PersonalityDAO {
                 throw new Exception("CVID không hợp lệ");
             }
 
-            String personalityTitle = request.getPersonalityTitle();
-            if (personalityTitle == null || personalityTitle.isEmpty() || personalityTitle.isEmpty()) {
+            String personalityTitle = request.getPersonalityName();
+            if (personalityTitle.isEmpty()) {
                 throw new Exception("Tiêu đề tính cách không được để trống");
             }
 
-            String detail = request.getDescription();
-            if (detail == null || detail.isEmpty() || detail.isEmpty()) {
+            String detail = request.getDetail();
+            if (detail.isEmpty()) {
                 throw new Exception("Chi tiết tính cách không được để trống");
             }
 
@@ -149,14 +148,14 @@ public class PersonalityDAO {
         List<Object> parameters = new ArrayList<>();
         try {
             // Check and append fields for update
-            if (request.getPersonalityTitle() != null && !request.getPersonalityTitle().isEmpty() && !request.getPersonalityTitle().isEmpty()) {
-                sb.append("`Personalities`.`personalityTitle` = ?, ");
-                parameters.add(request.getPersonalityTitle());
+            if (!request.getPersonalityName().isEmpty()) {
+                sb.append("`Personalities`.`personalityName` = ?, ");
+                parameters.add(request.getPersonalityName());
             }
 
-            if (request.getDescription() != null && !request.getDescription().isEmpty() && !request.getDescription().isEmpty()) {
+            if (!request.getDetail().isEmpty()) {
                 sb.append("`Personalities`.`detail` = ?, ");
-                parameters.add(request.getDescription());
+                parameters.add(request.getDetail());
             }
 
             if (request.getCVID() != 0) {

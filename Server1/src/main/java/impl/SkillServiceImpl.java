@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class SkillServiceImpl extends SkillServiceGrpc.SkillServiceImplBase {
     @Override
-    public void skillListRead(ServerClient.CVMetaInfo request, StreamObserver<ServerClient.SkillFullInfo> responseObserver) {
+    public void skillListRead(ServerClient.CVFullInfo request, StreamObserver<ServerClient.SkillFullInfo> responseObserver) {
         System.out.println("skillListRead");
 
         SkillController skillController = new SkillController();

@@ -6,52 +6,41 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Companies {
-	private Integer  companiesID;
+	private Integer companiesID;
 	private String companyName;
-	private String companyAvatarURL;
+	private String imagePath;
+	private String specialty;
+	private String size;
+	private String introduction;
+	private String address;
 	private String website;
 	private String email;
-	private String imagePath;
 
 //	Ngoài CSDL
-	private HashSet<Integer> activeRecruiters;
-	private HashSet<Integer> activeLocations;
-
-	public Companies(Integer companiesID, String companyName, String companyAvatarURL, String website, String email) {
-		this.companiesID = companiesID;
-		this.companyName = companyName;
-		this.companyAvatarURL = companyAvatarURL;
-		this.website = website;
-		this.email = email;
-	}
+	private HashSet<Integer> activeBranchs;
 
 	public Companies() {}
 
-	public Companies(HashSet<Integer> activeRecruiters, HashSet<Integer> activeLocations) {
-		this.activeRecruiters = activeRecruiters;
-		this.activeLocations = activeLocations;
-	}
-
-	public Companies(String companyName,
-					 String companyAvatarURL,
-					 String website,
-					 String email) {
-		this.companyName = companyName;
-		this.companyAvatarURL = companyAvatarURL;
-		this.website = website;
-		this.email = email;
-		this.activeRecruiters = new HashSet<>();
-		this.activeLocations = new HashSet<>();
-	}
-
-	public Integer  getCompaniesID() {
+	public Integer getCompaniesID() {
 		return companiesID;
 	}
 	public String getCompanyName() {
 		return companyName;
 	}
-	public String getCompanyAvatarURL() {
-		return companyAvatarURL;
+	public String getImagePath() {
+		return imagePath;
+	}
+	public String getSpecialty() {
+		return specialty;
+	}
+	public String getSize() {
+		return size;
+	}
+	public String getIntroduction() {
+		return introduction;
+	}
+	public String getAddress() {
+		return address;
 	}
 	public String getWebsite() {
 		return website;
@@ -59,24 +48,30 @@ public class Companies {
 	public String getEmail() {
 		return email;
 	}
-	public Set<Integer> getActiveRecruiters() {
-		return activeRecruiters;
-	}
-	public Set<Integer> getActiveLocations() {
-		return activeLocations;
-	}
-	public String getImagePath() {
-		return imagePath;
+	public HashSet<Integer> getActiveBranchs() {
+		return activeBranchs;
 	}
 
-	public void setCompaniesID(Integer  companiesID) {
+	public void setCompaniesID(Integer companiesID) {
 		this.companiesID = companiesID;
 	}
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
-	public void setCompanyAvatarURL(String companyAvatarURL) {
-		this.companyAvatarURL = companyAvatarURL;
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+	public void setSpecialty(String specialty) {
+		this.specialty = specialty;
+	}
+	public void setSize(String size) {
+		this.size = size;
+	}
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	public void setWebsite(String website) {
 		this.website = website;
@@ -84,14 +79,8 @@ public class Companies {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public void setActiveRecruiters(HashSet<Integer> activeRecruiters) {
-		this.activeRecruiters = activeRecruiters;
-	}
-	public void setActiveLocations(HashSet<Integer> activeLocations) {
-		this.activeLocations = activeLocations;
-	}
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
+	public void setActiveBranchs(HashSet<Integer> activeBranchs) {
+		this.activeBranchs = activeBranchs;
 	}
 
 	@Override
@@ -99,12 +88,12 @@ public class Companies {
 		if (this == o) return true;
 		if (!(o instanceof Companies)) return false;
 		Companies companies = (Companies) o;
-		return Objects.equals(companiesID, companies.companiesID) && Objects.equals(companyName, companies.companyName) && Objects.equals(companyAvatarURL, companies.companyAvatarURL) && Objects.equals(website, companies.website) && Objects.equals(email, companies.email) && Objects.equals(imagePath, companies.imagePath) && Objects.equals(activeRecruiters, companies.activeRecruiters) && Objects.equals(activeLocations, companies.activeLocations);
+		return Objects.equals(companiesID, companies.companiesID) && Objects.equals(companyName, companies.companyName) && Objects.equals(imagePath, companies.imagePath) && Objects.equals(specialty, companies.specialty) && Objects.equals(size, companies.size) && Objects.equals(introduction, companies.introduction) && Objects.equals(address, companies.address) && Objects.equals(website, companies.website) && Objects.equals(email, companies.email) && Objects.equals(activeBranchs, companies.activeBranchs);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(companiesID, companyName, companyAvatarURL, website, email, imagePath, activeRecruiters, activeLocations);
+		return Objects.hash(companiesID, companyName, imagePath, specialty, size, introduction, address, website, email, activeBranchs);
 	}
 
 	@Override
@@ -112,12 +101,14 @@ public class Companies {
 		final StringBuffer sb = new StringBuffer("Companies{");
 		sb.append("companiesID=").append(companiesID);
 		sb.append(", companyName='").append(companyName).append('\'');
-		sb.append(", companyAvatarURL='").append(companyAvatarURL).append('\'');
+		sb.append(", imagePath='").append(imagePath).append('\'');
+		sb.append(", specialty='").append(specialty).append('\'');
+		sb.append(", size='").append(size).append('\'');
+		sb.append(", introduction='").append(introduction).append('\'');
+		sb.append(", address='").append(address).append('\'');
 		sb.append(", website='").append(website).append('\'');
 		sb.append(", email='").append(email).append('\'');
-		sb.append(", imagePath='").append(imagePath).append('\'');
-		sb.append(", activeRecruiters=").append(activeRecruiters);
-		sb.append(", activeLocations=").append(activeLocations);
+		sb.append(", activeBranchs=").append(activeBranchs);
 		sb.append('}');
 		return sb.toString();
 	}

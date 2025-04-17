@@ -15,7 +15,6 @@ public class CandidateDAO {
     public Candidates createCandidates(Users users, ServerClient.CandidateFullInfo request, Connection connection) throws SQLException {
         System.out.println("createCandidates");
 
-        System.out.println(request);
         StringBuilder sb= new StringBuilder();
         sb.append("INSERT INTO `Candidates`(`userID`, `birthDate`, `gender`) VALUES (?, ? , ?);");
         PreparedStatement preparedStatement = null;
@@ -28,7 +27,6 @@ public class CandidateDAO {
             preparedStatement.setInt(1, users.getUserID());
 
             Timestamp timestamp = Converter.protoToTimeStamp(request.getBirthDate());
-
             preparedStatement.setDate(2, new Date(timestamp.getTime()));
 
             Gender gender = Gender.fromProto(request.getGender());
@@ -49,7 +47,7 @@ public class CandidateDAO {
         return null;
     }
 
-    public Candidates readCandidates(ServerClient.UserMetaInfo request, Connection connection) throws SQLException, RuntimeException {
+    public Candidates readCandidates(ServerClient.UserFullInfo request, Connection connection) throws Exception {
         System.out.println("readCandidates");
 
         StringBuilder sb= new StringBuilder();
@@ -58,9 +56,8 @@ public class CandidateDAO {
         ResultSet resultSet = null;
         Candidates candidates = null;
         UserDAO userDAO = new UserDAO();
-
         try {
-            if (request.getUserID() == 0) throw new RuntimeException("UserID không hợp lệ");
+//            if (request.getUserID() != 0) throw new RuntimeException("UserID không hợp lệ");
             Users users = userDAO.readUser(request, connection);
             candidates = new Candidates(users);
 
@@ -68,7 +65,7 @@ public class CandidateDAO {
             String sql = sb.toString();
 
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, request.getUserID());
+            preparedStatement.setInt(1, users.getUserID());
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 if (resultSet.isLast()) {
@@ -88,7 +85,7 @@ public class CandidateDAO {
         }
     }
 
-    public Candidates updateCandidates(ServerClient.CandidateFullInfo request, Connection connection) throws SQLException {
+    public Candidates updateCandidates(ServerClient.CandidateFullInfo request, Connection connection) throws Exception {
         System.out.println("updateCandidates");
 
         StringBuilder sb = new StringBuilder();
@@ -100,7 +97,7 @@ public class CandidateDAO {
             if(request.hasBirthDate()){
                 Timestamp timestamp = Converter.protoToTimeStamp(request.getBirthDate());
                 sb.append("`Candidates`.`birthDate` = ?, ");
-
+                parameters.add(new Date(timestamp.getTime()));
             }
 
             sb.append("`Candidates`.`gender` = ?, ");
@@ -119,7 +116,7 @@ public class CandidateDAO {
             int rowsUpdated = preparedStatement.executeUpdate();
             if(rowsUpdated >0 ){
                 CandidateDAO candidateDAO = new CandidateDAO();
-                return candidateDAO.readCandidates(Converter.userFullToMeta(request.getUser()), connection);
+                return candidateDAO.readCandidates(request.getUser(), connection);
             }
             throw new RuntimeException("Không update thành công");
         }
@@ -129,7 +126,7 @@ public class CandidateDAO {
         }
     }
 
-    public ArrayList<Candidates> readCandidateList(Connection connection) throws SQLException {
+    public ArrayList<Candidates> readCandidateList(Connection connection) throws Exception {
         System.out.println("readCandidateList");
 
         StringBuilder sb = new StringBuilder();
@@ -143,7 +140,7 @@ public class CandidateDAO {
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 Integer userID = resultSet.getInt("userID");
-                Candidates candidates = new Candidates(userDAO.readUser(ServerClient.UserMetaInfo.newBuilder().setUserID(userID).build(), connection));
+                Candidates candidates = new Candidates(userDAO.readUser(ServerClient.UserFullInfo.newBuilder().setUserID(userID).build(), connection));
                 Date birthDate = resultSet.getDate("birthDate");
                 Gender gender = Gender.valueOf(resultSet.getString("gender"));
                 candidates.setGender(gender);

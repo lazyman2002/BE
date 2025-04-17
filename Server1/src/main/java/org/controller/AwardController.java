@@ -1,74 +1,75 @@
 package org.controller;
 
-import org.DAO.SkillDAO;
+import org.DAO.AwardDAO;
 import org.connectConfig.HikariDataSource;
-import org.model.Skills;
+import org.model.Awards;
 import proto.ServerClient;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.List;
 
-public class SkillController {
-    public ArrayList<Skills> skillList(ServerClient.CVFullInfo request) throws Exception {
-        SkillDAO SkillDAO = new SkillDAO();
+public class AwardController {
+    public ArrayList<Awards> awardList(ServerClient.CVFullInfo request) throws Exception {
+        AwardDAO awardsDAO = new AwardDAO();
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
-            return SkillDAO.readSkillsList(request, connection);
+            return awardsDAO.readAwardList(request, connection);
         } finally {
             if (connection != null) connection.close();
         }
     }
 
-    public Skills skillRead(ServerClient.SkillFullInfo request) throws Exception {
-        SkillDAO SkillDAO = new SkillDAO();
+    public Awards awardRead(ServerClient.AwardFullInfo request) throws Exception {
+        AwardDAO awardsDAO = new AwardDAO();
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
             connection.setAutoCommit(false);
-            Skills skills = SkillDAO.readSkill(request, connection);
+            Awards awards = awardsDAO.readAward(request, connection);
             connection.commit();
-            return skills;
+            return awards;
         } finally {
             if (connection != null) connection.close();
         }
     }
 
-    public Skills skillUpdate(ServerClient.SkillFullInfo request) throws Exception {
-        SkillDAO SkillDAO = new SkillDAO();
+    public Awards awardUpdate(ServerClient.AwardFullInfo request) throws Exception {
+        AwardDAO awardsDAO = new AwardDAO();
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
             connection.setAutoCommit(false);
-            Skills skills = SkillDAO.updateSkill(request, connection);
+            Awards awards = awardsDAO.updateAward(request, connection);
             connection.commit();
-            return skills;
+            return awards;
         } finally {
             if (connection != null) connection.close();
         }
     }
 
-    public Skills skillRegister(ServerClient.SkillFullInfo request) throws Exception {
-        SkillDAO SkillDAO = new SkillDAO();
+    public Awards awardRegister(ServerClient.AwardFullInfo request) throws Exception {
+        AwardDAO awardsDAO = new AwardDAO();
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
             connection.setAutoCommit(false);
-            Skills skills = SkillDAO.registerSkill(request, connection);
+            Awards awards = awardsDAO.registerAward(request, connection);
             connection.commit();
-            return skills;
+            return awards;
         } finally {
             if (connection != null) connection.close();
         }
     }
 
-    public Boolean skillDelete(ServerClient.SkillFullInfo request) throws Exception {
-        SkillDAO SkillDAO = new SkillDAO();
+    public Boolean awardDelete(ServerClient.AwardFullInfo request) throws Exception {
+        AwardDAO awardsDAO = new AwardDAO();
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
             connection.setAutoCommit(false);
-            if (SkillDAO.deleteSkill(request, connection)) {
+            if (awardsDAO.deleteAward(request, connection)) {
                 connection.commit();
                 return true;
             }

@@ -1,9 +1,9 @@
 package org.model;
 
 public enum Proficiency {
-	BEGINNER("Beginner"),
-	INTERMEDIATE("Intermediate"),
-	EXPERT("Expert");
+	BEGINNER("BEGINNER"),
+	INTERMEDIATE("INTERMEDIATE"),
+	EXPERT("EXPERT");
 
 	private final String displayName;
 

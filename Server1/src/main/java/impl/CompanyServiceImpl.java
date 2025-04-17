@@ -36,7 +36,7 @@ public class CompanyServiceImpl extends CompanyServiceGrpc.CompanyServiceImplBas
     }
 
     @Override
-    public void companyReadInfo(ServerClient.CompanyMetaInfo request, StreamObserver<ServerClient.CompanyFullInfo> responseObserver) {
+    public void companyReadInfo(ServerClient.CompanyFullInfo request, StreamObserver<ServerClient.CompanyFullInfo> responseObserver) {
         System.out.println("companyReadInfo");
         try{
             CompanyController companyController = new CompanyController();
@@ -88,7 +88,7 @@ public class CompanyServiceImpl extends CompanyServiceGrpc.CompanyServiceImplBas
     }
 
     @Override
-    public void companyDelete(ServerClient.CompanyMetaInfo request, StreamObserver<BoolValue> responseObserver) {
+    public void companyDelete(ServerClient.CompanyFullInfo request, StreamObserver<BoolValue> responseObserver) {
         System.out.println("companyDelete");
         try {
             CompanyController companyController = new CompanyController();

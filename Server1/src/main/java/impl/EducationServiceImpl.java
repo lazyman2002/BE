@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class EducationServiceImpl extends EducationServiceGrpc.EducationServiceImplBase {
     @Override
-    public void educationListRead(ServerClient.CVMetaInfo request, StreamObserver<ServerClient.EducationFullInfo> responseObserver) {
+    public void educationListRead(ServerClient.CVFullInfo request, StreamObserver<ServerClient.EducationFullInfo> responseObserver) {
         System.out.println("educationListRead");
 
         EducationController educationController = new EducationController();

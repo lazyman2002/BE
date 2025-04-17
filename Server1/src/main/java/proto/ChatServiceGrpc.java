@@ -108,27 +108,27 @@ public final class ChatServiceGrpc {
     return getDownloadFileMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.GroupInfo,
       proto.ServerChat.MessageInfo> getGetOldChatMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetOldChat",
-      requestType = proto.ServerChat.GroupMetaInfo.class,
+      requestType = proto.ServerChat.GroupInfo.class,
       responseType = proto.ServerChat.MessageInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerChat.GroupInfo,
       proto.ServerChat.MessageInfo> getGetOldChatMethod() {
-    io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo, proto.ServerChat.MessageInfo> getGetOldChatMethod;
+    io.grpc.MethodDescriptor<proto.ServerChat.GroupInfo, proto.ServerChat.MessageInfo> getGetOldChatMethod;
     if ((getGetOldChatMethod = ChatServiceGrpc.getGetOldChatMethod) == null) {
       synchronized (ChatServiceGrpc.class) {
         if ((getGetOldChatMethod = ChatServiceGrpc.getGetOldChatMethod) == null) {
           ChatServiceGrpc.getGetOldChatMethod = getGetOldChatMethod =
-              io.grpc.MethodDescriptor.<proto.ServerChat.GroupMetaInfo, proto.ServerChat.MessageInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerChat.GroupInfo, proto.ServerChat.MessageInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetOldChat"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerChat.GroupMetaInfo.getDefaultInstance()))
+                  proto.ServerChat.GroupInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerChat.MessageInfo.getDefaultInstance()))
               .setSchemaDescriptor(new ChatServiceMethodDescriptorSupplier("GetOldChat"))
@@ -216,7 +216,7 @@ public final class ChatServiceGrpc {
 
     /**
      */
-    public void getOldChat(proto.ServerChat.GroupMetaInfo request,
+    public void getOldChat(proto.ServerChat.GroupInfo request,
         io.grpc.stub.StreamObserver<proto.ServerChat.MessageInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetOldChatMethod(), responseObserver);
     }
@@ -248,7 +248,7 @@ public final class ChatServiceGrpc {
             getGetOldChatMethod(),
             io.grpc.stub.ServerCalls.asyncServerStreamingCall(
               new MethodHandlers<
-                proto.ServerChat.GroupMetaInfo,
+                proto.ServerChat.GroupInfo,
                 proto.ServerChat.MessageInfo>(
                   this, METHODID_GET_OLD_CHAT)))
           .build();
@@ -301,7 +301,7 @@ public final class ChatServiceGrpc {
 
     /**
      */
-    public void getOldChat(proto.ServerChat.GroupMetaInfo request,
+    public void getOldChat(proto.ServerChat.GroupInfo request,
         io.grpc.stub.StreamObserver<proto.ServerChat.MessageInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getGetOldChatMethod(), getCallOptions()), request, responseObserver);
@@ -336,7 +336,7 @@ public final class ChatServiceGrpc {
     /**
      */
     public java.util.Iterator<proto.ServerChat.MessageInfo> getOldChat(
-        proto.ServerChat.GroupMetaInfo request) {
+        proto.ServerChat.GroupInfo request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getGetOldChatMethod(), getCallOptions(), request);
     }
@@ -384,7 +384,7 @@ public final class ChatServiceGrpc {
               (io.grpc.stub.StreamObserver<proto.ServerChat.Chunk>) responseObserver);
           break;
         case METHODID_GET_OLD_CHAT:
-          serviceImpl.getOldChat((proto.ServerChat.GroupMetaInfo) request,
+          serviceImpl.getOldChat((proto.ServerChat.GroupInfo) request,
               (io.grpc.stub.StreamObserver<proto.ServerChat.MessageInfo>) responseObserver);
           break;
         default:

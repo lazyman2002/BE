@@ -4,25 +4,15 @@ import java.sql.Date;
 import java.util.Objects;
 
 public class WorkExperiences {
+	private Integer workExperienceID;
 	private Integer CVID;
+	private String companyName;
 	private String jobTitle;
 	private Date startDate;
 	private Date endDate;
 	private String jobDescription;
-	private Integer workExperienceID;
-	private String companyName;
 
 	public WorkExperiences() {}
-
-	public WorkExperiences(Integer CVID, String jobTitle, Date startDate, Date endDate, String jobDescription, Integer workExperienceID, String companyName) {
-		this.CVID = CVID;
-		this.jobTitle = jobTitle;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.jobDescription = jobDescription;
-		this.workExperienceID = workExperienceID;
-		this.companyName = companyName;
-	}
 
 	public Integer getCVID() {
 		return CVID;

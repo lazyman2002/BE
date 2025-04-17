@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class SkillDAO {
-    public ArrayList<Skills> readSkillsList(ServerClient.CVMetaInfo request, Connection connection) throws Exception {
+    public ArrayList<Skills> readSkillsList(ServerClient.CVFullInfo request, Connection connection) throws Exception {
         System.out.println("readSkillsList");
 
         String query = "SELECT * FROM `Skills` WHERE `Skills`.`CVID` = ?;";
@@ -72,29 +72,29 @@ public class SkillDAO {
             resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
+                Skills skills = new Skills();
+                skills.setSkillID(request.getSkillID());
 
                 Integer CVID = resultSet.getInt("CVID");
                 if (CVID <= 0) throw new Exception("Invalid result: CVID returned is not valid");
+                skills.setCVID(CVID);
 
                 String skillName = resultSet.getString("skillName");
                 skillName = (skillName != null) ? skillName : "";
+                skills.setSkillName(skillName);
 
                 String proficiencyStr = resultSet.getString("proficiency");
                 Proficiency proficiency = Proficiency.BEGINNER; // Set a default value
                 if (proficiencyStr != null) {
                     try {
                         proficiency = Proficiency.valueOf(proficiencyStr.toUpperCase());
+                        skills.setProficiency(proficiency);
                     } catch (IllegalArgumentException e) {
                         throw new Exception("Invalid proficiency value returned");
                     }
                 }
 
-                return new Skills(
-                        CVID,
-                        skillName,
-                        proficiency,
-                        request.getSkillID()
-                );
+                return skills;
             } else {
                 throw new Exception("Skill not found");
             }

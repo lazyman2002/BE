@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 public class EducationController {
-    public ArrayList<Educations> educationList(ServerClient.CVMetaInfo request) throws Exception {
+    public ArrayList<Educations> educationList(ServerClient.CVFullInfo request) throws Exception {
         EducationDAO educationDAO = new EducationDAO();
         Connection connection = null;
         try {

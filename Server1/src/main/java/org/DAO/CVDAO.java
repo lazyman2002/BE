@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class CVDAO {
-    public ArrayList<CVs> readCVList(ServerClient.UserMetaInfo request, Connection connection) throws Exception {
+    public ArrayList<CVs> readCVList(ServerClient.UserFullInfo request, Connection connection) throws Exception {
         System.out.println("readCVList");
 
         String query = "SELECT * FROM `CVs` WHERE `CVs`.`candidateID` = ?;";
@@ -26,24 +26,8 @@ public class CVDAO {
             preparedStatement.setInt(1, request.getUserID());
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                CVs cv = new CVs();
-                cv.setCandidatesID(request.getUserID());
-
                 Integer cvID = resultSet.getInt("CVID");
-                if (resultSet.wasNull()) {
-                    cv.setCVID(null);
-                } else {
-                    cv.setCVID(cvID);
-                }
-
-                String jobTitle = resultSet.getString("jobTitle");
-                cv.setJobTitle(jobTitle != null ? jobTitle : "");
-
-                String email = resultSet.getString("email");
-                cv.setEmail(email != null ? email : "");
-
-                String phoneNumber = resultSet.getString("phoneNumber");
-                cv.setPhoneNumber(phoneNumber != null ? phoneNumber : "");
+                CVs cv = this.readCV(ServerClient.CVFullInfo.newBuilder().setCVID(cvID).build(), connection);
                 cvList.add(cv);
             }
             return cvList;
@@ -53,7 +37,7 @@ public class CVDAO {
         }
     }
 
-    public CVs readCV(ServerClient.CVMetaInfo request, Connection connection) throws Exception {
+    public CVs readCV(ServerClient.CVFullInfo request, Connection connection) throws Exception {
         System.out.println("readCV");
 
         StringBuilder sb = new StringBuilder();
@@ -68,26 +52,42 @@ public class CVDAO {
             resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
+                CVs cVs = new CVs();
                 int cvID = resultSet.getInt("CVID");
+                cVs.setCVID(cvID);
+
                 int userID = resultSet.getInt("candidateID");
                 if (userID == 0) throw new Exception("CV has an invalid userID");
+                cVs.setCandidatesID(userID);
+
+                String CVname = resultSet.getString("CVname");
+                CVname = (CVname != null) ? CVname : "";
+                cVs.setCVname(CVname);
+
+                String imagePath = resultSet.getString("imagePath");
+                imagePath = (imagePath != null) ? imagePath : "";
+                cVs.setImagePath(imagePath);
+
+                String jobPositions = resultSet.getString("jobPositions");
+                jobPositions = (jobPositions != null) ? jobPositions : "";
+                cVs.setJobPositions(jobPositions);
+
+                String introduce = resultSet.getString("introduce");
+                introduce = (introduce != null) ? introduce : "";
+                cVs.setIntroduce(introduce);
+
                 String email = resultSet.getString("email");
                 email = (email != null) ? email : "";
+                cVs.setEmail(email);
+
                 String phoneNumber = resultSet.getString("phoneNumber");
                 phoneNumber = (phoneNumber != null) ? phoneNumber : "";
-                String jobTitle = resultSet.getString("jobTitle");
-                String imagePath = resultSet.getString("imagePath");
-                String CVname = resultSet.getString("CVname");
+                cVs.setPhoneNumber(phoneNumber);
 
-                jobTitle = (jobTitle != null) ? jobTitle : "";
-
-                return new CVs(
-                        cvID,
-                        userID,
-                        email,
-                        phoneNumber,
-                        jobTitle, imagePath, CVname
-                );
+                String socialMedia = resultSet.getString("socialMedia");
+                socialMedia = (socialMedia != null) ? socialMedia : "";
+                cVs.setSocialMedia(socialMedia);
+                return cVs;
             } else {
                 throw new Exception("CV not found");
             }
@@ -106,24 +106,45 @@ public class CVDAO {
         ResultSet resultSet = null;
         List<Object> parameters = new ArrayList<>();
         try {
-            if (request.getEmail() != null && !request.getEmail().isEmpty()) {
+            if (request.getCandidateID() !=0 ) {
+                sb.append("`CVs`.`candidateID` = ?, ");
+                parameters.add(request.getCandidateID());
+            }
+
+            if (!request.getCVname().isEmpty()) {
+                sb.append("`CVs`.`CVname` = ?, ");
+                parameters.add(request.getCVname());
+            }
+
+
+            if (!request.getImagePath().isEmpty()) {
+                sb.append("`CVs`.`imagePath` = ?, ");
+                parameters.add(request.getImagePath());
+            }
+
+            if (!request.getJobPositions().isEmpty()) {
+                sb.append("`CVs`.`jobPositions` = ?, ");
+                parameters.add(request.getJobPositions());
+            }
+
+            if (!request.getIntroduce().isEmpty()) {
+                sb.append("`CVs`.`introduce` = ?, ");
+                parameters.add(request.getIntroduce());
+            }
+
+            if (!request.getEmail().isEmpty()) {
                 sb.append("`CVs`.`email` = ?, ");
                 parameters.add(request.getEmail());
             }
 
-            if (request.getPhoneNumber() != null && !request.getPhoneNumber().isEmpty()) {
+            if (!request.getPhoneNumber().isEmpty()) {
                 sb.append("`CVs`.`phoneNumber` = ?, ");
                 parameters.add(request.getPhoneNumber());
             }
 
-            if (request.getJobTitle() != null && !request.getJobTitle().isEmpty()) {
-                sb.append("`CVs`.`jobTitle` = ?, ");
-                parameters.add(request.getJobTitle());
-            }
-
-            if (request.getCandidateID() > 0) {
-                sb.append("`CVs`.`candidateID` = ?, ");
-                parameters.add(request.getCandidateID());
+            if (!request.getSocialMedia().isEmpty()) {
+                sb.append("`CVs`.`socialMedia` = ?, ");
+                parameters.add(request.getSocialMedia());
             }
 
             if (request.getCVID() == 0) throw new Exception("Không có CVID");
@@ -139,7 +160,7 @@ public class CVDAO {
 
             int rowsUpdated = preparedStatement.executeUpdate();
             if (rowsUpdated > 0) {
-                return this.readCV(ServerClient.CVMetaInfo.newBuilder()
+                return this.readCV(ServerClient.CVFullInfo.newBuilder()
                                 .setCVID(request.getCVID())
                                 .build(),
                         connection);
@@ -155,7 +176,7 @@ public class CVDAO {
         System.out.println("registerCV");
 
         StringBuilder sb = new StringBuilder();
-        sb.append("INSERT INTO `CVs`(`candidateID`, `email`, `phoneNumber`, `jobTitle`) VALUES (?, ?, ?, ?);");
+        sb.append("INSERT INTO `CVs`(`candidateID`, `CVname`, `imagePath`, `jobPositions`, `introduce`, `email`, `phoneNumber`, `socialMedia`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
@@ -171,25 +192,49 @@ public class CVDAO {
                 throw new Exception("Candidate ID không hợp lệ");
             }
 
+            String CVname = request.getCVname();
+            if (CVname.isEmpty()) {
+                throw new Exception("CV name không hợp lệ");
+            }
+
+            String imagePath = request.getImagePath();
+            if (imagePath.isEmpty()) {
+                imagePath = null; // Allow NULL if image path is not provided
+            }
+
+            String jobPositions = request.getJobPositions();
+            if (jobPositions.isEmpty()) {
+                jobPositions = null; // Allow NULL if job positions are not provided
+            }
+
+            String introduce = request.getIntroduce();
+            if (introduce.isEmpty()) {
+                introduce = null; // Allow NULL if introduction is not provided
+            }
+
             String email = request.getEmail();
-            if (email == null || email.isEmpty() || email.isEmpty()) {
+            if (email.isEmpty()) {
                 email = null; // Allow NULL if email is not provided
             }
 
             String phoneNumber = request.getPhoneNumber();
-            if (phoneNumber == null || phoneNumber.isEmpty() || phoneNumber.isEmpty()) {
+            if (phoneNumber.isEmpty()) {
                 phoneNumber = null; // Allow NULL if phone number is not provided
             }
 
-            String jobTitle = request.getJobTitle();
-            if (jobTitle == null || jobTitle.isEmpty() || jobTitle.isEmpty()) {
-                throw new Exception("Job title không hợp lệ");
+            String socialMedia = request.getSocialMedia();
+            if (socialMedia.isEmpty()) {
+                socialMedia = null; // Allow NULL if social media is not provided
             }
 
             preparedStatement.setInt(1, candidateID);
-            preparedStatement.setString(2, email);
-            preparedStatement.setString(3, phoneNumber);
-            preparedStatement.setString(4, jobTitle);
+            preparedStatement.setString(2, CVname);
+            preparedStatement.setString(3, imagePath);
+            preparedStatement.setString(4, jobPositions);
+            preparedStatement.setString(5, introduce);
+            preparedStatement.setString(6, email);
+            preparedStatement.setString(7, phoneNumber);
+            preparedStatement.setString(8, socialMedia);
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
@@ -197,7 +242,7 @@ public class CVDAO {
                 Integer cvid;
                 if (resultSet.next()) {
                     cvid = resultSet.getInt(1);
-                    return this.readCV(ServerClient.CVMetaInfo
+                    return this.readCV(ServerClient.CVFullInfo
                                     .newBuilder()
                                     .setCVID(cvid)
                                     .build(),
@@ -213,7 +258,7 @@ public class CVDAO {
         throw new Exception("Lỗi code");
     }
 
-    public Boolean deleteCV(ServerClient.CVMetaInfo request, Connection connection) throws Exception {
+    public Boolean deleteCV(ServerClient.CVFullInfo request, Connection connection) throws Exception {
         System.out.println("deleteCV");
 
         StringBuilder sb = new StringBuilder();

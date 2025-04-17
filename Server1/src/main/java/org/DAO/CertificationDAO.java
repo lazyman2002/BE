@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class CertificationDAO {
-    public ArrayList<Certifications> readCertificationList(ServerClient.CVMetaInfo request, Connection connection) throws Exception {
+    public ArrayList<Certifications> readCertificationList(ServerClient.CVFullInfo request, Connection connection) throws Exception {
         System.out.println("readCertificationList");
 
         String query = "SELECT * FROM `Certifications` WHERE `Certifications`.`CVID` = ?;";
@@ -66,25 +66,25 @@ public class CertificationDAO {
             resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
+                Certifications certifications = new Certifications();
+                certifications.setCertificationID(request.getCertificationID());
 
                 Integer CVID = resultSet.getInt("CVID");
                 if(CVID <=0) throw new Exception("Kết quả trả về không hợp lệ");
+                certifications.setCVID(CVID);
 
                 String certificationName = resultSet.getString("certificationName");
                 certificationName = (certificationName != null) ? certificationName : "";
+                certifications.setCertificationName(certificationName);
 
                 String provider = resultSet.getString("provider");
                 provider = (provider != null) ? provider : "";
+                certifications.setProvider(provider);
 
                 Date providedDate = resultSet.getDate("providedDate");
+                certifications.setProvidedDate(providedDate);
 
-                return new Certifications(
-                        CVID,
-                        certificationName,
-                        provider,
-                        providedDate,
-                        request.getCertificationID()
-                );
+                return certifications;
             } else {
                 throw new Exception("Certification not found");
             }
@@ -123,7 +123,7 @@ public class CertificationDAO {
             if (!request.hasProvidedDate()) {
                 throw new Exception("Ngày cấp chứng chỉ không hợp lệ");
             }
-            java.sql.Date providedDate = new java.sql.Date(timestamp.getSeconds() * 1000);
+            Date providedDate = new Date(timestamp.getSeconds() * 1000);
 
             preparedStatement.setInt(1, request.getCVID());
             preparedStatement.setString(2, certificationName);
@@ -161,7 +161,6 @@ public class CertificationDAO {
         ResultSet resultSet = null;
         List<Object> parameters = new ArrayList<>();
         try {
-            // Check and append fields for update
             if (request.getCertificationName() != null && !request.getCertificationName().isEmpty()) {
                 sb.append("`Certifications`.`certificationName` = ?, ");
                 parameters.add(request.getCertificationName());
@@ -173,7 +172,7 @@ public class CertificationDAO {
             }
 
             if (request.hasProvidedDate()) {
-                java.sql.Date providedDate = new java.sql.Date(request.getProvidedDate().getSeconds() * 1000);
+                Date providedDate = new Date(request.getProvidedDate().getSeconds() * 1000);
                 sb.append("`Certifications`.`providedDate` = ?, ");
                 parameters.add(providedDate);
             }

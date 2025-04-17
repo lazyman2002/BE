@@ -3,14 +3,12 @@ package org.controller;
 import org.DAO.CVDAO;
 import org.DAO.CandidateDAO;
 import org.DAO.UserDAO;
-import org.checkerframework.checker.units.qual.C;
 import org.connectConfig.HikariDataSource;
 import org.model.Candidates;
 import org.model.Users;
 import proto.ServerClient;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -25,7 +23,7 @@ public class CandidateController {
             connection = HikariDataSource.getConnection();
             connection.setAutoCommit(false);
 
-            users = userDAO.createUser(request, connection);
+            users = userDAO.createUser(request.getUser(), connection);
             if(users == null)   throw new Exception("Không tạo được User");
 
             candidates = candidateDAO.createCandidates(users, request, connection);
@@ -39,7 +37,7 @@ public class CandidateController {
         }
     }
 
-    public Candidates candidateRead (ServerClient.UserMetaInfo request) throws Exception {
+    public Candidates candidateRead (ServerClient.UserFullInfo request) throws Exception {
         CandidateDAO candidateDAO = new CandidateDAO();
         Candidates candidates;
         Connection connection = null;
@@ -57,9 +55,9 @@ public class CandidateController {
 
     }
 
-    public Candidates candidateUpdate (ServerClient.CandidateFullInfo request) throws SQLException {
+    public Candidates candidateUpdate (ServerClient.CandidateFullInfo request) throws Exception {
         CandidateDAO candidateDAO = new CandidateDAO();
-        Candidates candidates = new Candidates();
+        Candidates candidates = null;
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
@@ -73,7 +71,7 @@ public class CandidateController {
         }
     }
 
-    public ArrayList<Candidates> candidateList() throws SQLException {
+    public ArrayList<Candidates> candidateList() throws Exception {
         CandidateDAO candidateDAO = new CandidateDAO();
         Connection connection = null;
         try {

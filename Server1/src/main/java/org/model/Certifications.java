@@ -5,27 +5,12 @@ import java.util.Objects;
 
 public class Certifications {
 	private Integer CVID;
+	private Integer certificationID;
 	private String certificationName;
 	private String provider;
 	private Date providedDate;
-	private Integer certificationID;
 
 	public Certifications() {}
-
-	public Certifications(Integer CVID, String certificationName, String provider, Date providedDate) {
-		this.CVID = CVID;
-		this.certificationName = certificationName;
-		this.provider = provider;
-		this.providedDate = providedDate;
-	}
-
-	public Certifications(Integer CVID, String certificationName, String provider, Date providedDate, Integer certificationID) {
-		this.CVID = CVID;
-		this.certificationName = certificationName;
-		this.provider = provider;
-		this.providedDate = providedDate;
-		this.certificationID = certificationID;
-	}
 
 	public Integer getCVID() {
 		return CVID;

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class JobRequestDAO {
-    public JobRequests readJobRequest(ServerClient.JobRequestMetaInfo request, Connection connection) throws Exception {
+    public JobRequests readJobRequest(ServerClient.JobRequestFullInfo request, Connection connection) throws Exception {
         System.out.println("readJobRequest");
 
         StringBuilder sb = new StringBuilder();
@@ -28,31 +28,44 @@ public class JobRequestDAO {
             resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
+                JobRequests jobRequests = new JobRequests();
                 Integer jobID = resultSet.getInt("jobID");
+                jobRequests.setJobID(jobID);
+                Integer branchID = resultSet.getInt("branchID");
+                jobRequests.setBranchID(branchID);
+
+                String title = resultSet.getString("title");
+                jobRequests.setTitle(title);
+                String worktime = resultSet.getString("worktime");
+                jobRequests.setWorktime(worktime);
+                String jobField = resultSet.getString("jobField");
+                jobRequests.setJobField(jobField);
                 Integer locationID = resultSet.getInt("locationID");
+                jobRequests.setLocationID(locationID);
                 JobType jobType = JobType.valueOf(resultSet.getString("jobType"));
+                jobRequests.setJobType(jobType);
                 Integer salaryLeast = resultSet.getInt("salaryLeast");
+                jobRequests.setSalaryLeast(salaryLeast);
                 Integer salaryGreatest = resultSet.getInt("salaryGreatest");
-                String currency = resultSet.getString("currency");
-                String jobTitle = resultSet.getString("jobTitle");
-                JobLevel jobLevel = JobLevel.valueOf(resultSet.getString("jobLevel"));
-                String jobDescription = resultSet.getString("jobDescription");
+                jobRequests.setSalaryGreatest(salaryGreatest);
                 Date deadlineDate = resultSet.getDate("deadlineDate");
+                jobRequests.setDeadlineDate(deadlineDate);
 
-                jobTitle = (jobTitle != null) ? jobTitle : "";
+                String jobTitle = resultSet.getString("jobTitle");
+                jobRequests.setJobTitle(jobTitle);
+                JobLevel jobLevel = JobLevel.valueOf(resultSet.getString("jobLevel"));
+                jobRequests.setJobLevel(jobLevel);
+                String jobDescription = resultSet.getString("jobDescription");
+                jobRequests.setJobDescription(jobDescription);
+                String jobRequirement = resultSet.getString("jobRequirement");
+                jobRequests.setJobRequirement(jobRequirement);
+                String jobBenefit = resultSet.getString("jobBenefit");
+                jobRequests.setJobBenefit(jobBenefit);
 
-                return new JobRequests(
-                        jobID,
-                        jobType,
-                        salaryLeast,
-                        salaryGreatest,
-                        currency != null ? currency : "",
-                        jobTitle,
-                        jobLevel,
-                        jobDescription != null ? jobDescription : "",
-                        deadlineDate,
-                        locationID
-                );
+                Integer groupID = resultSet.getInt("groupID");
+                jobRequests.setGroupID(groupID);
+
+                return jobRequests;
             } else {
                 throw new Exception("Không tìm được JobRequest");
             }
@@ -66,8 +79,10 @@ public class JobRequestDAO {
         System.out.println("registerJobRequest");
 
         StringBuilder sb = new StringBuilder();
-        sb.append("INSERT INTO `JobRequests` (`locationID`, `jobType`, `salaryLeast`, `salaryGreatest`, `currency`, `jobTitle`, `jobLevel`, `jobDescription`, `deadlineDate`) ");
-        sb.append("VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);");
+        sb.append("INSERT INTO `JobRequests` (`branchID`, " +
+                "`title`, `worktime`, `jobField`, `locationID`, `jobType`, `salaryLeast`, `salaryGreatest`, `deadlineDate`," +
+                " `jobTitle`, `jobLevel`, `jobDescription`, `jobRequirement`, `jobBenefit`, `groupID`) ");
+        sb.append("VALUES (?, ?, ?,  ?, ?, ?,  ?, ?, ?,  ?, ?, ?,  ?, ?, ?);");
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
@@ -75,38 +90,35 @@ public class JobRequestDAO {
             String sql = sb.toString();
             preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
-            // Validate and process inputs
-            if (request.getJobID() != 0) {
-                throw new Exception("Job ID should not be set for new entries.");
-            }
+            if (request.getJobID() != 0)    throw new Exception("Job ID should not be set for new entries.");
 
-            int locationID = request.getLocationID();
-            if (locationID <= 0) {
-                throw new Exception("Invalid Location ID.");
-            }
-
+            Integer branchID = request.getBranchID();
+            if (branchID <= 0)  throw new Exception("Invalid branch ID.");
+            String title = request.getTitle().toString();
+            String worktime = request.getWorktime().toString();
+            String jobField = request.getJobField().toString();
+            Integer locationID = request.getLocationID();
+            if (locationID <= 0)  throw new Exception("Invalid Location ID.");
             ServerClient.JobType jobType = request.getJobType();
-            if (jobType != ServerClient.JobType.FULLTIME && jobType != ServerClient.JobType.HALFTIME) {
+            if (jobType != ServerClient.JobType.FULLTIME && jobType != ServerClient.JobType.HALFTIME && jobType != ServerClient.JobType.INTERN)
                 throw new Exception("Invalid Job Type.");
-            }
             String jobTypeString = jobType.name();
-
-            int salaryLeast = request.getSalaryLeast();
-            int salaryGreatest = request.getSalaryGreatest();
+            Integer salaryLeast = request.getSalaryLeast();
+            Integer salaryGreatest = request.getSalaryGreatest();
             if (salaryLeast <= 0 || salaryGreatest <= 0 || salaryLeast > salaryGreatest) {
                 throw new Exception("Invalid salary range.");
             }
-
-            String currency = request.getCurrency();
-            if (currency == null || currency.isEmpty()) {
-                throw new Exception("Currency is required.");
+            com.google.protobuf.Timestamp deadlineDate = request.getDeadlineDate();
+            String deadlineDateString;
+            if (deadlineDate == null) {
+                deadlineDateString = "9999-01-01";
+            } else {
+                Date sqlDate = new Date(deadlineDate.getSeconds() * 1000); // Convert seconds to milliseconds
+                deadlineDateString = sqlDate.toString();
             }
 
-            String jobTitle = request.getJobTitle();
-            if (jobTitle == null || jobTitle.isEmpty()) {
-                jobTitle = "";
-            }
 
+            String jobTitle = request.getJobTitle().toString();
             ServerClient.JobLevel jobLevel = request.getJobLevel();
             if (jobLevel == null || (jobLevel != ServerClient.JobLevel.ENTRY_LEVEL &&
                     jobLevel != ServerClient.JobLevel.MID_LEVEL &&
@@ -116,42 +128,40 @@ public class JobRequestDAO {
                     jobLevel != ServerClient.JobLevel.EXECUTIVE)) {
                 throw new Exception("Invalid Job Level.");
             }
-            String jobLevelString = jobLevel.name(); // Converts enum to its string representation
+            String jobLevelString = jobLevel.name();
+            String jobDescription = request.getJobDescription().toString();
+            String jobRequirement = request.getJobRequirement().toString();
+            String jobBenefit = request.getJobBenefit().toString();
 
-
-            String jobDescription = request.getJobDescription();
-            if (jobDescription == null) {
-                jobDescription = "";
-            }
-
-            com.google.protobuf.Timestamp deadlineDate = request.getDeadlineDate();
-            String deadlineDateString;
-
-            if (deadlineDate == null) {
-                deadlineDateString = "9999-01-01";
-            } else {
-                java.sql.Date sqlDate = new java.sql.Date(deadlineDate.getSeconds() * 1000); // Convert seconds to milliseconds
-                deadlineDateString = sqlDate.toString();
-            }
+            Integer groupID = request.getGroupID();
 
             // Set values in the prepared statement
-            preparedStatement.setInt(1, locationID);
-            preparedStatement.setString(2, jobTypeString);
-            preparedStatement.setInt(3, salaryLeast);
-            preparedStatement.setInt(4, salaryGreatest);
-            preparedStatement.setString(5, currency);
-            preparedStatement.setString(6, jobTitle);
-            preparedStatement.setString(7, jobLevelString);
-            preparedStatement.setString(8, jobDescription);
+            preparedStatement.setInt(1, branchID);
+
+            preparedStatement.setString(2, title);
+            preparedStatement.setString(3, worktime);
+            preparedStatement.setString(4, jobField);
+            preparedStatement.setInt(5, locationID);
+            preparedStatement.setString(6, jobTypeString);
+            preparedStatement.setInt(7, salaryLeast);
+            preparedStatement.setInt(8, salaryGreatest);
             preparedStatement.setString(9, deadlineDateString);
 
+            preparedStatement.setString(10, jobTitle);
+            preparedStatement.setString(11, jobLevelString);
+            preparedStatement.setString(12, jobDescription);
+            preparedStatement.setString(13, jobRequirement);
+            preparedStatement.setString(14, jobBenefit);
+
+
+            preparedStatement.setInt(15, groupID);
             // Execute the query and handle the result
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
                 resultSet = preparedStatement.getGeneratedKeys();
                 if (resultSet.next()) {
                     int jobID = resultSet.getInt(1);
-                    return this.readJobRequest(ServerClient.JobRequestMetaInfo
+                    return this.readJobRequest(ServerClient.JobRequestFullInfo
                             .newBuilder()
                             .setJobID(jobID)
                             .build(), connection);
@@ -175,9 +185,29 @@ public class JobRequestDAO {
         ResultSet resultSet = null;
         List<Object> parameters = new ArrayList<>();
         try {
-            if (request.getJobTitle() != null && !request.getJobTitle().isEmpty()) {
-                sb.append("`JobRequests`.`jobTitle` = ?, ");
-                parameters.add(request.getJobTitle());
+            if (request.getBranchID() > 0) {
+                sb.append("`JobRequests`.`branchID` = ?, ");
+                parameters.add(request.getBranchID());
+            }
+
+            if (!request.getTitle().isEmpty()) {
+                sb.append("`JobRequests`.`title` = ?, ");
+                parameters.add(request.getTitle());
+            }
+
+            if (!request.getWorktime().isEmpty()) {
+                sb.append("`JobRequests`.`worktime` = ?, ");
+                parameters.add(request.getWorktime());
+            }
+
+            if (!request.getJobField().isEmpty()) {
+                sb.append("`JobRequests`.`jobField` = ?, ");
+                parameters.add(request.getJobField());
+            }
+
+            if (request.getLocationID() > 0) {
+                sb.append("`JobRequests`.`locationID` = ?, ");
+                parameters.add(request.getLocationID());
             }
 
             if (request.getJobType() != null) {
@@ -195,9 +225,15 @@ public class JobRequestDAO {
                 parameters.add(request.getSalaryGreatest());
             }
 
-            if (request.getCurrency() != null && !request.getCurrency().isEmpty()) {
-                sb.append("`JobRequests`.`currency` = ?, ");
-                parameters.add(request.getCurrency());
+            if (request.hasDeadlineDate()) {
+                sb.append("`JobRequests`.`deadlineDate` = ?, ");
+                parameters.add(new Date(request.getDeadlineDate().getSeconds() * 1000));
+            }
+
+
+            if (!request.getJobTitle().isEmpty()) {
+                sb.append("`JobRequests`.`jobTitle` = ?, ");
+                parameters.add(request.getJobTitle());
             }
 
             if (request.getJobLevel() != null) {
@@ -205,9 +241,24 @@ public class JobRequestDAO {
                 parameters.add(request.getJobLevel().name());
             }
 
-            if (request.hasDeadlineDate()) {
-                sb.append("`JobRequests`.`deadlineDate` = ?, ");
-                parameters.add(new java.sql.Date(request.getDeadlineDate().getSeconds() * 1000));
+            if (!request.getJobDescription().isEmpty()) {
+                sb.append("`JobRequests`.`jobDescription` = ?, ");
+                parameters.add(request.getJobDescription());
+            }
+
+            if (!request.getJobRequirement().isEmpty()) {
+                sb.append("`JobRequests`.`jobRequirement` = ?, ");
+                parameters.add(request.getJobRequirement());
+            }
+
+            if (!request.getJobBenefit().isEmpty()) {
+                sb.append("`JobRequests`.`jobBenefit` = ?, ");
+                parameters.add(request.getJobBenefit());
+            }
+
+            if (request.getGroupID() > 0) {
+                sb.append("`JobRequests`.`groupID` = ?, ");
+                parameters.add(request.getGroupID());
             }
 
             if (request.getJobID() == 0) throw new Exception("JobID is required for an update.");
@@ -223,7 +274,7 @@ public class JobRequestDAO {
 
             int rowsUpdated = preparedStatement.executeUpdate();
             if (rowsUpdated > 0) {
-                return this.readJobRequest(ServerClient.JobRequestMetaInfo.newBuilder()
+                return this.readJobRequest(ServerClient.JobRequestFullInfo.newBuilder()
                                 .setJobID(request.getJobID())
                                 .build(),
                         connection);
@@ -235,7 +286,7 @@ public class JobRequestDAO {
         }
     }
 
-    public Boolean deleteJob(ServerClient.JobRequestMetaInfo request, Connection connection) throws Exception {
+    public Boolean deleteJob(ServerClient.JobRequestFullInfo request, Connection connection) throws Exception {
         System.out.println("deleteJob");
 
         String sql = "DELETE FROM `JobRequests` WHERE `jobID` = ?";
@@ -267,27 +318,11 @@ public class JobRequestDAO {
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Integer jobID = resultSet.getInt("jobID");
-                Integer locationID = resultSet.getInt("locationID");
-                JobType jobType = JobType.valueOf(resultSet.getString("jobType"));
-                Integer salaryLeast = resultSet.getInt("salaryLeast");
-                Integer salaryGreatest = resultSet.getInt("salaryGreatest");
-                String currency = resultSet.getString("currency");
-                String jobTitle = resultSet.getString("jobTitle");
-                JobLevel jobLevel = JobLevel.valueOf(resultSet.getString("jobLevel"));
-                String jobDescription = resultSet.getString("jobDescription");
-                Date deadlineDate = resultSet.getDate("deadlineDate");
-                jobsList.add(new JobRequests(
-                        jobID,
-                        jobType,
-                        salaryLeast,
-                        salaryGreatest,
-                        currency != null ? currency : "",
-                        jobTitle,
-                        jobLevel,
-                        jobDescription != null ? jobDescription : "",
-                        deadlineDate,
-                        locationID
-                ));
+
+                jobsList.add(this.readJobRequest(ServerClient.JobRequestFullInfo
+                                .newBuilder()
+                                .setJobID(jobID)
+                        .build(), connection));
             }
             return jobsList;
         }finally {
@@ -308,7 +343,7 @@ public class JobRequestDAO {
         try {
             String sql = sb.toString();
             if(request.getJobID() == 0)   throw new Exception("Job không hợp lệ");
-            JobRequests jobRequests = this.readJobRequest(ServerClient.JobRequestMetaInfo.newBuilder().setJobID(request.getJobID()).build(), connection);
+            JobRequests jobRequests = this.readJobRequest(ServerClient.JobRequestFullInfo.newBuilder().setJobID(request.getJobID()).build(), connection);
 
             Date deadlineDate = jobRequests.getDeadlineDate();
             if (deadlineDate == null) throw new Exception("Ngày hết hạn không được xác định");
@@ -339,36 +374,34 @@ public class JobRequestDAO {
         }
     }
 
-    public ConcurrentHashMap<Integer, Boolean> readJobRequestIDs(Locations locations, Connection connection) throws Exception {
+    public ArrayList<Integer> readJobRequestIDs(Branchs branchs, Connection connection) throws Exception {
         System.out.println("readJobRequestIDs");
 
-        Integer locationID = locations.getLocationID();
-        if (locationID <= 0) throw new Exception("Kết quả trả về không hợp lệ");
+        Integer branchID = branchs.getBranchID();
+        if (branchID <= 0) throw new Exception("Kết quả trả về không hợp lệ");
 
         StringBuilder sb = new StringBuilder();
-        sb.append("SELECT `jobID` FROM `JobRequests` WHERE `JobRequests`.`locationID` = ?;");
+        sb.append("SELECT `jobID` FROM `JobRequests` WHERE `JobRequests`.`branchID` = ?;");
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
-        // ConcurrentHashMap để lưu danh sách các JobRequestID
-        ConcurrentHashMap<Integer, Boolean> jobRequestMap = new ConcurrentHashMap<>();
+        ArrayList<Integer> jobRequestMap = new ArrayList<>();
 
         try {
             String sql = sb.toString();
             preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setInt(1, locationID);
+            preparedStatement.setInt(1, branchID);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
                 Integer jobRequestID = resultSet.getInt("jobID");
 
                 if (jobRequestID <= 0) throw new Exception("Kết quả trả về không hợp lệ");
-                jobRequestMap.put(jobRequestID, true);
+                jobRequestMap.add(jobRequestID);
             }
             return jobRequestMap;
         } finally {
-            // Đảm bảo đóng các tài nguyên
             if (resultSet != null) resultSet.close();
             if (preparedStatement != null) preparedStatement.close();
         }
@@ -406,12 +439,16 @@ public class JobRequestDAO {
     public ArrayList<JobRequests> searchJobsInJobs(ServerClient.JobRequestRestrict request, ArrayList<Integer> searchLocation, ArrayList<Integer> searchJob, Connection connection) throws Exception {
         System.out.println("searchJobsInJobs");
 
-        // Construct SQL query
-        StringBuilder sql = new StringBuilder("SELECT `jobID` FROM JobRequests WHERE 1=1");
+        StringBuilder sql = new StringBuilder("SELECT `jobID` FROM `JobRequests` WHERE 1=1");
+        List<Object> parameters = new ArrayList<>();
 
-        // Add location filter
+        if (!request.getSearchParam().isEmpty()) {
+            sql.append(" AND CONCAT(jobDescription, '#', jobRequirement, '#', jobBenefit, '#', title, '#', jobField, '#', jobTitle) LIKE ?");
+            parameters.add("%" + request.getSearchParam() + "%");
+        }
+
         if (searchLocation != null && !searchLocation.isEmpty()) {
-            sql.append(" AND locationID IN (");
+            sql.append(" AND `branchID` IN (");
             for (int i = 0; i < searchLocation.size(); i++) {
                 sql.append(searchLocation.get(i));
                 if (i < searchLocation.size() - 1) {
@@ -421,7 +458,6 @@ public class JobRequestDAO {
             sql.append(")");
         }
 
-        // Add job filter
         if (searchJob != null && !searchJob.isEmpty()) {
             sql.append(" AND jobID IN (");
             for (int i = 0; i < searchJob.size(); i++) {
@@ -438,33 +474,37 @@ public class JobRequestDAO {
             sql.append(" AND salaryLeast >= ").append(request.getSalaryMinimum());
         }
 
-//        if (request.getJobLevel() != null) {
-//            sql.append(" AND jobLevel = '").append(request.getJobLevel().name()).append("'"); // Enum to integer mapping
-//        }
+        if (request.getJobLevel().getNumber() != 0) {
+            sql.append(" AND jobLevel = '").append(request.getJobLevel().name()).append("'");
+        }
 
-//        if (request.getJobType() != null) {
-//            sql.append(" AND jobType = '").append(request.getJobType().name()).append("'"); // Enum to integer mapping
-//        }
+        if (request.getJobType().getNumber() != 0) {
+            sql.append(" AND jobType = '").append(request.getJobType().name()).append("'");
+        }
 
-
-        // Add deadline check filter
         if (request.getIsEnded()) {
             sql.append(" AND deadlineDate < CURRENT_DATE");
         } else {
             sql.append(" AND deadlineDate >= CURRENT_DATE");
         }
 
-        // Add ordering to get the most recent jobs
+        if(request.getLocationID() != 0){
+            sql.append(" AND `locationID` = ").append(request.getLocationID());
+        }
+
         sql.append(" ORDER BY createdAt DESC");
 
-        System.out.println(sql.toString());
-        // Execute the query
-        Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery(sql.toString());
-        // Map the result set to JobRequests objects
+        System.out.println(sql);
+//        Statement stmt = connection.createStatement();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
+        for (int i = 0; i < parameters.size(); i++) {
+            preparedStatement.setObject(i + 1, parameters.get(i));
+        }
+
+        ResultSet rs = preparedStatement.executeQuery();
         ArrayList<JobRequests> jobRequests = new ArrayList<>();
         while (rs.next()) {
-            jobRequests.add(this.readJobRequest(ServerClient.JobRequestMetaInfo.newBuilder().setJobID(rs.getInt("jobID")).build(), connection));
+            jobRequests.add(this.readJobRequest(ServerClient.JobRequestFullInfo.newBuilder().setJobID(rs.getInt("jobID")).build(), connection));
         }
         return jobRequests;
     }
@@ -479,12 +519,12 @@ public class JobRequestDAO {
             throw new Exception("Either CVID or jobID must be provided.");
         }
 
-        // Dynamically build the SQL query based on the available parameters
         StringBuilder sqlBuilder = new StringBuilder("SELECT * FROM Applies WHERE 1=1"); // Start with a base query
 
         if (CVID != null && CVID != 0) {
             sqlBuilder.append(" AND CVID = ?");
         }
+
         if (jobID != null && jobID != 0) {
             sqlBuilder.append(" AND jobID = ?");
         }
@@ -510,7 +550,7 @@ public class JobRequestDAO {
 
                     // Build the AppliesInfo object from the ResultSet
                     builder.setCVID(rs.getInt("CVID"));
-                    builder.setJobRequestID(rs.getInt("jobID"));
+                    builder.setJobID(rs.getInt("jobID"));
                     builder.setStatus(ServerClient.Status.valueOf(rs.getString("status")));
 
                     ans.add(builder.build());

@@ -24,9 +24,9 @@ public class RecruiterController {
             connection = HikariDataSource.getConnection();
             connection.setAutoCommit(false);
 
-            users = userDAO.createUser(request, connection);
+            users = userDAO.createUser(request.getUser(), connection);
             if(users == null)   throw  new Exception("Không tạo được Users");
-            
+
             recruiters = recruiterDAO.createRecruiter(users, request, connection);
 
             if(recruiters == null)  throw  new Exception("Không tạo được Recruiter");
@@ -38,7 +38,7 @@ public class RecruiterController {
         }
     }
 
-    public Recruiters recruiterRead(ServerClient.UserMetaInfo request) throws SQLException {
+    public Recruiters recruiterRead(ServerClient.UserFullInfo request) throws Exception {
         RecruiterDAO recruiterDAO = new RecruiterDAO();
         Recruiters recruiters;
         Connection connection = null;
@@ -51,9 +51,7 @@ public class RecruiterController {
         }
     }
 
-    public Recruiters recruiterUpdate(ServerClient.RecruiterFullInfo request) throws SQLException {
-        System.out.println("recruiterUpdate");
-
+    public Recruiters recruiterUpdate(ServerClient.RecruiterFullInfo request) throws Exception {
         RecruiterDAO recruiterDAO = new RecruiterDAO();
         Recruiters recruiters;
         Connection connection = null;
@@ -69,7 +67,7 @@ public class RecruiterController {
         }
     }
 
-    public ArrayList<Recruiters> recruiterList() throws SQLException {
+    public ArrayList<Recruiters> recruiterList() throws Exception {
         System.out.println("recruiterList");
 
         RecruiterDAO recruiterDAO = new RecruiterDAO();

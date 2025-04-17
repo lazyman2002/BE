@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class WorkExperienceServiceImpl extends WorkExperienceServiceGrpc.WorkExperienceServiceImplBase {
     @Override
-    public void workExperienceListRead(ServerClient.CVMetaInfo request, StreamObserver<ServerClient.WorkExperienceFullInfo> responseObserver) {
+    public void workExperienceListRead(ServerClient.CVFullInfo request, StreamObserver<ServerClient.WorkExperienceFullInfo> responseObserver) {
         System.out.println("workExperienceListRead");
 
         WorkExperienceController workExperienceController = new WorkExperienceController();

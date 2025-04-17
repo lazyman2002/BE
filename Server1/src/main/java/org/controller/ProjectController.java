@@ -1,79 +1,74 @@
 package org.controller;
 
-import org.DAO.RoleDAO;
+import org.DAO.ProjectDAO;
 import org.connectConfig.HikariDataSource;
-import org.model.Roles;
+import org.model.Projects;
 import proto.ServerClient;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
-
-public class RoleController {
-    public ArrayList<Roles> roleList(ServerClient.CompanyMetaInfo request) throws Exception {
-        RoleDAO roleDAO = new RoleDAO();
+public class ProjectController {
+    public ArrayList<Projects> projectList(ServerClient.CVFullInfo request) throws Exception {
+        ProjectDAO projectDAO = new ProjectDAO();
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
-            return roleDAO.readRoleList(request, connection);
-        }
-        finally {
+            return projectDAO.readProjectList(request, connection);
+        } finally {
             if (connection != null) connection.close();
         }
     }
 
-    public Roles roleRead(ServerClient.RoleFullInfo request) throws Exception {
-        RoleDAO roleDAO = new RoleDAO();
+    public Projects projectRead(ServerClient.ProjectFullInfo request) throws Exception {
+        ProjectDAO projectDAO = new ProjectDAO();
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
             connection.setAutoCommit(false);
-            Roles roles = roleDAO.readRole(request, connection);
+            Projects project = projectDAO.readProject(request, connection);
             connection.commit();
-            return roles;
-        }
-        finally {
+            return project;
+        } finally {
             if (connection != null) connection.close();
         }
     }
 
-    public Roles rolesUpdate(ServerClient.RoleFullInfo request) throws Exception{
-        RoleDAO roleDAO = new RoleDAO();
+    public Projects projectUpdate(ServerClient.ProjectFullInfo request) throws Exception {
+        ProjectDAO projectDAO = new ProjectDAO();
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
             connection.setAutoCommit(false);
-            Roles roles =  roleDAO.updateRole(request, connection);
+            Projects project = projectDAO.updateProject(request, connection);
             connection.commit();
-            return roles;
-        }
-        finally {
+            return project;
+        } finally {
             if (connection != null) connection.close();
         }
     }
 
-    public Roles roleRegister(ServerClient.RoleFullInfo request) throws Exception {
-        RoleDAO roleDAO = new RoleDAO();
+    public Projects projectRegister(ServerClient.ProjectFullInfo request) throws Exception {
+        ProjectDAO projectDAO = new ProjectDAO();
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
             connection.setAutoCommit(false);
-            Roles roles = roleDAO.registerRole(request, connection);
+            Projects project = projectDAO.registerProject(request, connection);
             connection.commit();
-            return roles;
-        }
-        finally {
+            return project;
+        } finally {
             if (connection != null) connection.close();
         }
     }
 
-    public Boolean roleDelete(ServerClient.RoleFullInfo request) throws Exception {
-        RoleDAO roleDAO = new RoleDAO();
+    public Boolean projectDelete(ServerClient.ProjectFullInfo request) throws Exception {
+        ProjectDAO projectDAO = new ProjectDAO();
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
             connection.setAutoCommit(false);
-            if (roleDAO.deleteRole(request, connection)) {
+            if (projectDAO.deleteProject(request, connection)) {
                 connection.commit();
                 return true;
             }

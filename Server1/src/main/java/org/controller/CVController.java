@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class CVController {
-    public ArrayList<CVs> cvList(ServerClient.UserMetaInfo request) throws Exception {
+    public ArrayList<CVs> cvList(ServerClient.UserFullInfo request) throws Exception {
         CVDAO cvDAO = new CVDAO();
         Connection connection = null;
         try {
@@ -21,7 +21,7 @@ public class CVController {
         }
     }
 
-    public CVs cvRead(ServerClient.CVMetaInfo request) throws Exception {
+    public CVs cvRead(ServerClient.CVFullInfo request) throws Exception {
         System.out.println("cvRead");
 
         CVDAO cvDAO = new CVDAO();
@@ -30,6 +30,8 @@ public class CVController {
         WorkExperienceDAO workExperienceDAO = new WorkExperienceDAO();
         SkillDAO skillDAO = new SkillDAO();
         PersonalityDAO personalityDAO= new PersonalityDAO();
+        ProjectDAO projectDAO = new ProjectDAO();
+        AwardDAO awardDAO = new AwardDAO();
 
         Connection connection = null;
         try {
@@ -52,6 +54,11 @@ public class CVController {
             HashSet<Integer> workExperienceIDs = workExperienceDAO.readWorkExperienceIDs(cv.getCVID(), connection);
             if(!workExperienceIDs.isEmpty())    cv.setCurrentWorkExperiences(workExperienceIDs);
 
+            HashSet<Integer> projectIDs = projectDAO.readProjectIDs(cv.getCVID(), connection);
+            if(!projectIDs.isEmpty())   cv.setCurrentProjects(projectIDs);
+
+            HashSet<Integer> awardIDs = awardDAO.readAwardIDs(cv.getCVID(), connection);
+            if(!awardIDs.isEmpty())     cv.setCurrentAwards(awardIDs);
             connection.commit();
             return cv;
         } finally {
@@ -87,7 +94,7 @@ public class CVController {
         }
     }
 
-    public Boolean cvDelete(ServerClient.CVMetaInfo request) throws Exception {
+    public Boolean cvDelete(ServerClient.CVFullInfo request) throws Exception {
         CVDAO cvDAO = new CVDAO();
         Connection connection = null;
         try {

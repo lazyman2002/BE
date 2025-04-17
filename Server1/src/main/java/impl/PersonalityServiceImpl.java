@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class PersonalityServiceImpl extends PersonalityServiceGrpc.PersonalityServiceImplBase {
     @Override
-    public void personalityListRead(ServerClient.CVMetaInfo request, StreamObserver<ServerClient.PersonalityFullInfo> responseObserver) {
+    public void personalityListRead(ServerClient.CVFullInfo request, StreamObserver<ServerClient.PersonalityFullInfo> responseObserver) {
         System.out.println("personalityListRead");
 
         PersonalityController personalityController = new PersonalityController();

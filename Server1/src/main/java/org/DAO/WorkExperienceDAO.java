@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class WorkExperienceDAO {
-    public ArrayList<WorkExperiences> readWorkExperienceList(ServerClient.CVMetaInfo request, Connection connection) throws Exception {
+    public ArrayList<WorkExperiences> readWorkExperienceList(ServerClient.CVFullInfo request, Connection connection) throws Exception {
         System.out.println("readWorkExperienceList");
 
         String query = "SELECT * FROM `WorkExperiences` WHERE `WorkExperiences`.`CVID` = ?;";
@@ -65,30 +65,31 @@ public class WorkExperienceDAO {
             resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
+                WorkExperiences workExperiences = new WorkExperiences();
+                workExperiences.setWorkExperienceID(request.getWorkExperienceID());
+
                 Integer CVID = resultSet.getInt("CVID");
                 if (CVID <= 0) throw new Exception("Invalid CVID");
+                workExperiences.setCVID(CVID);
 
                 String jobTitle = resultSet.getString("jobTitle");
                 jobTitle = (jobTitle != null) ? jobTitle : "";
+                workExperiences.setJobTitle(jobTitle);
 
                 String jobDescription = resultSet.getString("jobDescription");
                 jobDescription = (jobDescription != null) ? jobDescription : "";
+                workExperiences.setJobDescription(jobDescription);
 
                 String companyName = resultSet.getString("companyName");
                 companyName = (companyName != null) ? companyName : "";
+                workExperiences.setCompanyName(companyName);
 
                 Date startDate = resultSet.getDate("startDate");
                 Date endDate = resultSet.getDate("endDate");
+                workExperiences.setStartDate(startDate);
+                workExperiences.setEndDate(endDate);
 
-                return new WorkExperiences(
-                        CVID,
-                        jobTitle,
-                        startDate,
-                        endDate,
-                        jobDescription,
-                        request.getWorkExperienceID(),
-                        companyName
-                );
+                return workExperiences;
             } else {
                 throw new Exception("WorkExperience not found");
             }
@@ -131,8 +132,8 @@ public class WorkExperienceDAO {
             if (!request.hasStartDate() || !request.hasEndDate()) {
                 throw new Exception("Start date and end date must be valid");
             }
-            java.sql.Date startDate = new java.sql.Date(startDateTimestamp.getSeconds() * 1000);
-            java.sql.Date endDate = new java.sql.Date(endDateTimestamp.getSeconds() * 1000);
+            Date startDate = new Date(startDateTimestamp.getSeconds() * 1000);
+            Date endDate = new Date(endDateTimestamp.getSeconds() * 1000);
 
             preparedStatement.setInt(1, request.getCVID());
             preparedStatement.setString(2, jobTitle);
@@ -188,13 +189,13 @@ public class WorkExperienceDAO {
             }
 
             if (request.hasStartDate()) {
-                java.sql.Date startDate = new java.sql.Date(request.getStartDate().getSeconds() * 1000);
+                Date startDate = new Date(request.getStartDate().getSeconds() * 1000);
                 sb.append("`WorkExperiences`.`startDate` = ?, ");
                 parameters.add(startDate);
             }
 
             if (request.hasEndDate()) {
-                java.sql.Date endDate = new java.sql.Date(request.getEndDate().getSeconds() * 1000);
+                Date endDate = new Date(request.getEndDate().getSeconds() * 1000);
                 sb.append("`WorkExperiences`.`endDate` = ?, ");
                 parameters.add(endDate);
             }

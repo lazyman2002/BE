@@ -5,6 +5,7 @@ import com.google.protobuf.Empty;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
+//import org.controller.ApplyController;
 import org.controller.ApplyController;
 import org.controller.Converter;
 import org.controller.JobController;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 
 public class JobRequestServiceImpl extends JobRequestServiceGrpc.JobRequestServiceImplBase {
     @Override
-    public void jobRequestRead(ServerClient.JobRequestMetaInfo request, StreamObserver<ServerClient.JobRequestFullInfo> responseObserver) {
+    public void jobRequestRead(ServerClient.JobRequestFullInfo request, StreamObserver<ServerClient.JobRequestFullInfo> responseObserver) {
         System.out.println("jobRequestReadInfo");
         try {
             JobController jobController = new JobController();
@@ -66,7 +67,7 @@ public class JobRequestServiceImpl extends JobRequestServiceGrpc.JobRequestServi
     }
 
     @Override
-    public void jobRequestDelete(ServerClient.JobRequestMetaInfo request, StreamObserver<BoolValue> responseObserver) {
+    public void jobRequestDelete(ServerClient.JobRequestFullInfo request, StreamObserver<BoolValue> responseObserver) {
         System.out.println("jobDeleteInfo");
 
         try {

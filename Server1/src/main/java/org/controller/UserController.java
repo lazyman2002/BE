@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UserController {
-    public Users userRead(ServerClient.UserMetaInfo request) throws SQLException {
+    public Users userRead(ServerClient.UserFullInfo request) throws Exception {
         UserDAO userDAO = new UserDAO();
         Users users;
         Connection connection = null;
@@ -27,7 +27,7 @@ public class UserController {
         }
     }
 
-    public Users userUpdate(ServerClient.UserFullInfo request) throws SQLException {
+    public Users userUpdate(ServerClient.UserFullInfo request) throws Exception {
         System.out.println("userUpdate");
         UserDAO userDAO = new UserDAO();
         Users users;
@@ -44,7 +44,7 @@ public class UserController {
         }
     }
 
-    public Boolean userDelete(ServerClient.UserMetaInfo request) throws SQLException {
+    public Boolean userDelete(ServerClient.UserFullInfo request) throws Exception {
         UserDAO userDAO = new UserDAO();
         Connection connection = null;
         try {
@@ -60,7 +60,7 @@ public class UserController {
         }
     }
 
-    public ArrayList<Users> userList() throws SQLException {
+    public ArrayList<Users> userList() throws Exception {
         UserDAO userDAO = new UserDAO();
         Connection connection = null;
         try {

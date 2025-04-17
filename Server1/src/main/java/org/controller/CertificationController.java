@@ -7,10 +7,9 @@ import proto.ServerClient;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class CertificationController {
-    public ArrayList<Certifications> certificationList(ServerClient.CVMetaInfo request) throws Exception {
+    public ArrayList<Certifications> certificationList(ServerClient.CVFullInfo request) throws Exception {
         CertificationDAO certificationDAO = new CertificationDAO();
         Connection connection = null;
         try {
@@ -24,6 +23,7 @@ public class CertificationController {
 
     public Certifications certificationRead(ServerClient.CertificationFullInfo request) throws Exception {
         CertificationDAO certificationDAO = new CertificationDAO();
+
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();

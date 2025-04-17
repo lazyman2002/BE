@@ -7,34 +7,19 @@ import java.util.HashSet;
 public class Candidates extends Users {
 	private Date birthDate;
 	private Gender gender;
+//	Ngoài CSDL
 	private HashSet<Integer> currentCVs;
-	public Candidates() {}
-	public Candidates(Integer userID,
-					  String username,
-					  String password_hashed,
-					  String firstName,
-					  String lastName,
-					  String email,
-					  Boolean isCandidate) {
-		super(userID, username, password_hashed, firstName, lastName, email, isCandidate);
-	}
 
-	public Candidates(Integer userID,
-					  String username,
-					  String password_hashed,
-					  String firstName,
-					  String lastName,
-					  String email,
-					  Boolean isCandidate,
-					  Date birthDate,
-					  Gender gender) {
-		super(userID, username, password_hashed, firstName, lastName, email, isCandidate);
-		this.birthDate = birthDate;
-		this.gender = gender;
-	}
+	public Candidates() {}
 
 	public Candidates(Users users){
-		super(users.getUserID(), users.getUsername(), users.getPassword_hashed(), users.getFirstName(), users.getLastName(), users.getEmail(), users.isCandidate());
+		this.setUserID(users.getUserID());
+		this.setUsername(users.getUsername());
+		this.setPassword_hashed(users.getPassword_hashed());
+		this.setFirstName(users.getFirstName());
+		this.setLastName(users.getLastName());
+		this.setEmail(users.getEmail());
+		this.setCandidate(users.isCandidate());
 	}
 
 	public Date getBirthDate() {

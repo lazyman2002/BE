@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class WorkExperienceController {
 
-    public ArrayList<WorkExperiences> workExperienceList(ServerClient.CVMetaInfo request) throws Exception {
+    public ArrayList<WorkExperiences> workExperienceList(ServerClient.CVFullInfo request) throws Exception {
         WorkExperienceDAO workExperienceDAO = new WorkExperienceDAO();
         Connection connection = null;
         try {

@@ -4,25 +4,15 @@ import java.sql.Date;
 import java.util.Objects;
 
 public class Educations {
+	private Integer educationID;
 	private Integer CVID;
 	private String degree;
-	private String fieldOfStudy;
-	private String institution;
+	private String EduFields;
+	private String EduDescription;
 	private Date startDate;
 	private Date endDate;
-	private Integer educationID;
 
 	public Educations() {}
-
-	public Educations(Integer CVID, String degree, String fieldOfStudy, String institution, Date startDate, Date endDate, Integer educationID) {
-		this.CVID = CVID;
-		this.degree = degree;
-		this.fieldOfStudy = fieldOfStudy;
-		this.institution = institution;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.educationID = educationID;
-	}
 
 	public Integer getCVID() {
 		return CVID;
@@ -30,11 +20,11 @@ public class Educations {
 	public String getDegree() {
 		return degree;
 	}
-	public String getFieldOfStudy() {
-		return fieldOfStudy;
+	public String getEduFields() {
+		return EduFields;
 	}
-	public String getInstitution() {
-		return institution;
+	public String getEduDescription() {
+		return EduDescription;
 	}
 	public Date getStartDate() {
 		return startDate;
@@ -52,11 +42,11 @@ public class Educations {
 	public void setDegree(String degree) {
 		this.degree = degree;
 	}
-	public void setFieldOfStudy(String fieldOfStudy) {
-		this.fieldOfStudy = fieldOfStudy;
+	public void setEduFields(String eduFields) {
+		EduFields = eduFields;
 	}
-	public void setInstitution(String institution) {
-		this.institution = institution;
+	public void setEduDescription(String eduDescription) {
+		EduDescription = eduDescription;
 	}
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
@@ -73,24 +63,24 @@ public class Educations {
 		if (this == o) return true;
 		if (!(o instanceof Educations)) return false;
 		Educations that = (Educations) o;
-		return Objects.equals(CVID, that.CVID) && Objects.equals(degree, that.degree) && Objects.equals(fieldOfStudy, that.fieldOfStudy) && Objects.equals(institution, that.institution) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate) && Objects.equals(educationID, that.educationID);
+		return Objects.equals(educationID, that.educationID) && Objects.equals(CVID, that.CVID) && Objects.equals(degree, that.degree) && Objects.equals(EduFields, that.EduFields) && Objects.equals(EduDescription, that.EduDescription) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(CVID, degree, fieldOfStudy, institution, startDate, endDate, educationID);
+		return Objects.hash(educationID, CVID, degree, EduFields, EduDescription, startDate, endDate);
 	}
 
 	@Override
 	public String toString() {
 		final StringBuffer sb = new StringBuffer("Educations{");
-		sb.append("CVID=").append(CVID);
+		sb.append("educationID=").append(educationID);
+		sb.append(", CVID=").append(CVID);
 		sb.append(", degree='").append(degree).append('\'');
-		sb.append(", fieldOfStudy='").append(fieldOfStudy).append('\'');
-		sb.append(", institution='").append(institution).append('\'');
+		sb.append(", EduFields='").append(EduFields).append('\'');
+		sb.append(", EduDescription='").append(EduDescription).append('\'');
 		sb.append(", startDate=").append(startDate);
 		sb.append(", endDate=").append(endDate);
-		sb.append(", educationID=").append(educationID);
 		sb.append('}');
 		return sb.toString();
 	}

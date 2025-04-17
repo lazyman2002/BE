@@ -2,14 +2,12 @@ package org.controller;
 
 import org.DAO.JobRequestDAO;
 import org.connectConfig.HikariDataSource;
-import org.model.CVs;
 import proto.ServerClient;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
 public class ApplyController {
-
     public Boolean CVApply(ServerClient.JobRequestFullInfo request) throws Exception {
         JobRequestDAO jobRequestDAO = new JobRequestDAO();
         Connection connection = null;

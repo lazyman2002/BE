@@ -21,7 +21,6 @@ public class SearchServiceImpl extends SearchServiceGrpc.SearchServiceImplBase {
         JobController jobController = new JobController();
         try {
             ArrayList<JobRequests> JBS = jobController.searchJob(request);
-            System.out.println(JBS);
             for (JobRequests job : JBS){
                 ServerClient.JobRequestFullInfo jobRequestFullInfo = Converter.jobRequestsToFullProto(job);
                 responseObserver.onNext(jobRequestFullInfo);
@@ -52,6 +51,5 @@ public class SearchServiceImpl extends SearchServiceGrpc.SearchServiceImplBase {
                     .asRuntimeException();
             responseObserver.onError(dbError);
         }
-
     }
 }

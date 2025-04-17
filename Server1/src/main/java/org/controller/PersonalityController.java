@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class PersonalityController {
 
-    public ArrayList<Personalities> personalityList(ServerClient.CVMetaInfo request) throws Exception {
+    public ArrayList<Personalities> personalityList(ServerClient.CVFullInfo request) throws Exception {
         PersonalityDAO personalityDAO = new PersonalityDAO();
         Connection connection = null;
         try {

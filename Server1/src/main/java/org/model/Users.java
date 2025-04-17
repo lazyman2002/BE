@@ -10,30 +10,12 @@ public class Users {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String GoogleToken;
-	private Timestamp GoogleTokenExpiration;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
 //  ngoài CSDL
 	private boolean isCandidate;
-//	private String password;
 
 	public Users(){}
-	public Users(Integer userID,
-				String username,
-				String password_hashed,
-				String firstName,
-				String lastName,
-				String email,
-				Boolean isCandidate) {
-		this.userID = userID;
-		this.username = username;
-		this.password_hashed = password_hashed;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.isCandidate = isCandidate;
-	}
 
 	public Integer getUserID() {
 		return userID;
@@ -52,12 +34,6 @@ public class Users {
 	}
 	public String getEmail() {
 		return email;
-	}
-	public String getGoogleToken() {
-		return GoogleToken;
-	}
-	public Timestamp getGoogleTokenExpiration() {
-		return GoogleTokenExpiration;
 	}
 	public Timestamp getCreatedAt() {
 		return createdAt;
@@ -87,12 +63,6 @@ public class Users {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public void setGoogleToken(String googleToken) {
-		GoogleToken = googleToken;
-	}
-	public void setGoogleTokenExpiration(Timestamp googleTokenExpiration) {
-		GoogleTokenExpiration = googleTokenExpiration;
-	}
 	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
@@ -106,14 +76,14 @@ public class Users {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (!(o instanceof Users)) return false;
 		Users users = (Users) o;
-		return Objects.equals(userID, users.userID) && Objects.equals(username, users.username) && Objects.equals(password_hashed, users.password_hashed) && Objects.equals(firstName, users.firstName) && Objects.equals(lastName, users.lastName) && Objects.equals(email, users.email) && Objects.equals(GoogleToken, users.GoogleToken) && Objects.equals(GoogleTokenExpiration, users.GoogleTokenExpiration) && Objects.equals(createdAt, users.createdAt) && Objects.equals(updatedAt, users.updatedAt);
+		return isCandidate == users.isCandidate && Objects.equals(userID, users.userID) && Objects.equals(username, users.username) && Objects.equals(password_hashed, users.password_hashed) && Objects.equals(firstName, users.firstName) && Objects.equals(lastName, users.lastName) && Objects.equals(email, users.email) && Objects.equals(createdAt, users.createdAt) && Objects.equals(updatedAt, users.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(userID, username, password_hashed, firstName, lastName, email, GoogleToken, GoogleTokenExpiration, createdAt, updatedAt);
+		return Objects.hash(userID, username, password_hashed, firstName, lastName, email, createdAt, updatedAt, isCandidate);
 	}
 
 	@Override
@@ -125,8 +95,6 @@ public class Users {
 		sb.append(", firstName='").append(firstName).append('\'');
 		sb.append(", lastName='").append(lastName).append('\'');
 		sb.append(", email='").append(email).append('\'');
-		sb.append(", GoogleToken='").append(GoogleToken).append('\'');
-		sb.append(", GoogleTokenExpiration=").append(GoogleTokenExpiration);
 		sb.append(", createdAt=").append(createdAt);
 		sb.append(", updatedAt=").append(updatedAt);
 		sb.append(", isCandidate=").append(isCandidate);
