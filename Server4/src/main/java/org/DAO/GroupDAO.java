@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GroupDAO {
-    public Groups readGroup(ServerChat.GroupMetaInfo request, Connection connection) throws Exception {
+    public Groups readGroup(ServerChat.GroupInfo request, Connection connection) throws Exception {
         System.out.println("readGroup");
 
         StringBuilder sb = new StringBuilder();
@@ -42,7 +42,7 @@ public class GroupDAO {
         }
     }
 
-    public Groups createGroup(ServerChat.GroupMetaInfo request, Connection connection) throws Exception {
+    public Groups createGroup(ServerChat.GroupInfo request, Connection connection) throws Exception {
         System.out.println("createGroup");
 
         StringBuilder sb = new StringBuilder();
@@ -77,7 +77,7 @@ public class GroupDAO {
         throw new Exception("Lỗi code");
     }
 
-    public Groups updateGroup(ServerChat.GroupMetaInfo request, Connection connection) throws Exception {
+    public Groups updateGroup(ServerChat.GroupInfo request, Connection connection) throws Exception {
         System.out.println("updateGroup");
 
         StringBuilder sb = new StringBuilder();
@@ -112,7 +112,7 @@ public class GroupDAO {
         }
     }
 
-    public Boolean deleteGroup(ServerChat.GroupMetaInfo request, Connection connection) throws Exception {
+    public Boolean deleteGroup(ServerChat.GroupInfo request, Connection connection) throws Exception {
         System.out.println("deleteGroup");
 
         StringBuilder sb = new StringBuilder();

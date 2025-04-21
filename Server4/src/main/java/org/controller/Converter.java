@@ -1,11 +1,13 @@
 package org.controller;
 
+import org.model.GroupMembers;
 import org.model.Groups;
-import org.model.Schedules;
+import org.model.MessagesInfo;
 import proto.ServerChat;
 
+import java.sql.Time;
 import java.sql.Timestamp;
-import java.time.Instant;
+import java.time.*;
 import java.util.*;
 
 public class Converter {
@@ -61,8 +63,8 @@ public class Converter {
         return map;
     }
 
-    public static ServerChat.GroupMetaInfo groupToProto(Groups groups){
-        ServerChat.GroupMetaInfo.Builder builder = ServerChat.GroupMetaInfo.newBuilder();
+    public static ServerChat.GroupInfo groupToProto(Groups groups){
+        ServerChat.GroupInfo.Builder builder = ServerChat.GroupInfo.newBuilder();
         if(groups.getGroupID() != null && groups.getGroupID() != 0)
             builder.setGroupID(groups.getGroupID());
         if(groups.getGroupName()!= null && !groups.getGroupName().isEmpty())
@@ -70,19 +72,65 @@ public class Converter {
         return builder.build();
     }
 
-    public static ServerChat.ScheduleFullInfo scheduleToProto(Schedules schedules){
-        ServerChat.ScheduleFullInfo.Builder builder = ServerChat.ScheduleFullInfo.newBuilder();
-        if(schedules.getScheduleID() != null && schedules.getScheduleID() !=0)
-            builder.setScheduleID(schedules.getScheduleID());
-        if(schedules.getGroupID() != null && schedules.getGroupID() != 0)
-            builder.setGroupID(schedules.getGroupID());
-        if(schedules.getRecored() != null)
-            builder.setIsRecorded(schedules.getRecored());
-        if(schedules.getTimeSet() != null)
-            builder.setTimeSet(timesToProto(schedules.getTimeSet()));
-        if(!schedules.getInterviewers().isEmpty()){
-            builder.putAllInterviewers(schedules.getInterviewers());
+    public static ServerChat.GroupMember groupMemberToProto(GroupMembers groupMembers){
+        ServerChat.GroupMember.Builder builder = ServerChat.GroupMember.newBuilder();
+        if(groupMembers.getUserID() != null && groupMembers.getUserID() != 0)
+            builder.setGroupID(groupMembers.getUserID());
+        if(groupMembers.getGroupID() != null && groupMembers.getGroupID() != 0)
+            builder.setGroupID(groupMembers.getGroupID());
+        if(groupMembers.getIsAdmin() != 0 && groupMembers.getGroupID() != null)
+            builder.setIsAdmin(true);
+        if(groupMembers.getInterview() != null) {
+            LocalTime time = groupMembers.getInterview().toLocalTime();
+            LocalDate today = LocalDate.now(); // cần ngày bất kỳ để tạo Timestamp
+            LocalDateTime interviewDateTime = LocalDateTime.of(today, time);
+            Instant instant = interviewDateTime.atZone(ZoneId.systemDefault()).toInstant();
+
+            com.google.protobuf.Timestamp interviewTimestamp = com.google.protobuf.Timestamp.newBuilder()
+                    .setSeconds(instant.getEpochSecond())
+                    .setNanos(instant.getNano())
+                    .build();
+
+            builder.setInterview(interviewTimestamp);
+        }
+        if(groupMembers.getSchedule() != null) {
+            LocalDate date = groupMembers.getSchedule().toLocalDate();
+            LocalDateTime startOfDay = date.atStartOfDay();
+            Instant instant = startOfDay.atZone(ZoneId.systemDefault()).toInstant();
+
+            com.google.protobuf.Timestamp scheduleTimestamp = com.google.protobuf.Timestamp.newBuilder()
+                    .setSeconds(instant.getEpochSecond())
+                    .setNanos(instant.getNano())
+                    .build();
+
+            builder.setScheduleDate(scheduleTimestamp);
         }
         return builder.build();
     }
+
+    public static ServerChat.MessageInfo messageToProto(MessagesInfo message){
+        ServerChat.MessageInfo.Builder builder = ServerChat.MessageInfo.newBuilder();
+        if(message.getMsgID() != null && message.getMsgID() != 0)
+            builder.setMsgID(message.getMsgID());
+        if(message.getFromUserID() != null && message.getFromUserID() != 0)
+            builder.setFromUserID(message.getFromUserID());
+        if(message.getToGroupID() != null && message.getToGroupID() != 0)
+            builder.setToGroupID(message.getToGroupID());
+        if(message.getMessengerData()!= null && !message.getMessengerData().isEmpty())
+            builder.setMessengerData(message.getMessengerData());
+        if (message.getSendTime() != null) {
+            builder.setSendTime(timesToProto(message.getSendTime()));
+        }
+        return builder.build();
+    }
+
+    public static com.google.protobuf.Timestamp timesToProto(Time date) {
+        if (date == null) return null;
+        long millis = date.getTime();
+        long seconds = millis / 1000;
+        int nanos = (int) ((millis % 1000) * 1_000_000);
+        return com.google.protobuf.Timestamp.newBuilder().setSeconds(seconds).setNanos(nanos).build();
+    }
+
+
 }

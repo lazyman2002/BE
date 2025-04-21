@@ -7,15 +7,13 @@ import java.util.Objects;
 public class Groups {
 	private Integer groupID;
 	private String groupName;
-	private HashSet<Integer> currentSchedules;
-	private HashMap<Integer, Boolean> groupMember;
-
-	public Groups() {}
 
 	public Groups(Integer groupID, String groupName) {
 		this.groupID = groupID;
 		this.groupName = groupName;
 	}
+
+	public Groups() {}
 
 	public Integer getGroupID() {
 		return groupID;
@@ -23,24 +21,12 @@ public class Groups {
 	public String getGroupName() {
 		return groupName;
 	}
-	public HashSet<Integer> getCurrentSchedules() {
-		return currentSchedules;
-	}
-	public HashMap<Integer, Boolean> getGroupMember() {
-		return groupMember;
-	}
 
 	public void setGroupID(Integer groupID) {
 		this.groupID = groupID;
 	}
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
-	}
-	public void setCurrentSchedules(HashSet<Integer> currentSchedules) {
-		this.currentSchedules = currentSchedules;
-	}
-	public void setGroupMember(HashMap<Integer, Boolean> groupMember) {
-		this.groupMember = groupMember;
 	}
 
 	@Override
@@ -61,8 +47,6 @@ public class Groups {
 		final StringBuffer sb = new StringBuffer("Groups{");
 		sb.append("groupID=").append(groupID);
 		sb.append(", groupName='").append(groupName).append('\'');
-		sb.append(", currentSchedules=").append(currentSchedules);
-		sb.append(", groupMember=").append(groupMember);
 		sb.append('}');
 		return sb.toString();
 	}

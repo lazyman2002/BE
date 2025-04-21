@@ -47,28 +47,28 @@ public final class SearchServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<proto.ServerClient.JobRequestRestrict,
-      proto.ServerClient.CVFullInfo> getRecruiterCVMethod;
+      proto.ServerClient.AppliesInfo> getRecruiterCVMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Recruiter_CV",
       requestType = proto.ServerClient.JobRequestRestrict.class,
-      responseType = proto.ServerClient.CVFullInfo.class,
+      responseType = proto.ServerClient.AppliesInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
   public static io.grpc.MethodDescriptor<proto.ServerClient.JobRequestRestrict,
-      proto.ServerClient.CVFullInfo> getRecruiterCVMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.JobRequestRestrict, proto.ServerClient.CVFullInfo> getRecruiterCVMethod;
+      proto.ServerClient.AppliesInfo> getRecruiterCVMethod() {
+    io.grpc.MethodDescriptor<proto.ServerClient.JobRequestRestrict, proto.ServerClient.AppliesInfo> getRecruiterCVMethod;
     if ((getRecruiterCVMethod = SearchServiceGrpc.getRecruiterCVMethod) == null) {
       synchronized (SearchServiceGrpc.class) {
         if ((getRecruiterCVMethod = SearchServiceGrpc.getRecruiterCVMethod) == null) {
           SearchServiceGrpc.getRecruiterCVMethod = getRecruiterCVMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.JobRequestRestrict, proto.ServerClient.CVFullInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.JobRequestRestrict, proto.ServerClient.AppliesInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Recruiter_CV"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.JobRequestRestrict.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.CVFullInfo.getDefaultInstance()))
+                  proto.ServerClient.AppliesInfo.getDefaultInstance()))
               .setSchemaDescriptor(new SearchServiceMethodDescriptorSupplier("Recruiter_CV"))
               .build();
         }
@@ -135,7 +135,7 @@ public final class SearchServiceGrpc {
     /**
      */
     public void recruiterCV(proto.ServerClient.JobRequestRestrict request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.CVFullInfo> responseObserver) {
+        io.grpc.stub.StreamObserver<proto.ServerClient.AppliesInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRecruiterCVMethod(), responseObserver);
     }
 
@@ -153,7 +153,7 @@ public final class SearchServiceGrpc {
             io.grpc.stub.ServerCalls.asyncServerStreamingCall(
               new MethodHandlers<
                 proto.ServerClient.JobRequestRestrict,
-                proto.ServerClient.CVFullInfo>(
+                proto.ServerClient.AppliesInfo>(
                   this, METHODID_RECRUITER_CV)))
           .build();
     }
@@ -184,7 +184,7 @@ public final class SearchServiceGrpc {
     /**
      */
     public void recruiterCV(proto.ServerClient.JobRequestRestrict request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.CVFullInfo> responseObserver) {
+        io.grpc.stub.StreamObserver<proto.ServerClient.AppliesInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getRecruiterCVMethod(), getCallOptions()), request, responseObserver);
     }
@@ -214,7 +214,7 @@ public final class SearchServiceGrpc {
 
     /**
      */
-    public java.util.Iterator<proto.ServerClient.CVFullInfo> recruiterCV(
+    public java.util.Iterator<proto.ServerClient.AppliesInfo> recruiterCV(
         proto.ServerClient.JobRequestRestrict request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getRecruiterCVMethod(), getCallOptions(), request);
@@ -262,7 +262,7 @@ public final class SearchServiceGrpc {
           break;
         case METHODID_RECRUITER_CV:
           serviceImpl.recruiterCV((proto.ServerClient.JobRequestRestrict) request,
-              (io.grpc.stub.StreamObserver<proto.ServerClient.CVFullInfo>) responseObserver);
+              (io.grpc.stub.StreamObserver<proto.ServerClient.AppliesInfo>) responseObserver);
           break;
         default:
           throw new AssertionError();

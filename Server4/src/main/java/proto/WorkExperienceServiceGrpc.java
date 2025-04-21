@@ -77,27 +77,27 @@ public final class WorkExperienceServiceGrpc {
     return getWorkExperienceReadMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo,
       proto.ServerClient.WorkExperienceFullInfo> getWorkExperienceListReadMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "WorkExperienceListRead",
-      requestType = proto.ServerClient.CVMetaInfo.class,
+      requestType = proto.ServerClient.CVFullInfo.class,
       responseType = proto.ServerClient.WorkExperienceFullInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo,
       proto.ServerClient.WorkExperienceFullInfo> getWorkExperienceListReadMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo, proto.ServerClient.WorkExperienceFullInfo> getWorkExperienceListReadMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo, proto.ServerClient.WorkExperienceFullInfo> getWorkExperienceListReadMethod;
     if ((getWorkExperienceListReadMethod = WorkExperienceServiceGrpc.getWorkExperienceListReadMethod) == null) {
       synchronized (WorkExperienceServiceGrpc.class) {
         if ((getWorkExperienceListReadMethod = WorkExperienceServiceGrpc.getWorkExperienceListReadMethod) == null) {
           WorkExperienceServiceGrpc.getWorkExperienceListReadMethod = getWorkExperienceListReadMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.CVMetaInfo, proto.ServerClient.WorkExperienceFullInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.CVFullInfo, proto.ServerClient.WorkExperienceFullInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "WorkExperienceListRead"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.CVMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.CVFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.WorkExperienceFullInfo.getDefaultInstance()))
               .setSchemaDescriptor(new WorkExperienceServiceMethodDescriptorSupplier("WorkExperienceListRead"))
@@ -234,7 +234,7 @@ public final class WorkExperienceServiceGrpc {
 
     /**
      */
-    public void workExperienceListRead(proto.ServerClient.CVMetaInfo request,
+    public void workExperienceListRead(proto.ServerClient.CVFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.WorkExperienceFullInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getWorkExperienceListReadMethod(), responseObserver);
     }
@@ -273,7 +273,7 @@ public final class WorkExperienceServiceGrpc {
             getWorkExperienceListReadMethod(),
             io.grpc.stub.ServerCalls.asyncServerStreamingCall(
               new MethodHandlers<
-                proto.ServerClient.CVMetaInfo,
+                proto.ServerClient.CVFullInfo,
                 proto.ServerClient.WorkExperienceFullInfo>(
                   this, METHODID_WORK_EXPERIENCE_LIST_READ)))
           .addMethod(
@@ -326,7 +326,7 @@ public final class WorkExperienceServiceGrpc {
 
     /**
      */
-    public void workExperienceListRead(proto.ServerClient.CVMetaInfo request,
+    public void workExperienceListRead(proto.ServerClient.CVFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.WorkExperienceFullInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getWorkExperienceListReadMethod(), getCallOptions()), request, responseObserver);
@@ -380,7 +380,7 @@ public final class WorkExperienceServiceGrpc {
     /**
      */
     public java.util.Iterator<proto.ServerClient.WorkExperienceFullInfo> workExperienceListRead(
-        proto.ServerClient.CVMetaInfo request) {
+        proto.ServerClient.CVFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getWorkExperienceListReadMethod(), getCallOptions(), request);
     }
@@ -479,7 +479,7 @@ public final class WorkExperienceServiceGrpc {
               (io.grpc.stub.StreamObserver<proto.ServerClient.WorkExperienceFullInfo>) responseObserver);
           break;
         case METHODID_WORK_EXPERIENCE_LIST_READ:
-          serviceImpl.workExperienceListRead((proto.ServerClient.CVMetaInfo) request,
+          serviceImpl.workExperienceListRead((proto.ServerClient.CVFullInfo) request,
               (io.grpc.stub.StreamObserver<proto.ServerClient.WorkExperienceFullInfo>) responseObserver);
           break;
         case METHODID_WORK_EXPERIENCE_UPDATE_INFO:

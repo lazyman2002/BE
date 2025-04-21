@@ -1,16 +1,14 @@
 package org.controller;
 
-import org.DAO.ScheduleDAO;
 import org.connectConfig.HikariDataSource;
-import org.model.Schedules;
 import proto.ServerChat;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class ScheduleController {
+    /*
     public ArrayList<Schedules> scheduleList(ServerChat.GroupMetaInfo request) throws Exception {
         ScheduleDAO scheduleDAO = new ScheduleDAO();
         Connection connection = null;
@@ -22,6 +20,9 @@ public class ScheduleController {
         }
     }
 
+
+     */
+    /*
     public Schedules scheduleRead(ServerChat.ScheduleFullInfo request) throws Exception {
         ScheduleDAO scheduleDAO = new ScheduleDAO();
         Connection connection = null;
@@ -37,6 +38,9 @@ public class ScheduleController {
         }
     }
 
+
+     */
+    /*
     public Schedules scheduleUpdate(ServerChat.ScheduleFullInfo request) throws Exception {
         ScheduleDAO scheduleDAO = new ScheduleDAO();
         Connection connection = null;
@@ -51,6 +55,9 @@ public class ScheduleController {
         }
     }
 
+
+     */
+    /*
     public Schedules scheduleCreate(ServerChat.ScheduleFullInfo request) throws Exception {
         ScheduleDAO scheduleDAO = new ScheduleDAO();
         Connection connection = null;
@@ -65,6 +72,9 @@ public class ScheduleController {
         }
     }
 
+
+     */
+    /*
     public Boolean scheduleDelete(ServerChat.ScheduleFullInfo request) throws Exception {
         ScheduleDAO scheduleDAO = new ScheduleDAO();
         Connection connection = null;
@@ -81,6 +91,9 @@ public class ScheduleController {
         }
     }
 
+
+     */
+    /*
     public void scheduleAppendInterviewer(ServerChat.ScheduleFullInfo request) throws Exception {
         ScheduleDAO scheduleDAO = new ScheduleDAO();
         Connection connection = null;
@@ -100,6 +113,9 @@ public class ScheduleController {
         }
     }
 
+
+     */
+    /*
     public void scheduleDeleteInterviewer(ServerChat.ScheduleFullInfo request) throws Exception {
         ScheduleDAO scheduleDAO = new ScheduleDAO();
         Connection connection = null;
@@ -118,4 +134,6 @@ public class ScheduleController {
             if (connection != null) connection.close();
         }
     }
+
+     */
 }

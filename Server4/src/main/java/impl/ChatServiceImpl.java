@@ -6,7 +6,6 @@ import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
 import org.controller.GroupController;
-import org.model.Messages;
 import proto.ChatServiceGrpc;
 import proto.ServerChat;
 
@@ -38,7 +37,7 @@ public class ChatServiceImpl extends ChatServiceGrpc.ChatServiceImplBase {
 
                 Boolean legal = null;
                 try {
-                    legal = groupController.checkInGroup(userId, groupId);
+//                    legal = groupController.checkInGroup(userId, groupId);
                 } catch (Exception e) {
                     responseObserver.onError(new IllegalArgumentException("User not in group"));
                 }
@@ -148,7 +147,7 @@ public class ChatServiceImpl extends ChatServiceGrpc.ChatServiceImplBase {
     }
 
     @Override
-    public void getOldChat(ServerChat.GroupMetaInfo request, StreamObserver<ServerChat.MessageInfo> responseObserver) {
+    public void getOldChat(ServerChat.GroupInfo request, StreamObserver<ServerChat.MessageInfo> responseObserver) {
         try {
             HadoopService hadoopService = new HadoopService();
             List<ServerChat.MessageInfo> MSG = hadoopService.getMessagesByGroupID(request.getGroupID());

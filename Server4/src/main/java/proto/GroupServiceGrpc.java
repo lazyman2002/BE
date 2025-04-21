@@ -15,29 +15,29 @@ public final class GroupServiceGrpc {
   public static final String SERVICE_NAME = "proto.GroupService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo,
-      proto.ServerChat.GroupMetaInfo> getGroupCreateMethod;
+  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.GroupInfo,
+      proto.ServerChat.GroupInfo> getGroupCreateMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GroupCreate",
-      requestType = proto.ServerChat.GroupMetaInfo.class,
-      responseType = proto.ServerChat.GroupMetaInfo.class,
+      requestType = proto.ServerChat.GroupInfo.class,
+      responseType = proto.ServerChat.GroupInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo,
-      proto.ServerChat.GroupMetaInfo> getGroupCreateMethod() {
-    io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo, proto.ServerChat.GroupMetaInfo> getGroupCreateMethod;
+  public static io.grpc.MethodDescriptor<proto.ServerChat.GroupInfo,
+      proto.ServerChat.GroupInfo> getGroupCreateMethod() {
+    io.grpc.MethodDescriptor<proto.ServerChat.GroupInfo, proto.ServerChat.GroupInfo> getGroupCreateMethod;
     if ((getGroupCreateMethod = GroupServiceGrpc.getGroupCreateMethod) == null) {
       synchronized (GroupServiceGrpc.class) {
         if ((getGroupCreateMethod = GroupServiceGrpc.getGroupCreateMethod) == null) {
           GroupServiceGrpc.getGroupCreateMethod = getGroupCreateMethod =
-              io.grpc.MethodDescriptor.<proto.ServerChat.GroupMetaInfo, proto.ServerChat.GroupMetaInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerChat.GroupInfo, proto.ServerChat.GroupInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GroupCreate"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerChat.GroupMetaInfo.getDefaultInstance()))
+                  proto.ServerChat.GroupInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerChat.GroupMetaInfo.getDefaultInstance()))
+                  proto.ServerChat.GroupInfo.getDefaultInstance()))
               .setSchemaDescriptor(new GroupServiceMethodDescriptorSupplier("GroupCreate"))
               .build();
         }
@@ -46,29 +46,29 @@ public final class GroupServiceGrpc {
     return getGroupCreateMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo,
-      proto.ServerChat.GroupMetaInfo> getGroupReadMethod;
+  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.GroupInfo,
+      proto.ServerChat.GroupInfo> getGroupReadMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GroupRead",
-      requestType = proto.ServerChat.GroupMetaInfo.class,
-      responseType = proto.ServerChat.GroupMetaInfo.class,
+      requestType = proto.ServerChat.GroupInfo.class,
+      responseType = proto.ServerChat.GroupInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo,
-      proto.ServerChat.GroupMetaInfo> getGroupReadMethod() {
-    io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo, proto.ServerChat.GroupMetaInfo> getGroupReadMethod;
+  public static io.grpc.MethodDescriptor<proto.ServerChat.GroupInfo,
+      proto.ServerChat.GroupInfo> getGroupReadMethod() {
+    io.grpc.MethodDescriptor<proto.ServerChat.GroupInfo, proto.ServerChat.GroupInfo> getGroupReadMethod;
     if ((getGroupReadMethod = GroupServiceGrpc.getGroupReadMethod) == null) {
       synchronized (GroupServiceGrpc.class) {
         if ((getGroupReadMethod = GroupServiceGrpc.getGroupReadMethod) == null) {
           GroupServiceGrpc.getGroupReadMethod = getGroupReadMethod =
-              io.grpc.MethodDescriptor.<proto.ServerChat.GroupMetaInfo, proto.ServerChat.GroupMetaInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerChat.GroupInfo, proto.ServerChat.GroupInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GroupRead"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerChat.GroupMetaInfo.getDefaultInstance()))
+                  proto.ServerChat.GroupInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerChat.GroupMetaInfo.getDefaultInstance()))
+                  proto.ServerChat.GroupInfo.getDefaultInstance()))
               .setSchemaDescriptor(new GroupServiceMethodDescriptorSupplier("GroupRead"))
               .build();
         }
@@ -77,29 +77,29 @@ public final class GroupServiceGrpc {
     return getGroupReadMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo,
-      proto.ServerChat.GroupMetaInfo> getGroupUpdateInfoMethod;
+  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.GroupInfo,
+      proto.ServerChat.GroupInfo> getGroupUpdateInfoMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GroupUpdateInfo",
-      requestType = proto.ServerChat.GroupMetaInfo.class,
-      responseType = proto.ServerChat.GroupMetaInfo.class,
+      requestType = proto.ServerChat.GroupInfo.class,
+      responseType = proto.ServerChat.GroupInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo,
-      proto.ServerChat.GroupMetaInfo> getGroupUpdateInfoMethod() {
-    io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo, proto.ServerChat.GroupMetaInfo> getGroupUpdateInfoMethod;
+  public static io.grpc.MethodDescriptor<proto.ServerChat.GroupInfo,
+      proto.ServerChat.GroupInfo> getGroupUpdateInfoMethod() {
+    io.grpc.MethodDescriptor<proto.ServerChat.GroupInfo, proto.ServerChat.GroupInfo> getGroupUpdateInfoMethod;
     if ((getGroupUpdateInfoMethod = GroupServiceGrpc.getGroupUpdateInfoMethod) == null) {
       synchronized (GroupServiceGrpc.class) {
         if ((getGroupUpdateInfoMethod = GroupServiceGrpc.getGroupUpdateInfoMethod) == null) {
           GroupServiceGrpc.getGroupUpdateInfoMethod = getGroupUpdateInfoMethod =
-              io.grpc.MethodDescriptor.<proto.ServerChat.GroupMetaInfo, proto.ServerChat.GroupMetaInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerChat.GroupInfo, proto.ServerChat.GroupInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GroupUpdateInfo"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerChat.GroupMetaInfo.getDefaultInstance()))
+                  proto.ServerChat.GroupInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerChat.GroupMetaInfo.getDefaultInstance()))
+                  proto.ServerChat.GroupInfo.getDefaultInstance()))
               .setSchemaDescriptor(new GroupServiceMethodDescriptorSupplier("GroupUpdateInfo"))
               .build();
         }
@@ -108,27 +108,27 @@ public final class GroupServiceGrpc {
     return getGroupUpdateInfoMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.GroupInfo,
       com.google.protobuf.BoolValue> getGroupDeleteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GroupDelete",
-      requestType = proto.ServerChat.GroupMetaInfo.class,
+      requestType = proto.ServerChat.GroupInfo.class,
       responseType = com.google.protobuf.BoolValue.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerChat.GroupInfo,
       com.google.protobuf.BoolValue> getGroupDeleteMethod() {
-    io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo, com.google.protobuf.BoolValue> getGroupDeleteMethod;
+    io.grpc.MethodDescriptor<proto.ServerChat.GroupInfo, com.google.protobuf.BoolValue> getGroupDeleteMethod;
     if ((getGroupDeleteMethod = GroupServiceGrpc.getGroupDeleteMethod) == null) {
       synchronized (GroupServiceGrpc.class) {
         if ((getGroupDeleteMethod = GroupServiceGrpc.getGroupDeleteMethod) == null) {
           GroupServiceGrpc.getGroupDeleteMethod = getGroupDeleteMethod =
-              io.grpc.MethodDescriptor.<proto.ServerChat.GroupMetaInfo, com.google.protobuf.BoolValue>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerChat.GroupInfo, com.google.protobuf.BoolValue>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GroupDelete"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerChat.GroupMetaInfo.getDefaultInstance()))
+                  proto.ServerChat.GroupInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.google.protobuf.BoolValue.getDefaultInstance()))
               .setSchemaDescriptor(new GroupServiceMethodDescriptorSupplier("GroupDelete"))
@@ -139,27 +139,27 @@ public final class GroupServiceGrpc {
     return getGroupDeleteMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.GroupInfo,
       proto.ServerChat.GroupMember> getGroupMemberReadMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GroupMemberRead",
-      requestType = proto.ServerChat.GroupMetaInfo.class,
+      requestType = proto.ServerChat.GroupInfo.class,
       responseType = proto.ServerChat.GroupMember.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerChat.GroupInfo,
       proto.ServerChat.GroupMember> getGroupMemberReadMethod() {
-    io.grpc.MethodDescriptor<proto.ServerChat.GroupMetaInfo, proto.ServerChat.GroupMember> getGroupMemberReadMethod;
+    io.grpc.MethodDescriptor<proto.ServerChat.GroupInfo, proto.ServerChat.GroupMember> getGroupMemberReadMethod;
     if ((getGroupMemberReadMethod = GroupServiceGrpc.getGroupMemberReadMethod) == null) {
       synchronized (GroupServiceGrpc.class) {
         if ((getGroupMemberReadMethod = GroupServiceGrpc.getGroupMemberReadMethod) == null) {
           GroupServiceGrpc.getGroupMemberReadMethod = getGroupMemberReadMethod =
-              io.grpc.MethodDescriptor.<proto.ServerChat.GroupMetaInfo, proto.ServerChat.GroupMember>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerChat.GroupInfo, proto.ServerChat.GroupMember>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GroupMemberRead"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerChat.GroupMetaInfo.getDefaultInstance()))
+                  proto.ServerChat.GroupInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerChat.GroupMember.getDefaultInstance()))
               .setSchemaDescriptor(new GroupServiceMethodDescriptorSupplier("GroupMemberRead"))
@@ -171,28 +171,59 @@ public final class GroupServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<proto.ServerChat.GroupMember,
-      proto.ServerChat.GroupMetaInfo> getGroupListReadMethod;
+      proto.ServerChat.GroupMember> getGroupMemberUpdateMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GroupMemberUpdate",
+      requestType = proto.ServerChat.GroupMember.class,
+      responseType = proto.ServerChat.GroupMember.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<proto.ServerChat.GroupMember,
+      proto.ServerChat.GroupMember> getGroupMemberUpdateMethod() {
+    io.grpc.MethodDescriptor<proto.ServerChat.GroupMember, proto.ServerChat.GroupMember> getGroupMemberUpdateMethod;
+    if ((getGroupMemberUpdateMethod = GroupServiceGrpc.getGroupMemberUpdateMethod) == null) {
+      synchronized (GroupServiceGrpc.class) {
+        if ((getGroupMemberUpdateMethod = GroupServiceGrpc.getGroupMemberUpdateMethod) == null) {
+          GroupServiceGrpc.getGroupMemberUpdateMethod = getGroupMemberUpdateMethod =
+              io.grpc.MethodDescriptor.<proto.ServerChat.GroupMember, proto.ServerChat.GroupMember>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GroupMemberUpdate"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  proto.ServerChat.GroupMember.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  proto.ServerChat.GroupMember.getDefaultInstance()))
+              .setSchemaDescriptor(new GroupServiceMethodDescriptorSupplier("GroupMemberUpdate"))
+              .build();
+        }
+      }
+    }
+    return getGroupMemberUpdateMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.GroupMember,
+      proto.ServerChat.GroupInfo> getGroupListReadMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GroupListRead",
       requestType = proto.ServerChat.GroupMember.class,
-      responseType = proto.ServerChat.GroupMetaInfo.class,
+      responseType = proto.ServerChat.GroupInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
   public static io.grpc.MethodDescriptor<proto.ServerChat.GroupMember,
-      proto.ServerChat.GroupMetaInfo> getGroupListReadMethod() {
-    io.grpc.MethodDescriptor<proto.ServerChat.GroupMember, proto.ServerChat.GroupMetaInfo> getGroupListReadMethod;
+      proto.ServerChat.GroupInfo> getGroupListReadMethod() {
+    io.grpc.MethodDescriptor<proto.ServerChat.GroupMember, proto.ServerChat.GroupInfo> getGroupListReadMethod;
     if ((getGroupListReadMethod = GroupServiceGrpc.getGroupListReadMethod) == null) {
       synchronized (GroupServiceGrpc.class) {
         if ((getGroupListReadMethod = GroupServiceGrpc.getGroupListReadMethod) == null) {
           GroupServiceGrpc.getGroupListReadMethod = getGroupListReadMethod =
-              io.grpc.MethodDescriptor.<proto.ServerChat.GroupMember, proto.ServerChat.GroupMetaInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerChat.GroupMember, proto.ServerChat.GroupInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GroupListRead"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerChat.GroupMember.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerChat.GroupMetaInfo.getDefaultInstance()))
+                  proto.ServerChat.GroupInfo.getDefaultInstance()))
               .setSchemaDescriptor(new GroupServiceMethodDescriptorSupplier("GroupListRead"))
               .build();
         }
@@ -202,28 +233,28 @@ public final class GroupServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<proto.ServerChat.GroupMember,
-      proto.ServerChat.GroupMetaInfo> getGroupAppendMemberMethod;
+      proto.ServerChat.GroupInfo> getGroupAppendMemberMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GroupAppendMember",
       requestType = proto.ServerChat.GroupMember.class,
-      responseType = proto.ServerChat.GroupMetaInfo.class,
+      responseType = proto.ServerChat.GroupInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<proto.ServerChat.GroupMember,
-      proto.ServerChat.GroupMetaInfo> getGroupAppendMemberMethod() {
-    io.grpc.MethodDescriptor<proto.ServerChat.GroupMember, proto.ServerChat.GroupMetaInfo> getGroupAppendMemberMethod;
+      proto.ServerChat.GroupInfo> getGroupAppendMemberMethod() {
+    io.grpc.MethodDescriptor<proto.ServerChat.GroupMember, proto.ServerChat.GroupInfo> getGroupAppendMemberMethod;
     if ((getGroupAppendMemberMethod = GroupServiceGrpc.getGroupAppendMemberMethod) == null) {
       synchronized (GroupServiceGrpc.class) {
         if ((getGroupAppendMemberMethod = GroupServiceGrpc.getGroupAppendMemberMethod) == null) {
           GroupServiceGrpc.getGroupAppendMemberMethod = getGroupAppendMemberMethod =
-              io.grpc.MethodDescriptor.<proto.ServerChat.GroupMember, proto.ServerChat.GroupMetaInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerChat.GroupMember, proto.ServerChat.GroupInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GroupAppendMember"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerChat.GroupMember.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerChat.GroupMetaInfo.getDefaultInstance()))
+                  proto.ServerChat.GroupInfo.getDefaultInstance()))
               .setSchemaDescriptor(new GroupServiceMethodDescriptorSupplier("GroupAppendMember"))
               .build();
         }
@@ -313,50 +344,57 @@ public final class GroupServiceGrpc {
 
     /**
      */
-    public void groupCreate(proto.ServerChat.GroupMetaInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerChat.GroupMetaInfo> responseObserver) {
+    public void groupCreate(proto.ServerChat.GroupInfo request,
+        io.grpc.stub.StreamObserver<proto.ServerChat.GroupInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGroupCreateMethod(), responseObserver);
     }
 
     /**
      */
-    public void groupRead(proto.ServerChat.GroupMetaInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerChat.GroupMetaInfo> responseObserver) {
+    public void groupRead(proto.ServerChat.GroupInfo request,
+        io.grpc.stub.StreamObserver<proto.ServerChat.GroupInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGroupReadMethod(), responseObserver);
     }
 
     /**
      */
-    public void groupUpdateInfo(proto.ServerChat.GroupMetaInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerChat.GroupMetaInfo> responseObserver) {
+    public void groupUpdateInfo(proto.ServerChat.GroupInfo request,
+        io.grpc.stub.StreamObserver<proto.ServerChat.GroupInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGroupUpdateInfoMethod(), responseObserver);
     }
 
     /**
      */
-    public void groupDelete(proto.ServerChat.GroupMetaInfo request,
+    public void groupDelete(proto.ServerChat.GroupInfo request,
         io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGroupDeleteMethod(), responseObserver);
     }
 
     /**
      */
-    public void groupMemberRead(proto.ServerChat.GroupMetaInfo request,
+    public void groupMemberRead(proto.ServerChat.GroupInfo request,
         io.grpc.stub.StreamObserver<proto.ServerChat.GroupMember> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGroupMemberReadMethod(), responseObserver);
     }
 
     /**
      */
+    public void groupMemberUpdate(proto.ServerChat.GroupMember request,
+        io.grpc.stub.StreamObserver<proto.ServerChat.GroupMember> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGroupMemberUpdateMethod(), responseObserver);
+    }
+
+    /**
+     */
     public void groupListRead(proto.ServerChat.GroupMember request,
-        io.grpc.stub.StreamObserver<proto.ServerChat.GroupMetaInfo> responseObserver) {
+        io.grpc.stub.StreamObserver<proto.ServerChat.GroupInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGroupListReadMethod(), responseObserver);
     }
 
     /**
      */
     public void groupAppendMember(proto.ServerChat.GroupMember request,
-        io.grpc.stub.StreamObserver<proto.ServerChat.GroupMetaInfo> responseObserver) {
+        io.grpc.stub.StreamObserver<proto.ServerChat.GroupInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGroupAppendMemberMethod(), responseObserver);
     }
 
@@ -373,50 +411,57 @@ public final class GroupServiceGrpc {
             getGroupCreateMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                proto.ServerChat.GroupMetaInfo,
-                proto.ServerChat.GroupMetaInfo>(
+                proto.ServerChat.GroupInfo,
+                proto.ServerChat.GroupInfo>(
                   this, METHODID_GROUP_CREATE)))
           .addMethod(
             getGroupReadMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                proto.ServerChat.GroupMetaInfo,
-                proto.ServerChat.GroupMetaInfo>(
+                proto.ServerChat.GroupInfo,
+                proto.ServerChat.GroupInfo>(
                   this, METHODID_GROUP_READ)))
           .addMethod(
             getGroupUpdateInfoMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                proto.ServerChat.GroupMetaInfo,
-                proto.ServerChat.GroupMetaInfo>(
+                proto.ServerChat.GroupInfo,
+                proto.ServerChat.GroupInfo>(
                   this, METHODID_GROUP_UPDATE_INFO)))
           .addMethod(
             getGroupDeleteMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                proto.ServerChat.GroupMetaInfo,
+                proto.ServerChat.GroupInfo,
                 com.google.protobuf.BoolValue>(
                   this, METHODID_GROUP_DELETE)))
           .addMethod(
             getGroupMemberReadMethod(),
             io.grpc.stub.ServerCalls.asyncServerStreamingCall(
               new MethodHandlers<
-                proto.ServerChat.GroupMetaInfo,
+                proto.ServerChat.GroupInfo,
                 proto.ServerChat.GroupMember>(
                   this, METHODID_GROUP_MEMBER_READ)))
+          .addMethod(
+            getGroupMemberUpdateMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                proto.ServerChat.GroupMember,
+                proto.ServerChat.GroupMember>(
+                  this, METHODID_GROUP_MEMBER_UPDATE)))
           .addMethod(
             getGroupListReadMethod(),
             io.grpc.stub.ServerCalls.asyncServerStreamingCall(
               new MethodHandlers<
                 proto.ServerChat.GroupMember,
-                proto.ServerChat.GroupMetaInfo>(
+                proto.ServerChat.GroupInfo>(
                   this, METHODID_GROUP_LIST_READ)))
           .addMethod(
             getGroupAppendMemberMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 proto.ServerChat.GroupMember,
-                proto.ServerChat.GroupMetaInfo>(
+                proto.ServerChat.GroupInfo>(
                   this, METHODID_GROUP_APPEND_MEMBER)))
           .addMethod(
             getGroupDeleteMemberMethod(),
@@ -445,31 +490,31 @@ public final class GroupServiceGrpc {
 
     /**
      */
-    public void groupCreate(proto.ServerChat.GroupMetaInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerChat.GroupMetaInfo> responseObserver) {
+    public void groupCreate(proto.ServerChat.GroupInfo request,
+        io.grpc.stub.StreamObserver<proto.ServerChat.GroupInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGroupCreateMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void groupRead(proto.ServerChat.GroupMetaInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerChat.GroupMetaInfo> responseObserver) {
+    public void groupRead(proto.ServerChat.GroupInfo request,
+        io.grpc.stub.StreamObserver<proto.ServerChat.GroupInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGroupReadMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void groupUpdateInfo(proto.ServerChat.GroupMetaInfo request,
-        io.grpc.stub.StreamObserver<proto.ServerChat.GroupMetaInfo> responseObserver) {
+    public void groupUpdateInfo(proto.ServerChat.GroupInfo request,
+        io.grpc.stub.StreamObserver<proto.ServerChat.GroupInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGroupUpdateInfoMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void groupDelete(proto.ServerChat.GroupMetaInfo request,
+    public void groupDelete(proto.ServerChat.GroupInfo request,
         io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGroupDeleteMethod(), getCallOptions()), request, responseObserver);
@@ -477,7 +522,7 @@ public final class GroupServiceGrpc {
 
     /**
      */
-    public void groupMemberRead(proto.ServerChat.GroupMetaInfo request,
+    public void groupMemberRead(proto.ServerChat.GroupInfo request,
         io.grpc.stub.StreamObserver<proto.ServerChat.GroupMember> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getGroupMemberReadMethod(), getCallOptions()), request, responseObserver);
@@ -485,8 +530,16 @@ public final class GroupServiceGrpc {
 
     /**
      */
+    public void groupMemberUpdate(proto.ServerChat.GroupMember request,
+        io.grpc.stub.StreamObserver<proto.ServerChat.GroupMember> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGroupMemberUpdateMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
     public void groupListRead(proto.ServerChat.GroupMember request,
-        io.grpc.stub.StreamObserver<proto.ServerChat.GroupMetaInfo> responseObserver) {
+        io.grpc.stub.StreamObserver<proto.ServerChat.GroupInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getGroupListReadMethod(), getCallOptions()), request, responseObserver);
     }
@@ -494,7 +547,7 @@ public final class GroupServiceGrpc {
     /**
      */
     public void groupAppendMember(proto.ServerChat.GroupMember request,
-        io.grpc.stub.StreamObserver<proto.ServerChat.GroupMetaInfo> responseObserver) {
+        io.grpc.stub.StreamObserver<proto.ServerChat.GroupInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGroupAppendMemberMethod(), getCallOptions()), request, responseObserver);
     }
@@ -524,28 +577,28 @@ public final class GroupServiceGrpc {
 
     /**
      */
-    public proto.ServerChat.GroupMetaInfo groupCreate(proto.ServerChat.GroupMetaInfo request) {
+    public proto.ServerChat.GroupInfo groupCreate(proto.ServerChat.GroupInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGroupCreateMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public proto.ServerChat.GroupMetaInfo groupRead(proto.ServerChat.GroupMetaInfo request) {
+    public proto.ServerChat.GroupInfo groupRead(proto.ServerChat.GroupInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGroupReadMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public proto.ServerChat.GroupMetaInfo groupUpdateInfo(proto.ServerChat.GroupMetaInfo request) {
+    public proto.ServerChat.GroupInfo groupUpdateInfo(proto.ServerChat.GroupInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGroupUpdateInfoMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.google.protobuf.BoolValue groupDelete(proto.ServerChat.GroupMetaInfo request) {
+    public com.google.protobuf.BoolValue groupDelete(proto.ServerChat.GroupInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGroupDeleteMethod(), getCallOptions(), request);
     }
@@ -553,14 +606,21 @@ public final class GroupServiceGrpc {
     /**
      */
     public java.util.Iterator<proto.ServerChat.GroupMember> groupMemberRead(
-        proto.ServerChat.GroupMetaInfo request) {
+        proto.ServerChat.GroupInfo request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getGroupMemberReadMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public java.util.Iterator<proto.ServerChat.GroupMetaInfo> groupListRead(
+    public proto.ServerChat.GroupMember groupMemberUpdate(proto.ServerChat.GroupMember request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGroupMemberUpdateMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<proto.ServerChat.GroupInfo> groupListRead(
         proto.ServerChat.GroupMember request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getGroupListReadMethod(), getCallOptions(), request);
@@ -568,7 +628,7 @@ public final class GroupServiceGrpc {
 
     /**
      */
-    public proto.ServerChat.GroupMetaInfo groupAppendMember(proto.ServerChat.GroupMember request) {
+    public proto.ServerChat.GroupInfo groupAppendMember(proto.ServerChat.GroupMember request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGroupAppendMemberMethod(), getCallOptions(), request);
     }
@@ -597,24 +657,24 @@ public final class GroupServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<proto.ServerChat.GroupMetaInfo> groupCreate(
-        proto.ServerChat.GroupMetaInfo request) {
+    public com.google.common.util.concurrent.ListenableFuture<proto.ServerChat.GroupInfo> groupCreate(
+        proto.ServerChat.GroupInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGroupCreateMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<proto.ServerChat.GroupMetaInfo> groupRead(
-        proto.ServerChat.GroupMetaInfo request) {
+    public com.google.common.util.concurrent.ListenableFuture<proto.ServerChat.GroupInfo> groupRead(
+        proto.ServerChat.GroupInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGroupReadMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<proto.ServerChat.GroupMetaInfo> groupUpdateInfo(
-        proto.ServerChat.GroupMetaInfo request) {
+    public com.google.common.util.concurrent.ListenableFuture<proto.ServerChat.GroupInfo> groupUpdateInfo(
+        proto.ServerChat.GroupInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGroupUpdateInfoMethod(), getCallOptions()), request);
     }
@@ -622,14 +682,22 @@ public final class GroupServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> groupDelete(
-        proto.ServerChat.GroupMetaInfo request) {
+        proto.ServerChat.GroupInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGroupDeleteMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<proto.ServerChat.GroupMetaInfo> groupAppendMember(
+    public com.google.common.util.concurrent.ListenableFuture<proto.ServerChat.GroupMember> groupMemberUpdate(
+        proto.ServerChat.GroupMember request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGroupMemberUpdateMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<proto.ServerChat.GroupInfo> groupAppendMember(
         proto.ServerChat.GroupMember request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGroupAppendMemberMethod(), getCallOptions()), request);
@@ -649,9 +717,10 @@ public final class GroupServiceGrpc {
   private static final int METHODID_GROUP_UPDATE_INFO = 2;
   private static final int METHODID_GROUP_DELETE = 3;
   private static final int METHODID_GROUP_MEMBER_READ = 4;
-  private static final int METHODID_GROUP_LIST_READ = 5;
-  private static final int METHODID_GROUP_APPEND_MEMBER = 6;
-  private static final int METHODID_GROUP_DELETE_MEMBER = 7;
+  private static final int METHODID_GROUP_MEMBER_UPDATE = 5;
+  private static final int METHODID_GROUP_LIST_READ = 6;
+  private static final int METHODID_GROUP_APPEND_MEMBER = 7;
+  private static final int METHODID_GROUP_DELETE_MEMBER = 8;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -671,32 +740,36 @@ public final class GroupServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_GROUP_CREATE:
-          serviceImpl.groupCreate((proto.ServerChat.GroupMetaInfo) request,
-              (io.grpc.stub.StreamObserver<proto.ServerChat.GroupMetaInfo>) responseObserver);
+          serviceImpl.groupCreate((proto.ServerChat.GroupInfo) request,
+              (io.grpc.stub.StreamObserver<proto.ServerChat.GroupInfo>) responseObserver);
           break;
         case METHODID_GROUP_READ:
-          serviceImpl.groupRead((proto.ServerChat.GroupMetaInfo) request,
-              (io.grpc.stub.StreamObserver<proto.ServerChat.GroupMetaInfo>) responseObserver);
+          serviceImpl.groupRead((proto.ServerChat.GroupInfo) request,
+              (io.grpc.stub.StreamObserver<proto.ServerChat.GroupInfo>) responseObserver);
           break;
         case METHODID_GROUP_UPDATE_INFO:
-          serviceImpl.groupUpdateInfo((proto.ServerChat.GroupMetaInfo) request,
-              (io.grpc.stub.StreamObserver<proto.ServerChat.GroupMetaInfo>) responseObserver);
+          serviceImpl.groupUpdateInfo((proto.ServerChat.GroupInfo) request,
+              (io.grpc.stub.StreamObserver<proto.ServerChat.GroupInfo>) responseObserver);
           break;
         case METHODID_GROUP_DELETE:
-          serviceImpl.groupDelete((proto.ServerChat.GroupMetaInfo) request,
+          serviceImpl.groupDelete((proto.ServerChat.GroupInfo) request,
               (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         case METHODID_GROUP_MEMBER_READ:
-          serviceImpl.groupMemberRead((proto.ServerChat.GroupMetaInfo) request,
+          serviceImpl.groupMemberRead((proto.ServerChat.GroupInfo) request,
+              (io.grpc.stub.StreamObserver<proto.ServerChat.GroupMember>) responseObserver);
+          break;
+        case METHODID_GROUP_MEMBER_UPDATE:
+          serviceImpl.groupMemberUpdate((proto.ServerChat.GroupMember) request,
               (io.grpc.stub.StreamObserver<proto.ServerChat.GroupMember>) responseObserver);
           break;
         case METHODID_GROUP_LIST_READ:
           serviceImpl.groupListRead((proto.ServerChat.GroupMember) request,
-              (io.grpc.stub.StreamObserver<proto.ServerChat.GroupMetaInfo>) responseObserver);
+              (io.grpc.stub.StreamObserver<proto.ServerChat.GroupInfo>) responseObserver);
           break;
         case METHODID_GROUP_APPEND_MEMBER:
           serviceImpl.groupAppendMember((proto.ServerChat.GroupMember) request,
-              (io.grpc.stub.StreamObserver<proto.ServerChat.GroupMetaInfo>) responseObserver);
+              (io.grpc.stub.StreamObserver<proto.ServerChat.GroupInfo>) responseObserver);
           break;
         case METHODID_GROUP_DELETE_MEMBER:
           serviceImpl.groupDeleteMember((proto.ServerChat.GroupMember) request,
@@ -768,6 +841,7 @@ public final class GroupServiceGrpc {
               .addMethod(getGroupUpdateInfoMethod())
               .addMethod(getGroupDeleteMethod())
               .addMethod(getGroupMemberReadMethod())
+              .addMethod(getGroupMemberUpdateMethod())
               .addMethod(getGroupListReadMethod())
               .addMethod(getGroupAppendMemberMethod())
               .addMethod(getGroupDeleteMemberMethod())

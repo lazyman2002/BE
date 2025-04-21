@@ -46,27 +46,27 @@ public final class JobRequestServiceGrpc {
     return getJobRequestRegisterMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.JobRequestMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.JobRequestFullInfo,
       proto.ServerClient.JobRequestFullInfo> getJobRequestReadMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "JobRequestRead",
-      requestType = proto.ServerClient.JobRequestMetaInfo.class,
+      requestType = proto.ServerClient.JobRequestFullInfo.class,
       responseType = proto.ServerClient.JobRequestFullInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.JobRequestMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.JobRequestFullInfo,
       proto.ServerClient.JobRequestFullInfo> getJobRequestReadMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.JobRequestMetaInfo, proto.ServerClient.JobRequestFullInfo> getJobRequestReadMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.JobRequestFullInfo, proto.ServerClient.JobRequestFullInfo> getJobRequestReadMethod;
     if ((getJobRequestReadMethod = JobRequestServiceGrpc.getJobRequestReadMethod) == null) {
       synchronized (JobRequestServiceGrpc.class) {
         if ((getJobRequestReadMethod = JobRequestServiceGrpc.getJobRequestReadMethod) == null) {
           JobRequestServiceGrpc.getJobRequestReadMethod = getJobRequestReadMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.JobRequestMetaInfo, proto.ServerClient.JobRequestFullInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.JobRequestFullInfo, proto.ServerClient.JobRequestFullInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "JobRequestRead"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.JobRequestMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.JobRequestFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.JobRequestFullInfo.getDefaultInstance()))
               .setSchemaDescriptor(new JobRequestServiceMethodDescriptorSupplier("JobRequestRead"))
@@ -139,27 +139,27 @@ public final class JobRequestServiceGrpc {
     return getJobRequestUpdateInfoMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.JobRequestMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.JobRequestFullInfo,
       com.google.protobuf.BoolValue> getJobRequestDeleteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "JobRequestDelete",
-      requestType = proto.ServerClient.JobRequestMetaInfo.class,
+      requestType = proto.ServerClient.JobRequestFullInfo.class,
       responseType = com.google.protobuf.BoolValue.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.JobRequestMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.JobRequestFullInfo,
       com.google.protobuf.BoolValue> getJobRequestDeleteMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.JobRequestMetaInfo, com.google.protobuf.BoolValue> getJobRequestDeleteMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.JobRequestFullInfo, com.google.protobuf.BoolValue> getJobRequestDeleteMethod;
     if ((getJobRequestDeleteMethod = JobRequestServiceGrpc.getJobRequestDeleteMethod) == null) {
       synchronized (JobRequestServiceGrpc.class) {
         if ((getJobRequestDeleteMethod = JobRequestServiceGrpc.getJobRequestDeleteMethod) == null) {
           JobRequestServiceGrpc.getJobRequestDeleteMethod = getJobRequestDeleteMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.JobRequestMetaInfo, com.google.protobuf.BoolValue>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.JobRequestFullInfo, com.google.protobuf.BoolValue>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "JobRequestDelete"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.JobRequestMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.JobRequestFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.google.protobuf.BoolValue.getDefaultInstance()))
               .setSchemaDescriptor(new JobRequestServiceMethodDescriptorSupplier("JobRequestDelete"))
@@ -289,7 +289,7 @@ public final class JobRequestServiceGrpc {
 
     /**
      */
-    public void jobRequestRead(proto.ServerClient.JobRequestMetaInfo request,
+    public void jobRequestRead(proto.ServerClient.JobRequestFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.JobRequestFullInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getJobRequestReadMethod(), responseObserver);
     }
@@ -310,7 +310,7 @@ public final class JobRequestServiceGrpc {
 
     /**
      */
-    public void jobRequestDelete(proto.ServerClient.JobRequestMetaInfo request,
+    public void jobRequestDelete(proto.ServerClient.JobRequestFullInfo request,
         io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getJobRequestDeleteMethod(), responseObserver);
     }
@@ -342,7 +342,7 @@ public final class JobRequestServiceGrpc {
             getJobRequestReadMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                proto.ServerClient.JobRequestMetaInfo,
+                proto.ServerClient.JobRequestFullInfo,
                 proto.ServerClient.JobRequestFullInfo>(
                   this, METHODID_JOB_REQUEST_READ)))
           .addMethod(
@@ -363,7 +363,7 @@ public final class JobRequestServiceGrpc {
             getJobRequestDeleteMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                proto.ServerClient.JobRequestMetaInfo,
+                proto.ServerClient.JobRequestFullInfo,
                 com.google.protobuf.BoolValue>(
                   this, METHODID_JOB_REQUEST_DELETE)))
           .addMethod(
@@ -408,7 +408,7 @@ public final class JobRequestServiceGrpc {
 
     /**
      */
-    public void jobRequestRead(proto.ServerClient.JobRequestMetaInfo request,
+    public void jobRequestRead(proto.ServerClient.JobRequestFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.JobRequestFullInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getJobRequestReadMethod(), getCallOptions()), request, responseObserver);
@@ -432,7 +432,7 @@ public final class JobRequestServiceGrpc {
 
     /**
      */
-    public void jobRequestDelete(proto.ServerClient.JobRequestMetaInfo request,
+    public void jobRequestDelete(proto.ServerClient.JobRequestFullInfo request,
         io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getJobRequestDeleteMethod(), getCallOptions()), request, responseObserver);
@@ -478,7 +478,7 @@ public final class JobRequestServiceGrpc {
 
     /**
      */
-    public proto.ServerClient.JobRequestFullInfo jobRequestRead(proto.ServerClient.JobRequestMetaInfo request) {
+    public proto.ServerClient.JobRequestFullInfo jobRequestRead(proto.ServerClient.JobRequestFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getJobRequestReadMethod(), getCallOptions(), request);
     }
@@ -500,7 +500,7 @@ public final class JobRequestServiceGrpc {
 
     /**
      */
-    public com.google.protobuf.BoolValue jobRequestDelete(proto.ServerClient.JobRequestMetaInfo request) {
+    public com.google.protobuf.BoolValue jobRequestDelete(proto.ServerClient.JobRequestFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getJobRequestDeleteMethod(), getCallOptions(), request);
     }
@@ -545,7 +545,7 @@ public final class JobRequestServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<proto.ServerClient.JobRequestFullInfo> jobRequestRead(
-        proto.ServerClient.JobRequestMetaInfo request) {
+        proto.ServerClient.JobRequestFullInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getJobRequestReadMethod(), getCallOptions()), request);
     }
@@ -561,7 +561,7 @@ public final class JobRequestServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> jobRequestDelete(
-        proto.ServerClient.JobRequestMetaInfo request) {
+        proto.ServerClient.JobRequestFullInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getJobRequestDeleteMethod(), getCallOptions()), request);
     }
@@ -613,7 +613,7 @@ public final class JobRequestServiceGrpc {
               (io.grpc.stub.StreamObserver<proto.ServerClient.JobRequestFullInfo>) responseObserver);
           break;
         case METHODID_JOB_REQUEST_READ:
-          serviceImpl.jobRequestRead((proto.ServerClient.JobRequestMetaInfo) request,
+          serviceImpl.jobRequestRead((proto.ServerClient.JobRequestFullInfo) request,
               (io.grpc.stub.StreamObserver<proto.ServerClient.JobRequestFullInfo>) responseObserver);
           break;
         case METHODID_JOB_REQUEST_LIST_READ:
@@ -625,7 +625,7 @@ public final class JobRequestServiceGrpc {
               (io.grpc.stub.StreamObserver<proto.ServerClient.JobRequestFullInfo>) responseObserver);
           break;
         case METHODID_JOB_REQUEST_DELETE:
-          serviceImpl.jobRequestDelete((proto.ServerClient.JobRequestMetaInfo) request,
+          serviceImpl.jobRequestDelete((proto.ServerClient.JobRequestFullInfo) request,
               (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         case METHODID_JOB_REQUEST_APPLY:

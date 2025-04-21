@@ -46,27 +46,27 @@ public final class LocationServiceGrpc {
     return getLocationRegisterMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.LocationMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.LocationFullInfo,
       proto.ServerClient.LocationFullInfo> getLocationReadInfoMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "LocationReadInfo",
-      requestType = proto.ServerClient.LocationMetaInfo.class,
+      requestType = proto.ServerClient.LocationFullInfo.class,
       responseType = proto.ServerClient.LocationFullInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.LocationMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.LocationFullInfo,
       proto.ServerClient.LocationFullInfo> getLocationReadInfoMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.LocationMetaInfo, proto.ServerClient.LocationFullInfo> getLocationReadInfoMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.LocationFullInfo, proto.ServerClient.LocationFullInfo> getLocationReadInfoMethod;
     if ((getLocationReadInfoMethod = LocationServiceGrpc.getLocationReadInfoMethod) == null) {
       synchronized (LocationServiceGrpc.class) {
         if ((getLocationReadInfoMethod = LocationServiceGrpc.getLocationReadInfoMethod) == null) {
           LocationServiceGrpc.getLocationReadInfoMethod = getLocationReadInfoMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.LocationMetaInfo, proto.ServerClient.LocationFullInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.LocationFullInfo, proto.ServerClient.LocationFullInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "LocationReadInfo"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.LocationMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.LocationFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.LocationFullInfo.getDefaultInstance()))
               .setSchemaDescriptor(new LocationServiceMethodDescriptorSupplier("LocationReadInfo"))
@@ -139,27 +139,27 @@ public final class LocationServiceGrpc {
     return getLocationUpdateInfoMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.LocationMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.LocationFullInfo,
       com.google.protobuf.BoolValue> getLocationDeleteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "LocationDelete",
-      requestType = proto.ServerClient.LocationMetaInfo.class,
+      requestType = proto.ServerClient.LocationFullInfo.class,
       responseType = com.google.protobuf.BoolValue.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.LocationMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.LocationFullInfo,
       com.google.protobuf.BoolValue> getLocationDeleteMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.LocationMetaInfo, com.google.protobuf.BoolValue> getLocationDeleteMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.LocationFullInfo, com.google.protobuf.BoolValue> getLocationDeleteMethod;
     if ((getLocationDeleteMethod = LocationServiceGrpc.getLocationDeleteMethod) == null) {
       synchronized (LocationServiceGrpc.class) {
         if ((getLocationDeleteMethod = LocationServiceGrpc.getLocationDeleteMethod) == null) {
           LocationServiceGrpc.getLocationDeleteMethod = getLocationDeleteMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.LocationMetaInfo, com.google.protobuf.BoolValue>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.LocationFullInfo, com.google.protobuf.BoolValue>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "LocationDelete"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.LocationMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.LocationFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.google.protobuf.BoolValue.getDefaultInstance()))
               .setSchemaDescriptor(new LocationServiceMethodDescriptorSupplier("LocationDelete"))
@@ -227,7 +227,7 @@ public final class LocationServiceGrpc {
 
     /**
      */
-    public void locationReadInfo(proto.ServerClient.LocationMetaInfo request,
+    public void locationReadInfo(proto.ServerClient.LocationFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.LocationFullInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getLocationReadInfoMethod(), responseObserver);
     }
@@ -248,7 +248,7 @@ public final class LocationServiceGrpc {
 
     /**
      */
-    public void locationDelete(proto.ServerClient.LocationMetaInfo request,
+    public void locationDelete(proto.ServerClient.LocationFullInfo request,
         io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getLocationDeleteMethod(), responseObserver);
     }
@@ -266,7 +266,7 @@ public final class LocationServiceGrpc {
             getLocationReadInfoMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                proto.ServerClient.LocationMetaInfo,
+                proto.ServerClient.LocationFullInfo,
                 proto.ServerClient.LocationFullInfo>(
                   this, METHODID_LOCATION_READ_INFO)))
           .addMethod(
@@ -287,7 +287,7 @@ public final class LocationServiceGrpc {
             getLocationDeleteMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                proto.ServerClient.LocationMetaInfo,
+                proto.ServerClient.LocationFullInfo,
                 com.google.protobuf.BoolValue>(
                   this, METHODID_LOCATION_DELETE)))
           .build();
@@ -318,7 +318,7 @@ public final class LocationServiceGrpc {
 
     /**
      */
-    public void locationReadInfo(proto.ServerClient.LocationMetaInfo request,
+    public void locationReadInfo(proto.ServerClient.LocationFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.LocationFullInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getLocationReadInfoMethod(), getCallOptions()), request, responseObserver);
@@ -342,7 +342,7 @@ public final class LocationServiceGrpc {
 
     /**
      */
-    public void locationDelete(proto.ServerClient.LocationMetaInfo request,
+    public void locationDelete(proto.ServerClient.LocationFullInfo request,
         io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getLocationDeleteMethod(), getCallOptions()), request, responseObserver);
@@ -372,7 +372,7 @@ public final class LocationServiceGrpc {
 
     /**
      */
-    public proto.ServerClient.LocationFullInfo locationReadInfo(proto.ServerClient.LocationMetaInfo request) {
+    public proto.ServerClient.LocationFullInfo locationReadInfo(proto.ServerClient.LocationFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getLocationReadInfoMethod(), getCallOptions(), request);
     }
@@ -394,7 +394,7 @@ public final class LocationServiceGrpc {
 
     /**
      */
-    public com.google.protobuf.BoolValue locationDelete(proto.ServerClient.LocationMetaInfo request) {
+    public com.google.protobuf.BoolValue locationDelete(proto.ServerClient.LocationFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getLocationDeleteMethod(), getCallOptions(), request);
     }
@@ -425,7 +425,7 @@ public final class LocationServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<proto.ServerClient.LocationFullInfo> locationReadInfo(
-        proto.ServerClient.LocationMetaInfo request) {
+        proto.ServerClient.LocationFullInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getLocationReadInfoMethod(), getCallOptions()), request);
     }
@@ -441,7 +441,7 @@ public final class LocationServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> locationDelete(
-        proto.ServerClient.LocationMetaInfo request) {
+        proto.ServerClient.LocationFullInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getLocationDeleteMethod(), getCallOptions()), request);
     }
@@ -475,7 +475,7 @@ public final class LocationServiceGrpc {
               (io.grpc.stub.StreamObserver<proto.ServerClient.LocationFullInfo>) responseObserver);
           break;
         case METHODID_LOCATION_READ_INFO:
-          serviceImpl.locationReadInfo((proto.ServerClient.LocationMetaInfo) request,
+          serviceImpl.locationReadInfo((proto.ServerClient.LocationFullInfo) request,
               (io.grpc.stub.StreamObserver<proto.ServerClient.LocationFullInfo>) responseObserver);
           break;
         case METHODID_LOCATION_LIST_READ:
@@ -487,7 +487,7 @@ public final class LocationServiceGrpc {
               (io.grpc.stub.StreamObserver<proto.ServerClient.LocationFullInfo>) responseObserver);
           break;
         case METHODID_LOCATION_DELETE:
-          serviceImpl.locationDelete((proto.ServerClient.LocationMetaInfo) request,
+          serviceImpl.locationDelete((proto.ServerClient.LocationFullInfo) request,
               (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         default:

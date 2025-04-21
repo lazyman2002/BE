@@ -3,6 +3,9 @@ package proto;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
+ * <pre>
+ * Service
+ * </pre>
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.50.2)",
@@ -77,27 +80,27 @@ public final class UserServiceGrpc {
     return getRecruiterCreateMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo,
       proto.ServerClient.UserFullInfo> getUserReadMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "UserRead",
-      requestType = proto.ServerClient.UserMetaInfo.class,
+      requestType = proto.ServerClient.UserFullInfo.class,
       responseType = proto.ServerClient.UserFullInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo,
       proto.ServerClient.UserFullInfo> getUserReadMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo, proto.ServerClient.UserFullInfo> getUserReadMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo, proto.ServerClient.UserFullInfo> getUserReadMethod;
     if ((getUserReadMethod = UserServiceGrpc.getUserReadMethod) == null) {
       synchronized (UserServiceGrpc.class) {
         if ((getUserReadMethod = UserServiceGrpc.getUserReadMethod) == null) {
           UserServiceGrpc.getUserReadMethod = getUserReadMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.UserMetaInfo, proto.ServerClient.UserFullInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.UserFullInfo, proto.ServerClient.UserFullInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UserRead"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.UserMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.UserFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.UserFullInfo.getDefaultInstance()))
               .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("UserRead"))
@@ -109,28 +112,28 @@ public final class UserServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<com.google.protobuf.Empty,
-      proto.ServerClient.UserMetaInfo> getUserListReadMethod;
+      proto.ServerClient.UserFullInfo> getUserListReadMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "UserListRead",
       requestType = com.google.protobuf.Empty.class,
-      responseType = proto.ServerClient.UserMetaInfo.class,
+      responseType = proto.ServerClient.UserFullInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
   public static io.grpc.MethodDescriptor<com.google.protobuf.Empty,
-      proto.ServerClient.UserMetaInfo> getUserListReadMethod() {
-    io.grpc.MethodDescriptor<com.google.protobuf.Empty, proto.ServerClient.UserMetaInfo> getUserListReadMethod;
+      proto.ServerClient.UserFullInfo> getUserListReadMethod() {
+    io.grpc.MethodDescriptor<com.google.protobuf.Empty, proto.ServerClient.UserFullInfo> getUserListReadMethod;
     if ((getUserListReadMethod = UserServiceGrpc.getUserListReadMethod) == null) {
       synchronized (UserServiceGrpc.class) {
         if ((getUserListReadMethod = UserServiceGrpc.getUserListReadMethod) == null) {
           UserServiceGrpc.getUserListReadMethod = getUserListReadMethod =
-              io.grpc.MethodDescriptor.<com.google.protobuf.Empty, proto.ServerClient.UserMetaInfo>newBuilder()
+              io.grpc.MethodDescriptor.<com.google.protobuf.Empty, proto.ServerClient.UserFullInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UserListRead"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.google.protobuf.Empty.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.UserMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.UserFullInfo.getDefaultInstance()))
               .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("UserListRead"))
               .build();
         }
@@ -139,27 +142,27 @@ public final class UserServiceGrpc {
     return getUserListReadMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo,
       proto.ServerClient.CandidateFullInfo> getCandidateReadMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "CandidateRead",
-      requestType = proto.ServerClient.UserMetaInfo.class,
+      requestType = proto.ServerClient.UserFullInfo.class,
       responseType = proto.ServerClient.CandidateFullInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo,
       proto.ServerClient.CandidateFullInfo> getCandidateReadMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo, proto.ServerClient.CandidateFullInfo> getCandidateReadMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo, proto.ServerClient.CandidateFullInfo> getCandidateReadMethod;
     if ((getCandidateReadMethod = UserServiceGrpc.getCandidateReadMethod) == null) {
       synchronized (UserServiceGrpc.class) {
         if ((getCandidateReadMethod = UserServiceGrpc.getCandidateReadMethod) == null) {
           UserServiceGrpc.getCandidateReadMethod = getCandidateReadMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.UserMetaInfo, proto.ServerClient.CandidateFullInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.UserFullInfo, proto.ServerClient.CandidateFullInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CandidateRead"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.UserMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.UserFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.CandidateFullInfo.getDefaultInstance()))
               .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("CandidateRead"))
@@ -201,27 +204,27 @@ public final class UserServiceGrpc {
     return getCandidateListReadMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo,
       proto.ServerClient.RecruiterFullInfo> getRecruiterReadMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "RecruiterRead",
-      requestType = proto.ServerClient.UserMetaInfo.class,
+      requestType = proto.ServerClient.UserFullInfo.class,
       responseType = proto.ServerClient.RecruiterFullInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo,
       proto.ServerClient.RecruiterFullInfo> getRecruiterReadMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo, proto.ServerClient.RecruiterFullInfo> getRecruiterReadMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo, proto.ServerClient.RecruiterFullInfo> getRecruiterReadMethod;
     if ((getRecruiterReadMethod = UserServiceGrpc.getRecruiterReadMethod) == null) {
       synchronized (UserServiceGrpc.class) {
         if ((getRecruiterReadMethod = UserServiceGrpc.getRecruiterReadMethod) == null) {
           UserServiceGrpc.getRecruiterReadMethod = getRecruiterReadMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.UserMetaInfo, proto.ServerClient.RecruiterFullInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.UserFullInfo, proto.ServerClient.RecruiterFullInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "RecruiterRead"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.UserMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.UserFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.RecruiterFullInfo.getDefaultInstance()))
               .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("RecruiterRead"))
@@ -356,27 +359,27 @@ public final class UserServiceGrpc {
     return getRecruiterUpdateMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo,
       com.google.protobuf.BoolValue> getUserDeleteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "UserDelete",
-      requestType = proto.ServerClient.UserMetaInfo.class,
+      requestType = proto.ServerClient.UserFullInfo.class,
       responseType = com.google.protobuf.BoolValue.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo,
       com.google.protobuf.BoolValue> getUserDeleteMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo, com.google.protobuf.BoolValue> getUserDeleteMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo, com.google.protobuf.BoolValue> getUserDeleteMethod;
     if ((getUserDeleteMethod = UserServiceGrpc.getUserDeleteMethod) == null) {
       synchronized (UserServiceGrpc.class) {
         if ((getUserDeleteMethod = UserServiceGrpc.getUserDeleteMethod) == null) {
           UserServiceGrpc.getUserDeleteMethod = getUserDeleteMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.UserMetaInfo, com.google.protobuf.BoolValue>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.UserFullInfo, com.google.protobuf.BoolValue>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UserDelete"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.UserMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.UserFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.google.protobuf.BoolValue.getDefaultInstance()))
               .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("UserDelete"))
@@ -432,6 +435,9 @@ public final class UserServiceGrpc {
   }
 
   /**
+   * <pre>
+   * Service
+   * </pre>
    */
   public static abstract class UserServiceImplBase implements io.grpc.BindableService {
 
@@ -451,7 +457,7 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public void userRead(proto.ServerClient.UserMetaInfo request,
+    public void userRead(proto.ServerClient.UserFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.UserFullInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUserReadMethod(), responseObserver);
     }
@@ -459,13 +465,13 @@ public final class UserServiceGrpc {
     /**
      */
     public void userListRead(com.google.protobuf.Empty request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.UserMetaInfo> responseObserver) {
+        io.grpc.stub.StreamObserver<proto.ServerClient.UserFullInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUserListReadMethod(), responseObserver);
     }
 
     /**
      */
-    public void candidateRead(proto.ServerClient.UserMetaInfo request,
+    public void candidateRead(proto.ServerClient.UserFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.CandidateFullInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCandidateReadMethod(), responseObserver);
     }
@@ -479,7 +485,7 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public void recruiterRead(proto.ServerClient.UserMetaInfo request,
+    public void recruiterRead(proto.ServerClient.UserFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.RecruiterFullInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRecruiterReadMethod(), responseObserver);
     }
@@ -514,7 +520,7 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public void userDelete(proto.ServerClient.UserMetaInfo request,
+    public void userDelete(proto.ServerClient.UserFullInfo request,
         io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUserDeleteMethod(), responseObserver);
     }
@@ -539,7 +545,7 @@ public final class UserServiceGrpc {
             getUserReadMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                proto.ServerClient.UserMetaInfo,
+                proto.ServerClient.UserFullInfo,
                 proto.ServerClient.UserFullInfo>(
                   this, METHODID_USER_READ)))
           .addMethod(
@@ -547,13 +553,13 @@ public final class UserServiceGrpc {
             io.grpc.stub.ServerCalls.asyncServerStreamingCall(
               new MethodHandlers<
                 com.google.protobuf.Empty,
-                proto.ServerClient.UserMetaInfo>(
+                proto.ServerClient.UserFullInfo>(
                   this, METHODID_USER_LIST_READ)))
           .addMethod(
             getCandidateReadMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                proto.ServerClient.UserMetaInfo,
+                proto.ServerClient.UserFullInfo,
                 proto.ServerClient.CandidateFullInfo>(
                   this, METHODID_CANDIDATE_READ)))
           .addMethod(
@@ -567,7 +573,7 @@ public final class UserServiceGrpc {
             getRecruiterReadMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                proto.ServerClient.UserMetaInfo,
+                proto.ServerClient.UserFullInfo,
                 proto.ServerClient.RecruiterFullInfo>(
                   this, METHODID_RECRUITER_READ)))
           .addMethod(
@@ -602,7 +608,7 @@ public final class UserServiceGrpc {
             getUserDeleteMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                proto.ServerClient.UserMetaInfo,
+                proto.ServerClient.UserFullInfo,
                 com.google.protobuf.BoolValue>(
                   this, METHODID_USER_DELETE)))
           .build();
@@ -610,6 +616,9 @@ public final class UserServiceGrpc {
   }
 
   /**
+   * <pre>
+   * Service
+   * </pre>
    */
   public static final class UserServiceStub extends io.grpc.stub.AbstractAsyncStub<UserServiceStub> {
     private UserServiceStub(
@@ -641,7 +650,7 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public void userRead(proto.ServerClient.UserMetaInfo request,
+    public void userRead(proto.ServerClient.UserFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.UserFullInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getUserReadMethod(), getCallOptions()), request, responseObserver);
@@ -650,14 +659,14 @@ public final class UserServiceGrpc {
     /**
      */
     public void userListRead(com.google.protobuf.Empty request,
-        io.grpc.stub.StreamObserver<proto.ServerClient.UserMetaInfo> responseObserver) {
+        io.grpc.stub.StreamObserver<proto.ServerClient.UserFullInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getUserListReadMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void candidateRead(proto.ServerClient.UserMetaInfo request,
+    public void candidateRead(proto.ServerClient.UserFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.CandidateFullInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCandidateReadMethod(), getCallOptions()), request, responseObserver);
@@ -673,7 +682,7 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public void recruiterRead(proto.ServerClient.UserMetaInfo request,
+    public void recruiterRead(proto.ServerClient.UserFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.RecruiterFullInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getRecruiterReadMethod(), getCallOptions()), request, responseObserver);
@@ -713,7 +722,7 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public void userDelete(proto.ServerClient.UserMetaInfo request,
+    public void userDelete(proto.ServerClient.UserFullInfo request,
         io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getUserDeleteMethod(), getCallOptions()), request, responseObserver);
@@ -721,6 +730,9 @@ public final class UserServiceGrpc {
   }
 
   /**
+   * <pre>
+   * Service
+   * </pre>
    */
   public static final class UserServiceBlockingStub extends io.grpc.stub.AbstractBlockingStub<UserServiceBlockingStub> {
     private UserServiceBlockingStub(
@@ -750,14 +762,14 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public proto.ServerClient.UserFullInfo userRead(proto.ServerClient.UserMetaInfo request) {
+    public proto.ServerClient.UserFullInfo userRead(proto.ServerClient.UserFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getUserReadMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public java.util.Iterator<proto.ServerClient.UserMetaInfo> userListRead(
+    public java.util.Iterator<proto.ServerClient.UserFullInfo> userListRead(
         com.google.protobuf.Empty request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getUserListReadMethod(), getCallOptions(), request);
@@ -765,7 +777,7 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public proto.ServerClient.CandidateFullInfo candidateRead(proto.ServerClient.UserMetaInfo request) {
+    public proto.ServerClient.CandidateFullInfo candidateRead(proto.ServerClient.UserFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCandidateReadMethod(), getCallOptions(), request);
     }
@@ -780,7 +792,7 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public proto.ServerClient.RecruiterFullInfo recruiterRead(proto.ServerClient.UserMetaInfo request) {
+    public proto.ServerClient.RecruiterFullInfo recruiterRead(proto.ServerClient.UserFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getRecruiterReadMethod(), getCallOptions(), request);
     }
@@ -816,13 +828,16 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public com.google.protobuf.BoolValue userDelete(proto.ServerClient.UserMetaInfo request) {
+    public com.google.protobuf.BoolValue userDelete(proto.ServerClient.UserFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getUserDeleteMethod(), getCallOptions(), request);
     }
   }
 
   /**
+   * <pre>
+   * Service
+   * </pre>
    */
   public static final class UserServiceFutureStub extends io.grpc.stub.AbstractFutureStub<UserServiceFutureStub> {
     private UserServiceFutureStub(
@@ -855,7 +870,7 @@ public final class UserServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<proto.ServerClient.UserFullInfo> userRead(
-        proto.ServerClient.UserMetaInfo request) {
+        proto.ServerClient.UserFullInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getUserReadMethod(), getCallOptions()), request);
     }
@@ -863,7 +878,7 @@ public final class UserServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<proto.ServerClient.CandidateFullInfo> candidateRead(
-        proto.ServerClient.UserMetaInfo request) {
+        proto.ServerClient.UserFullInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCandidateReadMethod(), getCallOptions()), request);
     }
@@ -871,7 +886,7 @@ public final class UserServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<proto.ServerClient.RecruiterFullInfo> recruiterRead(
-        proto.ServerClient.UserMetaInfo request) {
+        proto.ServerClient.UserFullInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getRecruiterReadMethod(), getCallOptions()), request);
     }
@@ -903,7 +918,7 @@ public final class UserServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> userDelete(
-        proto.ServerClient.UserMetaInfo request) {
+        proto.ServerClient.UserFullInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getUserDeleteMethod(), getCallOptions()), request);
     }
@@ -948,15 +963,15 @@ public final class UserServiceGrpc {
               (io.grpc.stub.StreamObserver<proto.ServerClient.RecruiterFullInfo>) responseObserver);
           break;
         case METHODID_USER_READ:
-          serviceImpl.userRead((proto.ServerClient.UserMetaInfo) request,
+          serviceImpl.userRead((proto.ServerClient.UserFullInfo) request,
               (io.grpc.stub.StreamObserver<proto.ServerClient.UserFullInfo>) responseObserver);
           break;
         case METHODID_USER_LIST_READ:
           serviceImpl.userListRead((com.google.protobuf.Empty) request,
-              (io.grpc.stub.StreamObserver<proto.ServerClient.UserMetaInfo>) responseObserver);
+              (io.grpc.stub.StreamObserver<proto.ServerClient.UserFullInfo>) responseObserver);
           break;
         case METHODID_CANDIDATE_READ:
-          serviceImpl.candidateRead((proto.ServerClient.UserMetaInfo) request,
+          serviceImpl.candidateRead((proto.ServerClient.UserFullInfo) request,
               (io.grpc.stub.StreamObserver<proto.ServerClient.CandidateFullInfo>) responseObserver);
           break;
         case METHODID_CANDIDATE_LIST_READ:
@@ -964,7 +979,7 @@ public final class UserServiceGrpc {
               (io.grpc.stub.StreamObserver<proto.ServerClient.CandidateFullInfo>) responseObserver);
           break;
         case METHODID_RECRUITER_READ:
-          serviceImpl.recruiterRead((proto.ServerClient.UserMetaInfo) request,
+          serviceImpl.recruiterRead((proto.ServerClient.UserFullInfo) request,
               (io.grpc.stub.StreamObserver<proto.ServerClient.RecruiterFullInfo>) responseObserver);
           break;
         case METHODID_RECRUITER_LIST_READ:
@@ -984,7 +999,7 @@ public final class UserServiceGrpc {
               (io.grpc.stub.StreamObserver<proto.ServerClient.RecruiterFullInfo>) responseObserver);
           break;
         case METHODID_USER_DELETE:
-          serviceImpl.userDelete((proto.ServerClient.UserMetaInfo) request,
+          serviceImpl.userDelete((proto.ServerClient.UserFullInfo) request,
               (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         default:

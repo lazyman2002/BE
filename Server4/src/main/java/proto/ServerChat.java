@@ -14,632 +14,8 @@ public final class ServerChat {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface GroupMemberOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:proto.GroupMember)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>int32 userID = 1;</code>
-     * @return The userID.
-     */
-    int getUserID();
-
-    /**
-     * <code>int32 groupID = 2;</code>
-     * @return The groupID.
-     */
-    int getGroupID();
-
-    /**
-     * <code>bool isAdmin = 3;</code>
-     * @return The isAdmin.
-     */
-    boolean getIsAdmin();
-  }
-  /**
-   * Protobuf type {@code proto.GroupMember}
-   */
-  public static final class GroupMember extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:proto.GroupMember)
-      GroupMemberOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use GroupMember.newBuilder() to construct.
-    private GroupMember(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private GroupMember() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new GroupMember();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return proto.ServerChat.internal_static_proto_GroupMember_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return proto.ServerChat.internal_static_proto_GroupMember_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              proto.ServerChat.GroupMember.class, proto.ServerChat.GroupMember.Builder.class);
-    }
-
-    public static final int USERID_FIELD_NUMBER = 1;
-    private int userID_ = 0;
-    /**
-     * <code>int32 userID = 1;</code>
-     * @return The userID.
-     */
-    @java.lang.Override
-    public int getUserID() {
-      return userID_;
-    }
-
-    public static final int GROUPID_FIELD_NUMBER = 2;
-    private int groupID_ = 0;
-    /**
-     * <code>int32 groupID = 2;</code>
-     * @return The groupID.
-     */
-    @java.lang.Override
-    public int getGroupID() {
-      return groupID_;
-    }
-
-    public static final int ISADMIN_FIELD_NUMBER = 3;
-    private boolean isAdmin_ = false;
-    /**
-     * <code>bool isAdmin = 3;</code>
-     * @return The isAdmin.
-     */
-    @java.lang.Override
-    public boolean getIsAdmin() {
-      return isAdmin_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (userID_ != 0) {
-        output.writeInt32(1, userID_);
-      }
-      if (groupID_ != 0) {
-        output.writeInt32(2, groupID_);
-      }
-      if (isAdmin_ != false) {
-        output.writeBool(3, isAdmin_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (userID_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, userID_);
-      }
-      if (groupID_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, groupID_);
-      }
-      if (isAdmin_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(3, isAdmin_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof proto.ServerChat.GroupMember)) {
-        return super.equals(obj);
-      }
-      proto.ServerChat.GroupMember other = (proto.ServerChat.GroupMember) obj;
-
-      if (getUserID()
-          != other.getUserID()) return false;
-      if (getGroupID()
-          != other.getGroupID()) return false;
-      if (getIsAdmin()
-          != other.getIsAdmin()) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + USERID_FIELD_NUMBER;
-      hash = (53 * hash) + getUserID();
-      hash = (37 * hash) + GROUPID_FIELD_NUMBER;
-      hash = (53 * hash) + getGroupID();
-      hash = (37 * hash) + ISADMIN_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getIsAdmin());
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static proto.ServerChat.GroupMember parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static proto.ServerChat.GroupMember parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static proto.ServerChat.GroupMember parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static proto.ServerChat.GroupMember parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static proto.ServerChat.GroupMember parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static proto.ServerChat.GroupMember parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static proto.ServerChat.GroupMember parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static proto.ServerChat.GroupMember parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static proto.ServerChat.GroupMember parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static proto.ServerChat.GroupMember parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static proto.ServerChat.GroupMember parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static proto.ServerChat.GroupMember parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(proto.ServerChat.GroupMember prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code proto.GroupMember}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:proto.GroupMember)
-        proto.ServerChat.GroupMemberOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return proto.ServerChat.internal_static_proto_GroupMember_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return proto.ServerChat.internal_static_proto_GroupMember_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                proto.ServerChat.GroupMember.class, proto.ServerChat.GroupMember.Builder.class);
-      }
-
-      // Construct using proto.ServerChat.GroupMember.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        userID_ = 0;
-        groupID_ = 0;
-        isAdmin_ = false;
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return proto.ServerChat.internal_static_proto_GroupMember_descriptor;
-      }
-
-      @java.lang.Override
-      public proto.ServerChat.GroupMember getDefaultInstanceForType() {
-        return proto.ServerChat.GroupMember.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public proto.ServerChat.GroupMember build() {
-        proto.ServerChat.GroupMember result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public proto.ServerChat.GroupMember buildPartial() {
-        proto.ServerChat.GroupMember result = new proto.ServerChat.GroupMember(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartial0(proto.ServerChat.GroupMember result) {
-        int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.userID_ = userID_;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.groupID_ = groupID_;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.isAdmin_ = isAdmin_;
-        }
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof proto.ServerChat.GroupMember) {
-          return mergeFrom((proto.ServerChat.GroupMember)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(proto.ServerChat.GroupMember other) {
-        if (other == proto.ServerChat.GroupMember.getDefaultInstance()) return this;
-        if (other.getUserID() != 0) {
-          setUserID(other.getUserID());
-        }
-        if (other.getGroupID() != 0) {
-          setGroupID(other.getGroupID());
-        }
-        if (other.getIsAdmin() != false) {
-          setIsAdmin(other.getIsAdmin());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 8: {
-                userID_ = input.readInt32();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 8
-              case 16: {
-                groupID_ = input.readInt32();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 16
-              case 24: {
-                isAdmin_ = input.readBool();
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 24
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
-
-      private int userID_ ;
-      /**
-       * <code>int32 userID = 1;</code>
-       * @return The userID.
-       */
-      @java.lang.Override
-      public int getUserID() {
-        return userID_;
-      }
-      /**
-       * <code>int32 userID = 1;</code>
-       * @param value The userID to set.
-       * @return This builder for chaining.
-       */
-      public Builder setUserID(int value) {
-        
-        userID_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 userID = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearUserID() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        userID_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int groupID_ ;
-      /**
-       * <code>int32 groupID = 2;</code>
-       * @return The groupID.
-       */
-      @java.lang.Override
-      public int getGroupID() {
-        return groupID_;
-      }
-      /**
-       * <code>int32 groupID = 2;</code>
-       * @param value The groupID to set.
-       * @return This builder for chaining.
-       */
-      public Builder setGroupID(int value) {
-        
-        groupID_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 groupID = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearGroupID() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        groupID_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private boolean isAdmin_ ;
-      /**
-       * <code>bool isAdmin = 3;</code>
-       * @return The isAdmin.
-       */
-      @java.lang.Override
-      public boolean getIsAdmin() {
-        return isAdmin_;
-      }
-      /**
-       * <code>bool isAdmin = 3;</code>
-       * @param value The isAdmin to set.
-       * @return This builder for chaining.
-       */
-      public Builder setIsAdmin(boolean value) {
-        
-        isAdmin_ = value;
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool isAdmin = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearIsAdmin() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        isAdmin_ = false;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:proto.GroupMember)
-    }
-
-    // @@protoc_insertion_point(class_scope:proto.GroupMember)
-    private static final proto.ServerChat.GroupMember DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new proto.ServerChat.GroupMember();
-    }
-
-    public static proto.ServerChat.GroupMember getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<GroupMember>
-        PARSER = new com.google.protobuf.AbstractParser<GroupMember>() {
-      @java.lang.Override
-      public GroupMember parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<GroupMember> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<GroupMember> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public proto.ServerChat.GroupMember getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface GroupMetaInfoOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:proto.GroupMetaInfo)
+  public interface GroupInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:proto.GroupInfo)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -667,18 +43,18 @@ public final class ServerChat {
     int getGroupCreaterID();
   }
   /**
-   * Protobuf type {@code proto.GroupMetaInfo}
+   * Protobuf type {@code proto.GroupInfo}
    */
-  public static final class GroupMetaInfo extends
+  public static final class GroupInfo extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:proto.GroupMetaInfo)
-      GroupMetaInfoOrBuilder {
+      // @@protoc_insertion_point(message_implements:proto.GroupInfo)
+      GroupInfoOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use GroupMetaInfo.newBuilder() to construct.
-    private GroupMetaInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use GroupInfo.newBuilder() to construct.
+    private GroupInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private GroupMetaInfo() {
+    private GroupInfo() {
       groupName_ = "";
     }
 
@@ -686,7 +62,7 @@ public final class ServerChat {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new GroupMetaInfo();
+      return new GroupInfo();
     }
 
     @java.lang.Override
@@ -696,15 +72,15 @@ public final class ServerChat {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return proto.ServerChat.internal_static_proto_GroupMetaInfo_descriptor;
+      return proto.ServerChat.internal_static_proto_GroupInfo_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return proto.ServerChat.internal_static_proto_GroupMetaInfo_fieldAccessorTable
+      return proto.ServerChat.internal_static_proto_GroupInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              proto.ServerChat.GroupMetaInfo.class, proto.ServerChat.GroupMetaInfo.Builder.class);
+              proto.ServerChat.GroupInfo.class, proto.ServerChat.GroupInfo.Builder.class);
     }
 
     public static final int GROUPID_FIELD_NUMBER = 1;
@@ -821,10 +197,10 @@ public final class ServerChat {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof proto.ServerChat.GroupMetaInfo)) {
+      if (!(obj instanceof proto.ServerChat.GroupInfo)) {
         return super.equals(obj);
       }
-      proto.ServerChat.GroupMetaInfo other = (proto.ServerChat.GroupMetaInfo) obj;
+      proto.ServerChat.GroupInfo other = (proto.ServerChat.GroupInfo) obj;
 
       if (getGroupID()
           != other.getGroupID()) return false;
@@ -854,69 +230,69 @@ public final class ServerChat {
       return hash;
     }
 
-    public static proto.ServerChat.GroupMetaInfo parseFrom(
+    public static proto.ServerChat.GroupInfo parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static proto.ServerChat.GroupMetaInfo parseFrom(
+    public static proto.ServerChat.GroupInfo parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static proto.ServerChat.GroupMetaInfo parseFrom(
+    public static proto.ServerChat.GroupInfo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static proto.ServerChat.GroupMetaInfo parseFrom(
+    public static proto.ServerChat.GroupInfo parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static proto.ServerChat.GroupMetaInfo parseFrom(byte[] data)
+    public static proto.ServerChat.GroupInfo parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static proto.ServerChat.GroupMetaInfo parseFrom(
+    public static proto.ServerChat.GroupInfo parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static proto.ServerChat.GroupMetaInfo parseFrom(java.io.InputStream input)
+    public static proto.ServerChat.GroupInfo parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static proto.ServerChat.GroupMetaInfo parseFrom(
+    public static proto.ServerChat.GroupInfo parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static proto.ServerChat.GroupMetaInfo parseDelimitedFrom(java.io.InputStream input)
+    public static proto.ServerChat.GroupInfo parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static proto.ServerChat.GroupMetaInfo parseDelimitedFrom(
+    public static proto.ServerChat.GroupInfo parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static proto.ServerChat.GroupMetaInfo parseFrom(
+    public static proto.ServerChat.GroupInfo parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static proto.ServerChat.GroupMetaInfo parseFrom(
+    public static proto.ServerChat.GroupInfo parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -929,7 +305,7 @@ public final class ServerChat {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(proto.ServerChat.GroupMetaInfo prototype) {
+    public static Builder newBuilder(proto.ServerChat.GroupInfo prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -945,26 +321,26 @@ public final class ServerChat {
       return builder;
     }
     /**
-     * Protobuf type {@code proto.GroupMetaInfo}
+     * Protobuf type {@code proto.GroupInfo}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:proto.GroupMetaInfo)
-        proto.ServerChat.GroupMetaInfoOrBuilder {
+        // @@protoc_insertion_point(builder_implements:proto.GroupInfo)
+        proto.ServerChat.GroupInfoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return proto.ServerChat.internal_static_proto_GroupMetaInfo_descriptor;
+        return proto.ServerChat.internal_static_proto_GroupInfo_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return proto.ServerChat.internal_static_proto_GroupMetaInfo_fieldAccessorTable
+        return proto.ServerChat.internal_static_proto_GroupInfo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                proto.ServerChat.GroupMetaInfo.class, proto.ServerChat.GroupMetaInfo.Builder.class);
+                proto.ServerChat.GroupInfo.class, proto.ServerChat.GroupInfo.Builder.class);
       }
 
-      // Construct using proto.ServerChat.GroupMetaInfo.newBuilder()
+      // Construct using proto.ServerChat.GroupInfo.newBuilder()
       private Builder() {
 
       }
@@ -987,17 +363,17 @@ public final class ServerChat {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return proto.ServerChat.internal_static_proto_GroupMetaInfo_descriptor;
+        return proto.ServerChat.internal_static_proto_GroupInfo_descriptor;
       }
 
       @java.lang.Override
-      public proto.ServerChat.GroupMetaInfo getDefaultInstanceForType() {
-        return proto.ServerChat.GroupMetaInfo.getDefaultInstance();
+      public proto.ServerChat.GroupInfo getDefaultInstanceForType() {
+        return proto.ServerChat.GroupInfo.getDefaultInstance();
       }
 
       @java.lang.Override
-      public proto.ServerChat.GroupMetaInfo build() {
-        proto.ServerChat.GroupMetaInfo result = buildPartial();
+      public proto.ServerChat.GroupInfo build() {
+        proto.ServerChat.GroupInfo result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1005,14 +381,14 @@ public final class ServerChat {
       }
 
       @java.lang.Override
-      public proto.ServerChat.GroupMetaInfo buildPartial() {
-        proto.ServerChat.GroupMetaInfo result = new proto.ServerChat.GroupMetaInfo(this);
+      public proto.ServerChat.GroupInfo buildPartial() {
+        proto.ServerChat.GroupInfo result = new proto.ServerChat.GroupInfo(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(proto.ServerChat.GroupMetaInfo result) {
+      private void buildPartial0(proto.ServerChat.GroupInfo result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.groupID_ = groupID_;
@@ -1059,16 +435,16 @@ public final class ServerChat {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof proto.ServerChat.GroupMetaInfo) {
-          return mergeFrom((proto.ServerChat.GroupMetaInfo)other);
+        if (other instanceof proto.ServerChat.GroupInfo) {
+          return mergeFrom((proto.ServerChat.GroupInfo)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(proto.ServerChat.GroupMetaInfo other) {
-        if (other == proto.ServerChat.GroupMetaInfo.getDefaultInstance()) return this;
+      public Builder mergeFrom(proto.ServerChat.GroupInfo other) {
+        if (other == proto.ServerChat.GroupInfo.getDefaultInstance()) return this;
         if (other.getGroupID() != 0) {
           setGroupID(other.getGroupID());
         }
@@ -1286,23 +662,23 @@ public final class ServerChat {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:proto.GroupMetaInfo)
+      // @@protoc_insertion_point(builder_scope:proto.GroupInfo)
     }
 
-    // @@protoc_insertion_point(class_scope:proto.GroupMetaInfo)
-    private static final proto.ServerChat.GroupMetaInfo DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:proto.GroupInfo)
+    private static final proto.ServerChat.GroupInfo DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new proto.ServerChat.GroupMetaInfo();
+      DEFAULT_INSTANCE = new proto.ServerChat.GroupInfo();
     }
 
-    public static proto.ServerChat.GroupMetaInfo getDefaultInstance() {
+    public static proto.ServerChat.GroupInfo getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<GroupMetaInfo>
-        PARSER = new com.google.protobuf.AbstractParser<GroupMetaInfo>() {
+    private static final com.google.protobuf.Parser<GroupInfo>
+        PARSER = new com.google.protobuf.AbstractParser<GroupInfo>() {
       @java.lang.Override
-      public GroupMetaInfo parsePartialFrom(
+      public GroupInfo parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1321,17 +697,1033 @@ public final class ServerChat {
       }
     };
 
-    public static com.google.protobuf.Parser<GroupMetaInfo> parser() {
+    public static com.google.protobuf.Parser<GroupInfo> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<GroupMetaInfo> getParserForType() {
+    public com.google.protobuf.Parser<GroupInfo> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public proto.ServerChat.GroupMetaInfo getDefaultInstanceForType() {
+    public proto.ServerChat.GroupInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface GroupMemberOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:proto.GroupMember)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 userID = 1;</code>
+     * @return The userID.
+     */
+    int getUserID();
+
+    /**
+     * <code>int32 groupID = 2;</code>
+     * @return The groupID.
+     */
+    int getGroupID();
+
+    /**
+     * <code>bool isAdmin = 3;</code>
+     * @return The isAdmin.
+     */
+    boolean getIsAdmin();
+
+    /**
+     * <code>.google.protobuf.Timestamp interview = 4;</code>
+     * @return Whether the interview field is set.
+     */
+    boolean hasInterview();
+    /**
+     * <code>.google.protobuf.Timestamp interview = 4;</code>
+     * @return The interview.
+     */
+    com.google.protobuf.Timestamp getInterview();
+    /**
+     * <code>.google.protobuf.Timestamp interview = 4;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getInterviewOrBuilder();
+
+    /**
+     * <code>.google.protobuf.Timestamp scheduleDate = 5;</code>
+     * @return Whether the scheduleDate field is set.
+     */
+    boolean hasScheduleDate();
+    /**
+     * <code>.google.protobuf.Timestamp scheduleDate = 5;</code>
+     * @return The scheduleDate.
+     */
+    com.google.protobuf.Timestamp getScheduleDate();
+    /**
+     * <code>.google.protobuf.Timestamp scheduleDate = 5;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getScheduleDateOrBuilder();
+  }
+  /**
+   * Protobuf type {@code proto.GroupMember}
+   */
+  public static final class GroupMember extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:proto.GroupMember)
+      GroupMemberOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GroupMember.newBuilder() to construct.
+    private GroupMember(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GroupMember() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GroupMember();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto.ServerChat.internal_static_proto_GroupMember_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto.ServerChat.internal_static_proto_GroupMember_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto.ServerChat.GroupMember.class, proto.ServerChat.GroupMember.Builder.class);
+    }
+
+    public static final int USERID_FIELD_NUMBER = 1;
+    private int userID_ = 0;
+    /**
+     * <code>int32 userID = 1;</code>
+     * @return The userID.
+     */
+    @java.lang.Override
+    public int getUserID() {
+      return userID_;
+    }
+
+    public static final int GROUPID_FIELD_NUMBER = 2;
+    private int groupID_ = 0;
+    /**
+     * <code>int32 groupID = 2;</code>
+     * @return The groupID.
+     */
+    @java.lang.Override
+    public int getGroupID() {
+      return groupID_;
+    }
+
+    public static final int ISADMIN_FIELD_NUMBER = 3;
+    private boolean isAdmin_ = false;
+    /**
+     * <code>bool isAdmin = 3;</code>
+     * @return The isAdmin.
+     */
+    @java.lang.Override
+    public boolean getIsAdmin() {
+      return isAdmin_;
+    }
+
+    public static final int INTERVIEW_FIELD_NUMBER = 4;
+    private com.google.protobuf.Timestamp interview_;
+    /**
+     * <code>.google.protobuf.Timestamp interview = 4;</code>
+     * @return Whether the interview field is set.
+     */
+    @java.lang.Override
+    public boolean hasInterview() {
+      return interview_ != null;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp interview = 4;</code>
+     * @return The interview.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getInterview() {
+      return interview_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : interview_;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp interview = 4;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getInterviewOrBuilder() {
+      return interview_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : interview_;
+    }
+
+    public static final int SCHEDULEDATE_FIELD_NUMBER = 5;
+    private com.google.protobuf.Timestamp scheduleDate_;
+    /**
+     * <code>.google.protobuf.Timestamp scheduleDate = 5;</code>
+     * @return Whether the scheduleDate field is set.
+     */
+    @java.lang.Override
+    public boolean hasScheduleDate() {
+      return scheduleDate_ != null;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp scheduleDate = 5;</code>
+     * @return The scheduleDate.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getScheduleDate() {
+      return scheduleDate_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : scheduleDate_;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp scheduleDate = 5;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getScheduleDateOrBuilder() {
+      return scheduleDate_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : scheduleDate_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (userID_ != 0) {
+        output.writeInt32(1, userID_);
+      }
+      if (groupID_ != 0) {
+        output.writeInt32(2, groupID_);
+      }
+      if (isAdmin_ != false) {
+        output.writeBool(3, isAdmin_);
+      }
+      if (interview_ != null) {
+        output.writeMessage(4, getInterview());
+      }
+      if (scheduleDate_ != null) {
+        output.writeMessage(5, getScheduleDate());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (userID_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, userID_);
+      }
+      if (groupID_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, groupID_);
+      }
+      if (isAdmin_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, isAdmin_);
+      }
+      if (interview_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getInterview());
+      }
+      if (scheduleDate_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getScheduleDate());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto.ServerChat.GroupMember)) {
+        return super.equals(obj);
+      }
+      proto.ServerChat.GroupMember other = (proto.ServerChat.GroupMember) obj;
+
+      if (getUserID()
+          != other.getUserID()) return false;
+      if (getGroupID()
+          != other.getGroupID()) return false;
+      if (getIsAdmin()
+          != other.getIsAdmin()) return false;
+      if (hasInterview() != other.hasInterview()) return false;
+      if (hasInterview()) {
+        if (!getInterview()
+            .equals(other.getInterview())) return false;
+      }
+      if (hasScheduleDate() != other.hasScheduleDate()) return false;
+      if (hasScheduleDate()) {
+        if (!getScheduleDate()
+            .equals(other.getScheduleDate())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
+      hash = (53 * hash) + getUserID();
+      hash = (37 * hash) + GROUPID_FIELD_NUMBER;
+      hash = (53 * hash) + getGroupID();
+      hash = (37 * hash) + ISADMIN_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsAdmin());
+      if (hasInterview()) {
+        hash = (37 * hash) + INTERVIEW_FIELD_NUMBER;
+        hash = (53 * hash) + getInterview().hashCode();
+      }
+      if (hasScheduleDate()) {
+        hash = (37 * hash) + SCHEDULEDATE_FIELD_NUMBER;
+        hash = (53 * hash) + getScheduleDate().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto.ServerChat.GroupMember parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.ServerChat.GroupMember parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.ServerChat.GroupMember parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.ServerChat.GroupMember parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.ServerChat.GroupMember parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.ServerChat.GroupMember parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.ServerChat.GroupMember parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.ServerChat.GroupMember parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.ServerChat.GroupMember parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static proto.ServerChat.GroupMember parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.ServerChat.GroupMember parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.ServerChat.GroupMember parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto.ServerChat.GroupMember prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code proto.GroupMember}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:proto.GroupMember)
+        proto.ServerChat.GroupMemberOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto.ServerChat.internal_static_proto_GroupMember_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto.ServerChat.internal_static_proto_GroupMember_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto.ServerChat.GroupMember.class, proto.ServerChat.GroupMember.Builder.class);
+      }
+
+      // Construct using proto.ServerChat.GroupMember.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        userID_ = 0;
+        groupID_ = 0;
+        isAdmin_ = false;
+        interview_ = null;
+        if (interviewBuilder_ != null) {
+          interviewBuilder_.dispose();
+          interviewBuilder_ = null;
+        }
+        scheduleDate_ = null;
+        if (scheduleDateBuilder_ != null) {
+          scheduleDateBuilder_.dispose();
+          scheduleDateBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto.ServerChat.internal_static_proto_GroupMember_descriptor;
+      }
+
+      @java.lang.Override
+      public proto.ServerChat.GroupMember getDefaultInstanceForType() {
+        return proto.ServerChat.GroupMember.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto.ServerChat.GroupMember build() {
+        proto.ServerChat.GroupMember result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto.ServerChat.GroupMember buildPartial() {
+        proto.ServerChat.GroupMember result = new proto.ServerChat.GroupMember(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(proto.ServerChat.GroupMember result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.userID_ = userID_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.groupID_ = groupID_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.isAdmin_ = isAdmin_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.interview_ = interviewBuilder_ == null
+              ? interview_
+              : interviewBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.scheduleDate_ = scheduleDateBuilder_ == null
+              ? scheduleDate_
+              : scheduleDateBuilder_.build();
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto.ServerChat.GroupMember) {
+          return mergeFrom((proto.ServerChat.GroupMember)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto.ServerChat.GroupMember other) {
+        if (other == proto.ServerChat.GroupMember.getDefaultInstance()) return this;
+        if (other.getUserID() != 0) {
+          setUserID(other.getUserID());
+        }
+        if (other.getGroupID() != 0) {
+          setGroupID(other.getGroupID());
+        }
+        if (other.getIsAdmin() != false) {
+          setIsAdmin(other.getIsAdmin());
+        }
+        if (other.hasInterview()) {
+          mergeInterview(other.getInterview());
+        }
+        if (other.hasScheduleDate()) {
+          mergeScheduleDate(other.getScheduleDate());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                userID_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                groupID_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                isAdmin_ = input.readBool();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 34: {
+                input.readMessage(
+                    getInterviewFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              case 42: {
+                input.readMessage(
+                    getScheduleDateFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private int userID_ ;
+      /**
+       * <code>int32 userID = 1;</code>
+       * @return The userID.
+       */
+      @java.lang.Override
+      public int getUserID() {
+        return userID_;
+      }
+      /**
+       * <code>int32 userID = 1;</code>
+       * @param value The userID to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserID(int value) {
+        
+        userID_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 userID = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUserID() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        userID_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int groupID_ ;
+      /**
+       * <code>int32 groupID = 2;</code>
+       * @return The groupID.
+       */
+      @java.lang.Override
+      public int getGroupID() {
+        return groupID_;
+      }
+      /**
+       * <code>int32 groupID = 2;</code>
+       * @param value The groupID to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGroupID(int value) {
+        
+        groupID_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 groupID = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearGroupID() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        groupID_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean isAdmin_ ;
+      /**
+       * <code>bool isAdmin = 3;</code>
+       * @return The isAdmin.
+       */
+      @java.lang.Override
+      public boolean getIsAdmin() {
+        return isAdmin_;
+      }
+      /**
+       * <code>bool isAdmin = 3;</code>
+       * @param value The isAdmin to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIsAdmin(boolean value) {
+        
+        isAdmin_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool isAdmin = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIsAdmin() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        isAdmin_ = false;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Timestamp interview_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> interviewBuilder_;
+      /**
+       * <code>.google.protobuf.Timestamp interview = 4;</code>
+       * @return Whether the interview field is set.
+       */
+      public boolean hasInterview() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <code>.google.protobuf.Timestamp interview = 4;</code>
+       * @return The interview.
+       */
+      public com.google.protobuf.Timestamp getInterview() {
+        if (interviewBuilder_ == null) {
+          return interview_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : interview_;
+        } else {
+          return interviewBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp interview = 4;</code>
+       */
+      public Builder setInterview(com.google.protobuf.Timestamp value) {
+        if (interviewBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          interview_ = value;
+        } else {
+          interviewBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp interview = 4;</code>
+       */
+      public Builder setInterview(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (interviewBuilder_ == null) {
+          interview_ = builderForValue.build();
+        } else {
+          interviewBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp interview = 4;</code>
+       */
+      public Builder mergeInterview(com.google.protobuf.Timestamp value) {
+        if (interviewBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) != 0) &&
+            interview_ != null &&
+            interview_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            getInterviewBuilder().mergeFrom(value);
+          } else {
+            interview_ = value;
+          }
+        } else {
+          interviewBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp interview = 4;</code>
+       */
+      public Builder clearInterview() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        interview_ = null;
+        if (interviewBuilder_ != null) {
+          interviewBuilder_.dispose();
+          interviewBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp interview = 4;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getInterviewBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getInterviewFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Timestamp interview = 4;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getInterviewOrBuilder() {
+        if (interviewBuilder_ != null) {
+          return interviewBuilder_.getMessageOrBuilder();
+        } else {
+          return interview_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : interview_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp interview = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getInterviewFieldBuilder() {
+        if (interviewBuilder_ == null) {
+          interviewBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getInterview(),
+                  getParentForChildren(),
+                  isClean());
+          interview_ = null;
+        }
+        return interviewBuilder_;
+      }
+
+      private com.google.protobuf.Timestamp scheduleDate_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> scheduleDateBuilder_;
+      /**
+       * <code>.google.protobuf.Timestamp scheduleDate = 5;</code>
+       * @return Whether the scheduleDate field is set.
+       */
+      public boolean hasScheduleDate() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <code>.google.protobuf.Timestamp scheduleDate = 5;</code>
+       * @return The scheduleDate.
+       */
+      public com.google.protobuf.Timestamp getScheduleDate() {
+        if (scheduleDateBuilder_ == null) {
+          return scheduleDate_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : scheduleDate_;
+        } else {
+          return scheduleDateBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp scheduleDate = 5;</code>
+       */
+      public Builder setScheduleDate(com.google.protobuf.Timestamp value) {
+        if (scheduleDateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          scheduleDate_ = value;
+        } else {
+          scheduleDateBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp scheduleDate = 5;</code>
+       */
+      public Builder setScheduleDate(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (scheduleDateBuilder_ == null) {
+          scheduleDate_ = builderForValue.build();
+        } else {
+          scheduleDateBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp scheduleDate = 5;</code>
+       */
+      public Builder mergeScheduleDate(com.google.protobuf.Timestamp value) {
+        if (scheduleDateBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) != 0) &&
+            scheduleDate_ != null &&
+            scheduleDate_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            getScheduleDateBuilder().mergeFrom(value);
+          } else {
+            scheduleDate_ = value;
+          }
+        } else {
+          scheduleDateBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp scheduleDate = 5;</code>
+       */
+      public Builder clearScheduleDate() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        scheduleDate_ = null;
+        if (scheduleDateBuilder_ != null) {
+          scheduleDateBuilder_.dispose();
+          scheduleDateBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp scheduleDate = 5;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getScheduleDateBuilder() {
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return getScheduleDateFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Timestamp scheduleDate = 5;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getScheduleDateOrBuilder() {
+        if (scheduleDateBuilder_ != null) {
+          return scheduleDateBuilder_.getMessageOrBuilder();
+        } else {
+          return scheduleDate_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : scheduleDate_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp scheduleDate = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getScheduleDateFieldBuilder() {
+        if (scheduleDateBuilder_ == null) {
+          scheduleDateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getScheduleDate(),
+                  getParentForChildren(),
+                  isClean());
+          scheduleDate_ = null;
+        }
+        return scheduleDateBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:proto.GroupMember)
+    }
+
+    // @@protoc_insertion_point(class_scope:proto.GroupMember)
+    private static final proto.ServerChat.GroupMember DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto.ServerChat.GroupMember();
+    }
+
+    public static proto.ServerChat.GroupMember getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GroupMember>
+        PARSER = new com.google.protobuf.AbstractParser<GroupMember>() {
+      @java.lang.Override
+      public GroupMember parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<GroupMember> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GroupMember> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto.ServerChat.GroupMember getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3000,1133 +3392,6 @@ public final class ServerChat {
 
   }
 
-  public interface ScheduleFullInfoOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:proto.ScheduleFullInfo)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>int32 scheduleID = 1;</code>
-     * @return The scheduleID.
-     */
-    int getScheduleID();
-
-    /**
-     * <code>int32 groupID = 2;</code>
-     * @return The groupID.
-     */
-    int getGroupID();
-
-    /**
-     * <code>.google.protobuf.Timestamp timeSet = 3;</code>
-     * @return Whether the timeSet field is set.
-     */
-    boolean hasTimeSet();
-    /**
-     * <code>.google.protobuf.Timestamp timeSet = 3;</code>
-     * @return The timeSet.
-     */
-    com.google.protobuf.Timestamp getTimeSet();
-    /**
-     * <code>.google.protobuf.Timestamp timeSet = 3;</code>
-     */
-    com.google.protobuf.TimestampOrBuilder getTimeSetOrBuilder();
-
-    /**
-     * <code>bool isRecorded = 4;</code>
-     * @return The isRecorded.
-     */
-    boolean getIsRecorded();
-
-    /**
-     * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
-     */
-    int getInterviewersCount();
-    /**
-     * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
-     */
-    boolean containsInterviewers(
-        int key);
-    /**
-     * Use {@link #getInterviewersMap()} instead.
-     */
-    @java.lang.Deprecated
-    java.util.Map<java.lang.Integer, java.lang.Integer>
-    getInterviewers();
-    /**
-     * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
-     */
-    java.util.Map<java.lang.Integer, java.lang.Integer>
-    getInterviewersMap();
-    /**
-     * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
-     */
-    int getInterviewersOrDefault(
-        int key,
-        int defaultValue);
-    /**
-     * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
-     */
-    int getInterviewersOrThrow(
-        int key);
-  }
-  /**
-   * Protobuf type {@code proto.ScheduleFullInfo}
-   */
-  public static final class ScheduleFullInfo extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:proto.ScheduleFullInfo)
-      ScheduleFullInfoOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ScheduleFullInfo.newBuilder() to construct.
-    private ScheduleFullInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ScheduleFullInfo() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ScheduleFullInfo();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return proto.ServerChat.internal_static_proto_ScheduleFullInfo_descriptor;
-    }
-
-    @SuppressWarnings({"rawtypes"})
-    @java.lang.Override
-    protected com.google.protobuf.MapField internalGetMapField(
-        int number) {
-      switch (number) {
-        case 5:
-          return internalGetInterviewers();
-        default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
-      }
-    }
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return proto.ServerChat.internal_static_proto_ScheduleFullInfo_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              proto.ServerChat.ScheduleFullInfo.class, proto.ServerChat.ScheduleFullInfo.Builder.class);
-    }
-
-    public static final int SCHEDULEID_FIELD_NUMBER = 1;
-    private int scheduleID_ = 0;
-    /**
-     * <code>int32 scheduleID = 1;</code>
-     * @return The scheduleID.
-     */
-    @java.lang.Override
-    public int getScheduleID() {
-      return scheduleID_;
-    }
-
-    public static final int GROUPID_FIELD_NUMBER = 2;
-    private int groupID_ = 0;
-    /**
-     * <code>int32 groupID = 2;</code>
-     * @return The groupID.
-     */
-    @java.lang.Override
-    public int getGroupID() {
-      return groupID_;
-    }
-
-    public static final int TIMESET_FIELD_NUMBER = 3;
-    private com.google.protobuf.Timestamp timeSet_;
-    /**
-     * <code>.google.protobuf.Timestamp timeSet = 3;</code>
-     * @return Whether the timeSet field is set.
-     */
-    @java.lang.Override
-    public boolean hasTimeSet() {
-      return timeSet_ != null;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp timeSet = 3;</code>
-     * @return The timeSet.
-     */
-    @java.lang.Override
-    public com.google.protobuf.Timestamp getTimeSet() {
-      return timeSet_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : timeSet_;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp timeSet = 3;</code>
-     */
-    @java.lang.Override
-    public com.google.protobuf.TimestampOrBuilder getTimeSetOrBuilder() {
-      return timeSet_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : timeSet_;
-    }
-
-    public static final int ISRECORDED_FIELD_NUMBER = 4;
-    private boolean isRecorded_ = false;
-    /**
-     * <code>bool isRecorded = 4;</code>
-     * @return The isRecorded.
-     */
-    @java.lang.Override
-    public boolean getIsRecorded() {
-      return isRecorded_;
-    }
-
-    public static final int INTERVIEWERS_FIELD_NUMBER = 5;
-    private static final class InterviewersDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
-          java.lang.Integer, java.lang.Integer> defaultEntry =
-              com.google.protobuf.MapEntry
-              .<java.lang.Integer, java.lang.Integer>newDefaultInstance(
-                  proto.ServerChat.internal_static_proto_ScheduleFullInfo_InterviewersEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.INT32,
-                  0,
-                  com.google.protobuf.WireFormat.FieldType.INT32,
-                  0);
-    }
-    @SuppressWarnings("serial")
-    private com.google.protobuf.MapField<
-        java.lang.Integer, java.lang.Integer> interviewers_;
-    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
-    internalGetInterviewers() {
-      if (interviewers_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            InterviewersDefaultEntryHolder.defaultEntry);
-      }
-      return interviewers_;
-    }
-    public int getInterviewersCount() {
-      return internalGetInterviewers().getMap().size();
-    }
-    /**
-     * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
-     */
-    @java.lang.Override
-    public boolean containsInterviewers(
-        int key) {
-      
-      return internalGetInterviewers().getMap().containsKey(key);
-    }
-    /**
-     * Use {@link #getInterviewersMap()} instead.
-     */
-    @java.lang.Override
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.Integer, java.lang.Integer> getInterviewers() {
-      return getInterviewersMap();
-    }
-    /**
-     * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
-     */
-    @java.lang.Override
-    public java.util.Map<java.lang.Integer, java.lang.Integer> getInterviewersMap() {
-      return internalGetInterviewers().getMap();
-    }
-    /**
-     * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
-     */
-    @java.lang.Override
-    public int getInterviewersOrDefault(
-        int key,
-        int defaultValue) {
-      
-      java.util.Map<java.lang.Integer, java.lang.Integer> map =
-          internalGetInterviewers().getMap();
-      return map.containsKey(key) ? map.get(key) : defaultValue;
-    }
-    /**
-     * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
-     */
-    @java.lang.Override
-    public int getInterviewersOrThrow(
-        int key) {
-      
-      java.util.Map<java.lang.Integer, java.lang.Integer> map =
-          internalGetInterviewers().getMap();
-      if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
-      }
-      return map.get(key);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (scheduleID_ != 0) {
-        output.writeInt32(1, scheduleID_);
-      }
-      if (groupID_ != 0) {
-        output.writeInt32(2, groupID_);
-      }
-      if (timeSet_ != null) {
-        output.writeMessage(3, getTimeSet());
-      }
-      if (isRecorded_ != false) {
-        output.writeBool(4, isRecorded_);
-      }
-      com.google.protobuf.GeneratedMessageV3
-        .serializeIntegerMapTo(
-          output,
-          internalGetInterviewers(),
-          InterviewersDefaultEntryHolder.defaultEntry,
-          5);
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (scheduleID_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, scheduleID_);
-      }
-      if (groupID_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, groupID_);
-      }
-      if (timeSet_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getTimeSet());
-      }
-      if (isRecorded_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(4, isRecorded_);
-      }
-      for (java.util.Map.Entry<java.lang.Integer, java.lang.Integer> entry
-           : internalGetInterviewers().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
-        interviewers__ = InterviewersDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
-        size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(5, interviewers__);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof proto.ServerChat.ScheduleFullInfo)) {
-        return super.equals(obj);
-      }
-      proto.ServerChat.ScheduleFullInfo other = (proto.ServerChat.ScheduleFullInfo) obj;
-
-      if (getScheduleID()
-          != other.getScheduleID()) return false;
-      if (getGroupID()
-          != other.getGroupID()) return false;
-      if (hasTimeSet() != other.hasTimeSet()) return false;
-      if (hasTimeSet()) {
-        if (!getTimeSet()
-            .equals(other.getTimeSet())) return false;
-      }
-      if (getIsRecorded()
-          != other.getIsRecorded()) return false;
-      if (!internalGetInterviewers().equals(
-          other.internalGetInterviewers())) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + SCHEDULEID_FIELD_NUMBER;
-      hash = (53 * hash) + getScheduleID();
-      hash = (37 * hash) + GROUPID_FIELD_NUMBER;
-      hash = (53 * hash) + getGroupID();
-      if (hasTimeSet()) {
-        hash = (37 * hash) + TIMESET_FIELD_NUMBER;
-        hash = (53 * hash) + getTimeSet().hashCode();
-      }
-      hash = (37 * hash) + ISRECORDED_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getIsRecorded());
-      if (!internalGetInterviewers().getMap().isEmpty()) {
-        hash = (37 * hash) + INTERVIEWERS_FIELD_NUMBER;
-        hash = (53 * hash) + internalGetInterviewers().hashCode();
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static proto.ServerChat.ScheduleFullInfo parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static proto.ServerChat.ScheduleFullInfo parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static proto.ServerChat.ScheduleFullInfo parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static proto.ServerChat.ScheduleFullInfo parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static proto.ServerChat.ScheduleFullInfo parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static proto.ServerChat.ScheduleFullInfo parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static proto.ServerChat.ScheduleFullInfo parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static proto.ServerChat.ScheduleFullInfo parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static proto.ServerChat.ScheduleFullInfo parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static proto.ServerChat.ScheduleFullInfo parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static proto.ServerChat.ScheduleFullInfo parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static proto.ServerChat.ScheduleFullInfo parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(proto.ServerChat.ScheduleFullInfo prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code proto.ScheduleFullInfo}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:proto.ScheduleFullInfo)
-        proto.ServerChat.ScheduleFullInfoOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return proto.ServerChat.internal_static_proto_ScheduleFullInfo_descriptor;
-      }
-
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
-          int number) {
-        switch (number) {
-          case 5:
-            return internalGetInterviewers();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
-          int number) {
-        switch (number) {
-          case 5:
-            return internalGetMutableInterviewers();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return proto.ServerChat.internal_static_proto_ScheduleFullInfo_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                proto.ServerChat.ScheduleFullInfo.class, proto.ServerChat.ScheduleFullInfo.Builder.class);
-      }
-
-      // Construct using proto.ServerChat.ScheduleFullInfo.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        scheduleID_ = 0;
-        groupID_ = 0;
-        timeSet_ = null;
-        if (timeSetBuilder_ != null) {
-          timeSetBuilder_.dispose();
-          timeSetBuilder_ = null;
-        }
-        isRecorded_ = false;
-        internalGetMutableInterviewers().clear();
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return proto.ServerChat.internal_static_proto_ScheduleFullInfo_descriptor;
-      }
-
-      @java.lang.Override
-      public proto.ServerChat.ScheduleFullInfo getDefaultInstanceForType() {
-        return proto.ServerChat.ScheduleFullInfo.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public proto.ServerChat.ScheduleFullInfo build() {
-        proto.ServerChat.ScheduleFullInfo result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public proto.ServerChat.ScheduleFullInfo buildPartial() {
-        proto.ServerChat.ScheduleFullInfo result = new proto.ServerChat.ScheduleFullInfo(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartial0(proto.ServerChat.ScheduleFullInfo result) {
-        int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.scheduleID_ = scheduleID_;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.groupID_ = groupID_;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.timeSet_ = timeSetBuilder_ == null
-              ? timeSet_
-              : timeSetBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.isRecorded_ = isRecorded_;
-        }
-        if (((from_bitField0_ & 0x00000010) != 0)) {
-          result.interviewers_ = internalGetInterviewers();
-          result.interviewers_.makeImmutable();
-        }
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof proto.ServerChat.ScheduleFullInfo) {
-          return mergeFrom((proto.ServerChat.ScheduleFullInfo)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(proto.ServerChat.ScheduleFullInfo other) {
-        if (other == proto.ServerChat.ScheduleFullInfo.getDefaultInstance()) return this;
-        if (other.getScheduleID() != 0) {
-          setScheduleID(other.getScheduleID());
-        }
-        if (other.getGroupID() != 0) {
-          setGroupID(other.getGroupID());
-        }
-        if (other.hasTimeSet()) {
-          mergeTimeSet(other.getTimeSet());
-        }
-        if (other.getIsRecorded() != false) {
-          setIsRecorded(other.getIsRecorded());
-        }
-        internalGetMutableInterviewers().mergeFrom(
-            other.internalGetInterviewers());
-        bitField0_ |= 0x00000010;
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 8: {
-                scheduleID_ = input.readInt32();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 8
-              case 16: {
-                groupID_ = input.readInt32();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 16
-              case 26: {
-                input.readMessage(
-                    getTimeSetFieldBuilder().getBuilder(),
-                    extensionRegistry);
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 26
-              case 32: {
-                isRecorded_ = input.readBool();
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 32
-              case 42: {
-                com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
-                interviewers__ = input.readMessage(
-                    InterviewersDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-                internalGetMutableInterviewers().getMutableMap().put(
-                    interviewers__.getKey(), interviewers__.getValue());
-                bitField0_ |= 0x00000010;
-                break;
-              } // case 42
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
-
-      private int scheduleID_ ;
-      /**
-       * <code>int32 scheduleID = 1;</code>
-       * @return The scheduleID.
-       */
-      @java.lang.Override
-      public int getScheduleID() {
-        return scheduleID_;
-      }
-      /**
-       * <code>int32 scheduleID = 1;</code>
-       * @param value The scheduleID to set.
-       * @return This builder for chaining.
-       */
-      public Builder setScheduleID(int value) {
-        
-        scheduleID_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 scheduleID = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearScheduleID() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        scheduleID_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int groupID_ ;
-      /**
-       * <code>int32 groupID = 2;</code>
-       * @return The groupID.
-       */
-      @java.lang.Override
-      public int getGroupID() {
-        return groupID_;
-      }
-      /**
-       * <code>int32 groupID = 2;</code>
-       * @param value The groupID to set.
-       * @return This builder for chaining.
-       */
-      public Builder setGroupID(int value) {
-        
-        groupID_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 groupID = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearGroupID() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        groupID_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.Timestamp timeSet_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> timeSetBuilder_;
-      /**
-       * <code>.google.protobuf.Timestamp timeSet = 3;</code>
-       * @return Whether the timeSet field is set.
-       */
-      public boolean hasTimeSet() {
-        return ((bitField0_ & 0x00000004) != 0);
-      }
-      /**
-       * <code>.google.protobuf.Timestamp timeSet = 3;</code>
-       * @return The timeSet.
-       */
-      public com.google.protobuf.Timestamp getTimeSet() {
-        if (timeSetBuilder_ == null) {
-          return timeSet_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : timeSet_;
-        } else {
-          return timeSetBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.google.protobuf.Timestamp timeSet = 3;</code>
-       */
-      public Builder setTimeSet(com.google.protobuf.Timestamp value) {
-        if (timeSetBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          timeSet_ = value;
-        } else {
-          timeSetBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.google.protobuf.Timestamp timeSet = 3;</code>
-       */
-      public Builder setTimeSet(
-          com.google.protobuf.Timestamp.Builder builderForValue) {
-        if (timeSetBuilder_ == null) {
-          timeSet_ = builderForValue.build();
-        } else {
-          timeSetBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.google.protobuf.Timestamp timeSet = 3;</code>
-       */
-      public Builder mergeTimeSet(com.google.protobuf.Timestamp value) {
-        if (timeSetBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) != 0) &&
-            timeSet_ != null &&
-            timeSet_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
-            getTimeSetBuilder().mergeFrom(value);
-          } else {
-            timeSet_ = value;
-          }
-        } else {
-          timeSetBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.google.protobuf.Timestamp timeSet = 3;</code>
-       */
-      public Builder clearTimeSet() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        timeSet_ = null;
-        if (timeSetBuilder_ != null) {
-          timeSetBuilder_.dispose();
-          timeSetBuilder_ = null;
-        }
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.google.protobuf.Timestamp timeSet = 3;</code>
-       */
-      public com.google.protobuf.Timestamp.Builder getTimeSetBuilder() {
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return getTimeSetFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.google.protobuf.Timestamp timeSet = 3;</code>
-       */
-      public com.google.protobuf.TimestampOrBuilder getTimeSetOrBuilder() {
-        if (timeSetBuilder_ != null) {
-          return timeSetBuilder_.getMessageOrBuilder();
-        } else {
-          return timeSet_ == null ?
-              com.google.protobuf.Timestamp.getDefaultInstance() : timeSet_;
-        }
-      }
-      /**
-       * <code>.google.protobuf.Timestamp timeSet = 3;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
-          getTimeSetFieldBuilder() {
-        if (timeSetBuilder_ == null) {
-          timeSetBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
-                  getTimeSet(),
-                  getParentForChildren(),
-                  isClean());
-          timeSet_ = null;
-        }
-        return timeSetBuilder_;
-      }
-
-      private boolean isRecorded_ ;
-      /**
-       * <code>bool isRecorded = 4;</code>
-       * @return The isRecorded.
-       */
-      @java.lang.Override
-      public boolean getIsRecorded() {
-        return isRecorded_;
-      }
-      /**
-       * <code>bool isRecorded = 4;</code>
-       * @param value The isRecorded to set.
-       * @return This builder for chaining.
-       */
-      public Builder setIsRecorded(boolean value) {
-        
-        isRecorded_ = value;
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool isRecorded = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearIsRecorded() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        isRecorded_ = false;
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.MapField<
-          java.lang.Integer, java.lang.Integer> interviewers_;
-      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
-          internalGetInterviewers() {
-        if (interviewers_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
-              InterviewersDefaultEntryHolder.defaultEntry);
-        }
-        return interviewers_;
-      }
-      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
-          internalGetMutableInterviewers() {
-        if (interviewers_ == null) {
-          interviewers_ = com.google.protobuf.MapField.newMapField(
-              InterviewersDefaultEntryHolder.defaultEntry);
-        }
-        if (!interviewers_.isMutable()) {
-          interviewers_ = interviewers_.copy();
-        }
-        bitField0_ |= 0x00000010;
-        onChanged();
-        return interviewers_;
-      }
-      public int getInterviewersCount() {
-        return internalGetInterviewers().getMap().size();
-      }
-      /**
-       * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
-       */
-      @java.lang.Override
-      public boolean containsInterviewers(
-          int key) {
-        
-        return internalGetInterviewers().getMap().containsKey(key);
-      }
-      /**
-       * Use {@link #getInterviewersMap()} instead.
-       */
-      @java.lang.Override
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.Integer, java.lang.Integer> getInterviewers() {
-        return getInterviewersMap();
-      }
-      /**
-       * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
-       */
-      @java.lang.Override
-      public java.util.Map<java.lang.Integer, java.lang.Integer> getInterviewersMap() {
-        return internalGetInterviewers().getMap();
-      }
-      /**
-       * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
-       */
-      @java.lang.Override
-      public int getInterviewersOrDefault(
-          int key,
-          int defaultValue) {
-        
-        java.util.Map<java.lang.Integer, java.lang.Integer> map =
-            internalGetInterviewers().getMap();
-        return map.containsKey(key) ? map.get(key) : defaultValue;
-      }
-      /**
-       * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
-       */
-      @java.lang.Override
-      public int getInterviewersOrThrow(
-          int key) {
-        
-        java.util.Map<java.lang.Integer, java.lang.Integer> map =
-            internalGetInterviewers().getMap();
-        if (!map.containsKey(key)) {
-          throw new java.lang.IllegalArgumentException();
-        }
-        return map.get(key);
-      }
-      public Builder clearInterviewers() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        internalGetMutableInterviewers().getMutableMap()
-            .clear();
-        return this;
-      }
-      /**
-       * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
-       */
-      public Builder removeInterviewers(
-          int key) {
-        
-        internalGetMutableInterviewers().getMutableMap()
-            .remove(key);
-        return this;
-      }
-      /**
-       * Use alternate mutation accessors instead.
-       */
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.Integer, java.lang.Integer>
-          getMutableInterviewers() {
-        bitField0_ |= 0x00000010;
-        return internalGetMutableInterviewers().getMutableMap();
-      }
-      /**
-       * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
-       */
-      public Builder putInterviewers(
-          int key,
-          int value) {
-        
-        
-        internalGetMutableInterviewers().getMutableMap()
-            .put(key, value);
-        bitField0_ |= 0x00000010;
-        return this;
-      }
-      /**
-       * <code>map&lt;int32, int32&gt; interviewers = 5;</code>
-       */
-      public Builder putAllInterviewers(
-          java.util.Map<java.lang.Integer, java.lang.Integer> values) {
-        internalGetMutableInterviewers().getMutableMap()
-            .putAll(values);
-        bitField0_ |= 0x00000010;
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:proto.ScheduleFullInfo)
-    }
-
-    // @@protoc_insertion_point(class_scope:proto.ScheduleFullInfo)
-    private static final proto.ServerChat.ScheduleFullInfo DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new proto.ServerChat.ScheduleFullInfo();
-    }
-
-    public static proto.ServerChat.ScheduleFullInfo getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ScheduleFullInfo>
-        PARSER = new com.google.protobuf.AbstractParser<ScheduleFullInfo>() {
-      @java.lang.Override
-      public ScheduleFullInfo parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<ScheduleFullInfo> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ScheduleFullInfo> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public proto.ServerChat.ScheduleFullInfo getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface ChunkOrBuilder extends
       // @@protoc_insertion_point(interface_extends:proto.Chunk)
       com.google.protobuf.MessageOrBuilder {
@@ -4608,15 +3873,15 @@ public final class ServerChat {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_proto_GroupInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_proto_GroupInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_GroupMember_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_GroupMember_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_GroupMetaInfo_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_GroupMetaInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_FileInfo_descriptor;
   private static final 
@@ -4627,16 +3892,6 @@ public final class ServerChat {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_MessageInfo_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_ScheduleFullInfo_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_ScheduleFullInfo_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_ScheduleFullInfo_InterviewersEntry_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_ScheduleFullInfo_InterviewersEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_Chunk_descriptor;
   private static final 
@@ -4654,54 +3909,38 @@ public final class ServerChat {
       "\n\020ServerChat.proto\022\005proto\032\037google/protob" +
       "uf/timestamp.proto\032\033google/protobuf/empt" +
       "y.proto\032\036google/protobuf/wrappers.proto\"" +
-      "?\n\013GroupMember\022\016\n\006userID\030\001 \001(\005\022\017\n\007groupI" +
-      "D\030\002 \001(\005\022\017\n\007isAdmin\030\003 \001(\010\"K\n\rGroupMetaInf" +
-      "o\022\017\n\007groupID\030\001 \001(\005\022\021\n\tgroupName\030\002 \001(\t\022\026\n" +
-      "\016groupCreaterID\030\003 \001(\005\"V\n\010FileInfo\022\016\n\006fil" +
-      "eID\030\001 \001(\005\022\022\n\nfromUserID\030\002 \001(\005\022\021\n\ttoGroup" +
-      "ID\030\003 \001(\005\022\023\n\013fileContent\030\004 \001(\014\"\210\001\n\013Messag" +
-      "eInfo\022\r\n\005msgID\030\001 \001(\005\022\022\n\nfromUserID\030\002 \001(\005" +
-      "\022\021\n\ttoGroupID\030\003 \001(\005\022\025\n\rmessengerData\030\004 \001" +
-      "(\t\022,\n\010sendTime\030\005 \001(\0132\032.google.protobuf.T" +
-      "imestamp\"\356\001\n\020ScheduleFullInfo\022\022\n\nschedul" +
-      "eID\030\001 \001(\005\022\017\n\007groupID\030\002 \001(\005\022+\n\007timeSet\030\003 " +
-      "\001(\0132\032.google.protobuf.Timestamp\022\022\n\nisRec" +
-      "orded\030\004 \001(\010\022?\n\014interviewers\030\005 \003(\0132).prot" +
-      "o.ScheduleFullInfo.InterviewersEntry\0323\n\021" +
-      "InterviewersEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030" +
-      "\002 \001(\005:\0028\001\"\030\n\005Chunk\022\017\n\007Content\030\001 \001(\0142\202\004\n\014" +
-      "GroupService\0229\n\013GroupCreate\022\024.proto.Grou" +
-      "pMetaInfo\032\024.proto.GroupMetaInfo\0227\n\tGroup" +
-      "Read\022\024.proto.GroupMetaInfo\032\024.proto.Group" +
-      "MetaInfo\022=\n\017GroupUpdateInfo\022\024.proto.Grou" +
-      "pMetaInfo\032\024.proto.GroupMetaInfo\022?\n\013Group" +
-      "Delete\022\024.proto.GroupMetaInfo\032\032.google.pr" +
-      "otobuf.BoolValue\022=\n\017GroupMemberRead\022\024.pr" +
-      "oto.GroupMetaInfo\032\022.proto.GroupMember0\001\022" +
-      ";\n\rGroupListRead\022\022.proto.GroupMember\032\024.p" +
-      "roto.GroupMetaInfo0\001\022=\n\021GroupAppendMembe" +
-      "r\022\022.proto.GroupMember\032\024.proto.GroupMetaI" +
-      "nfo\022C\n\021GroupDeleteMember\022\022.proto.GroupMe" +
-      "mber\032\032.google.protobuf.BoolValue2\213\004\n\017Sch" +
-      "eduleService\022B\n\016ScheduleCreate\022\027.proto.S" +
-      "cheduleFullInfo\032\027.proto.ScheduleFullInfo" +
-      "\022@\n\014ScheduleRead\022\027.proto.ScheduleFullInf" +
-      "o\032\027.proto.ScheduleFullInfo\022C\n\020ScheduleLi" +
-      "stRead\022\024.proto.GroupMetaInfo\032\027.proto.Sch" +
-      "eduleFullInfo0\001\022B\n\016ScheduleUpdate\022\027.prot" +
-      "o.ScheduleFullInfo\032\027.proto.ScheduleFullI" +
-      "nfo\022E\n\016ScheduleDelete\022\027.proto.ScheduleFu" +
-      "llInfo\032\032.google.protobuf.BoolValue\022P\n\031Sc" +
-      "heduleAppendInterviewer\022\027.proto.Schedule" +
-      "FullInfo\032\032.google.protobuf.BoolValue\022P\n\031" +
-      "ScheduleDeleteInterviewer\022\027.proto.Schedu" +
-      "leFullInfo\032\032.google.protobuf.BoolValue2\346" +
-      "\001\n\013ChatService\0222\n\004Chat\022\022.proto.MessageIn" +
-      "fo\032\022.proto.MessageInfo(\0010\001\0228\n\nUploadFile" +
-      "\022\014.proto.Chunk\032\032.google.protobuf.BoolVal" +
-      "ue(\001\022/\n\014DownloadFile\022\017.proto.FileInfo\032\014." +
-      "proto.Chunk0\001\0228\n\nGetOldChat\022\024.proto.Grou" +
-      "pMetaInfo\032\022.proto.MessageInfo0\001b\006proto3"
+      "G\n\tGroupInfo\022\017\n\007groupID\030\001 \001(\005\022\021\n\tgroupNa" +
+      "me\030\002 \001(\t\022\026\n\016groupCreaterID\030\003 \001(\005\"\240\001\n\013Gro" +
+      "upMember\022\016\n\006userID\030\001 \001(\005\022\017\n\007groupID\030\002 \001(" +
+      "\005\022\017\n\007isAdmin\030\003 \001(\010\022-\n\tinterview\030\004 \001(\0132\032." +
+      "google.protobuf.Timestamp\0220\n\014scheduleDat" +
+      "e\030\005 \001(\0132\032.google.protobuf.Timestamp\"V\n\010F" +
+      "ileInfo\022\016\n\006fileID\030\001 \001(\005\022\022\n\nfromUserID\030\002 " +
+      "\001(\005\022\021\n\ttoGroupID\030\003 \001(\005\022\023\n\013fileContent\030\004 " +
+      "\001(\014\"\210\001\n\013MessageInfo\022\r\n\005msgID\030\001 \001(\005\022\022\n\nfr" +
+      "omUserID\030\002 \001(\005\022\021\n\ttoGroupID\030\003 \001(\005\022\025\n\rmes" +
+      "sengerData\030\004 \001(\t\022,\n\010sendTime\030\005 \001(\0132\032.goo" +
+      "gle.protobuf.Timestamp\"\030\n\005Chunk\022\017\n\007Conte" +
+      "nt\030\001 \001(\0142\227\004\n\014GroupService\0221\n\013GroupCreate" +
+      "\022\020.proto.GroupInfo\032\020.proto.GroupInfo\022/\n\t" +
+      "GroupRead\022\020.proto.GroupInfo\032\020.proto.Grou" +
+      "pInfo\0225\n\017GroupUpdateInfo\022\020.proto.GroupIn" +
+      "fo\032\020.proto.GroupInfo\022;\n\013GroupDelete\022\020.pr" +
+      "oto.GroupInfo\032\032.google.protobuf.BoolValu" +
+      "e\0229\n\017GroupMemberRead\022\020.proto.GroupInfo\032\022" +
+      ".proto.GroupMember0\001\022;\n\021GroupMemberUpdat" +
+      "e\022\022.proto.GroupMember\032\022.proto.GroupMembe" +
+      "r\0227\n\rGroupListRead\022\022.proto.GroupMember\032\020" +
+      ".proto.GroupInfo0\001\0229\n\021GroupAppendMember\022" +
+      "\022.proto.GroupMember\032\020.proto.GroupInfo\022C\n" +
+      "\021GroupDeleteMember\022\022.proto.GroupMember\032\032" +
+      ".google.protobuf.BoolValue2\342\001\n\013ChatServi" +
+      "ce\0222\n\004Chat\022\022.proto.MessageInfo\032\022.proto.M" +
+      "essageInfo(\0010\001\0228\n\nUploadFile\022\014.proto.Chu" +
+      "nk\032\032.google.protobuf.BoolValue(\001\022/\n\014Down" +
+      "loadFile\022\017.proto.FileInfo\032\014.proto.Chunk0" +
+      "\001\0224\n\nGetOldChat\022\020.proto.GroupInfo\032\022.prot" +
+      "o.MessageInfo0\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4710,18 +3949,18 @@ public final class ServerChat {
           com.google.protobuf.EmptyProto.getDescriptor(),
           com.google.protobuf.WrappersProto.getDescriptor(),
         });
-    internal_static_proto_GroupMember_descriptor =
+    internal_static_proto_GroupInfo_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_proto_GroupInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_proto_GroupInfo_descriptor,
+        new java.lang.String[] { "GroupID", "GroupName", "GroupCreaterID", });
+    internal_static_proto_GroupMember_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_proto_GroupMember_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_GroupMember_descriptor,
-        new java.lang.String[] { "UserID", "GroupID", "IsAdmin", });
-    internal_static_proto_GroupMetaInfo_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_proto_GroupMetaInfo_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_GroupMetaInfo_descriptor,
-        new java.lang.String[] { "GroupID", "GroupName", "GroupCreaterID", });
+        new java.lang.String[] { "UserID", "GroupID", "IsAdmin", "Interview", "ScheduleDate", });
     internal_static_proto_FileInfo_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_proto_FileInfo_fieldAccessorTable = new
@@ -4734,20 +3973,8 @@ public final class ServerChat {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_MessageInfo_descriptor,
         new java.lang.String[] { "MsgID", "FromUserID", "ToGroupID", "MessengerData", "SendTime", });
-    internal_static_proto_ScheduleFullInfo_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_proto_ScheduleFullInfo_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_ScheduleFullInfo_descriptor,
-        new java.lang.String[] { "ScheduleID", "GroupID", "TimeSet", "IsRecorded", "Interviewers", });
-    internal_static_proto_ScheduleFullInfo_InterviewersEntry_descriptor =
-      internal_static_proto_ScheduleFullInfo_descriptor.getNestedTypes().get(0);
-    internal_static_proto_ScheduleFullInfo_InterviewersEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_ScheduleFullInfo_InterviewersEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
     internal_static_proto_Chunk_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_proto_Chunk_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_Chunk_descriptor,

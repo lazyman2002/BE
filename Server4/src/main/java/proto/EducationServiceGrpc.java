@@ -77,27 +77,27 @@ public final class EducationServiceGrpc {
     return getEducationReadMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo,
       proto.ServerClient.EducationFullInfo> getEducationListReadMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "EducationListRead",
-      requestType = proto.ServerClient.CVMetaInfo.class,
+      requestType = proto.ServerClient.CVFullInfo.class,
       responseType = proto.ServerClient.EducationFullInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo,
       proto.ServerClient.EducationFullInfo> getEducationListReadMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo, proto.ServerClient.EducationFullInfo> getEducationListReadMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo, proto.ServerClient.EducationFullInfo> getEducationListReadMethod;
     if ((getEducationListReadMethod = EducationServiceGrpc.getEducationListReadMethod) == null) {
       synchronized (EducationServiceGrpc.class) {
         if ((getEducationListReadMethod = EducationServiceGrpc.getEducationListReadMethod) == null) {
           EducationServiceGrpc.getEducationListReadMethod = getEducationListReadMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.CVMetaInfo, proto.ServerClient.EducationFullInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.CVFullInfo, proto.ServerClient.EducationFullInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "EducationListRead"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.CVMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.CVFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.EducationFullInfo.getDefaultInstance()))
               .setSchemaDescriptor(new EducationServiceMethodDescriptorSupplier("EducationListRead"))
@@ -234,7 +234,7 @@ public final class EducationServiceGrpc {
 
     /**
      */
-    public void educationListRead(proto.ServerClient.CVMetaInfo request,
+    public void educationListRead(proto.ServerClient.CVFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.EducationFullInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getEducationListReadMethod(), responseObserver);
     }
@@ -273,7 +273,7 @@ public final class EducationServiceGrpc {
             getEducationListReadMethod(),
             io.grpc.stub.ServerCalls.asyncServerStreamingCall(
               new MethodHandlers<
-                proto.ServerClient.CVMetaInfo,
+                proto.ServerClient.CVFullInfo,
                 proto.ServerClient.EducationFullInfo>(
                   this, METHODID_EDUCATION_LIST_READ)))
           .addMethod(
@@ -326,7 +326,7 @@ public final class EducationServiceGrpc {
 
     /**
      */
-    public void educationListRead(proto.ServerClient.CVMetaInfo request,
+    public void educationListRead(proto.ServerClient.CVFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.EducationFullInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getEducationListReadMethod(), getCallOptions()), request, responseObserver);
@@ -380,7 +380,7 @@ public final class EducationServiceGrpc {
     /**
      */
     public java.util.Iterator<proto.ServerClient.EducationFullInfo> educationListRead(
-        proto.ServerClient.CVMetaInfo request) {
+        proto.ServerClient.CVFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getEducationListReadMethod(), getCallOptions(), request);
     }
@@ -479,7 +479,7 @@ public final class EducationServiceGrpc {
               (io.grpc.stub.StreamObserver<proto.ServerClient.EducationFullInfo>) responseObserver);
           break;
         case METHODID_EDUCATION_LIST_READ:
-          serviceImpl.educationListRead((proto.ServerClient.CVMetaInfo) request,
+          serviceImpl.educationListRead((proto.ServerClient.CVFullInfo) request,
               (io.grpc.stub.StreamObserver<proto.ServerClient.EducationFullInfo>) responseObserver);
           break;
         case METHODID_EDUCATION_UPDATE_INFO:

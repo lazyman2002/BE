@@ -77,27 +77,27 @@ public final class SkillServiceGrpc {
     return getSkillReadMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo,
       proto.ServerClient.SkillFullInfo> getSkillListReadMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "SkillListRead",
-      requestType = proto.ServerClient.CVMetaInfo.class,
+      requestType = proto.ServerClient.CVFullInfo.class,
       responseType = proto.ServerClient.SkillFullInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo,
       proto.ServerClient.SkillFullInfo> getSkillListReadMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo, proto.ServerClient.SkillFullInfo> getSkillListReadMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo, proto.ServerClient.SkillFullInfo> getSkillListReadMethod;
     if ((getSkillListReadMethod = SkillServiceGrpc.getSkillListReadMethod) == null) {
       synchronized (SkillServiceGrpc.class) {
         if ((getSkillListReadMethod = SkillServiceGrpc.getSkillListReadMethod) == null) {
           SkillServiceGrpc.getSkillListReadMethod = getSkillListReadMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.CVMetaInfo, proto.ServerClient.SkillFullInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.CVFullInfo, proto.ServerClient.SkillFullInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SkillListRead"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.CVMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.CVFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.SkillFullInfo.getDefaultInstance()))
               .setSchemaDescriptor(new SkillServiceMethodDescriptorSupplier("SkillListRead"))
@@ -234,7 +234,7 @@ public final class SkillServiceGrpc {
 
     /**
      */
-    public void skillListRead(proto.ServerClient.CVMetaInfo request,
+    public void skillListRead(proto.ServerClient.CVFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.SkillFullInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSkillListReadMethod(), responseObserver);
     }
@@ -273,7 +273,7 @@ public final class SkillServiceGrpc {
             getSkillListReadMethod(),
             io.grpc.stub.ServerCalls.asyncServerStreamingCall(
               new MethodHandlers<
-                proto.ServerClient.CVMetaInfo,
+                proto.ServerClient.CVFullInfo,
                 proto.ServerClient.SkillFullInfo>(
                   this, METHODID_SKILL_LIST_READ)))
           .addMethod(
@@ -326,7 +326,7 @@ public final class SkillServiceGrpc {
 
     /**
      */
-    public void skillListRead(proto.ServerClient.CVMetaInfo request,
+    public void skillListRead(proto.ServerClient.CVFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.SkillFullInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getSkillListReadMethod(), getCallOptions()), request, responseObserver);
@@ -380,7 +380,7 @@ public final class SkillServiceGrpc {
     /**
      */
     public java.util.Iterator<proto.ServerClient.SkillFullInfo> skillListRead(
-        proto.ServerClient.CVMetaInfo request) {
+        proto.ServerClient.CVFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getSkillListReadMethod(), getCallOptions(), request);
     }
@@ -479,7 +479,7 @@ public final class SkillServiceGrpc {
               (io.grpc.stub.StreamObserver<proto.ServerClient.SkillFullInfo>) responseObserver);
           break;
         case METHODID_SKILL_LIST_READ:
-          serviceImpl.skillListRead((proto.ServerClient.CVMetaInfo) request,
+          serviceImpl.skillListRead((proto.ServerClient.CVFullInfo) request,
               (io.grpc.stub.StreamObserver<proto.ServerClient.SkillFullInfo>) responseObserver);
           break;
         case METHODID_SKILL_UPDATE_INFO:

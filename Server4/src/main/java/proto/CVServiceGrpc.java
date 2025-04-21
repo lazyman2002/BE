@@ -46,27 +46,27 @@ public final class CVServiceGrpc {
     return getCVCreateMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo,
       proto.ServerClient.CVFullInfo> getCVReadMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "CVRead",
-      requestType = proto.ServerClient.CVMetaInfo.class,
+      requestType = proto.ServerClient.CVFullInfo.class,
       responseType = proto.ServerClient.CVFullInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo,
       proto.ServerClient.CVFullInfo> getCVReadMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo, proto.ServerClient.CVFullInfo> getCVReadMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo, proto.ServerClient.CVFullInfo> getCVReadMethod;
     if ((getCVReadMethod = CVServiceGrpc.getCVReadMethod) == null) {
       synchronized (CVServiceGrpc.class) {
         if ((getCVReadMethod = CVServiceGrpc.getCVReadMethod) == null) {
           CVServiceGrpc.getCVReadMethod = getCVReadMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.CVMetaInfo, proto.ServerClient.CVFullInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.CVFullInfo, proto.ServerClient.CVFullInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CVRead"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.CVMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.CVFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.CVFullInfo.getDefaultInstance()))
               .setSchemaDescriptor(new CVServiceMethodDescriptorSupplier("CVRead"))
@@ -77,27 +77,27 @@ public final class CVServiceGrpc {
     return getCVReadMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo,
       proto.ServerClient.CVFullInfo> getCVListReadMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "CVListRead",
-      requestType = proto.ServerClient.UserMetaInfo.class,
+      requestType = proto.ServerClient.UserFullInfo.class,
       responseType = proto.ServerClient.CVFullInfo.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo,
       proto.ServerClient.CVFullInfo> getCVListReadMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.UserMetaInfo, proto.ServerClient.CVFullInfo> getCVListReadMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.UserFullInfo, proto.ServerClient.CVFullInfo> getCVListReadMethod;
     if ((getCVListReadMethod = CVServiceGrpc.getCVListReadMethod) == null) {
       synchronized (CVServiceGrpc.class) {
         if ((getCVListReadMethod = CVServiceGrpc.getCVListReadMethod) == null) {
           CVServiceGrpc.getCVListReadMethod = getCVListReadMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.UserMetaInfo, proto.ServerClient.CVFullInfo>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.UserFullInfo, proto.ServerClient.CVFullInfo>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CVListRead"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.UserMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.UserFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerClient.CVFullInfo.getDefaultInstance()))
               .setSchemaDescriptor(new CVServiceMethodDescriptorSupplier("CVListRead"))
@@ -139,27 +139,27 @@ public final class CVServiceGrpc {
     return getCVUpdateInfoMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo,
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo,
       com.google.protobuf.BoolValue> getCVDeleteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "CVDelete",
-      requestType = proto.ServerClient.CVMetaInfo.class,
+      requestType = proto.ServerClient.CVFullInfo.class,
       responseType = com.google.protobuf.BoolValue.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo,
+  public static io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo,
       com.google.protobuf.BoolValue> getCVDeleteMethod() {
-    io.grpc.MethodDescriptor<proto.ServerClient.CVMetaInfo, com.google.protobuf.BoolValue> getCVDeleteMethod;
+    io.grpc.MethodDescriptor<proto.ServerClient.CVFullInfo, com.google.protobuf.BoolValue> getCVDeleteMethod;
     if ((getCVDeleteMethod = CVServiceGrpc.getCVDeleteMethod) == null) {
       synchronized (CVServiceGrpc.class) {
         if ((getCVDeleteMethod = CVServiceGrpc.getCVDeleteMethod) == null) {
           CVServiceGrpc.getCVDeleteMethod = getCVDeleteMethod =
-              io.grpc.MethodDescriptor.<proto.ServerClient.CVMetaInfo, com.google.protobuf.BoolValue>newBuilder()
+              io.grpc.MethodDescriptor.<proto.ServerClient.CVFullInfo, com.google.protobuf.BoolValue>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CVDelete"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerClient.CVMetaInfo.getDefaultInstance()))
+                  proto.ServerClient.CVFullInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.google.protobuf.BoolValue.getDefaultInstance()))
               .setSchemaDescriptor(new CVServiceMethodDescriptorSupplier("CVDelete"))
@@ -227,14 +227,14 @@ public final class CVServiceGrpc {
 
     /**
      */
-    public void cVRead(proto.ServerClient.CVMetaInfo request,
+    public void cVRead(proto.ServerClient.CVFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.CVFullInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCVReadMethod(), responseObserver);
     }
 
     /**
      */
-    public void cVListRead(proto.ServerClient.UserMetaInfo request,
+    public void cVListRead(proto.ServerClient.UserFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.CVFullInfo> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCVListReadMethod(), responseObserver);
     }
@@ -248,7 +248,7 @@ public final class CVServiceGrpc {
 
     /**
      */
-    public void cVDelete(proto.ServerClient.CVMetaInfo request,
+    public void cVDelete(proto.ServerClient.CVFullInfo request,
         io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCVDeleteMethod(), responseObserver);
     }
@@ -266,14 +266,14 @@ public final class CVServiceGrpc {
             getCVReadMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                proto.ServerClient.CVMetaInfo,
+                proto.ServerClient.CVFullInfo,
                 proto.ServerClient.CVFullInfo>(
                   this, METHODID_CVREAD)))
           .addMethod(
             getCVListReadMethod(),
             io.grpc.stub.ServerCalls.asyncServerStreamingCall(
               new MethodHandlers<
-                proto.ServerClient.UserMetaInfo,
+                proto.ServerClient.UserFullInfo,
                 proto.ServerClient.CVFullInfo>(
                   this, METHODID_CVLIST_READ)))
           .addMethod(
@@ -287,7 +287,7 @@ public final class CVServiceGrpc {
             getCVDeleteMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                proto.ServerClient.CVMetaInfo,
+                proto.ServerClient.CVFullInfo,
                 com.google.protobuf.BoolValue>(
                   this, METHODID_CVDELETE)))
           .build();
@@ -318,7 +318,7 @@ public final class CVServiceGrpc {
 
     /**
      */
-    public void cVRead(proto.ServerClient.CVMetaInfo request,
+    public void cVRead(proto.ServerClient.CVFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.CVFullInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCVReadMethod(), getCallOptions()), request, responseObserver);
@@ -326,7 +326,7 @@ public final class CVServiceGrpc {
 
     /**
      */
-    public void cVListRead(proto.ServerClient.UserMetaInfo request,
+    public void cVListRead(proto.ServerClient.UserFullInfo request,
         io.grpc.stub.StreamObserver<proto.ServerClient.CVFullInfo> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getCVListReadMethod(), getCallOptions()), request, responseObserver);
@@ -342,7 +342,7 @@ public final class CVServiceGrpc {
 
     /**
      */
-    public void cVDelete(proto.ServerClient.CVMetaInfo request,
+    public void cVDelete(proto.ServerClient.CVFullInfo request,
         io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCVDeleteMethod(), getCallOptions()), request, responseObserver);
@@ -372,7 +372,7 @@ public final class CVServiceGrpc {
 
     /**
      */
-    public proto.ServerClient.CVFullInfo cVRead(proto.ServerClient.CVMetaInfo request) {
+    public proto.ServerClient.CVFullInfo cVRead(proto.ServerClient.CVFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCVReadMethod(), getCallOptions(), request);
     }
@@ -380,7 +380,7 @@ public final class CVServiceGrpc {
     /**
      */
     public java.util.Iterator<proto.ServerClient.CVFullInfo> cVListRead(
-        proto.ServerClient.UserMetaInfo request) {
+        proto.ServerClient.UserFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getCVListReadMethod(), getCallOptions(), request);
     }
@@ -394,7 +394,7 @@ public final class CVServiceGrpc {
 
     /**
      */
-    public com.google.protobuf.BoolValue cVDelete(proto.ServerClient.CVMetaInfo request) {
+    public com.google.protobuf.BoolValue cVDelete(proto.ServerClient.CVFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCVDeleteMethod(), getCallOptions(), request);
     }
@@ -425,7 +425,7 @@ public final class CVServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<proto.ServerClient.CVFullInfo> cVRead(
-        proto.ServerClient.CVMetaInfo request) {
+        proto.ServerClient.CVFullInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCVReadMethod(), getCallOptions()), request);
     }
@@ -441,7 +441,7 @@ public final class CVServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> cVDelete(
-        proto.ServerClient.CVMetaInfo request) {
+        proto.ServerClient.CVFullInfo request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCVDeleteMethod(), getCallOptions()), request);
     }
@@ -475,11 +475,11 @@ public final class CVServiceGrpc {
               (io.grpc.stub.StreamObserver<proto.ServerClient.CVFullInfo>) responseObserver);
           break;
         case METHODID_CVREAD:
-          serviceImpl.cVRead((proto.ServerClient.CVMetaInfo) request,
+          serviceImpl.cVRead((proto.ServerClient.CVFullInfo) request,
               (io.grpc.stub.StreamObserver<proto.ServerClient.CVFullInfo>) responseObserver);
           break;
         case METHODID_CVLIST_READ:
-          serviceImpl.cVListRead((proto.ServerClient.UserMetaInfo) request,
+          serviceImpl.cVListRead((proto.ServerClient.UserFullInfo) request,
               (io.grpc.stub.StreamObserver<proto.ServerClient.CVFullInfo>) responseObserver);
           break;
         case METHODID_CVUPDATE_INFO:
@@ -487,7 +487,7 @@ public final class CVServiceGrpc {
               (io.grpc.stub.StreamObserver<proto.ServerClient.CVFullInfo>) responseObserver);
           break;
         case METHODID_CVDELETE:
-          serviceImpl.cVDelete((proto.ServerClient.CVMetaInfo) request,
+          serviceImpl.cVDelete((proto.ServerClient.CVFullInfo) request,
               (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         default:

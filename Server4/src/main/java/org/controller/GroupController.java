@@ -8,7 +8,6 @@ import proto.ServerChat;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class GroupController {
     public ArrayList<Groups> groupList(ServerChat.GroupMember request) throws Exception {
@@ -22,7 +21,7 @@ public class GroupController {
         }
     }
 
-    public Groups groupRead(ServerChat.GroupMetaInfo request) throws Exception {
+    public Groups groupRead(ServerChat.GroupInfo request) throws Exception {
         System.out.println("groupRead");
 
         GroupDAO groupDAO = new GroupDAO();
@@ -38,7 +37,7 @@ public class GroupController {
         }
     }
 
-    public Groups groupUpdate(ServerChat.GroupMetaInfo request) throws Exception {
+    public Groups groupUpdate(ServerChat.GroupInfo request) throws Exception {
         GroupDAO groupDAO = new GroupDAO();
         Connection connection = null;
         try {
@@ -52,7 +51,7 @@ public class GroupController {
         }
     }
 
-    public Groups groupRegister(ServerChat.GroupMetaInfo request) throws Exception {
+    public Groups groupRegister(ServerChat.GroupInfo request) throws Exception {
         GroupDAO groupDAO = new GroupDAO();
         GroupMemberDAO groupMemberDAO = new GroupMemberDAO();
 
@@ -69,7 +68,7 @@ public class GroupController {
         }
     }
 
-    public Boolean groupDelete(ServerChat.GroupMetaInfo request) throws Exception {
+    public Boolean groupDelete(ServerChat.GroupInfo request) throws Exception {
         GroupDAO groupDAO = new GroupDAO();
         Connection connection = null;
         try {
@@ -115,6 +114,7 @@ public class GroupController {
         }
     }
 
+/*
     public Boolean checkInGroup(Integer userID, Integer groupID) throws Exception {
         GroupMemberDAO groupMemberDAO = new GroupMemberDAO();
         Connection connection = null;
@@ -129,7 +129,9 @@ public class GroupController {
         }
     }
 
-    public ArrayList<ServerChat.GroupMember> groupMemberRead(ServerChat.GroupMetaInfo request) throws Exception {
+ */
+
+    public ArrayList<ServerChat.GroupMember> groupMemberRead(ServerChat.GroupInfo request) throws Exception {
         GroupMemberDAO groupMemberDAO = new GroupMemberDAO();
         Connection connection = null;
         try {
@@ -140,4 +142,14 @@ public class GroupController {
         }
     }
 
+    public ServerChat.GroupMember groupMemberUpdate(ServerChat.GroupMember request) throws Exception {
+        GroupMemberDAO groupMemberDAO = new GroupMemberDAO();
+        Connection connection = null;
+        try {
+            connection = HikariDataSource.getConnection();
+            return groupMemberDAO.updateGroupMember(request, connection);
+        } finally {
+            if (connection != null) connection.close();
+        }
+    }
 }

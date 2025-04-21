@@ -3,14 +3,14 @@ package org.model;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-public class Messages {
+public class MessagesInfo {
     private Integer msgID;
     private Integer fromUserID;
     private Integer toGroupID;
     private String messengerData;
     private Timestamp sendTime;
 
-    public Messages() {}
+    public MessagesInfo() {}
 
     public Integer getMsgID() {
         return msgID;
@@ -47,8 +47,8 @@ public class Messages {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Messages)) return false;
-        Messages messages = (Messages) o;
+        if (!(o instanceof MessagesInfo)) return false;
+        MessagesInfo messages = (MessagesInfo) o;
         return Objects.equals(msgID, messages.msgID) && Objects.equals(fromUserID, messages.fromUserID) && Objects.equals(toGroupID, messages.toGroupID) && Objects.equals(messengerData, messages.messengerData) && Objects.equals(sendTime, messages.sendTime);
     }
 

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class GroupServiceImpl extends GroupServiceGrpc.GroupServiceImplBase {
     @Override
-    public void groupCreate(ServerChat.GroupMetaInfo request, StreamObserver<ServerChat.GroupMetaInfo> responseObserver) {
+    public void groupCreate(ServerChat.GroupInfo request, StreamObserver<ServerChat.GroupInfo> responseObserver) {
         System.out.println("groupCreate");
         try {
             GroupController groupController = new GroupController();
@@ -28,10 +28,11 @@ public class GroupServiceImpl extends GroupServiceGrpc.GroupServiceImplBase {
                     .asRuntimeException();
             responseObserver.onError(dbError);
         }
+
     }
 
     @Override
-    public void groupListRead(ServerChat.GroupMember request, StreamObserver<ServerChat.GroupMetaInfo> responseObserver) {
+    public void groupListRead(ServerChat.GroupMember request, StreamObserver<ServerChat.GroupInfo> responseObserver) {
         System.out.println("groupListRead");
 
         GroupController skillController = new GroupController();
@@ -39,8 +40,9 @@ public class GroupServiceImpl extends GroupServiceGrpc.GroupServiceImplBase {
             ArrayList<Groups> groups = skillController.groupList(request);
             HadoopService hadoopService =  new HadoopService();
             groups = hadoopService.sortBySendTime(groups);
+
             for (Groups group : groups) {
-                ServerChat.GroupMetaInfo groupMetaInfo = Converter.groupToProto(group);
+                ServerChat.GroupInfo groupMetaInfo = Converter.groupToProto(group);
                 responseObserver.onNext(groupMetaInfo);
             }
             responseObserver.onCompleted();
@@ -53,7 +55,7 @@ public class GroupServiceImpl extends GroupServiceGrpc.GroupServiceImplBase {
     }
 
     @Override
-    public void groupRead(ServerChat.GroupMetaInfo request, StreamObserver<ServerChat.GroupMetaInfo> responseObserver) {
+    public void groupRead(ServerChat.GroupInfo request, StreamObserver<ServerChat.GroupInfo> responseObserver) {
         System.out.println("groupRead");
 
         try {
@@ -70,7 +72,7 @@ public class GroupServiceImpl extends GroupServiceGrpc.GroupServiceImplBase {
     }
 
     @Override
-    public void groupUpdateInfo(ServerChat.GroupMetaInfo request, StreamObserver<ServerChat.GroupMetaInfo> responseObserver) {
+    public void groupUpdateInfo(ServerChat.GroupInfo request, StreamObserver<ServerChat.GroupInfo> responseObserver) {
         System.out.println("groupUpdateInfo");
 
         try {
@@ -87,7 +89,7 @@ public class GroupServiceImpl extends GroupServiceGrpc.GroupServiceImplBase {
     }
 
     @Override
-    public void groupDelete(ServerChat.GroupMetaInfo request, StreamObserver<BoolValue> responseObserver) {
+    public void groupDelete(ServerChat.GroupInfo request, StreamObserver<BoolValue> responseObserver) {
         System.out.println("groupDelete");
 
         try {
@@ -121,7 +123,7 @@ public class GroupServiceImpl extends GroupServiceGrpc.GroupServiceImplBase {
     }
 
     @Override
-    public void groupAppendMember(ServerChat.GroupMember request, StreamObserver<ServerChat.GroupMetaInfo> responseObserver) {
+    public void groupAppendMember(ServerChat.GroupMember request, StreamObserver<ServerChat.GroupInfo> responseObserver) {
         System.out.println("groupAppendMember");
 
         try {
@@ -138,7 +140,7 @@ public class GroupServiceImpl extends GroupServiceGrpc.GroupServiceImplBase {
     }
 
     @Override
-    public void groupMemberRead(ServerChat.GroupMetaInfo request, StreamObserver<ServerChat.GroupMember> responseObserver) {
+    public void groupMemberRead(ServerChat.GroupInfo request, StreamObserver<ServerChat.GroupMember> responseObserver) {
         System.out.println("groupMemberRead");
 
         try {
@@ -148,6 +150,22 @@ public class GroupServiceImpl extends GroupServiceGrpc.GroupServiceImplBase {
                 responseObserver.onNext(groupMember);
             }
             responseObserver.onCompleted();
+        } catch (Exception e) {
+            StatusRuntimeException dbError = Status.ALREADY_EXISTS
+                    .withDescription(e.getMessage())
+                    .asRuntimeException();
+            responseObserver.onError(dbError);
+        }
+    }
+
+    @Override
+    public void groupMemberUpdate(ServerChat.GroupMember request, StreamObserver<ServerChat.GroupMember> responseObserver) {
+        System.out.println("groupMemberUpdate");
+
+        try {
+            GroupController groupController = new GroupController();
+            ServerChat.GroupMember groupMembers = groupController.groupMemberUpdate(request);
+
         } catch (Exception e) {
             StatusRuntimeException dbError = Status.ALREADY_EXISTS
                     .withDescription(e.getMessage())
