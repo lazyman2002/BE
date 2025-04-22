@@ -35,7 +35,7 @@ public class ChatServiceImpl extends ChatServiceGrpc.ChatServiceImplBase {
                 groupId = messageInfo.getToGroupID();
                 userId = messageInfo.getFromUserID();
 
-                Boolean legal = null;
+                Boolean legal = false;
                 try {
 //                    legal = groupController.checkInGroup(userId, groupId);
                 } catch (Exception e) {
