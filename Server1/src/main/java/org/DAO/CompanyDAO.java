@@ -85,6 +85,9 @@ public class CompanyDAO {
                 email = (email != null) ? email : "";
                 companies.setEmail(email);
 
+                Boolean validated = resultSet.getBoolean("validated");
+                companies.setValidated(validated);
+
                 return companies;
             }
             else throw new Exception("Không tìm được công ty");
@@ -214,6 +217,9 @@ public class CompanyDAO {
                 sb.append("`Companies`.`email` = ?, ");
                 parameters.add(request.getEmail());
             }
+
+            sb.append("`Companies`.`validated` = ?, ");
+            parameters.add(request.getValidated());
 
             if(request.getCompaniesID() == 0)    throw new Exception("Không có CompanyID");
             sb.setLength(sb.length()-2);

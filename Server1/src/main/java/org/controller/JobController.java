@@ -94,9 +94,9 @@ public class JobController {
             connection = HikariDataSource.getConnection();
             ArrayList<Integer> searchLocation = branchDAO.searchBranchInJob(request, connection);
             ArrayList<Integer> searchJob = jobRequestDAO.searchJobsInApplies(request, connection);
-            System.out.println(searchJob);
+//            System.out.println(searchJob);
             ArrayList<JobRequests> ans = jobRequestDAO.searchJobsInJobs(request, searchLocation, searchJob, connection);
-            System.out.println(ans);
+            System.out.println("ans: " + ans);
             return ans;
         }
         finally {

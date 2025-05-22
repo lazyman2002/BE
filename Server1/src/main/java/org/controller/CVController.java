@@ -109,4 +109,18 @@ public class CVController {
             if (connection != null) connection.close();
         }
     }
+
+    public Boolean cvApply(ServerClient.AppliesInfo request) throws Exception {
+        CVDAO cvDAO = new CVDAO();
+        Connection connection = null;
+        try {
+            connection = HikariDataSource.getConnection();
+            connection.setAutoCommit(false);
+            Boolean bo = cvDAO.applyCV(request, connection);
+            connection.commit();
+            return bo;
+        } finally {
+            if (connection != null) connection.close();
+        }
+    }
 }

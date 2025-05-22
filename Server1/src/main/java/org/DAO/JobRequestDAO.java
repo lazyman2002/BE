@@ -425,6 +425,7 @@ public class JobRequestDAO {
             for (int i = 0; i < parameters.size(); i++) {
                 preparedStatement.setObject(i + 1, parameters.get(i));
             }
+            System.out.println(queryBuilder.toString());
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Jobs.add(resultSet.getInt("jobID"));
@@ -500,7 +501,7 @@ public class JobRequestDAO {
         for (int i = 0; i < parameters.size(); i++) {
             preparedStatement.setObject(i + 1, parameters.get(i));
         }
-
+        System.out.println(sql.toString());
         ResultSet rs = preparedStatement.executeQuery();
         ArrayList<JobRequests> jobRequests = new ArrayList<>();
         while (rs.next()) {

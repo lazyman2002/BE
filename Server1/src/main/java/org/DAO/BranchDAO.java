@@ -85,9 +85,8 @@ public class BranchDAO {
 
     public Branchs registerBranch(ServerClient.BranchFullInfo request, Connection connection) throws Exception {
         System.out.println("registerLocation");
-
         StringBuilder sb = new StringBuilder();
-        sb.append("INSERT INTO `Locations`(`companyID`, `branchName`, `address`, `contact`, `imagePath`) VALUES (?, ?, ?, ?, ?);");
+        sb.append("INSERT INTO `Branchs`(`companyID`, `branchName`, `address`, `contact`, `imagePath`) VALUES (?, ?, ?, ?, ?);");
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
@@ -247,7 +246,7 @@ public class BranchDAO {
             for (int i = 0; i < parameters.size(); i++) {
                 preparedStatement.setObject(i + 1, parameters.get(i));
             }
-
+            System.out.println(queryBuilder.toString());
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 locationIDs.add(resultSet.getInt("branchID"));

@@ -72,7 +72,6 @@ public class BranchServiceImpl extends BranchServiceGrpc.BranchServiceImplBase {
     @Override
     public void branchCreate(ServerClient.BranchFullInfo request, StreamObserver<ServerClient.BranchFullInfo> responseObserver) {
         System.out.println("branchCreate");
-
         try {
             BranchController branchController = new BranchController();
             Branchs location = branchController.branchRegister(request);

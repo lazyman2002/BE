@@ -15,6 +15,7 @@ public class Companies {
 	private String address;
 	private String website;
 	private String email;
+	private Boolean validated;
 
 //	Ngoài CSDL
 	private HashSet<Integer> activeBranchs;
@@ -51,6 +52,9 @@ public class Companies {
 	public HashSet<Integer> getActiveBranchs() {
 		return activeBranchs;
 	}
+	public Boolean getValidated() {
+		return validated;
+	}
 
 	public void setCompaniesID(Integer companiesID) {
 		this.companiesID = companiesID;
@@ -82,18 +86,21 @@ public class Companies {
 	public void setActiveBranchs(HashSet<Integer> activeBranchs) {
 		this.activeBranchs = activeBranchs;
 	}
+	public void setValidated(Boolean validated) {
+		this.validated = validated;
+	}
 
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (!(o instanceof Companies)) return false;
 		Companies companies = (Companies) o;
-		return Objects.equals(companiesID, companies.companiesID) && Objects.equals(companyName, companies.companyName) && Objects.equals(imagePath, companies.imagePath) && Objects.equals(specialty, companies.specialty) && Objects.equals(size, companies.size) && Objects.equals(introduction, companies.introduction) && Objects.equals(address, companies.address) && Objects.equals(website, companies.website) && Objects.equals(email, companies.email) && Objects.equals(activeBranchs, companies.activeBranchs);
+		return Objects.equals(companiesID, companies.companiesID) && Objects.equals(companyName, companies.companyName) && Objects.equals(imagePath, companies.imagePath) && Objects.equals(specialty, companies.specialty) && Objects.equals(size, companies.size) && Objects.equals(introduction, companies.introduction) && Objects.equals(address, companies.address) && Objects.equals(website, companies.website) && Objects.equals(email, companies.email) && Objects.equals(validated, companies.validated) && Objects.equals(activeBranchs, companies.activeBranchs);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(companiesID, companyName, imagePath, specialty, size, introduction, address, website, email, activeBranchs);
+		return Objects.hash(companiesID, companyName, imagePath, specialty, size, introduction, address, website, email, validated, activeBranchs);
 	}
 
 	@Override
@@ -108,6 +115,7 @@ public class Companies {
 		sb.append(", address='").append(address).append('\'');
 		sb.append(", website='").append(website).append('\'');
 		sb.append(", email='").append(email).append('\'');
+		sb.append(", validated=").append(validated);
 		sb.append(", activeBranchs=").append(activeBranchs);
 		sb.append('}');
 		return sb.toString();

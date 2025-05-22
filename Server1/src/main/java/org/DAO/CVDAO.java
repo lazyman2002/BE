@@ -340,4 +340,34 @@ public class CVDAO {
         }
 
     }
+
+    public Boolean applyCV(ServerClient.AppliesInfo request, Connection connection) throws Exception {
+        System.out.println("applyCV");
+
+        String sql = "UPDATE `Applies` SET `status` = ? WHERE `CVID` = ? AND `jobID` = ?;";
+        PreparedStatement preparedStatement = null;
+
+        try {
+            if (request.getCVID() == 0) {
+                throw new Exception("CVID không hợp lệ");
+            }
+            if (request.getJobID() == 0) {
+                throw new Exception("JobID không hợp lệ");
+            }
+
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, request.getStatus().name());  // Cập nhật status
+            preparedStatement.setInt(2, request.getCVID());
+            preparedStatement.setInt(3, request.getJobID());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected > 0) {
+                return true;
+            } else {
+                throw new Exception("Không cập nhật được trạng thái CV");
+            }
+        } finally {
+            if (preparedStatement != null) preparedStatement.close();
+        }
+    }
 }

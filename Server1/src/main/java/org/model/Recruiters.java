@@ -7,6 +7,7 @@ public class Recruiters extends Users {
 	private Integer roleLevel;
 	private String roleName;
 	private String departmentName;
+	private Boolean validated;
 
 	public Recruiters() {}
 
@@ -32,6 +33,9 @@ public class Recruiters extends Users {
 	public String getDepartmentName() {
 		return departmentName;
 	}
+	public Boolean getValidated() {
+		return validated;
+	}
 
 	public void setBranchID(Integer branchID) {
 		this.branchID = branchID;
@@ -45,6 +49,9 @@ public class Recruiters extends Users {
 	public void setDepartmentName(String departmentName) {
 		this.departmentName = departmentName;
 	}
+	public void setValidated(Boolean validated) {
+		this.validated = validated;
+	}
 
 	@Override
 	public boolean equals(Object o) {
@@ -52,12 +59,12 @@ public class Recruiters extends Users {
 		if (!(o instanceof Recruiters)) return false;
 		if (!super.equals(o)) return false;
 		Recruiters that = (Recruiters) o;
-		return Objects.equals(branchID, that.branchID) && Objects.equals(roleLevel, that.roleLevel) && Objects.equals(roleName, that.roleName) && Objects.equals(departmentName, that.departmentName);
+		return Objects.equals(branchID, that.branchID) && Objects.equals(roleLevel, that.roleLevel) && Objects.equals(roleName, that.roleName) && Objects.equals(departmentName, that.departmentName) && Objects.equals(validated, that.validated);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(super.hashCode(), branchID, roleLevel, roleName, departmentName);
+		return Objects.hash(super.hashCode(), branchID, roleLevel, roleName, departmentName, validated);
 	}
 
 	@Override
@@ -67,6 +74,7 @@ public class Recruiters extends Users {
 		sb.append(", roleLevel=").append(roleLevel);
 		sb.append(", roleName='").append(roleName).append('\'');
 		sb.append(", departmentName='").append(departmentName).append('\'');
+		sb.append(", validated=").append(validated);
 		sb.append('}');
 		return sb.toString();
 	}

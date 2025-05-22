@@ -3272,11 +3272,17 @@ public final class ServerClient {
         getEmailBytes();
 
     /**
-     * <code>map&lt;int32, bool&gt; activeBranchs = 10;</code>
+     * <code>bool validated = 10;</code>
+     * @return The validated.
+     */
+    boolean getValidated();
+
+    /**
+     * <code>map&lt;int32, bool&gt; activeBranchs = 11;</code>
      */
     int getActiveBranchsCount();
     /**
-     * <code>map&lt;int32, bool&gt; activeBranchs = 10;</code>
+     * <code>map&lt;int32, bool&gt; activeBranchs = 11;</code>
      */
     boolean containsActiveBranchs(
         int key);
@@ -3287,18 +3293,18 @@ public final class ServerClient {
     java.util.Map<java.lang.Integer, java.lang.Boolean>
     getActiveBranchs();
     /**
-     * <code>map&lt;int32, bool&gt; activeBranchs = 10;</code>
+     * <code>map&lt;int32, bool&gt; activeBranchs = 11;</code>
      */
     java.util.Map<java.lang.Integer, java.lang.Boolean>
     getActiveBranchsMap();
     /**
-     * <code>map&lt;int32, bool&gt; activeBranchs = 10;</code>
+     * <code>map&lt;int32, bool&gt; activeBranchs = 11;</code>
      */
     boolean getActiveBranchsOrDefault(
         int key,
         boolean defaultValue);
     /**
-     * <code>map&lt;int32, bool&gt; activeBranchs = 10;</code>
+     * <code>map&lt;int32, bool&gt; activeBranchs = 11;</code>
      */
     boolean getActiveBranchsOrThrow(
         int key);
@@ -3348,7 +3354,7 @@ public final class ServerClient {
     protected com.google.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
-        case 10:
+        case 11:
           return internalGetActiveBranchs();
         default:
           throw new RuntimeException(
@@ -3686,7 +3692,18 @@ public final class ServerClient {
       }
     }
 
-    public static final int ACTIVEBRANCHS_FIELD_NUMBER = 10;
+    public static final int VALIDATED_FIELD_NUMBER = 10;
+    private boolean validated_ = false;
+    /**
+     * <code>bool validated = 10;</code>
+     * @return The validated.
+     */
+    @java.lang.Override
+    public boolean getValidated() {
+      return validated_;
+    }
+
+    public static final int ACTIVEBRANCHS_FIELD_NUMBER = 11;
     private static final class ActiveBranchsDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
           java.lang.Integer, java.lang.Boolean> defaultEntry =
@@ -3713,7 +3730,7 @@ public final class ServerClient {
       return internalGetActiveBranchs().getMap().size();
     }
     /**
-     * <code>map&lt;int32, bool&gt; activeBranchs = 10;</code>
+     * <code>map&lt;int32, bool&gt; activeBranchs = 11;</code>
      */
     @java.lang.Override
     public boolean containsActiveBranchs(
@@ -3730,14 +3747,14 @@ public final class ServerClient {
       return getActiveBranchsMap();
     }
     /**
-     * <code>map&lt;int32, bool&gt; activeBranchs = 10;</code>
+     * <code>map&lt;int32, bool&gt; activeBranchs = 11;</code>
      */
     @java.lang.Override
     public java.util.Map<java.lang.Integer, java.lang.Boolean> getActiveBranchsMap() {
       return internalGetActiveBranchs().getMap();
     }
     /**
-     * <code>map&lt;int32, bool&gt; activeBranchs = 10;</code>
+     * <code>map&lt;int32, bool&gt; activeBranchs = 11;</code>
      */
     @java.lang.Override
     public boolean getActiveBranchsOrDefault(
@@ -3749,7 +3766,7 @@ public final class ServerClient {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;int32, bool&gt; activeBranchs = 10;</code>
+     * <code>map&lt;int32, bool&gt; activeBranchs = 11;</code>
      */
     @java.lang.Override
     public boolean getActiveBranchsOrThrow(
@@ -3804,12 +3821,15 @@ public final class ServerClient {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 9, email_);
       }
+      if (validated_ != false) {
+        output.writeBool(10, validated_);
+      }
       com.google.protobuf.GeneratedMessageV3
         .serializeIntegerMapTo(
           output,
           internalGetActiveBranchs(),
           ActiveBranchsDefaultEntryHolder.defaultEntry,
-          10);
+          11);
       getUnknownFields().writeTo(output);
     }
 
@@ -3847,6 +3867,10 @@ public final class ServerClient {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, email_);
       }
+      if (validated_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(10, validated_);
+      }
       for (java.util.Map.Entry<java.lang.Integer, java.lang.Boolean> entry
            : internalGetActiveBranchs().getMap().entrySet()) {
         com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Boolean>
@@ -3855,7 +3879,7 @@ public final class ServerClient {
             .setValue(entry.getValue())
             .build();
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(10, activeBranchs__);
+            .computeMessageSize(11, activeBranchs__);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -3890,6 +3914,8 @@ public final class ServerClient {
           .equals(other.getWebsite())) return false;
       if (!getEmail()
           .equals(other.getEmail())) return false;
+      if (getValidated()
+          != other.getValidated()) return false;
       if (!internalGetActiveBranchs().equals(
           other.internalGetActiveBranchs())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -3921,6 +3947,9 @@ public final class ServerClient {
       hash = (53 * hash) + getWebsite().hashCode();
       hash = (37 * hash) + EMAIL_FIELD_NUMBER;
       hash = (53 * hash) + getEmail().hashCode();
+      hash = (37 * hash) + VALIDATED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getValidated());
       if (!internalGetActiveBranchs().getMap().isEmpty()) {
         hash = (37 * hash) + ACTIVEBRANCHS_FIELD_NUMBER;
         hash = (53 * hash) + internalGetActiveBranchs().hashCode();
@@ -4036,7 +4065,7 @@ public final class ServerClient {
       protected com.google.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
-          case 10:
+          case 11:
             return internalGetActiveBranchs();
           default:
             throw new RuntimeException(
@@ -4047,7 +4076,7 @@ public final class ServerClient {
       protected com.google.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
-          case 10:
+          case 11:
             return internalGetMutableActiveBranchs();
           default:
             throw new RuntimeException(
@@ -4085,6 +4114,7 @@ public final class ServerClient {
         address_ = "";
         website_ = "";
         email_ = "";
+        validated_ = false;
         internalGetMutableActiveBranchs().clear();
         return this;
       }
@@ -4147,6 +4177,9 @@ public final class ServerClient {
           result.email_ = email_;
         }
         if (((from_bitField0_ & 0x00000200) != 0)) {
+          result.validated_ = validated_;
+        }
+        if (((from_bitField0_ & 0x00000400) != 0)) {
           result.activeBranchs_ = internalGetActiveBranchs();
           result.activeBranchs_.makeImmutable();
         }
@@ -4239,9 +4272,12 @@ public final class ServerClient {
           bitField0_ |= 0x00000100;
           onChanged();
         }
+        if (other.getValidated() != false) {
+          setValidated(other.getValidated());
+        }
         internalGetMutableActiveBranchs().mergeFrom(
             other.internalGetActiveBranchs());
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -4313,15 +4349,20 @@ public final class ServerClient {
                 bitField0_ |= 0x00000100;
                 break;
               } // case 74
-              case 82: {
+              case 80: {
+                validated_ = input.readBool();
+                bitField0_ |= 0x00000200;
+                break;
+              } // case 80
+              case 90: {
                 com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Boolean>
                 activeBranchs__ = input.readMessage(
                     ActiveBranchsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
                 internalGetMutableActiveBranchs().getMutableMap().put(
                     activeBranchs__.getKey(), activeBranchs__.getValue());
-                bitField0_ |= 0x00000200;
+                bitField0_ |= 0x00000400;
                 break;
-              } // case 82
+              } // case 90
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -4947,6 +4988,38 @@ public final class ServerClient {
         return this;
       }
 
+      private boolean validated_ ;
+      /**
+       * <code>bool validated = 10;</code>
+       * @return The validated.
+       */
+      @java.lang.Override
+      public boolean getValidated() {
+        return validated_;
+      }
+      /**
+       * <code>bool validated = 10;</code>
+       * @param value The validated to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValidated(boolean value) {
+        
+        validated_ = value;
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool validated = 10;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearValidated() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        validated_ = false;
+        onChanged();
+        return this;
+      }
+
       private com.google.protobuf.MapField<
           java.lang.Integer, java.lang.Boolean> activeBranchs_;
       private com.google.protobuf.MapField<java.lang.Integer, java.lang.Boolean>
@@ -4966,7 +5039,7 @@ public final class ServerClient {
         if (!activeBranchs_.isMutable()) {
           activeBranchs_ = activeBranchs_.copy();
         }
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         onChanged();
         return activeBranchs_;
       }
@@ -4974,7 +5047,7 @@ public final class ServerClient {
         return internalGetActiveBranchs().getMap().size();
       }
       /**
-       * <code>map&lt;int32, bool&gt; activeBranchs = 10;</code>
+       * <code>map&lt;int32, bool&gt; activeBranchs = 11;</code>
        */
       @java.lang.Override
       public boolean containsActiveBranchs(
@@ -4991,14 +5064,14 @@ public final class ServerClient {
         return getActiveBranchsMap();
       }
       /**
-       * <code>map&lt;int32, bool&gt; activeBranchs = 10;</code>
+       * <code>map&lt;int32, bool&gt; activeBranchs = 11;</code>
        */
       @java.lang.Override
       public java.util.Map<java.lang.Integer, java.lang.Boolean> getActiveBranchsMap() {
         return internalGetActiveBranchs().getMap();
       }
       /**
-       * <code>map&lt;int32, bool&gt; activeBranchs = 10;</code>
+       * <code>map&lt;int32, bool&gt; activeBranchs = 11;</code>
        */
       @java.lang.Override
       public boolean getActiveBranchsOrDefault(
@@ -5010,7 +5083,7 @@ public final class ServerClient {
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;int32, bool&gt; activeBranchs = 10;</code>
+       * <code>map&lt;int32, bool&gt; activeBranchs = 11;</code>
        */
       @java.lang.Override
       public boolean getActiveBranchsOrThrow(
@@ -5024,13 +5097,13 @@ public final class ServerClient {
         return map.get(key);
       }
       public Builder clearActiveBranchs() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         internalGetMutableActiveBranchs().getMutableMap()
             .clear();
         return this;
       }
       /**
-       * <code>map&lt;int32, bool&gt; activeBranchs = 10;</code>
+       * <code>map&lt;int32, bool&gt; activeBranchs = 11;</code>
        */
       public Builder removeActiveBranchs(
           int key) {
@@ -5045,11 +5118,11 @@ public final class ServerClient {
       @java.lang.Deprecated
       public java.util.Map<java.lang.Integer, java.lang.Boolean>
           getMutableActiveBranchs() {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         return internalGetMutableActiveBranchs().getMutableMap();
       }
       /**
-       * <code>map&lt;int32, bool&gt; activeBranchs = 10;</code>
+       * <code>map&lt;int32, bool&gt; activeBranchs = 11;</code>
        */
       public Builder putActiveBranchs(
           int key,
@@ -5058,17 +5131,17 @@ public final class ServerClient {
         
         internalGetMutableActiveBranchs().getMutableMap()
             .put(key, value);
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         return this;
       }
       /**
-       * <code>map&lt;int32, bool&gt; activeBranchs = 10;</code>
+       * <code>map&lt;int32, bool&gt; activeBranchs = 11;</code>
        */
       public Builder putAllActiveBranchs(
           java.util.Map<java.lang.Integer, java.lang.Boolean> values) {
         internalGetMutableActiveBranchs().getMutableMap()
             .putAll(values);
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         return this;
       }
       @java.lang.Override
@@ -10133,6 +10206,12 @@ public final class ServerClient {
      */
     com.google.protobuf.ByteString
         getDepartmentNameBytes();
+
+    /**
+     * <code>bool validated = 6;</code>
+     * @return The validated.
+     */
+    boolean getValidated();
   }
   /**
    * Protobuf type {@code proto.RecruiterFullInfo}
@@ -10302,6 +10381,17 @@ public final class ServerClient {
       }
     }
 
+    public static final int VALIDATED_FIELD_NUMBER = 6;
+    private boolean validated_ = false;
+    /**
+     * <code>bool validated = 6;</code>
+     * @return The validated.
+     */
+    @java.lang.Override
+    public boolean getValidated() {
+      return validated_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -10331,6 +10421,9 @@ public final class ServerClient {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(departmentName_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, departmentName_);
       }
+      if (validated_ != false) {
+        output.writeBool(6, validated_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -10357,6 +10450,10 @@ public final class ServerClient {
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(departmentName_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, departmentName_);
+      }
+      if (validated_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(6, validated_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -10386,6 +10483,8 @@ public final class ServerClient {
           != other.getRoleLevel()) return false;
       if (!getDepartmentName()
           .equals(other.getDepartmentName())) return false;
+      if (getValidated()
+          != other.getValidated()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -10409,6 +10508,9 @@ public final class ServerClient {
       hash = (53 * hash) + getRoleLevel();
       hash = (37 * hash) + DEPARTMENTNAME_FIELD_NUMBER;
       hash = (53 * hash) + getDepartmentName().hashCode();
+      hash = (37 * hash) + VALIDATED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getValidated());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -10547,6 +10649,7 @@ public final class ServerClient {
         roleName_ = "";
         roleLevel_ = 0;
         departmentName_ = "";
+        validated_ = false;
         return this;
       }
 
@@ -10596,6 +10699,9 @@ public final class ServerClient {
         }
         if (((from_bitField0_ & 0x00000010) != 0)) {
           result.departmentName_ = departmentName_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.validated_ = validated_;
         }
       }
 
@@ -10662,6 +10768,9 @@ public final class ServerClient {
           bitField0_ |= 0x00000010;
           onChanged();
         }
+        if (other.getValidated() != false) {
+          setValidated(other.getValidated());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -10715,6 +10824,11 @@ public final class ServerClient {
                 bitField0_ |= 0x00000010;
                 break;
               } // case 42
+              case 48: {
+                validated_ = input.readBool();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 48
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -11055,6 +11169,38 @@ public final class ServerClient {
         checkByteStringIsUtf8(value);
         departmentName_ = value;
         bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+
+      private boolean validated_ ;
+      /**
+       * <code>bool validated = 6;</code>
+       * @return The validated.
+       */
+      @java.lang.Override
+      public boolean getValidated() {
+        return validated_;
+      }
+      /**
+       * <code>bool validated = 6;</code>
+       * @param value The validated to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValidated(boolean value) {
+        
+        validated_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool validated = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearValidated() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        validated_ = false;
         onChanged();
         return this;
       }
@@ -26010,266 +26156,268 @@ public final class ServerClient {
       "obuf.Timestamp\022\035\n\006gender\030\003 \001(\0162\r.proto.G" +
       "ender\022<\n\ncurrentCVs\030\004 \003(\0132(.proto.Candid" +
       "ateFullInfo.CurrentCVsEntry\0321\n\017CurrentCV" +
-      "sEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\"\256" +
+      "sEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\"\301" +
       "\002\n\017CompanyFullInfo\022\023\n\013companiesID\030\001 \001(\005\022" +
       "\023\n\013companyName\030\002 \001(\t\022\021\n\timagePath\030\003 \001(\t\022" +
       "\021\n\tspecialty\030\004 \001(\t\022\014\n\004size\030\005 \001(\t\022\024\n\014intr" +
       "oduction\030\006 \001(\t\022\017\n\007address\030\007 \001(\t\022\017\n\007websi" +
-      "te\030\010 \001(\t\022\r\n\005email\030\t \001(\t\022@\n\ractiveBranchs" +
-      "\030\n \003(\0132).proto.CompanyFullInfo.ActiveBra" +
-      "nchsEntry\0324\n\022ActiveBranchsEntry\022\013\n\003key\030\001" +
-      " \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\"<\n\020LocationFullI" +
-      "nfo\022\022\n\nlocationID\030\001 \001(\005\022\024\n\014locationName\030" +
-      "\002 \001(\t\"\201\003\n\016BranchFullInfo\022\020\n\010branchID\030\001 \001" +
-      "(\005\022\021\n\tcompanyID\030\002 \001(\005\022\022\n\nbranchName\030\003 \001(" +
-      "\t\022\017\n\007address\030\004 \001(\t\022\017\n\007contact\030\005 \001(\t\022\021\n\ti" +
-      "magePath\030\006 \001(\t\022G\n\021currentJobRequest\030\007 \003(" +
-      "\0132,.proto.BranchFullInfo.CurrentJobReque" +
-      "stEntry\022E\n\020currentRecruiter\030\010 \003(\0132+.prot" +
-      "o.BranchFullInfo.CurrentRecruiterEntry\0328" +
-      "\n\026CurrentJobRequestEntry\022\013\n\003key\030\001 \001(\005\022\r\n" +
-      "\005value\030\002 \001(\010:\0028\001\0327\n\025CurrentRecruiterEntr" +
-      "y\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\"\370\003\n\022Jo" +
-      "bRequestFullInfo\022\r\n\005jobID\030\001 \001(\005\022\020\n\010branc" +
-      "hID\030\002 \001(\005\022\r\n\005title\030\003 \001(\t\022\020\n\010worktime\030\004 \001" +
-      "(\t\022\020\n\010jobField\030\005 \001(\t\022\022\n\nlocationID\030\006 \001(\005" +
-      "\022\037\n\007jobType\030\007 \001(\0162\016.proto.JobType\022\023\n\013sal" +
-      "aryLeast\030\010 \001(\005\022\026\n\016salaryGreatest\030\t \001(\005\0220" +
-      "\n\014deadlineDate\030\n \001(\0132\032.google.protobuf.T" +
-      "imestamp\022\020\n\010jobTitle\030\013 \001(\t\022!\n\010jobLevel\030\014" +
-      " \001(\0162\017.proto.JobLevel\022\026\n\016jobDescription\030" +
-      "\r \001(\t\022\026\n\016jobRequirement\030\016 \001(\t\022\022\n\njobBene" +
-      "fit\030\017 \001(\t\022\017\n\007groupID\030\020 \001(\005\022=\n\ncurrentCVs" +
-      "\030\021 \003(\0132).proto.JobRequestFullInfo.Curren" +
-      "tCVsEntry\0321\n\017CurrentCVsEntry\022\013\n\003key\030\001 \001(" +
-      "\005\022\r\n\005value\030\002 \001(\010:\0028\001\"\205\001\n\021RecruiterFullIn" +
-      "fo\022!\n\004user\030\001 \001(\0132\023.proto.UserFullInfo\022\020\n" +
-      "\010branchID\030\002 \001(\005\022\020\n\010roleName\030\003 \001(\t\022\021\n\trol" +
-      "eLevel\030\004 \001(\005\022\026\n\016departmentName\030\005 \001(\t\"\263\010\n" +
-      "\nCVFullInfo\022\014\n\004CVID\030\001 \001(\005\022\023\n\013candidateID" +
-      "\030\002 \001(\005\022\016\n\006CVname\030\003 \001(\t\022\021\n\timagePath\030\004 \001(" +
-      "\t\022\024\n\014jobPositions\030\005 \001(\t\022\021\n\tintroduce\030\013 \001" +
-      "(\t\022\r\n\005email\030\014 \001(\t\022\023\n\013phoneNumber\030\r \001(\t\022\023" +
-      "\n\013socialMedia\030\016 \001(\t\022?\n\017currentProjects\030\017" +
-      " \003(\0132&.proto.CVFullInfo.CurrentProjectsE" +
-      "ntry\022I\n\024currentPersonalities\030\020 \003(\0132+.pro" +
-      "to.CVFullInfo.CurrentPersonalitiesEntry\022" +
-      ";\n\rcurrentSkills\030\021 \003(\0132$.proto.CVFullInf" +
-      "o.CurrentSkillsEntry\022M\n\026currentWorkExper" +
-      "iences\030\022 \003(\0132-.proto.CVFullInfo.CurrentW" +
-      "orkExperiencesEntry\022C\n\021currentEducations" +
-      "\030\023 \003(\0132(.proto.CVFullInfo.CurrentEducati" +
-      "onsEntry\022K\n\025currentCertifications\030\024 \003(\0132" +
-      ",.proto.CVFullInfo.CurrentCertifications" +
-      "Entry\022;\n\rcurrentAwards\030\025 \003(\0132$.proto.CVF" +
-      "ullInfo.CurrentAwardsEntry\0326\n\024CurrentPro" +
-      "jectsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\002" +
-      "8\001\032;\n\031CurrentPersonalitiesEntry\022\013\n\003key\030\001" +
-      " \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\0324\n\022CurrentSkills" +
-      "Entry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\032=\n" +
-      "\033CurrentWorkExperiencesEntry\022\013\n\003key\030\001 \001(" +
-      "\005\022\r\n\005value\030\002 \001(\010:\0028\001\0328\n\026CurrentEducation" +
-      "sEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\032<" +
-      "\n\032CurrentCertificationsEntry\022\013\n\003key\030\001 \001(" +
-      "\005\022\r\n\005value\030\002 \001(\010:\0028\001\0324\n\022CurrentAwardsEnt" +
-      "ry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\"I\n\013Ap" +
-      "pliesInfo\022\r\n\005jobID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\035" +
-      "\n\006status\030\003 \001(\0162\r.proto.Status\"\336\001\n\017Projec" +
-      "tFullInfo\022\021\n\tprojectID\030\001 \001(\005\022\014\n\004CVID\030\002 \001" +
-      "(\005\022-\n\tstartDate\030\003 \001(\0132\032.google.protobuf." +
-      "Timestamp\022+\n\007endDate\030\004 \001(\0132\032.google.prot" +
-      "obuf.Timestamp\022\023\n\013projectName\030\005 \001(\t\022\016\n\006P" +
-      "JRole\030\006 \001(\t\022\022\n\ntechnology\030\007 \001(\t\022\025\n\rPJDes" +
-      "cription\030\010 \001(\t\"c\n\023PersonalityFullInfo\022\025\n" +
-      "\rpersonalityID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\027\n\017pe" +
-      "rsonalityName\030\003 \001(\t\022\016\n\006detail\030\004 \001(\t\"j\n\rS" +
-      "killFullInfo\022\017\n\007skillID\030\001 \001(\005\022\014\n\004CVID\030\002 " +
-      "\001(\005\022\021\n\tskillName\030\003 \001(\t\022\'\n\013proficiency\030\004 " +
-      "\001(\0162\022.proto.Proficiency\"\333\001\n\026WorkExperien" +
-      "ceFullInfo\022\030\n\020workExperienceID\030\001 \001(\005\022\014\n\004" +
-      "CVID\030\002 \001(\005\022\023\n\013companyName\030\003 \001(\t\022\020\n\010jobTi" +
-      "tle\030\004 \001(\t\022-\n\tstartDate\030\005 \001(\0132\032.google.pr" +
-      "otobuf.Timestamp\022+\n\007endDate\030\006 \001(\0132\032.goog" +
-      "le.protobuf.Timestamp\022\026\n\016jobDescription\030" +
-      "\007 \001(\t\"\315\001\n\021EducationFullInfo\022\023\n\013education" +
-      "ID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\016\n\006degree\030\003 \001(\t\022\021" +
-      "\n\tEduFields\030\004 \001(\t\022\026\n\016EduDescription\030\005 \001(" +
-      "\t\022-\n\tstartDate\030\006 \001(\0132\032.google.protobuf.T" +
-      "imestamp\022+\n\007endDate\030\007 \001(\0132\032.google.proto" +
-      "buf.Timestamp\"\235\001\n\025CertificationFullInfo\022" +
-      "\027\n\017certificationID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\031" +
-      "\n\021certificationName\030\003 \001(\t\022\020\n\010provider\030\004 " +
-      "\001(\t\0220\n\014providedDate\030\005 \001(\0132\032.google.proto" +
-      "buf.Timestamp\"r\n\rAwardFullInfo\022\017\n\007awardI" +
-      "D\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\021\n\tawardName\030\003 \001(\t" +
-      "\022/\n\013provideDate\030\004 \001(\0132\032.google.protobuf." +
-      "Timestamp\"\204\002\n\022JobRequestRestrict\022\023\n\013sear" +
-      "chParam\030\001 \001(\t\022\020\n\010location\030\002 \001(\t\022\025\n\rsalar" +
-      "yMinimum\030\003 \001(\005\022!\n\010jobLevel\030\004 \001(\0162\017.proto" +
-      ".JobLevel\022\037\n\007jobType\030\005 \001(\0162\016.proto.JobTy" +
-      "pe\022\017\n\007isEnded\030\006 \001(\010\022\014\n\004CVID\030\007 \001(\005\022\021\n\tcom" +
-      "panyID\030\010 \001(\005\022\022\n\nlocationID\030\t \001(\005\022\020\n\010bran" +
-      "chID\030\n \001(\005\022\024\n\014jobRequestID\030\013 \001(\005\"\251\001\n\020Wis" +
-      "hListFullInfo\022\023\n\013candidateID\030\001 \001(\005\022\025\n\rsa" +
-      "laryMinimum\030\002 \001(\005\022\022\n\nlocationID\030\003 \001(\005\022\037\n" +
-      "\007jobType\030\004 \001(\0162\016.proto.JobType\022!\n\010jobLev" +
-      "el\030\005 \001(\0162\017.proto.JobLevel\022\021\n\tinsurance\030\006" +
-      " \001(\t*\036\n\006Gender\022\010\n\004MALE\020\000\022\n\n\006FEMALE\020\001*v\n\010" +
-      "JobLevel\022\016\n\nNULL_LEVEL\020\000\022\017\n\013ENTRY_LEVEL\020" +
-      "\001\022\r\n\tMID_LEVEL\020\002\022\020\n\014SENIOR_LEVEL\020\003\022\013\n\007MA" +
-      "NAGER\020\004\022\014\n\010DIRECTOR\020\005\022\r\n\tEXECUTIVE\020\006*@\n\007" +
-      "JobType\022\r\n\tNULL_TYPE\020\000\022\014\n\010FULLTIME\020\001\022\014\n\010" +
-      "HALFTIME\020\002\022\n\n\006INTERN\020\003*Z\n\006Status\022\017\n\013NULL" +
-      "_STATUS\020\000\022\026\n\022APPLICATION_REVIEW\020\001\022\r\n\tINT" +
-      "ERVIEW\020\002\022\013\n\007SUCCESS\020\003\022\013\n\007FAILURE\020\004*O\n\013Pr" +
-      "oficiency\022\024\n\020NULL_PROFICIENCY\020\000\022\014\n\010BEGIN" +
-      "NER\020\001\022\020\n\014INTERMEDIATE\020\002\022\n\n\006EXPERT\020\0032\247\006\n\013" +
-      "UserService\022E\n\017CandidateCreate\022\030.proto.C" +
-      "andidateFullInfo\032\030.proto.CandidateFullIn" +
-      "fo\022E\n\017RecruiterCreate\022\030.proto.RecruiterF" +
-      "ullInfo\032\030.proto.RecruiterFullInfo\0224\n\010Use" +
-      "rRead\022\023.proto.UserFullInfo\032\023.proto.UserF" +
-      "ullInfo\022=\n\014UserListRead\022\026.google.protobu" +
-      "f.Empty\032\023.proto.UserFullInfo0\001\022>\n\rCandid" +
-      "ateRead\022\023.proto.UserFullInfo\032\030.proto.Can" +
-      "didateFullInfo\022G\n\021CandidateListRead\022\026.go" +
-      "ogle.protobuf.Empty\032\030.proto.CandidateFul" +
-      "lInfo0\001\022>\n\rRecruiterRead\022\023.proto.UserFul" +
-      "lInfo\032\030.proto.RecruiterFullInfo\022G\n\021Recru" +
-      "iterListRead\022\026.google.protobuf.Empty\032\030.p" +
-      "roto.RecruiterFullInfo0\001\0226\n\nUserUpdate\022\023" +
-      ".proto.UserFullInfo\032\023.proto.UserFullInfo" +
-      "\022E\n\017CandidateUpdate\022\030.proto.CandidateFul" +
-      "lInfo\032\030.proto.CandidateFullInfo\022E\n\017Recru" +
-      "iterUpdate\022\030.proto.RecruiterFullInfo\032\030.p" +
-      "roto.RecruiterFullInfo\022=\n\nUserDelete\022\023.p" +
-      "roto.UserFullInfo\032\032.google.protobuf.Bool" +
-      "Value2\242\004\n\021JobRequestService\022J\n\022JobReques" +
-      "tRegister\022\031.proto.JobRequestFullInfo\032\031.p" +
-      "roto.JobRequestFullInfo\022F\n\016JobRequestRea" +
-      "d\022\031.proto.JobRequestFullInfo\032\031.proto.Job" +
-      "RequestFullInfo\022I\n\022JobRequestListRead\022\026." +
-      "google.protobuf.Empty\032\031.proto.JobRequest" +
-      "FullInfo0\001\022L\n\024JobRequestUpdateInfo\022\031.pro" +
-      "to.JobRequestFullInfo\032\031.proto.JobRequest" +
-      "FullInfo\022I\n\020JobRequestDelete\022\031.proto.Job" +
-      "RequestFullInfo\032\032.google.protobuf.BoolVa" +
-      "lue\022H\n\017JobRequestApply\022\031.proto.JobReques" +
-      "tFullInfo\032\032.google.protobuf.BoolValue\022K\n" +
-      "\022JobRequestWithdraw\022\031.proto.JobRequestFu" +
-      "llInfo\032\032.google.protobuf.BoolValue2\345\002\n\016C" +
-      "ompanyService\022A\n\017CompanyRegister\022\026.proto" +
-      ".CompanyFullInfo\032\026.proto.CompanyFullInfo" +
-      "\022A\n\017CompanyReadInfo\022\026.proto.CompanyFullI" +
-      "nfo\032\026.proto.CompanyFullInfo\022C\n\017CompanyLi" +
-      "stRead\022\026.google.protobuf.Empty\032\026.proto.C" +
-      "ompanyFullInfo0\001\022C\n\021CompanyUpdateInfo\022\026." +
-      "proto.CompanyFullInfo\032\026.proto.CompanyFul" +
-      "lInfo\022C\n\rCompanyDelete\022\026.proto.CompanyFu" +
-      "llInfo\032\032.google.protobuf.BoolValue2\321\002\n\rB" +
-      "ranchService\022<\n\014BranchCreate\022\025.proto.Bra" +
-      "nchFullInfo\032\025.proto.BranchFullInfo\022:\n\nBr" +
-      "anchRead\022\025.proto.BranchFullInfo\032\025.proto." +
-      "BranchFullInfo\022A\n\016BranchListRead\022\026.googl" +
-      "e.protobuf.Empty\032\025.proto.BranchFullInfo0" +
-      "\001\022@\n\020BranchUpdateInfo\022\025.proto.BranchFull" +
-      "Info\032\025.proto.BranchFullInfo\022A\n\014BranchDel" +
-      "ete\022\025.proto.BranchFullInfo\032\032.google.prot" +
-      "obuf.BoolValue2\363\002\n\017LocationService\022D\n\020Lo" +
-      "cationRegister\022\027.proto.LocationFullInfo\032" +
-      "\027.proto.LocationFullInfo\022D\n\020LocationRead" +
-      "Info\022\027.proto.LocationFullInfo\032\027.proto.Lo" +
-      "cationFullInfo\022E\n\020LocationListRead\022\026.goo" +
-      "gle.protobuf.Empty\032\027.proto.LocationFullI" +
-      "nfo0\001\022F\n\022LocationUpdateInfo\022\027.proto.Loca" +
-      "tionFullInfo\032\027.proto.LocationFullInfo\022E\n" +
-      "\016LocationDelete\022\027.proto.LocationFullInfo" +
-      "\032\032.google.protobuf.BoolValue2\226\002\n\tCVServi" +
-      "ce\0220\n\010CVCreate\022\021.proto.CVFullInfo\032\021.prot" +
-      "o.CVFullInfo\022.\n\006CVRead\022\021.proto.CVFullInf" +
-      "o\032\021.proto.CVFullInfo\0226\n\nCVListRead\022\023.pro" +
-      "to.UserFullInfo\032\021.proto.CVFullInfo0\001\0224\n\014" +
-      "CVUpdateInfo\022\021.proto.CVFullInfo\032\021.proto." +
-      "CVFullInfo\0229\n\010CVDelete\022\021.proto.CVFullInf" +
-      "o\032\032.google.protobuf.BoolValue2\274\003\n\025WorkEx" +
-      "perienceService\022T\n\024WorkExperienceCreate\022" +
-      "\035.proto.WorkExperienceFullInfo\032\035.proto.W" +
-      "orkExperienceFullInfo\022R\n\022WorkExperienceR" +
-      "ead\022\035.proto.WorkExperienceFullInfo\032\035.pro" +
-      "to.WorkExperienceFullInfo\022L\n\026WorkExperie" +
-      "nceListRead\022\021.proto.CVFullInfo\032\035.proto.W" +
-      "orkExperienceFullInfo0\001\022X\n\030WorkExperienc" +
-      "eUpdateInfo\022\035.proto.WorkExperienceFullIn" +
-      "fo\032\035.proto.WorkExperienceFullInfo\022Q\n\024Wor" +
-      "kExperienceDelete\022\035.proto.WorkExperience" +
-      "FullInfo\032\032.google.protobuf.BoolValue2\276\002\n" +
-      "\014SkillService\0229\n\013SkillCreate\022\024.proto.Ski" +
-      "llFullInfo\032\024.proto.SkillFullInfo\0227\n\tSkil" +
-      "lRead\022\024.proto.SkillFullInfo\032\024.proto.Skil" +
-      "lFullInfo\022:\n\rSkillListRead\022\021.proto.CVFul" +
-      "lInfo\032\024.proto.SkillFullInfo0\001\022=\n\017SkillUp" +
-      "dateInfo\022\024.proto.SkillFullInfo\032\024.proto.S" +
-      "killFullInfo\022?\n\013SkillDelete\022\024.proto.Skil" +
-      "lFullInfo\032\032.google.protobuf.BoolValue2\222\003" +
-      "\n\022PersonalityService\022K\n\021PersonalityCreat" +
-      "e\022\032.proto.PersonalityFullInfo\032\032.proto.Pe" +
-      "rsonalityFullInfo\022I\n\017PersonalityRead\022\032.p" +
-      "roto.PersonalityFullInfo\032\032.proto.Persona" +
-      "lityFullInfo\022F\n\023PersonalityListRead\022\021.pr" +
-      "oto.CVFullInfo\032\032.proto.PersonalityFullIn" +
-      "fo0\001\022O\n\025PersonalityUpdateInfo\022\032.proto.Pe" +
-      "rsonalityFullInfo\032\032.proto.PersonalityFul" +
-      "lInfo\022K\n\021PersonalityDelete\022\032.proto.Perso" +
-      "nalityFullInfo\032\032.google.protobuf.BoolVal" +
-      "ue2\366\002\n\020EducationService\022E\n\017EducationCrea" +
-      "te\022\030.proto.EducationFullInfo\032\030.proto.Edu" +
-      "cationFullInfo\022C\n\rEducationRead\022\030.proto." +
+      "te\030\010 \001(\t\022\r\n\005email\030\t \001(\t\022\021\n\tvalidated\030\n \001" +
+      "(\010\022@\n\ractiveBranchs\030\013 \003(\0132).proto.Compan" +
+      "yFullInfo.ActiveBranchsEntry\0324\n\022ActiveBr" +
+      "anchsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\002" +
+      "8\001\"<\n\020LocationFullInfo\022\022\n\nlocationID\030\001 \001" +
+      "(\005\022\024\n\014locationName\030\002 \001(\t\"\201\003\n\016BranchFullI" +
+      "nfo\022\020\n\010branchID\030\001 \001(\005\022\021\n\tcompanyID\030\002 \001(\005" +
+      "\022\022\n\nbranchName\030\003 \001(\t\022\017\n\007address\030\004 \001(\t\022\017\n" +
+      "\007contact\030\005 \001(\t\022\021\n\timagePath\030\006 \001(\t\022G\n\021cur" +
+      "rentJobRequest\030\007 \003(\0132,.proto.BranchFullI" +
+      "nfo.CurrentJobRequestEntry\022E\n\020currentRec" +
+      "ruiter\030\010 \003(\0132+.proto.BranchFullInfo.Curr" +
+      "entRecruiterEntry\0328\n\026CurrentJobRequestEn" +
+      "try\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\0327\n\025C" +
+      "urrentRecruiterEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005val" +
+      "ue\030\002 \001(\010:\0028\001\"\370\003\n\022JobRequestFullInfo\022\r\n\005j" +
+      "obID\030\001 \001(\005\022\020\n\010branchID\030\002 \001(\005\022\r\n\005title\030\003 " +
+      "\001(\t\022\020\n\010worktime\030\004 \001(\t\022\020\n\010jobField\030\005 \001(\t\022" +
+      "\022\n\nlocationID\030\006 \001(\005\022\037\n\007jobType\030\007 \001(\0162\016.p" +
+      "roto.JobType\022\023\n\013salaryLeast\030\010 \001(\005\022\026\n\016sal" +
+      "aryGreatest\030\t \001(\005\0220\n\014deadlineDate\030\n \001(\0132" +
+      "\032.google.protobuf.Timestamp\022\020\n\010jobTitle\030" +
+      "\013 \001(\t\022!\n\010jobLevel\030\014 \001(\0162\017.proto.JobLevel" +
+      "\022\026\n\016jobDescription\030\r \001(\t\022\026\n\016jobRequireme" +
+      "nt\030\016 \001(\t\022\022\n\njobBenefit\030\017 \001(\t\022\017\n\007groupID\030" +
+      "\020 \001(\005\022=\n\ncurrentCVs\030\021 \003(\0132).proto.JobReq" +
+      "uestFullInfo.CurrentCVsEntry\0321\n\017CurrentC" +
+      "VsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\"" +
+      "\230\001\n\021RecruiterFullInfo\022!\n\004user\030\001 \001(\0132\023.pr" +
+      "oto.UserFullInfo\022\020\n\010branchID\030\002 \001(\005\022\020\n\010ro" +
+      "leName\030\003 \001(\t\022\021\n\troleLevel\030\004 \001(\005\022\026\n\016depar" +
+      "tmentName\030\005 \001(\t\022\021\n\tvalidated\030\006 \001(\010\"\263\010\n\nC" +
+      "VFullInfo\022\014\n\004CVID\030\001 \001(\005\022\023\n\013candidateID\030\002" +
+      " \001(\005\022\016\n\006CVname\030\003 \001(\t\022\021\n\timagePath\030\004 \001(\t\022" +
+      "\024\n\014jobPositions\030\005 \001(\t\022\021\n\tintroduce\030\013 \001(\t" +
+      "\022\r\n\005email\030\014 \001(\t\022\023\n\013phoneNumber\030\r \001(\t\022\023\n\013" +
+      "socialMedia\030\016 \001(\t\022?\n\017currentProjects\030\017 \003" +
+      "(\0132&.proto.CVFullInfo.CurrentProjectsEnt" +
+      "ry\022I\n\024currentPersonalities\030\020 \003(\0132+.proto" +
+      ".CVFullInfo.CurrentPersonalitiesEntry\022;\n" +
+      "\rcurrentSkills\030\021 \003(\0132$.proto.CVFullInfo." +
+      "CurrentSkillsEntry\022M\n\026currentWorkExperie" +
+      "nces\030\022 \003(\0132-.proto.CVFullInfo.CurrentWor" +
+      "kExperiencesEntry\022C\n\021currentEducations\030\023" +
+      " \003(\0132(.proto.CVFullInfo.CurrentEducation" +
+      "sEntry\022K\n\025currentCertifications\030\024 \003(\0132,." +
+      "proto.CVFullInfo.CurrentCertificationsEn" +
+      "try\022;\n\rcurrentAwards\030\025 \003(\0132$.proto.CVFul" +
+      "lInfo.CurrentAwardsEntry\0326\n\024CurrentProje" +
+      "ctsEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001" +
+      "\032;\n\031CurrentPersonalitiesEntry\022\013\n\003key\030\001 \001" +
+      "(\005\022\r\n\005value\030\002 \001(\010:\0028\001\0324\n\022CurrentSkillsEn" +
+      "try\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\032=\n\033C" +
+      "urrentWorkExperiencesEntry\022\013\n\003key\030\001 \001(\005\022" +
+      "\r\n\005value\030\002 \001(\010:\0028\001\0328\n\026CurrentEducationsE" +
+      "ntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\032<\n\032" +
+      "CurrentCertificationsEntry\022\013\n\003key\030\001 \001(\005\022" +
+      "\r\n\005value\030\002 \001(\010:\0028\001\0324\n\022CurrentAwardsEntry" +
+      "\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\"I\n\013Appl" +
+      "iesInfo\022\r\n\005jobID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\035\n\006" +
+      "status\030\003 \001(\0162\r.proto.Status\"\336\001\n\017ProjectF" +
+      "ullInfo\022\021\n\tprojectID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005" +
+      "\022-\n\tstartDate\030\003 \001(\0132\032.google.protobuf.Ti" +
+      "mestamp\022+\n\007endDate\030\004 \001(\0132\032.google.protob" +
+      "uf.Timestamp\022\023\n\013projectName\030\005 \001(\t\022\016\n\006PJR" +
+      "ole\030\006 \001(\t\022\022\n\ntechnology\030\007 \001(\t\022\025\n\rPJDescr" +
+      "iption\030\010 \001(\t\"c\n\023PersonalityFullInfo\022\025\n\rp" +
+      "ersonalityID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\027\n\017pers" +
+      "onalityName\030\003 \001(\t\022\016\n\006detail\030\004 \001(\t\"j\n\rSki" +
+      "llFullInfo\022\017\n\007skillID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(" +
+      "\005\022\021\n\tskillName\030\003 \001(\t\022\'\n\013proficiency\030\004 \001(" +
+      "\0162\022.proto.Proficiency\"\333\001\n\026WorkExperience" +
+      "FullInfo\022\030\n\020workExperienceID\030\001 \001(\005\022\014\n\004CV" +
+      "ID\030\002 \001(\005\022\023\n\013companyName\030\003 \001(\t\022\020\n\010jobTitl" +
+      "e\030\004 \001(\t\022-\n\tstartDate\030\005 \001(\0132\032.google.prot" +
+      "obuf.Timestamp\022+\n\007endDate\030\006 \001(\0132\032.google" +
+      ".protobuf.Timestamp\022\026\n\016jobDescription\030\007 " +
+      "\001(\t\"\315\001\n\021EducationFullInfo\022\023\n\013educationID" +
+      "\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\016\n\006degree\030\003 \001(\t\022\021\n\t" +
+      "EduFields\030\004 \001(\t\022\026\n\016EduDescription\030\005 \001(\t\022" +
+      "-\n\tstartDate\030\006 \001(\0132\032.google.protobuf.Tim" +
+      "estamp\022+\n\007endDate\030\007 \001(\0132\032.google.protobu" +
+      "f.Timestamp\"\235\001\n\025CertificationFullInfo\022\027\n" +
+      "\017certificationID\030\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\031\n\021" +
+      "certificationName\030\003 \001(\t\022\020\n\010provider\030\004 \001(" +
+      "\t\0220\n\014providedDate\030\005 \001(\0132\032.google.protobu" +
+      "f.Timestamp\"r\n\rAwardFullInfo\022\017\n\007awardID\030" +
+      "\001 \001(\005\022\014\n\004CVID\030\002 \001(\005\022\021\n\tawardName\030\003 \001(\t\022/" +
+      "\n\013provideDate\030\004 \001(\0132\032.google.protobuf.Ti" +
+      "mestamp\"\204\002\n\022JobRequestRestrict\022\023\n\013search" +
+      "Param\030\001 \001(\t\022\020\n\010location\030\002 \001(\t\022\025\n\rsalaryM" +
+      "inimum\030\003 \001(\005\022!\n\010jobLevel\030\004 \001(\0162\017.proto.J" +
+      "obLevel\022\037\n\007jobType\030\005 \001(\0162\016.proto.JobType" +
+      "\022\017\n\007isEnded\030\006 \001(\010\022\014\n\004CVID\030\007 \001(\005\022\021\n\tcompa" +
+      "nyID\030\010 \001(\005\022\022\n\nlocationID\030\t \001(\005\022\020\n\010branch" +
+      "ID\030\n \001(\005\022\024\n\014jobRequestID\030\013 \001(\005\"\251\001\n\020WishL" +
+      "istFullInfo\022\023\n\013candidateID\030\001 \001(\005\022\025\n\rsala" +
+      "ryMinimum\030\002 \001(\005\022\022\n\nlocationID\030\003 \001(\005\022\037\n\007j" +
+      "obType\030\004 \001(\0162\016.proto.JobType\022!\n\010jobLevel" +
+      "\030\005 \001(\0162\017.proto.JobLevel\022\021\n\tinsurance\030\006 \001" +
+      "(\t*\036\n\006Gender\022\010\n\004MALE\020\000\022\n\n\006FEMALE\020\001*v\n\010Jo" +
+      "bLevel\022\016\n\nNULL_LEVEL\020\000\022\017\n\013ENTRY_LEVEL\020\001\022" +
+      "\r\n\tMID_LEVEL\020\002\022\020\n\014SENIOR_LEVEL\020\003\022\013\n\007MANA" +
+      "GER\020\004\022\014\n\010DIRECTOR\020\005\022\r\n\tEXECUTIVE\020\006*@\n\007Jo" +
+      "bType\022\r\n\tNULL_TYPE\020\000\022\014\n\010FULLTIME\020\001\022\014\n\010HA" +
+      "LFTIME\020\002\022\n\n\006INTERN\020\003*Z\n\006Status\022\017\n\013NULL_S" +
+      "TATUS\020\000\022\026\n\022APPLICATION_REVIEW\020\001\022\r\n\tINTER" +
+      "VIEW\020\002\022\013\n\007SUCCESS\020\003\022\013\n\007FAILURE\020\004*O\n\013Prof" +
+      "iciency\022\024\n\020NULL_PROFICIENCY\020\000\022\014\n\010BEGINNE" +
+      "R\020\001\022\020\n\014INTERMEDIATE\020\002\022\n\n\006EXPERT\020\0032\247\006\n\013Us" +
+      "erService\022E\n\017CandidateCreate\022\030.proto.Can" +
+      "didateFullInfo\032\030.proto.CandidateFullInfo" +
+      "\022E\n\017RecruiterCreate\022\030.proto.RecruiterFul" +
+      "lInfo\032\030.proto.RecruiterFullInfo\0224\n\010UserR" +
+      "ead\022\023.proto.UserFullInfo\032\023.proto.UserFul" +
+      "lInfo\022=\n\014UserListRead\022\026.google.protobuf." +
+      "Empty\032\023.proto.UserFullInfo0\001\022>\n\rCandidat" +
+      "eRead\022\023.proto.UserFullInfo\032\030.proto.Candi" +
+      "dateFullInfo\022G\n\021CandidateListRead\022\026.goog" +
+      "le.protobuf.Empty\032\030.proto.CandidateFullI" +
+      "nfo0\001\022>\n\rRecruiterRead\022\023.proto.UserFullI" +
+      "nfo\032\030.proto.RecruiterFullInfo\022G\n\021Recruit" +
+      "erListRead\022\026.google.protobuf.Empty\032\030.pro" +
+      "to.RecruiterFullInfo0\001\0226\n\nUserUpdate\022\023.p" +
+      "roto.UserFullInfo\032\023.proto.UserFullInfo\022E" +
+      "\n\017CandidateUpdate\022\030.proto.CandidateFullI" +
+      "nfo\032\030.proto.CandidateFullInfo\022E\n\017Recruit" +
+      "erUpdate\022\030.proto.RecruiterFullInfo\032\030.pro" +
+      "to.RecruiterFullInfo\022=\n\nUserDelete\022\023.pro" +
+      "to.UserFullInfo\032\032.google.protobuf.BoolVa" +
+      "lue2\242\004\n\021JobRequestService\022J\n\022JobRequestR" +
+      "egister\022\031.proto.JobRequestFullInfo\032\031.pro" +
+      "to.JobRequestFullInfo\022F\n\016JobRequestRead\022" +
+      "\031.proto.JobRequestFullInfo\032\031.proto.JobRe" +
+      "questFullInfo\022I\n\022JobRequestListRead\022\026.go" +
+      "ogle.protobuf.Empty\032\031.proto.JobRequestFu" +
+      "llInfo0\001\022L\n\024JobRequestUpdateInfo\022\031.proto" +
+      ".JobRequestFullInfo\032\031.proto.JobRequestFu" +
+      "llInfo\022I\n\020JobRequestDelete\022\031.proto.JobRe" +
+      "questFullInfo\032\032.google.protobuf.BoolValu" +
+      "e\022H\n\017JobRequestApply\022\031.proto.JobRequestF" +
+      "ullInfo\032\032.google.protobuf.BoolValue\022K\n\022J" +
+      "obRequestWithdraw\022\031.proto.JobRequestFull" +
+      "Info\032\032.google.protobuf.BoolValue2\345\002\n\016Com" +
+      "panyService\022A\n\017CompanyRegister\022\026.proto.C" +
+      "ompanyFullInfo\032\026.proto.CompanyFullInfo\022A" +
+      "\n\017CompanyReadInfo\022\026.proto.CompanyFullInf" +
+      "o\032\026.proto.CompanyFullInfo\022C\n\017CompanyList" +
+      "Read\022\026.google.protobuf.Empty\032\026.proto.Com" +
+      "panyFullInfo0\001\022C\n\021CompanyUpdateInfo\022\026.pr" +
+      "oto.CompanyFullInfo\032\026.proto.CompanyFullI" +
+      "nfo\022C\n\rCompanyDelete\022\026.proto.CompanyFull" +
+      "Info\032\032.google.protobuf.BoolValue2\321\002\n\rBra" +
+      "nchService\022<\n\014BranchCreate\022\025.proto.Branc" +
+      "hFullInfo\032\025.proto.BranchFullInfo\022:\n\nBran" +
+      "chRead\022\025.proto.BranchFullInfo\032\025.proto.Br" +
+      "anchFullInfo\022A\n\016BranchListRead\022\026.google." +
+      "protobuf.Empty\032\025.proto.BranchFullInfo0\001\022" +
+      "@\n\020BranchUpdateInfo\022\025.proto.BranchFullIn" +
+      "fo\032\025.proto.BranchFullInfo\022A\n\014BranchDelet" +
+      "e\022\025.proto.BranchFullInfo\032\032.google.protob" +
+      "uf.BoolValue2\363\002\n\017LocationService\022D\n\020Loca" +
+      "tionRegister\022\027.proto.LocationFullInfo\032\027." +
+      "proto.LocationFullInfo\022D\n\020LocationReadIn" +
+      "fo\022\027.proto.LocationFullInfo\032\027.proto.Loca" +
+      "tionFullInfo\022E\n\020LocationListRead\022\026.googl" +
+      "e.protobuf.Empty\032\027.proto.LocationFullInf" +
+      "o0\001\022F\n\022LocationUpdateInfo\022\027.proto.Locati" +
+      "onFullInfo\032\027.proto.LocationFullInfo\022E\n\016L" +
+      "ocationDelete\022\027.proto.LocationFullInfo\032\032" +
+      ".google.protobuf.BoolValue2\321\002\n\tCVService" +
+      "\0220\n\010CVCreate\022\021.proto.CVFullInfo\032\021.proto." +
+      "CVFullInfo\022.\n\006CVRead\022\021.proto.CVFullInfo\032" +
+      "\021.proto.CVFullInfo\0226\n\nCVListRead\022\023.proto" +
+      ".UserFullInfo\032\021.proto.CVFullInfo0\001\0224\n\014CV" +
+      "UpdateInfo\022\021.proto.CVFullInfo\032\021.proto.CV" +
+      "FullInfo\0229\n\010CVDelete\022\021.proto.CVFullInfo\032" +
+      "\032.google.protobuf.BoolValue\0229\n\007ApplyCV\022\022" +
+      ".proto.AppliesInfo\032\032.google.protobuf.Boo" +
+      "lValue2\274\003\n\025WorkExperienceService\022T\n\024Work" +
+      "ExperienceCreate\022\035.proto.WorkExperienceF" +
+      "ullInfo\032\035.proto.WorkExperienceFullInfo\022R" +
+      "\n\022WorkExperienceRead\022\035.proto.WorkExperie" +
+      "nceFullInfo\032\035.proto.WorkExperienceFullIn" +
+      "fo\022L\n\026WorkExperienceListRead\022\021.proto.CVF" +
+      "ullInfo\032\035.proto.WorkExperienceFullInfo0\001" +
+      "\022X\n\030WorkExperienceUpdateInfo\022\035.proto.Wor" +
+      "kExperienceFullInfo\032\035.proto.WorkExperien" +
+      "ceFullInfo\022Q\n\024WorkExperienceDelete\022\035.pro" +
+      "to.WorkExperienceFullInfo\032\032.google.proto" +
+      "buf.BoolValue2\276\002\n\014SkillService\0229\n\013SkillC" +
+      "reate\022\024.proto.SkillFullInfo\032\024.proto.Skil" +
+      "lFullInfo\0227\n\tSkillRead\022\024.proto.SkillFull" +
+      "Info\032\024.proto.SkillFullInfo\022:\n\rSkillListR" +
+      "ead\022\021.proto.CVFullInfo\032\024.proto.SkillFull" +
+      "Info0\001\022=\n\017SkillUpdateInfo\022\024.proto.SkillF" +
+      "ullInfo\032\024.proto.SkillFullInfo\022?\n\013SkillDe" +
+      "lete\022\024.proto.SkillFullInfo\032\032.google.prot" +
+      "obuf.BoolValue2\222\003\n\022PersonalityService\022K\n" +
+      "\021PersonalityCreate\022\032.proto.PersonalityFu" +
+      "llInfo\032\032.proto.PersonalityFullInfo\022I\n\017Pe" +
+      "rsonalityRead\022\032.proto.PersonalityFullInf" +
+      "o\032\032.proto.PersonalityFullInfo\022F\n\023Persona" +
+      "lityListRead\022\021.proto.CVFullInfo\032\032.proto." +
+      "PersonalityFullInfo0\001\022O\n\025PersonalityUpda" +
+      "teInfo\022\032.proto.PersonalityFullInfo\032\032.pro" +
+      "to.PersonalityFullInfo\022K\n\021PersonalityDel" +
+      "ete\022\032.proto.PersonalityFullInfo\032\032.google" +
+      ".protobuf.BoolValue2\366\002\n\020EducationService" +
+      "\022E\n\017EducationCreate\022\030.proto.EducationFul" +
+      "lInfo\032\030.proto.EducationFullInfo\022C\n\rEduca" +
+      "tionRead\022\030.proto.EducationFullInfo\032\030.pro" +
+      "to.EducationFullInfo\022B\n\021EducationListRea" +
+      "d\022\021.proto.CVFullInfo\032\030.proto.EducationFu" +
+      "llInfo0\001\022I\n\023EducationUpdateInfo\022\030.proto." +
       "EducationFullInfo\032\030.proto.EducationFullI" +
-      "nfo\022B\n\021EducationListRead\022\021.proto.CVFullI" +
-      "nfo\032\030.proto.EducationFullInfo0\001\022I\n\023Educa" +
-      "tionUpdateInfo\022\030.proto.EducationFullInfo" +
-      "\032\030.proto.EducationFullInfo\022G\n\017EducationD" +
-      "elete\022\030.proto.EducationFullInfo\032\032.google" +
-      ".protobuf.BoolValue2\256\003\n\024CertificationSer" +
-      "vice\022Q\n\023CertificationCreate\022\034.proto.Cert" +
-      "ificationFullInfo\032\034.proto.CertificationF" +
-      "ullInfo\022O\n\021CertificationRead\022\034.proto.Cer" +
-      "tificationFullInfo\032\034.proto.Certification" +
-      "FullInfo\022J\n\025CertificationListRead\022\021.prot" +
-      "o.CVFullInfo\032\034.proto.CertificationFullIn" +
-      "fo0\001\022U\n\027CertificationUpdateInfo\022\034.proto." +
-      "CertificationFullInfo\032\034.proto.Certificat" +
-      "ionFullInfo\022O\n\023CertificationDelete\022\034.pro" +
-      "to.CertificationFullInfo\032\032.google.protob" +
-      "uf.BoolValue2\332\002\n\016ProjectService\022?\n\rProje" +
-      "ctCreate\022\026.proto.ProjectFullInfo\032\026.proto" +
-      ".ProjectFullInfo\022=\n\013ProjectRead\022\026.proto." +
-      "ProjectFullInfo\032\026.proto.ProjectFullInfo\022" +
-      ">\n\017ProjectListRead\022\021.proto.CVFullInfo\032\026." +
-      "proto.ProjectFullInfo0\001\022C\n\021ProjectUpdate" +
-      "Info\022\026.proto.ProjectFullInfo\032\026.proto.Pro" +
-      "jectFullInfo\022C\n\rProjectDelete\022\026.proto.Pr" +
-      "ojectFullInfo\032\032.google.protobuf.BoolValu" +
-      "e2\276\002\n\014AwardService\0229\n\013AwardCreate\022\024.prot" +
-      "o.AwardFullInfo\032\024.proto.AwardFullInfo\0227\n" +
-      "\tAwardRead\022\024.proto.AwardFullInfo\032\024.proto" +
-      ".AwardFullInfo\022:\n\rAwardListRead\022\021.proto." +
-      "CVFullInfo\032\024.proto.AwardFullInfo0\001\022=\n\017Aw" +
-      "ardUpdateInfo\022\024.proto.AwardFullInfo\032\024.pr" +
-      "oto.AwardFullInfo\022?\n\013AwardDelete\022\024.proto" +
-      ".AwardFullInfo\032\032.google.protobuf.BoolVal" +
-      "ue2\240\001\n\rSearchService\022N\n\024Candidate_JobReq" +
-      "uest\022\031.proto.JobRequestRestrict\032\031.proto." +
-      "JobRequestFullInfo0\001\022?\n\014Recruiter_CV\022\031.p" +
-      "roto.JobRequestRestrict\032\022.proto.AppliesI" +
-      "nfo0\0012\236\002\n\017WishListService\022B\n\016WishListCre" +
-      "ate\022\027.proto.WishListFullInfo\032\027.proto.Wis" +
-      "hListFullInfo\022<\n\014WishListRead\022\023.proto.Us" +
-      "erFullInfo\032\027.proto.WishListFullInfo\022F\n\022W" +
-      "ishListUpdateInfo\022\027.proto.WishListFullIn" +
-      "fo\032\027.proto.WishListFullInfo\022A\n\016WishListD" +
-      "elete\022\023.proto.UserFullInfo\032\032.google.prot" +
-      "obuf.BoolValueb\006proto3"
+      "nfo\022G\n\017EducationDelete\022\030.proto.Education" +
+      "FullInfo\032\032.google.protobuf.BoolValue2\256\003\n" +
+      "\024CertificationService\022Q\n\023CertificationCr" +
+      "eate\022\034.proto.CertificationFullInfo\032\034.pro" +
+      "to.CertificationFullInfo\022O\n\021Certificatio" +
+      "nRead\022\034.proto.CertificationFullInfo\032\034.pr" +
+      "oto.CertificationFullInfo\022J\n\025Certificati" +
+      "onListRead\022\021.proto.CVFullInfo\032\034.proto.Ce" +
+      "rtificationFullInfo0\001\022U\n\027CertificationUp" +
+      "dateInfo\022\034.proto.CertificationFullInfo\032\034" +
+      ".proto.CertificationFullInfo\022O\n\023Certific" +
+      "ationDelete\022\034.proto.CertificationFullInf" +
+      "o\032\032.google.protobuf.BoolValue2\332\002\n\016Projec" +
+      "tService\022?\n\rProjectCreate\022\026.proto.Projec" +
+      "tFullInfo\032\026.proto.ProjectFullInfo\022=\n\013Pro" +
+      "jectRead\022\026.proto.ProjectFullInfo\032\026.proto" +
+      ".ProjectFullInfo\022>\n\017ProjectListRead\022\021.pr" +
+      "oto.CVFullInfo\032\026.proto.ProjectFullInfo0\001" +
+      "\022C\n\021ProjectUpdateInfo\022\026.proto.ProjectFul" +
+      "lInfo\032\026.proto.ProjectFullInfo\022C\n\rProject" +
+      "Delete\022\026.proto.ProjectFullInfo\032\032.google." +
+      "protobuf.BoolValue2\276\002\n\014AwardService\0229\n\013A" +
+      "wardCreate\022\024.proto.AwardFullInfo\032\024.proto" +
+      ".AwardFullInfo\0227\n\tAwardRead\022\024.proto.Awar" +
+      "dFullInfo\032\024.proto.AwardFullInfo\022:\n\rAward" +
+      "ListRead\022\021.proto.CVFullInfo\032\024.proto.Awar" +
+      "dFullInfo0\001\022=\n\017AwardUpdateInfo\022\024.proto.A" +
+      "wardFullInfo\032\024.proto.AwardFullInfo\022?\n\013Aw" +
+      "ardDelete\022\024.proto.AwardFullInfo\032\032.google" +
+      ".protobuf.BoolValue2\240\001\n\rSearchService\022N\n" +
+      "\024Candidate_JobRequest\022\031.proto.JobRequest" +
+      "Restrict\032\031.proto.JobRequestFullInfo0\001\022?\n" +
+      "\014Recruiter_CV\022\031.proto.JobRequestRestrict" +
+      "\032\022.proto.AppliesInfo0\0012\236\002\n\017WishListServi" +
+      "ce\022B\n\016WishListCreate\022\027.proto.WishListFul" +
+      "lInfo\032\027.proto.WishListFullInfo\022<\n\014WishLi" +
+      "stRead\022\023.proto.UserFullInfo\032\027.proto.Wish" +
+      "ListFullInfo\022F\n\022WishListUpdateInfo\022\027.pro" +
+      "to.WishListFullInfo\032\027.proto.WishListFull" +
+      "Info\022A\n\016WishListDelete\022\023.proto.UserFullI" +
+      "nfo\032\032.google.protobuf.BoolValueb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -26301,7 +26449,7 @@ public final class ServerClient {
     internal_static_proto_CompanyFullInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_CompanyFullInfo_descriptor,
-        new java.lang.String[] { "CompaniesID", "CompanyName", "ImagePath", "Specialty", "Size", "Introduction", "Address", "Website", "Email", "ActiveBranchs", });
+        new java.lang.String[] { "CompaniesID", "CompanyName", "ImagePath", "Specialty", "Size", "Introduction", "Address", "Website", "Email", "Validated", "ActiveBranchs", });
     internal_static_proto_CompanyFullInfo_ActiveBranchsEntry_descriptor =
       internal_static_proto_CompanyFullInfo_descriptor.getNestedTypes().get(0);
     internal_static_proto_CompanyFullInfo_ActiveBranchsEntry_fieldAccessorTable = new
@@ -26349,7 +26497,7 @@ public final class ServerClient {
     internal_static_proto_RecruiterFullInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_RecruiterFullInfo_descriptor,
-        new java.lang.String[] { "User", "BranchID", "RoleName", "RoleLevel", "DepartmentName", });
+        new java.lang.String[] { "User", "BranchID", "RoleName", "RoleLevel", "DepartmentName", "Validated", });
     internal_static_proto_CVFullInfo_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_proto_CVFullInfo_fieldAccessorTable = new

@@ -47,7 +47,6 @@ public class RecruiterDAO {
             else {
                 recruiters.setRoleLevel(request.getRoleLevel());
                 preparedStatement.setInt(4, request.getRoleLevel());
-
             }
 
             if(!request.getDepartmentName().isEmpty() && !request.getDepartmentName().isEmpty()){
@@ -59,6 +58,7 @@ public class RecruiterDAO {
             int rowsInserted = preparedStatement.executeUpdate();
 
             if(rowsInserted == 1){
+                System.out.println("ok");
                 return recruiters;
             }
             else throw new Exception("Recruiter không thêm thành công ");
@@ -99,11 +99,13 @@ public class RecruiterDAO {
                     Integer roleLevel = resultSet.getInt("roleLevel");
                     String roleName = resultSet.getString("roleName");
                     String departmentName = resultSet.getString("departmentName");
+                    Boolean validated = resultSet.getBoolean("validated");
 
                     recruiters.setBranchID(branchID);
                     recruiters.setRoleLevel(roleLevel);
                     recruiters.setDepartmentName(departmentName);
                     recruiters.setRoleName(roleName);
+                    recruiters.setValidated(validated);
                     return recruiters;
                 } else {
                     throw new IllegalStateException("Query nhiều kết quả");
@@ -145,6 +147,9 @@ public class RecruiterDAO {
                 sb.append("`Recruiters`.`roleName` = ?, ");
                 parameters.add(request.getRoleName());
             }
+
+            sb.append("`Recruiters`.`validated` = ?, ");
+            parameters.add(request.getValidated());
 
             sb.setLength(sb.length()-2);
             if(request.getUser().getUserID() != 0){
@@ -203,6 +208,9 @@ public class RecruiterDAO {
 
                 String roleName = resultSet.getString("roleName");
                 recruiters.setRoleName(roleName != null ? roleName : "");
+
+                Boolean validated = resultSet.getBoolean("validated");
+                recruiters.setValidated(validated);
                 arrayList.add(recruiters);
             }
             return  arrayList;

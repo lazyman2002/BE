@@ -110,6 +110,9 @@ public class Converter {
         if(recruiters.getBranchID() != null && recruiters.getBranchID() != 0)   builder.setBranchID(recruiters.getBranchID());
         if(recruiters.getRoleLevel() != null && recruiters.getRoleLevel() != 0)     builder.setRoleLevel(recruiters.getRoleLevel());
         if(recruiters.getDepartmentName() != null && !recruiters.getDepartmentName().isEmpty())  builder.setDepartmentName(recruiters.getDepartmentName());
+
+        if(recruiters.getValidated() != null)
+            builder.setValidated(recruiters.getValidated());
         return builder.build();
     }
 
@@ -133,6 +136,8 @@ public class Converter {
                     convertHashSetToMap((HashSet<Integer>) companies.getActiveBranchs())
             );
         }
+        if(companies.getValidated() != null)
+            builder.setValidated(companies.getValidated());
         return builder.build();
     }
 
