@@ -114,7 +114,6 @@ public class GroupController {
         }
     }
 
-/*
     public Boolean checkInGroup(Integer userID, Integer groupID) throws Exception {
         GroupMemberDAO groupMemberDAO = new GroupMemberDAO();
         Connection connection = null;
@@ -128,8 +127,6 @@ public class GroupController {
             if (connection != null) connection.close();
         }
     }
-
- */
 
     public ArrayList<ServerChat.GroupMember> groupMemberRead(ServerChat.GroupInfo request) throws Exception {
         GroupMemberDAO groupMemberDAO = new GroupMemberDAO();

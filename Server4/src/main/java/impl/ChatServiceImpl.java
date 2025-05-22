@@ -37,7 +37,7 @@ public class ChatServiceImpl extends ChatServiceGrpc.ChatServiceImplBase {
 
                 Boolean legal = false;
                 try {
-//                    legal = groupController.checkInGroup(userId, groupId);
+                    legal = groupController.checkInGroup(userId, groupId);
                 } catch (Exception e) {
                     responseObserver.onError(new IllegalArgumentException("User not in group"));
                 }
@@ -52,6 +52,7 @@ public class ChatServiceImpl extends ChatServiceGrpc.ChatServiceImplBase {
 
                 if (!grouper.contains(responseObserver)) {
 //Tải và gửi tin nhắn cũ
+
                     grouper.add(responseObserver);
                 }
 //Lưu giữ tin nhắn vào Kafka rồi mới vào các bên khác

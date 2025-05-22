@@ -129,7 +129,6 @@ public class GroupMemberDAO {
         }
     }
 
-    /*
     public Boolean checkInGroup(Integer userId, Integer groupId, Connection connection) throws Exception {
         System.out.println("checkInGroup");
 
@@ -155,9 +154,6 @@ public class GroupMemberDAO {
         }
         return  false;
     }
-
-
-     */
 
     public ArrayList<ServerChat.GroupMember> readGroupMemberList(ServerChat.GroupInfo request, Connection connection) throws Exception {
         System.out.println("readGroupMemberList");
