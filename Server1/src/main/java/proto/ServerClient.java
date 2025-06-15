@@ -7634,16 +7634,28 @@ public final class ServerClient {
     proto.ServerClient.JobType getJobType();
 
     /**
-     * <code>int32 salaryLeast = 8;</code>
+     * <code>string salaryLeast = 8;</code>
      * @return The salaryLeast.
      */
-    int getSalaryLeast();
+    java.lang.String getSalaryLeast();
+    /**
+     * <code>string salaryLeast = 8;</code>
+     * @return The bytes for salaryLeast.
+     */
+    com.google.protobuf.ByteString
+        getSalaryLeastBytes();
 
     /**
-     * <code>int32 salaryGreatest = 9;</code>
+     * <code>string salaryGreatest = 9;</code>
      * @return The salaryGreatest.
      */
-    int getSalaryGreatest();
+    java.lang.String getSalaryGreatest();
+    /**
+     * <code>string salaryGreatest = 9;</code>
+     * @return The bytes for salaryGreatest.
+     */
+    com.google.protobuf.ByteString
+        getSalaryGreatestBytes();
 
     /**
      * <code>.google.protobuf.Timestamp deadlineDate = 10;</code>
@@ -7786,6 +7798,8 @@ public final class ServerClient {
       worktime_ = "";
       jobField_ = "";
       jobType_ = 0;
+      salaryLeast_ = "";
+      salaryGreatest_ = "";
       jobTitle_ = "";
       jobLevel_ = 0;
       jobDescription_ = "";
@@ -8000,25 +8014,81 @@ public final class ServerClient {
     }
 
     public static final int SALARYLEAST_FIELD_NUMBER = 8;
-    private int salaryLeast_ = 0;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object salaryLeast_ = "";
     /**
-     * <code>int32 salaryLeast = 8;</code>
+     * <code>string salaryLeast = 8;</code>
      * @return The salaryLeast.
      */
     @java.lang.Override
-    public int getSalaryLeast() {
-      return salaryLeast_;
+    public java.lang.String getSalaryLeast() {
+      java.lang.Object ref = salaryLeast_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        salaryLeast_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string salaryLeast = 8;</code>
+     * @return The bytes for salaryLeast.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSalaryLeastBytes() {
+      java.lang.Object ref = salaryLeast_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        salaryLeast_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int SALARYGREATEST_FIELD_NUMBER = 9;
-    private int salaryGreatest_ = 0;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object salaryGreatest_ = "";
     /**
-     * <code>int32 salaryGreatest = 9;</code>
+     * <code>string salaryGreatest = 9;</code>
      * @return The salaryGreatest.
      */
     @java.lang.Override
-    public int getSalaryGreatest() {
-      return salaryGreatest_;
+    public java.lang.String getSalaryGreatest() {
+      java.lang.Object ref = salaryGreatest_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        salaryGreatest_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string salaryGreatest = 9;</code>
+     * @return The bytes for salaryGreatest.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSalaryGreatestBytes() {
+      java.lang.Object ref = salaryGreatest_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        salaryGreatest_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int DEADLINEDATE_FIELD_NUMBER = 10;
@@ -8383,11 +8453,11 @@ public final class ServerClient {
       if (jobType_ != proto.ServerClient.JobType.NULL_TYPE.getNumber()) {
         output.writeEnum(7, jobType_);
       }
-      if (salaryLeast_ != 0) {
-        output.writeInt32(8, salaryLeast_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(salaryLeast_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, salaryLeast_);
       }
-      if (salaryGreatest_ != 0) {
-        output.writeInt32(9, salaryGreatest_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(salaryGreatest_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, salaryGreatest_);
       }
       if (deadlineDate_ != null) {
         output.writeMessage(10, getDeadlineDate());
@@ -8453,13 +8523,11 @@ public final class ServerClient {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(7, jobType_);
       }
-      if (salaryLeast_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, salaryLeast_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(salaryLeast_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, salaryLeast_);
       }
-      if (salaryGreatest_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, salaryGreatest_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(salaryGreatest_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, salaryGreatest_);
       }
       if (deadlineDate_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -8526,10 +8594,10 @@ public final class ServerClient {
       if (getLocationID()
           != other.getLocationID()) return false;
       if (jobType_ != other.jobType_) return false;
-      if (getSalaryLeast()
-          != other.getSalaryLeast()) return false;
-      if (getSalaryGreatest()
-          != other.getSalaryGreatest()) return false;
+      if (!getSalaryLeast()
+          .equals(other.getSalaryLeast())) return false;
+      if (!getSalaryGreatest()
+          .equals(other.getSalaryGreatest())) return false;
       if (hasDeadlineDate() != other.hasDeadlineDate()) return false;
       if (hasDeadlineDate()) {
         if (!getDeadlineDate()
@@ -8576,9 +8644,9 @@ public final class ServerClient {
       hash = (37 * hash) + JOBTYPE_FIELD_NUMBER;
       hash = (53 * hash) + jobType_;
       hash = (37 * hash) + SALARYLEAST_FIELD_NUMBER;
-      hash = (53 * hash) + getSalaryLeast();
+      hash = (53 * hash) + getSalaryLeast().hashCode();
       hash = (37 * hash) + SALARYGREATEST_FIELD_NUMBER;
-      hash = (53 * hash) + getSalaryGreatest();
+      hash = (53 * hash) + getSalaryGreatest().hashCode();
       if (hasDeadlineDate()) {
         hash = (37 * hash) + DEADLINEDATE_FIELD_NUMBER;
         hash = (53 * hash) + getDeadlineDate().hashCode();
@@ -8759,8 +8827,8 @@ public final class ServerClient {
         jobField_ = "";
         locationID_ = 0;
         jobType_ = 0;
-        salaryLeast_ = 0;
-        salaryGreatest_ = 0;
+        salaryLeast_ = "";
+        salaryGreatest_ = "";
         deadlineDate_ = null;
         if (deadlineDateBuilder_ != null) {
           deadlineDateBuilder_.dispose();
@@ -8937,11 +9005,15 @@ public final class ServerClient {
         if (other.jobType_ != 0) {
           setJobTypeValue(other.getJobTypeValue());
         }
-        if (other.getSalaryLeast() != 0) {
-          setSalaryLeast(other.getSalaryLeast());
+        if (!other.getSalaryLeast().isEmpty()) {
+          salaryLeast_ = other.salaryLeast_;
+          bitField0_ |= 0x00000080;
+          onChanged();
         }
-        if (other.getSalaryGreatest() != 0) {
-          setSalaryGreatest(other.getSalaryGreatest());
+        if (!other.getSalaryGreatest().isEmpty()) {
+          salaryGreatest_ = other.salaryGreatest_;
+          bitField0_ |= 0x00000100;
+          onChanged();
         }
         if (other.hasDeadlineDate()) {
           mergeDeadlineDate(other.getDeadlineDate());
@@ -9041,16 +9113,16 @@ public final class ServerClient {
                 bitField0_ |= 0x00000040;
                 break;
               } // case 56
-              case 64: {
-                salaryLeast_ = input.readInt32();
+              case 66: {
+                salaryLeast_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000080;
                 break;
-              } // case 64
-              case 72: {
-                salaryGreatest_ = input.readInt32();
+              } // case 66
+              case 74: {
+                salaryGreatest_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000100;
                 break;
-              } // case 72
+              } // case 74
               case 82: {
                 input.readMessage(
                     getDeadlineDateFieldBuilder().getBuilder(),
@@ -9484,66 +9556,146 @@ public final class ServerClient {
         return this;
       }
 
-      private int salaryLeast_ ;
+      private java.lang.Object salaryLeast_ = "";
       /**
-       * <code>int32 salaryLeast = 8;</code>
+       * <code>string salaryLeast = 8;</code>
        * @return The salaryLeast.
        */
-      @java.lang.Override
-      public int getSalaryLeast() {
-        return salaryLeast_;
+      public java.lang.String getSalaryLeast() {
+        java.lang.Object ref = salaryLeast_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          salaryLeast_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>int32 salaryLeast = 8;</code>
+       * <code>string salaryLeast = 8;</code>
+       * @return The bytes for salaryLeast.
+       */
+      public com.google.protobuf.ByteString
+          getSalaryLeastBytes() {
+        java.lang.Object ref = salaryLeast_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          salaryLeast_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string salaryLeast = 8;</code>
        * @param value The salaryLeast to set.
        * @return This builder for chaining.
        */
-      public Builder setSalaryLeast(int value) {
-        
+      public Builder setSalaryLeast(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
         salaryLeast_ = value;
         bitField0_ |= 0x00000080;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 salaryLeast = 8;</code>
+       * <code>string salaryLeast = 8;</code>
        * @return This builder for chaining.
        */
       public Builder clearSalaryLeast() {
+        salaryLeast_ = getDefaultInstance().getSalaryLeast();
         bitField0_ = (bitField0_ & ~0x00000080);
-        salaryLeast_ = 0;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string salaryLeast = 8;</code>
+       * @param value The bytes for salaryLeast to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSalaryLeastBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        salaryLeast_ = value;
+        bitField0_ |= 0x00000080;
         onChanged();
         return this;
       }
 
-      private int salaryGreatest_ ;
+      private java.lang.Object salaryGreatest_ = "";
       /**
-       * <code>int32 salaryGreatest = 9;</code>
+       * <code>string salaryGreatest = 9;</code>
        * @return The salaryGreatest.
        */
-      @java.lang.Override
-      public int getSalaryGreatest() {
-        return salaryGreatest_;
+      public java.lang.String getSalaryGreatest() {
+        java.lang.Object ref = salaryGreatest_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          salaryGreatest_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>int32 salaryGreatest = 9;</code>
+       * <code>string salaryGreatest = 9;</code>
+       * @return The bytes for salaryGreatest.
+       */
+      public com.google.protobuf.ByteString
+          getSalaryGreatestBytes() {
+        java.lang.Object ref = salaryGreatest_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          salaryGreatest_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string salaryGreatest = 9;</code>
        * @param value The salaryGreatest to set.
        * @return This builder for chaining.
        */
-      public Builder setSalaryGreatest(int value) {
-        
+      public Builder setSalaryGreatest(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
         salaryGreatest_ = value;
         bitField0_ |= 0x00000100;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 salaryGreatest = 9;</code>
+       * <code>string salaryGreatest = 9;</code>
        * @return This builder for chaining.
        */
       public Builder clearSalaryGreatest() {
+        salaryGreatest_ = getDefaultInstance().getSalaryGreatest();
         bitField0_ = (bitField0_ & ~0x00000100);
-        salaryGreatest_ = 0;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string salaryGreatest = 9;</code>
+       * @param value The bytes for salaryGreatest to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSalaryGreatestBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        salaryGreatest_ = value;
+        bitField0_ |= 0x00000100;
         onChanged();
         return this;
       }
@@ -26328,8 +26480,8 @@ public final class ServerClient {
       "obID\030\001 \001(\005\022\020\n\010branchID\030\002 \001(\005\022\r\n\005title\030\003 " +
       "\001(\t\022\020\n\010worktime\030\004 \001(\t\022\020\n\010jobField\030\005 \001(\t\022" +
       "\022\n\nlocationID\030\006 \001(\005\022\037\n\007jobType\030\007 \001(\0162\016.p" +
-      "roto.JobType\022\023\n\013salaryLeast\030\010 \001(\005\022\026\n\016sal" +
-      "aryGreatest\030\t \001(\005\0220\n\014deadlineDate\030\n \001(\0132" +
+      "roto.JobType\022\023\n\013salaryLeast\030\010 \001(\t\022\026\n\016sal" +
+      "aryGreatest\030\t \001(\t\0220\n\014deadlineDate\030\n \001(\0132" +
       "\032.google.protobuf.Timestamp\022\020\n\010jobTitle\030" +
       "\013 \001(\t\022!\n\010jobLevel\030\014 \001(\0162\017.proto.JobLevel" +
       "\022\026\n\016jobDescription\030\r \001(\t\022\026\n\016jobRequireme" +
