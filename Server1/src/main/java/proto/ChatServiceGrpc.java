@@ -16,28 +16,28 @@ public final class ChatServiceGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<proto.ServerChat.MessageInfo,
-      proto.ServerChat.MessageInfo> getChatMethod;
+      com.google.protobuf.BoolValue> getChatMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Chat",
       requestType = proto.ServerChat.MessageInfo.class,
-      responseType = proto.ServerChat.MessageInfo.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+      responseType = com.google.protobuf.BoolValue.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<proto.ServerChat.MessageInfo,
-      proto.ServerChat.MessageInfo> getChatMethod() {
-    io.grpc.MethodDescriptor<proto.ServerChat.MessageInfo, proto.ServerChat.MessageInfo> getChatMethod;
+      com.google.protobuf.BoolValue> getChatMethod() {
+    io.grpc.MethodDescriptor<proto.ServerChat.MessageInfo, com.google.protobuf.BoolValue> getChatMethod;
     if ((getChatMethod = ChatServiceGrpc.getChatMethod) == null) {
       synchronized (ChatServiceGrpc.class) {
         if ((getChatMethod = ChatServiceGrpc.getChatMethod) == null) {
           ChatServiceGrpc.getChatMethod = getChatMethod =
-              io.grpc.MethodDescriptor.<proto.ServerChat.MessageInfo, proto.ServerChat.MessageInfo>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              io.grpc.MethodDescriptor.<proto.ServerChat.MessageInfo, com.google.protobuf.BoolValue>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Chat"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   proto.ServerChat.MessageInfo.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  proto.ServerChat.MessageInfo.getDefaultInstance()))
+                  com.google.protobuf.BoolValue.getDefaultInstance()))
               .setSchemaDescriptor(new ChatServiceMethodDescriptorSupplier("Chat"))
               .build();
         }
@@ -189,9 +189,9 @@ public final class ChatServiceGrpc {
 
     /**
      */
-    public io.grpc.stub.StreamObserver<proto.ServerChat.MessageInfo> chat(
-        io.grpc.stub.StreamObserver<proto.ServerChat.MessageInfo> responseObserver) {
-      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getChatMethod(), responseObserver);
+    public void chat(proto.ServerChat.MessageInfo request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getChatMethod(), responseObserver);
     }
 
     /**
@@ -225,10 +225,10 @@ public final class ChatServiceGrpc {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
             getChatMethod(),
-            io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 proto.ServerChat.MessageInfo,
-                proto.ServerChat.MessageInfo>(
+                com.google.protobuf.BoolValue>(
                   this, METHODID_CHAT)))
           .addMethod(
             getUploadFileMethod(),
@@ -271,10 +271,10 @@ public final class ChatServiceGrpc {
 
     /**
      */
-    public io.grpc.stub.StreamObserver<proto.ServerChat.MessageInfo> chat(
-        io.grpc.stub.StreamObserver<proto.ServerChat.MessageInfo> responseObserver) {
-      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
-          getChannel().newCall(getChatMethod(), getCallOptions()), responseObserver);
+    public void chat(proto.ServerChat.MessageInfo request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getChatMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -323,6 +323,13 @@ public final class ChatServiceGrpc {
     }
 
     /**
+     */
+    public com.google.protobuf.BoolValue chat(proto.ServerChat.MessageInfo request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getChatMethod(), getCallOptions(), request);
+    }
+
+    /**
      * <pre>
      *Bỏ
      * </pre>
@@ -355,11 +362,19 @@ public final class ChatServiceGrpc {
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new ChatServiceFutureStub(channel, callOptions);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> chat(
+        proto.ServerChat.MessageInfo request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getChatMethod(), getCallOptions()), request);
+    }
   }
 
-  private static final int METHODID_DOWNLOAD_FILE = 0;
-  private static final int METHODID_GET_OLD_CHAT = 1;
-  private static final int METHODID_CHAT = 2;
+  private static final int METHODID_CHAT = 0;
+  private static final int METHODID_DOWNLOAD_FILE = 1;
+  private static final int METHODID_GET_OLD_CHAT = 2;
   private static final int METHODID_UPLOAD_FILE = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
@@ -379,6 +394,10 @@ public final class ChatServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_CHAT:
+          serviceImpl.chat((proto.ServerChat.MessageInfo) request,
+              (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
+          break;
         case METHODID_DOWNLOAD_FILE:
           serviceImpl.downloadFile((proto.ServerChat.FileInfo) request,
               (io.grpc.stub.StreamObserver<proto.ServerChat.Chunk>) responseObserver);
@@ -397,9 +416,6 @@ public final class ChatServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_CHAT:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.chat(
-              (io.grpc.stub.StreamObserver<proto.ServerChat.MessageInfo>) responseObserver);
         case METHODID_UPLOAD_FILE:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.uploadFile(
               (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);

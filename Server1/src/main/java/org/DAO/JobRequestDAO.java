@@ -155,6 +155,7 @@ public class JobRequestDAO {
 
 
             preparedStatement.setInt(15, groupID);
+            System.out.println("GRID" + groupID);
             // Execute the query and handle the result
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {

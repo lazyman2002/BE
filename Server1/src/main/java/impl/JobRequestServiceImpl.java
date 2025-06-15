@@ -2,16 +2,21 @@ package impl;
 
 import com.google.protobuf.BoolValue;
 import com.google.protobuf.Empty;
+import com.google.protobuf.Int32Value;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
 //import org.controller.ApplyController;
+import org.connectConfig.ENVDockers;
 import org.controller.ApplyController;
 import org.controller.Converter;
 import org.controller.JobController;
 import org.model.JobRequests;
 import proto.JobRequestServiceGrpc;
 import proto.ServerClient;
+import proto.WishListServiceGrpc;
 
 import java.util.ArrayList;
 
@@ -40,6 +45,13 @@ public class JobRequestServiceImpl extends JobRequestServiceGrpc.JobRequestServi
             JobController jobRequestController = new JobController();
             JobRequests jobRequest = jobRequestController.jobRequestRegister(request);
             responseObserver.onNext(Converter.jobRequestsToFullProto(jobRequest));
+
+            ManagedChannel channel = ManagedChannelBuilder.forAddress(ENVDockers.master1_ip, 50051)
+                    .usePlaintext()
+                    .build();
+            WishListServiceGrpc.WishListServiceBlockingStub wishListServiceBlockingStub = WishListServiceGrpc.newBlockingStub(channel);
+            wishListServiceBlockingStub.updateJobVector(Converter.jobRequestsToFullProto(jobRequest));
+            
             responseObserver.onCompleted();
         } catch (Exception e) {
             StatusRuntimeException dbError = Status.ALREADY_EXISTS

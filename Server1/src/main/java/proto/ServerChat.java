@@ -3934,13 +3934,13 @@ public final class ServerChat {
       ".proto.GroupInfo0\001\0229\n\021GroupAppendMember\022" +
       "\022.proto.GroupMember\032\020.proto.GroupInfo\022C\n" +
       "\021GroupDeleteMember\022\022.proto.GroupMember\032\032" +
-      ".google.protobuf.BoolValue2\342\001\n\013ChatServi" +
-      "ce\0222\n\004Chat\022\022.proto.MessageInfo\032\022.proto.M" +
-      "essageInfo(\0010\001\0228\n\nUploadFile\022\014.proto.Chu" +
-      "nk\032\032.google.protobuf.BoolValue(\001\022/\n\014Down" +
-      "loadFile\022\017.proto.FileInfo\032\014.proto.Chunk0" +
-      "\001\0224\n\nGetOldChat\022\020.proto.GroupInfo\032\022.prot" +
-      "o.MessageInfo0\001b\006proto3"
+      ".google.protobuf.BoolValue2\346\001\n\013ChatServi" +
+      "ce\0226\n\004Chat\022\022.proto.MessageInfo\032\032.google." +
+      "protobuf.BoolValue\0228\n\nUploadFile\022\014.proto" +
+      ".Chunk\032\032.google.protobuf.BoolValue(\001\022/\n\014" +
+      "DownloadFile\022\017.proto.FileInfo\032\014.proto.Ch" +
+      "unk0\001\0224\n\nGetOldChat\022\020.proto.GroupInfo\032\022." +
+      "proto.MessageInfo0\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
