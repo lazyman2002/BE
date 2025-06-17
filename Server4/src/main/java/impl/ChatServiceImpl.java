@@ -6,6 +6,7 @@ import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
 import org.controller.GroupController;
+import org.model.MessagesInfo;
 import proto.ChatServiceGrpc;
 import proto.ServerChat;
 
@@ -19,61 +20,92 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ChatServiceImpl extends ChatServiceGrpc.ChatServiceImplBase {
-    private static LinkedHashSet<StreamObserver<ServerChat.MessageInfo>> observers = new LinkedHashSet();
-    Map<Integer, List<StreamObserver<ServerChat.MessageInfo>>> groupObservers = new ConcurrentHashMap<>();
+//    private static LinkedHashSet<StreamObserver<ServerChat.MessageInfo>> observers = new LinkedHashSet();
+//    Map<Integer, List<StreamObserver<ServerChat.MessageInfo>>> groupObservers = new ConcurrentHashMap<>();
+
+//    @Override
+//    public StreamObserver<ServerChat.MessageInfo> chat(StreamObserver<ServerChat.MessageInfo> responseObserver) {
+//        observers.add(responseObserver);
+//        GroupController groupController = new GroupController();
+//
+//        return new StreamObserver<ServerChat.MessageInfo>() {
+//            private int userId;
+//            private int groupId;
+//            @Override
+//            public void onNext(ServerChat.MessageInfo messageInfo) {
+//                groupId = messageInfo.getToGroupID();
+//                userId = messageInfo.getFromUserID();
+//
+//                Boolean legal = false;
+//                try {
+//                    legal = groupController.checkInGroup(userId, groupId);
+//                } catch (Exception e) {
+//                    responseObserver.onError(new IllegalArgumentException("User not in group"));
+//                }
+//                if (!legal) {
+//                    responseObserver.onError(new IllegalArgumentException("User not in group"));
+//                    return;
+//                }
+//
+//                groupObservers.putIfAbsent(groupId, new CopyOnWriteArrayList<>());
+//
+//                List<StreamObserver<ServerChat.MessageInfo>> grouper = groupObservers.get(groupId);
+//
+//                if (!grouper.contains(responseObserver)) {
+//                    grouper.add(responseObserver);
+//                }
+//
+//                HadoopService hadoopService = new HadoopService();
+//                ServerChat.MessageInfo response = null;
+//                System.out.println("checkpoint");
+//                Integer ID = MessagesInfo.addCounter();
+//                System.out.println("ID generated"+ ID);
+//                response = ServerChat.MessageInfo.newBuilder()
+//                        .setFromUserID(userId)
+//                        .setToGroupID(groupId)
+//                        .setMsgID(ID)
+//                        .setMessengerData(messageInfo.getMessengerData())
+//                        .build();
+//                ServerChat.MessageInfo finalResponse = response;
+//                grouper.stream().forEach(o -> {o.onNext(finalResponse);});
+//                try {
+//                    hadoopService.saveGroupData(response);
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                } catch (Exception e) {
+//                    throw new RuntimeException(e);
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable throwable) {
+//                observers.remove(responseObserver);
+//            }
+//
+//            @Override
+//            public void onCompleted() {
+//                observers.remove(responseObserver);
+//            }
+//        };
+//    }
+
 
     @Override
-    public StreamObserver<ServerChat.MessageInfo> chat(StreamObserver<ServerChat.MessageInfo> responseObserver) {
-        observers.add(responseObserver);
-        GroupController groupController = new GroupController();
-
-        return new StreamObserver<ServerChat.MessageInfo>() {
-            private int userId;
-            private int groupId;
-            @Override
-            public void onNext(ServerChat.MessageInfo messageInfo) {
-                groupId = messageInfo.getToGroupID();
-                userId = messageInfo.getFromUserID();
-
-                Boolean legal = false;
-                try {
-                    legal = groupController.checkInGroup(userId, groupId);
-                } catch (Exception e) {
-                    responseObserver.onError(new IllegalArgumentException("User not in group"));
-                }
-                if (!legal) {
-                    responseObserver.onError(new IllegalArgumentException("User not in group"));
-                    return;
-                }
-
-                groupObservers.putIfAbsent(groupId, new CopyOnWriteArrayList<>());
-
-                List<StreamObserver<ServerChat.MessageInfo>> grouper = groupObservers.get(groupId);
-
-                if (!grouper.contains(responseObserver)) {
-//Tải và gửi tin nhắn cũ
-
-                    grouper.add(responseObserver);
-                }
-//Lưu giữ tin nhắn vào Kafka rồi mới vào các bên khác
-                ServerChat.MessageInfo response = ServerChat.MessageInfo.newBuilder()
-                        .setFromUserID(userId)
-                        .setToGroupID(groupId)
-                        .setMessengerData(messageInfo.getMessengerData())
-                        .build();
-                grouper.stream().forEach(o -> {o.onNext(response);});
-            }
-
-            @Override
-            public void onError(Throwable throwable) {
-                observers.remove(responseObserver);
-            }
-
-            @Override
-            public void onCompleted() {
-                observers.remove(responseObserver);
-            }
-        };
+    public void chat(ServerChat.MessageInfo request, StreamObserver<BoolValue> responseObserver) {
+        try {
+            HadoopService hadoopService = new HadoopService();
+            Integer ID = MessagesInfo.addCounter();
+            ServerChat.MessageInfo build = ServerChat.MessageInfo.newBuilder()
+                    .setMsgID(ID)
+                    .setFromUserID(request.getFromUserID())
+                    .setToGroupID(request.getToGroupID())
+                    .setMessengerData(request.getMessengerData())
+                    .build();
+            hadoopService.saveGroupData(build);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

@@ -248,4 +248,34 @@ public class GroupMemberDAO {
             if (preparedStatement != null) preparedStatement.close();
         }
     }
+
+    public ArrayList<GroupMembers> memberInterview (ServerChat.GroupMember request, Connection connection) throws Exception {
+        System.out.println("memberInterview");
+
+        String query = "SELECT * FROM `GroupMembers` WHERE `GroupMembers`.`userID` = ?;";
+        ArrayList<GroupMembers> groupsList = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            if (request.getUserID() == 0) throw new Exception("userID is missing");
+            preparedStatement.setInt(1, request.getUserID());
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                GroupMembers groupMembers = new GroupMembers();
+                Date scheduleDate = resultSet.getDate("scheduleDate");
+                Time interviewTime = resultSet.getTime("interview");
+                Integer groupID = resultSet.getInt("groupID");
+                groupMembers.setSchedule(scheduleDate);
+                groupMembers.setInterview(interviewTime);
+                groupMembers.setGroupID(groupID);
+                groupsList.add(groupMembers);
+            }
+            return groupsList;
+        } finally {
+            if (resultSet != null) resultSet.close();
+            if (preparedStatement != null) preparedStatement.close();
+        }
+    }
 }

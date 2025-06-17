@@ -75,7 +75,7 @@ public class Converter {
     public static ServerChat.GroupMember groupMemberToProto(GroupMembers groupMembers){
         ServerChat.GroupMember.Builder builder = ServerChat.GroupMember.newBuilder();
         if(groupMembers.getUserID() != null && groupMembers.getUserID() != 0)
-            builder.setGroupID(groupMembers.getUserID());
+            builder.setUserID(groupMembers.getUserID());
         if(groupMembers.getGroupID() != null && groupMembers.getGroupID() != 0)
             builder.setGroupID(groupMembers.getGroupID());
         if(groupMembers.getIsAdmin() != 0 && groupMembers.getGroupID() != null)

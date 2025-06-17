@@ -3921,7 +3921,7 @@ public final class ServerChat {
       "omUserID\030\002 \001(\005\022\021\n\ttoGroupID\030\003 \001(\005\022\025\n\rmes" +
       "sengerData\030\004 \001(\t\022,\n\010sendTime\030\005 \001(\0132\032.goo" +
       "gle.protobuf.Timestamp\"\030\n\005Chunk\022\017\n\007Conte" +
-      "nt\030\001 \001(\0142\227\004\n\014GroupService\0221\n\013GroupCreate" +
+      "nt\030\001 \001(\0142\327\004\n\014GroupService\0221\n\013GroupCreate" +
       "\022\020.proto.GroupInfo\032\020.proto.GroupInfo\022/\n\t" +
       "GroupRead\022\020.proto.GroupInfo\032\020.proto.Grou" +
       "pInfo\0225\n\017GroupUpdateInfo\022\020.proto.GroupIn" +
@@ -3934,13 +3934,15 @@ public final class ServerChat {
       ".proto.GroupInfo0\001\0229\n\021GroupAppendMember\022" +
       "\022.proto.GroupMember\032\020.proto.GroupInfo\022C\n" +
       "\021GroupDeleteMember\022\022.proto.GroupMember\032\032" +
-      ".google.protobuf.BoolValue2\342\001\n\013ChatServi" +
-      "ce\0222\n\004Chat\022\022.proto.MessageInfo\032\022.proto.M" +
-      "essageInfo(\0010\001\0228\n\nUploadFile\022\014.proto.Chu" +
-      "nk\032\032.google.protobuf.BoolValue(\001\022/\n\014Down" +
-      "loadFile\022\017.proto.FileInfo\032\014.proto.Chunk0" +
-      "\001\0224\n\nGetOldChat\022\020.proto.GroupInfo\032\022.prot" +
-      "o.MessageInfo0\001b\006proto3"
+      ".google.protobuf.BoolValue\022>\n\024GroupMembe" +
+      "rInterview\022\022.proto.GroupMember\032\022.proto.G" +
+      "roupMember2\346\001\n\013ChatService\0226\n\004Chat\022\022.pro" +
+      "to.MessageInfo\032\032.google.protobuf.BoolVal" +
+      "ue\0228\n\nUploadFile\022\014.proto.Chunk\032\032.google." +
+      "protobuf.BoolValue(\001\022/\n\014DownloadFile\022\017.p" +
+      "roto.FileInfo\032\014.proto.Chunk0\001\0224\n\nGetOldC" +
+      "hat\022\020.proto.GroupInfo\032\022.proto.MessageInf" +
+      "o0\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

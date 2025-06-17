@@ -9,12 +9,13 @@ import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.hadoop.hbase.filter.PrefixFilter;
 import org.model.Groups;
+import org.model.MessagesInfo;
 import proto.ServerChat;
 
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
-
+import java.nio.ByteBuffer;
 public class HadoopService {
     private static final String TABLE_MSG = "Messengers";
     private static final String COLUMN_FAMILY = "info";
@@ -129,5 +130,37 @@ public class HadoopService {
         catch (Exception e){
             throw new Exception(e);
         }
+    }
+
+    public int generateNextMsgID(int groupID) throws IOException {
+        try (Connection connection = ConnectionFactory.createConnection(config)) {
+            Table table = connection.getTable(TableName.valueOf(TABLE_MSG));
+            int maxMsgID = 0;
+
+            Scan scan = new Scan();
+            scan.withStartRow(Bytes.toBytes(groupID + "-"));
+            scan.setRowPrefixFilter(Bytes.toBytes(groupID + "-"));
+            scan.addColumn(Bytes.toBytes(COLUMN_FAMILY), Bytes.toBytes("msgID"));
+
+            ResultScanner scanner = table.getScanner(scan);
+            for (Result result : scanner) {
+                byte[] msgIDBytes = result.getValue(Bytes.toBytes(COLUMN_FAMILY), Bytes.toBytes("msgID"));
+                if (msgIDBytes != null && msgIDBytes.length == 4) {
+                    int msgID = ByteBuffer.wrap(msgIDBytes).getInt();
+                    if (msgID > maxMsgID) {
+                        maxMsgID = msgID;
+                    }
+                }
+            }
+            scanner.close();
+            table.close();
+
+            return maxMsgID + 1;
+        } catch (Exception e) {
+            System.err.println("Error saving data to HBase: " + e.getMessage());
+            throw e;
+        }
+
+
     }
 }

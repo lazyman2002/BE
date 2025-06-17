@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 public class MessagesInfo {
+    private static Integer counter = 5;
     private Integer msgID;
     private Integer fromUserID;
     private Integer toGroupID;
@@ -42,6 +43,11 @@ public class MessagesInfo {
     }
     public void setSendTime(Timestamp sendTime) {
         this.sendTime = sendTime;
+    }
+
+    public static Integer addCounter(){
+        counter++;
+        return counter;
     }
 
     @Override

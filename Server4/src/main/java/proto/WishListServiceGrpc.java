@@ -139,6 +139,68 @@ public final class WishListServiceGrpc {
     return getWishListDeleteMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.google.protobuf.Int32Value,
+      com.google.protobuf.Int32Value> getRecommendationMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Recommendation",
+      requestType = com.google.protobuf.Int32Value.class,
+      responseType = com.google.protobuf.Int32Value.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<com.google.protobuf.Int32Value,
+      com.google.protobuf.Int32Value> getRecommendationMethod() {
+    io.grpc.MethodDescriptor<com.google.protobuf.Int32Value, com.google.protobuf.Int32Value> getRecommendationMethod;
+    if ((getRecommendationMethod = WishListServiceGrpc.getRecommendationMethod) == null) {
+      synchronized (WishListServiceGrpc.class) {
+        if ((getRecommendationMethod = WishListServiceGrpc.getRecommendationMethod) == null) {
+          WishListServiceGrpc.getRecommendationMethod = getRecommendationMethod =
+              io.grpc.MethodDescriptor.<com.google.protobuf.Int32Value, com.google.protobuf.Int32Value>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Recommendation"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.google.protobuf.Int32Value.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.google.protobuf.Int32Value.getDefaultInstance()))
+              .setSchemaDescriptor(new WishListServiceMethodDescriptorSupplier("Recommendation"))
+              .build();
+        }
+      }
+    }
+    return getRecommendationMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.JobRequestFullInfo,
+      com.google.protobuf.BoolValue> getUpdateJobVectorMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "updateJobVector",
+      requestType = proto.ServerClient.JobRequestFullInfo.class,
+      responseType = com.google.protobuf.BoolValue.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<proto.ServerClient.JobRequestFullInfo,
+      com.google.protobuf.BoolValue> getUpdateJobVectorMethod() {
+    io.grpc.MethodDescriptor<proto.ServerClient.JobRequestFullInfo, com.google.protobuf.BoolValue> getUpdateJobVectorMethod;
+    if ((getUpdateJobVectorMethod = WishListServiceGrpc.getUpdateJobVectorMethod) == null) {
+      synchronized (WishListServiceGrpc.class) {
+        if ((getUpdateJobVectorMethod = WishListServiceGrpc.getUpdateJobVectorMethod) == null) {
+          WishListServiceGrpc.getUpdateJobVectorMethod = getUpdateJobVectorMethod =
+              io.grpc.MethodDescriptor.<proto.ServerClient.JobRequestFullInfo, com.google.protobuf.BoolValue>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "updateJobVector"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  proto.ServerClient.JobRequestFullInfo.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.google.protobuf.BoolValue.getDefaultInstance()))
+              .setSchemaDescriptor(new WishListServiceMethodDescriptorSupplier("updateJobVector"))
+              .build();
+        }
+      }
+    }
+    return getUpdateJobVectorMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -215,6 +277,20 @@ public final class WishListServiceGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getWishListDeleteMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void recommendation(com.google.protobuf.Int32Value request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.Int32Value> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRecommendationMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void updateJobVector(proto.ServerClient.JobRequestFullInfo request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdateJobVectorMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -245,6 +321,20 @@ public final class WishListServiceGrpc {
                 proto.ServerClient.UserFullInfo,
                 com.google.protobuf.BoolValue>(
                   this, METHODID_WISH_LIST_DELETE)))
+          .addMethod(
+            getRecommendationMethod(),
+            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+              new MethodHandlers<
+                com.google.protobuf.Int32Value,
+                com.google.protobuf.Int32Value>(
+                  this, METHODID_RECOMMENDATION)))
+          .addMethod(
+            getUpdateJobVectorMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                proto.ServerClient.JobRequestFullInfo,
+                com.google.protobuf.BoolValue>(
+                  this, METHODID_UPDATE_JOB_VECTOR)))
           .build();
     }
   }
@@ -294,6 +384,22 @@ public final class WishListServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getWishListDeleteMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void recommendation(com.google.protobuf.Int32Value request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.Int32Value> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getRecommendationMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void updateJobVector(proto.ServerClient.JobRequestFullInfo request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getUpdateJobVectorMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -336,6 +442,21 @@ public final class WishListServiceGrpc {
     public com.google.protobuf.BoolValue wishListDelete(proto.ServerClient.UserFullInfo request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getWishListDeleteMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<com.google.protobuf.Int32Value> recommendation(
+        com.google.protobuf.Int32Value request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getRecommendationMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.google.protobuf.BoolValue updateJobVector(proto.ServerClient.JobRequestFullInfo request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getUpdateJobVectorMethod(), getCallOptions(), request);
     }
   }
 
@@ -384,12 +505,22 @@ public final class WishListServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getWishListDeleteMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> updateJobVector(
+        proto.ServerClient.JobRequestFullInfo request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getUpdateJobVectorMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_WISH_LIST_CREATE = 0;
   private static final int METHODID_WISH_LIST_READ = 1;
   private static final int METHODID_WISH_LIST_UPDATE_INFO = 2;
   private static final int METHODID_WISH_LIST_DELETE = 3;
+  private static final int METHODID_RECOMMENDATION = 4;
+  private static final int METHODID_UPDATE_JOB_VECTOR = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -422,6 +553,14 @@ public final class WishListServiceGrpc {
           break;
         case METHODID_WISH_LIST_DELETE:
           serviceImpl.wishListDelete((proto.ServerClient.UserFullInfo) request,
+              (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
+          break;
+        case METHODID_RECOMMENDATION:
+          serviceImpl.recommendation((com.google.protobuf.Int32Value) request,
+              (io.grpc.stub.StreamObserver<com.google.protobuf.Int32Value>) responseObserver);
+          break;
+        case METHODID_UPDATE_JOB_VECTOR:
+          serviceImpl.updateJobVector((proto.ServerClient.JobRequestFullInfo) request,
               (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         default:
@@ -489,6 +628,8 @@ public final class WishListServiceGrpc {
               .addMethod(getWishListReadMethod())
               .addMethod(getWishListUpdateInfoMethod())
               .addMethod(getWishListDeleteMethod())
+              .addMethod(getRecommendationMethod())
+              .addMethod(getUpdateJobVectorMethod())
               .build();
         }
       }

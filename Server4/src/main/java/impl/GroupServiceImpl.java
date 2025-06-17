@@ -1,16 +1,17 @@
 package impl;
 
 import com.google.protobuf.BoolValue;
-import hadoop.HadoopService;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
 import org.controller.Converter;
 import org.controller.GroupController;
+import org.model.GroupMembers;
 import org.model.Groups;
 import proto.GroupServiceGrpc;
 import proto.ServerChat;
 
+import java.time.Instant;
 import java.util.ArrayList;
 
 public class GroupServiceImpl extends GroupServiceGrpc.GroupServiceImplBase {
@@ -165,8 +166,47 @@ public class GroupServiceImpl extends GroupServiceGrpc.GroupServiceImplBase {
         try {
             GroupController groupController = new GroupController();
             ServerChat.GroupMember groupMembers = groupController.groupMemberUpdate(request);
-
+            responseObserver.onNext(groupMembers);
+            responseObserver.onCompleted();
         } catch (Exception e) {
+            StatusRuntimeException dbError = Status.ALREADY_EXISTS
+                    .withDescription(e.getMessage())
+                    .asRuntimeException();
+            responseObserver.onError(dbError);
+        }
+    }
+
+    @Override
+    public void groupMemberInterview(ServerChat.GroupMember request, StreamObserver<ServerChat.GroupMember> responseObserver) {
+        System.out.println("groupMemberInterview");
+
+        try {
+            GroupController groupController = new GroupController();
+            ArrayList<GroupMembers> groupMembers = groupController.groupMemberInterview(request);
+            java.sql.Timestamp now = java.sql.Timestamp.from(Instant.now());
+            java.sql.Timestamp closestTimestamp = null;
+            GroupMembers closest = new GroupMembers();
+
+            for (GroupMembers groupMember : groupMembers) {
+                if (groupMember.getSchedule() != null && groupMember.getInterview() != null) {
+                    long dateMillis = groupMember.getSchedule().getTime();
+                    long timeMillis = groupMember.getInterview().getTime() % (24 * 60 * 60 * 1000);
+                    java.sql.Timestamp interviewTimestamp = new java.sql.Timestamp(dateMillis + timeMillis);
+
+//                    if (interviewTimestamp.after(now)) {
+                        if (closestTimestamp == null || interviewTimestamp.before(closestTimestamp)
+                        ) {
+                            closestTimestamp = interviewTimestamp;
+                            closest = groupMember;
+                        }
+//                    }
+                }
+            }
+            System.out.println(closest);
+            responseObserver.onNext(Converter.groupMemberToProto(closest));
+            responseObserver.onCompleted();
+        }
+         catch (Exception e) {
             StatusRuntimeException dbError = Status.ALREADY_EXISTS
                     .withDescription(e.getMessage())
                     .asRuntimeException();

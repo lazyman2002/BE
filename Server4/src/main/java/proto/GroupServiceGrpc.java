@@ -294,6 +294,37 @@ public final class GroupServiceGrpc {
     return getGroupDeleteMemberMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<proto.ServerChat.GroupMember,
+      proto.ServerChat.GroupMember> getGroupMemberInterviewMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GroupMemberInterview",
+      requestType = proto.ServerChat.GroupMember.class,
+      responseType = proto.ServerChat.GroupMember.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<proto.ServerChat.GroupMember,
+      proto.ServerChat.GroupMember> getGroupMemberInterviewMethod() {
+    io.grpc.MethodDescriptor<proto.ServerChat.GroupMember, proto.ServerChat.GroupMember> getGroupMemberInterviewMethod;
+    if ((getGroupMemberInterviewMethod = GroupServiceGrpc.getGroupMemberInterviewMethod) == null) {
+      synchronized (GroupServiceGrpc.class) {
+        if ((getGroupMemberInterviewMethod = GroupServiceGrpc.getGroupMemberInterviewMethod) == null) {
+          GroupServiceGrpc.getGroupMemberInterviewMethod = getGroupMemberInterviewMethod =
+              io.grpc.MethodDescriptor.<proto.ServerChat.GroupMember, proto.ServerChat.GroupMember>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GroupMemberInterview"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  proto.ServerChat.GroupMember.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  proto.ServerChat.GroupMember.getDefaultInstance()))
+              .setSchemaDescriptor(new GroupServiceMethodDescriptorSupplier("GroupMemberInterview"))
+              .build();
+        }
+      }
+    }
+    return getGroupMemberInterviewMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -405,6 +436,13 @@ public final class GroupServiceGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGroupDeleteMemberMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void groupMemberInterview(proto.ServerChat.GroupMember request,
+        io.grpc.stub.StreamObserver<proto.ServerChat.GroupMember> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGroupMemberInterviewMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -470,6 +508,13 @@ public final class GroupServiceGrpc {
                 proto.ServerChat.GroupMember,
                 com.google.protobuf.BoolValue>(
                   this, METHODID_GROUP_DELETE_MEMBER)))
+          .addMethod(
+            getGroupMemberInterviewMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                proto.ServerChat.GroupMember,
+                proto.ServerChat.GroupMember>(
+                  this, METHODID_GROUP_MEMBER_INTERVIEW)))
           .build();
     }
   }
@@ -559,6 +604,14 @@ public final class GroupServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGroupDeleteMemberMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void groupMemberInterview(proto.ServerChat.GroupMember request,
+        io.grpc.stub.StreamObserver<proto.ServerChat.GroupMember> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGroupMemberInterviewMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -639,6 +692,13 @@ public final class GroupServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGroupDeleteMemberMethod(), getCallOptions(), request);
     }
+
+    /**
+     */
+    public proto.ServerChat.GroupMember groupMemberInterview(proto.ServerChat.GroupMember request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGroupMemberInterviewMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -710,6 +770,14 @@ public final class GroupServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGroupDeleteMemberMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<proto.ServerChat.GroupMember> groupMemberInterview(
+        proto.ServerChat.GroupMember request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGroupMemberInterviewMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GROUP_CREATE = 0;
@@ -721,6 +789,7 @@ public final class GroupServiceGrpc {
   private static final int METHODID_GROUP_LIST_READ = 6;
   private static final int METHODID_GROUP_APPEND_MEMBER = 7;
   private static final int METHODID_GROUP_DELETE_MEMBER = 8;
+  private static final int METHODID_GROUP_MEMBER_INTERVIEW = 9;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -774,6 +843,10 @@ public final class GroupServiceGrpc {
         case METHODID_GROUP_DELETE_MEMBER:
           serviceImpl.groupDeleteMember((proto.ServerChat.GroupMember) request,
               (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
+          break;
+        case METHODID_GROUP_MEMBER_INTERVIEW:
+          serviceImpl.groupMemberInterview((proto.ServerChat.GroupMember) request,
+              (io.grpc.stub.StreamObserver<proto.ServerChat.GroupMember>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -845,6 +918,7 @@ public final class GroupServiceGrpc {
               .addMethod(getGroupListReadMethod())
               .addMethod(getGroupAppendMemberMethod())
               .addMethod(getGroupDeleteMemberMethod())
+              .addMethod(getGroupMemberInterviewMethod())
               .build();
         }
       }

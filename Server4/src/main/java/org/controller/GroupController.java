@@ -3,6 +3,7 @@ package org.controller;
 import org.DAO.GroupDAO;
 import org.DAO.GroupMemberDAO;
 import org.connectConfig.HikariDataSource;
+import org.model.GroupMembers;
 import org.model.Groups;
 import proto.ServerChat;
 
@@ -144,7 +145,23 @@ public class GroupController {
         Connection connection = null;
         try {
             connection = HikariDataSource.getConnection();
-            return groupMemberDAO.updateGroupMember(request, connection);
+            connection.setAutoCommit(false);
+            ServerChat.GroupMember groupMember = groupMemberDAO.updateGroupMember(request, connection);
+            if(groupMember != null){
+                connection.commit();
+            }
+            return groupMember;
+        } finally {
+            if (connection != null) connection.close();
+        }
+    }
+
+    public ArrayList<GroupMembers> groupMemberInterview(ServerChat.GroupMember request) throws Exception {
+        GroupMemberDAO groupMemberDAO = new GroupMemberDAO();
+        Connection connection = null;
+        try {
+            connection = HikariDataSource.getConnection();
+            return groupMemberDAO.memberInterview(request, connection);
         } finally {
             if (connection != null) connection.close();
         }
