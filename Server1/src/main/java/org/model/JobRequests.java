@@ -15,8 +15,8 @@ public class JobRequests {
 	private String jobField;
 	private Integer locationID;
 	private JobType jobType;
-	private Integer salaryLeast;
-	private Integer salaryGreatest;
+	private String salaryLeast;
+	private String salaryGreatest;
 	private Date deadlineDate;
 
 	private String jobTitle;
@@ -56,10 +56,10 @@ public class JobRequests {
 	public JobType getJobType() {
 		return jobType;
 	}
-	public Integer getSalaryLeast() {
+	public String getSalaryLeast() {
 		return salaryLeast;
 	}
-	public Integer getSalaryGreatest() {
+	public String getSalaryGreatest() {
 		return salaryGreatest;
 	}
 	public Date getDeadlineDate() {
@@ -114,10 +114,10 @@ public class JobRequests {
 	public void setJobType(JobType jobType) {
 		this.jobType = jobType;
 	}
-	public void setSalaryLeast(Integer salaryLeast) {
+	public void setSalaryLeast(String salaryLeast) {
 		this.salaryLeast = salaryLeast;
 	}
-	public void setSalaryGreatest(Integer salaryGreatest) {
+	public void setSalaryGreatest(String salaryGreatest) {
 		this.salaryGreatest = salaryGreatest;
 	}
 	public void setDeadlineDate(Date deadlineDate) {
@@ -174,8 +174,8 @@ public class JobRequests {
 		sb.append(", jobField='").append(jobField).append('\'');
 		sb.append(", locationID=").append(locationID);
 		sb.append(", jobType=").append(jobType);
-		sb.append(", salaryLeast=").append(salaryLeast);
-		sb.append(", salaryGreatest=").append(salaryGreatest);
+		sb.append(", salaryLeast='").append(salaryLeast).append('\'');
+		sb.append(", salaryGreatest='").append(salaryGreatest).append('\'');
 		sb.append(", deadlineDate=").append(deadlineDate);
 		sb.append(", jobTitle='").append(jobTitle).append('\'');
 		sb.append(", jobLevel=").append(jobLevel);

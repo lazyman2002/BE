@@ -201,6 +201,37 @@ public final class CVServiceGrpc {
     return getApplyCVMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<proto.ServerClient.AppliesInfo,
+      com.google.protobuf.BoolValue> getApplyStatusMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ApplyStatus",
+      requestType = proto.ServerClient.AppliesInfo.class,
+      responseType = com.google.protobuf.BoolValue.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<proto.ServerClient.AppliesInfo,
+      com.google.protobuf.BoolValue> getApplyStatusMethod() {
+    io.grpc.MethodDescriptor<proto.ServerClient.AppliesInfo, com.google.protobuf.BoolValue> getApplyStatusMethod;
+    if ((getApplyStatusMethod = CVServiceGrpc.getApplyStatusMethod) == null) {
+      synchronized (CVServiceGrpc.class) {
+        if ((getApplyStatusMethod = CVServiceGrpc.getApplyStatusMethod) == null) {
+          CVServiceGrpc.getApplyStatusMethod = getApplyStatusMethod =
+              io.grpc.MethodDescriptor.<proto.ServerClient.AppliesInfo, com.google.protobuf.BoolValue>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ApplyStatus"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  proto.ServerClient.AppliesInfo.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.google.protobuf.BoolValue.getDefaultInstance()))
+              .setSchemaDescriptor(new CVServiceMethodDescriptorSupplier("ApplyStatus"))
+              .build();
+        }
+      }
+    }
+    return getApplyStatusMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -291,6 +322,13 @@ public final class CVServiceGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getApplyCVMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void applyStatus(proto.ServerClient.AppliesInfo request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getApplyStatusMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -335,6 +373,13 @@ public final class CVServiceGrpc {
                 proto.ServerClient.AppliesInfo,
                 com.google.protobuf.BoolValue>(
                   this, METHODID_APPLY_CV)))
+          .addMethod(
+            getApplyStatusMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                proto.ServerClient.AppliesInfo,
+                com.google.protobuf.BoolValue>(
+                  this, METHODID_APPLY_STATUS)))
           .build();
     }
   }
@@ -400,6 +445,14 @@ public final class CVServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getApplyCVMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void applyStatus(proto.ServerClient.AppliesInfo request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getApplyStatusMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -458,6 +511,13 @@ public final class CVServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getApplyCVMethod(), getCallOptions(), request);
     }
+
+    /**
+     */
+    public com.google.protobuf.BoolValue applyStatus(proto.ServerClient.AppliesInfo request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getApplyStatusMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -513,6 +573,14 @@ public final class CVServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getApplyCVMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> applyStatus(
+        proto.ServerClient.AppliesInfo request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getApplyStatusMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_CVCREATE = 0;
@@ -521,6 +589,7 @@ public final class CVServiceGrpc {
   private static final int METHODID_CVUPDATE_INFO = 3;
   private static final int METHODID_CVDELETE = 4;
   private static final int METHODID_APPLY_CV = 5;
+  private static final int METHODID_APPLY_STATUS = 6;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -561,6 +630,10 @@ public final class CVServiceGrpc {
           break;
         case METHODID_APPLY_CV:
           serviceImpl.applyCV((proto.ServerClient.AppliesInfo) request,
+              (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
+          break;
+        case METHODID_APPLY_STATUS:
+          serviceImpl.applyStatus((proto.ServerClient.AppliesInfo) request,
               (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         default:
@@ -630,6 +703,7 @@ public final class CVServiceGrpc {
               .addMethod(getCVUpdateInfoMethod())
               .addMethod(getCVDeleteMethod())
               .addMethod(getApplyCVMethod())
+              .addMethod(getApplyStatusMethod())
               .build();
         }
       }

@@ -119,4 +119,21 @@ public class CVServiceImpl extends CVServiceGrpc.CVServiceImplBase {
             responseObserver.onError(dbError);
         }
     }
+
+    @Override
+    public void applyStatus(ServerClient.AppliesInfo request, StreamObserver<BoolValue> responseObserver) {
+        System.out.println("applyStatus");
+
+        try {
+            CVController cvController = new CVController();
+            Boolean bool = cvController.applyStatus(request);
+            responseObserver.onNext(BoolValue.newBuilder().setValue(bool).build());
+            responseObserver.onCompleted();
+        } catch (Exception e) {
+            StatusRuntimeException dbError = Status.ALREADY_EXISTS
+                    .withDescription(e.getMessage())
+                    .asRuntimeException();
+            responseObserver.onError(dbError);
+        }
+    }
 }

@@ -78,7 +78,7 @@ public class Converter {
             builder.setUserID(groupMembers.getUserID());
         if(groupMembers.getGroupID() != null && groupMembers.getGroupID() != 0)
             builder.setGroupID(groupMembers.getGroupID());
-        if(groupMembers.getIsAdmin() != 0 && groupMembers.getGroupID() != null)
+        if(groupMembers.getIsAdmin() != null && groupMembers.getGroupID() != 0)
             builder.setIsAdmin(true);
         if(groupMembers.getInterview() != null) {
             LocalTime time = groupMembers.getInterview().toLocalTime();

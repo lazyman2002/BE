@@ -118,7 +118,6 @@ public class SignalingServer extends WebSocketServer {
                     break;
 
                 case "candidate":
-                    // Chuyển tiếp ICE Candidate
                     if (conn == room.recruiter) {
                         for (WebSocket candidate : room.waitingRoom) {
                             candidate.send(message); // Gửi cho tất cả các candidate

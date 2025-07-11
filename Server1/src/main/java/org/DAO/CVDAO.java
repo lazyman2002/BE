@@ -370,4 +370,32 @@ public class CVDAO {
             if (preparedStatement != null) preparedStatement.close();
         }
     }
+
+    public Boolean applyStatus(ServerClient.AppliesInfo request, Connection connection) throws Exception {
+        System.out.println("applyStatus");
+
+        String sql = "SELECT 1 FROM `Applies` WHERE `CVID` = ? AND `jobID` = ? LIMIT 1;";
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            if (request.getCVID() == 0) {
+                throw new Exception("CVID không hợp lệ");
+            }
+            if (request.getJobID() == 0) {
+                throw new Exception("JobID không hợp lệ");
+            }
+
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, request.getCVID());
+            preparedStatement.setInt(2, request.getJobID());
+
+            resultSet = preparedStatement.executeQuery();
+            return resultSet.next(); // true nếu tìm thấy dòng phù hợp, ngược lại false
+        } finally {
+            if (resultSet != null) resultSet.close();
+            if (preparedStatement != null) preparedStatement.close();
+        }
+    }
+
 }

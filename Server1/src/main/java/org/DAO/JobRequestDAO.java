@@ -44,9 +44,9 @@ public class JobRequestDAO {
                 jobRequests.setLocationID(locationID);
                 JobType jobType = JobType.valueOf(resultSet.getString("jobType"));
                 jobRequests.setJobType(jobType);
-                Integer salaryLeast = resultSet.getInt("salaryLeast");
+                String salaryLeast = resultSet.getString("salaryLeast");
                 jobRequests.setSalaryLeast(salaryLeast);
-                Integer salaryGreatest = resultSet.getInt("salaryGreatest");
+                String salaryGreatest = resultSet.getString("salaryGreatest");
                 jobRequests.setSalaryGreatest(salaryGreatest);
                 Date deadlineDate = resultSet.getDate("deadlineDate");
                 jobRequests.setDeadlineDate(deadlineDate);
@@ -103,11 +103,11 @@ public class JobRequestDAO {
             if (jobType != ServerClient.JobType.FULLTIME && jobType != ServerClient.JobType.HALFTIME && jobType != ServerClient.JobType.INTERN)
                 throw new Exception("Invalid Job Type.");
             String jobTypeString = jobType.name();
-            Integer salaryLeast = request.getSalaryLeast();
-            Integer salaryGreatest = request.getSalaryGreatest();
-            if (salaryLeast <= 0 || salaryGreatest <= 0 || salaryLeast > salaryGreatest) {
-                throw new Exception("Invalid salary range.");
-            }
+            String salaryLeast = request.getSalaryLeast();
+            String salaryGreatest = request.getSalaryGreatest();
+//            if (salaryLeast <= 0 || salaryGreatest <= 0 || salaryLeast > salaryGreatest) {
+//                throw new Exception("Invalid salary range.");
+//            }
             com.google.protobuf.Timestamp deadlineDate = request.getDeadlineDate();
             String deadlineDateString;
             if (deadlineDate == null) {
@@ -143,8 +143,8 @@ public class JobRequestDAO {
             preparedStatement.setString(4, jobField);
             preparedStatement.setInt(5, locationID);
             preparedStatement.setString(6, jobTypeString);
-            preparedStatement.setInt(7, salaryLeast);
-            preparedStatement.setInt(8, salaryGreatest);
+            preparedStatement.setString(7, salaryLeast);
+            preparedStatement.setString(8, salaryGreatest);
             preparedStatement.setString(9, deadlineDateString);
 
             preparedStatement.setString(10, jobTitle);
@@ -216,12 +216,12 @@ public class JobRequestDAO {
                 parameters.add(request.getJobType().name());
             }
 
-            if (request.getSalaryLeast() > 0) {
+            if (request.getSalaryLeast() != null && !request.getSalaryLeast().isEmpty()) {
                 sb.append("`JobRequests`.`salaryLeast` = ?, ");
                 parameters.add(request.getSalaryLeast());
             }
 
-            if (request.getSalaryGreatest() > 0) {
+            if (request.getSalaryGreatest() != null && !request.getSalaryGreatest().isEmpty()) {
                 sb.append("`JobRequests`.`salaryGreatest` = ?, ");
                 parameters.add(request.getSalaryGreatest());
             }
@@ -484,11 +484,11 @@ public class JobRequestDAO {
             sql.append(" AND jobType = '").append(request.getJobType().name()).append("'");
         }
 
-        if (request.getIsEnded()) {
-            sql.append(" AND deadlineDate < CURRENT_DATE");
-        } else {
-            sql.append(" AND deadlineDate >= CURRENT_DATE");
-        }
+//        if (request.getIsEnded()) {
+//            sql.append(" AND deadlineDate < CURRENT_DATE");
+//        } else {
+//            sql.append(" AND deadlineDate >= CURRENT_DATE");
+//        }
 
         if(request.getLocationID() != 0){
             sql.append(" AND `locationID` = ").append(request.getLocationID());

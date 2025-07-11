@@ -152,8 +152,8 @@ public class Converter {
         if(jobRequest.getJobField() != null && !jobRequest.getJobField().isEmpty())     builder.setJobField(jobRequest.getJobField());
         if(jobRequest.getLocationID() != null && jobRequest.getLocationID() != 0)   builder.setLocationID(jobRequest.getLocationID());
         if(jobRequest.getJobType() != null)    builder.setJobType(ServerClient.JobType.valueOf(jobRequest.getJobType().name()));
-        if(jobRequest.getSalaryLeast() != null && jobRequest.getSalaryLeast() != 0)builder.setSalaryLeast(jobRequest.getSalaryLeast());
-        if(jobRequest.getSalaryGreatest() != null && jobRequest.getSalaryGreatest() != 0)    builder.setSalaryGreatest(jobRequest.getSalaryGreatest());
+        if(jobRequest.getSalaryLeast() != null && !jobRequest.getSalaryLeast().isEmpty())   builder.setSalaryLeast(jobRequest.getSalaryLeast());
+        if(jobRequest.getSalaryGreatest() != null && !jobRequest.getSalaryGreatest().isEmpty())   builder.setSalaryGreatest(jobRequest.getSalaryGreatest());
         if (jobRequest.getDeadlineDate() != null) {
             Long deadlineLong = jobRequest.getDeadlineDate().getTime();
             builder.setDeadlineDate(com.google.protobuf.Timestamp.newBuilder()

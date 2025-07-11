@@ -30,8 +30,9 @@ public class HadoopService {
     public void saveGroupData(ServerChat.MessageInfo request) throws Exception {
         try (Connection connection = ConnectionFactory.createConnection(config)) {
             Table table = connection.getTable(TableName.valueOf(TABLE_MSG));
+            String paddedMsgID = String.format("%010d", request.getMsgID());
 
-            String rowKey = request.getToGroupID() + "-" + request.getMsgID();
+            String rowKey = request.getToGroupID() + "-" + paddedMsgID;
             Put put = new Put(Bytes.toBytes(rowKey));
             put.addColumn(Bytes.toBytes(COLUMN_FAMILY), Bytes.toBytes("fromUserID"), Bytes.toBytes(request.getFromUserID()));
             put.addColumn(Bytes.toBytes(COLUMN_FAMILY), Bytes.toBytes("msgID"), Bytes.toBytes(request.getMsgID()));

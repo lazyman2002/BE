@@ -40,18 +40,19 @@ public class JobRequestServiceImpl extends JobRequestServiceGrpc.JobRequestServi
     @Override
     public void jobRequestRegister(ServerClient.JobRequestFullInfo request, StreamObserver<ServerClient.JobRequestFullInfo> responseObserver) {
         System.out.println("jobRegister");
-
+        ManagedChannel channel = null;
+        
         try {
             JobController jobRequestController = new JobController();
             JobRequests jobRequest = jobRequestController.jobRequestRegister(request);
             responseObserver.onNext(Converter.jobRequestsToFullProto(jobRequest));
-
-            ManagedChannel channel = ManagedChannelBuilder.forAddress(ENVDockers.master1_ip, 50051)
+            channel = ManagedChannelBuilder.forAddress(ENVDockers.master1_ip, 50051)
                     .usePlaintext()
                     .build();
             WishListServiceGrpc.WishListServiceBlockingStub wishListServiceBlockingStub = WishListServiceGrpc.newBlockingStub(channel);
             wishListServiceBlockingStub.updateJobVector(Converter.jobRequestsToFullProto(jobRequest));
-            
+            channel.shutdown();
+
             responseObserver.onCompleted();
         } catch (Exception e) {
             StatusRuntimeException dbError = Status.ALREADY_EXISTS
@@ -59,22 +60,38 @@ public class JobRequestServiceImpl extends JobRequestServiceGrpc.JobRequestServi
                     .asRuntimeException();
             responseObserver.onError(dbError);
         }
+        finally {
+            assert channel != null;
+            channel.shutdown();
+        }
     }
 
     @Override
     public void jobRequestUpdateInfo(ServerClient.JobRequestFullInfo request, StreamObserver<ServerClient.JobRequestFullInfo> responseObserver) {
         System.out.println("jobRequestUpdateInfo");
-
+        ManagedChannel channel = null;
         try {
             JobController jobController = new JobController();
             JobRequests jobRequest = jobController.jobRequestsUpdate(request);
             responseObserver.onNext(Converter.jobRequestsToFullProto(jobRequest));
+
+            channel = ManagedChannelBuilder.forAddress(ENVDockers.master1_ip, 50051)
+                    .usePlaintext()
+                    .build();
+            WishListServiceGrpc.WishListServiceBlockingStub wishListServiceBlockingStub = WishListServiceGrpc.newBlockingStub(channel);
+            wishListServiceBlockingStub.updateJobVector(Converter.jobRequestsToFullProto(jobRequest));
+            channel.shutdown();
+
             responseObserver.onCompleted();
         } catch (Exception sqlEx) {
             StatusRuntimeException dbError = Status.NOT_FOUND
                     .withDescription(sqlEx.getMessage())
                     .asRuntimeException();
             responseObserver.onError(dbError);
+        }
+        finally {
+            assert channel != null;
+            channel.shutdown();
         }
     }
 
